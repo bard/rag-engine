@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "starter-python"
+version = "0.1.0"
+description = ""
+authors = ["John Doe"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+python-dotenv = "^1.0.0"
+pydantic = "^2.4.2"
+pydantic-settings = "^2.0.3"
+pytest-watcher = "^0.3.4"
+
+[tool.poetry.group.dev.dependencies]
+taskipy = "^1.12.0"
+pytest = "^7.4.1"
+syrupy = "^4.5.0"
+mypy = "^1.5.1"
+pytest-only = "^2.0.0"
+black = "^23.9.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+test_watch = "ptw . -- --capture=no -vv"
+test = "pytest"
+
+[tool.pyright]
+include = ["src", "tests"]
+exclude = ["**/__pycache__"]
+ignore = []
+defineConstant = { DEBUG = true }
+
+[tool.black]
+
+[tool.pytest-watcher]
+now = true
