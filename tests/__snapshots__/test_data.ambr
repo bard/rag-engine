@@ -1,0 +1,18 @@
+# serializer version: 1
+# name: test_load_insurance_data_with_data_url
+  Document(metadata={'source': 'data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgogICAgPHRoZWFkPjx0cj48dGg+PC90aD48L3RyPjwvdGhlYWQ+ICAgIDx0Ym9keT4gPHRyIGNsYXNzPSJvZGQiPjx0ZD48dGFibGU+Cjx0cj48dGQ+QXZlcmFnZSBFeHBlbmRpdHVyZXMgZm9yIEF1dG8gSW5zdXJhbmNlLCAyMDEyLTIwMjE8L3RkPjwvdHI+Cjx0cj48dGQ+PHA+IDwvcD4KPC90ZD48L3RyPgo8dHI+PHRkPjx0YWJsZT4KPHRoZWFkPgo8dHI+Cjx0aD5ZZWFyPC90aD4KPHRoPkF2ZXJhZ2UgZXhwZW5kaXR1cmU8L3RoPgo8dGg+UGVyY2VudCBjaGFuZ2U8L3RoPgo8L3RyPgo8L3RoZWFkPgo8dGJvZHk+Cjx0cj4KPHRkPjIwMTI8L3RkPgo8dGQ+JDgxMi40MDwvdGQ+Cjx0ZD4yLjIlPC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxMzwvdGQ+Cjx0ZD44NDEuMDY8L3RkPgo8dGQ+My41PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxNDwvdGQ+Cjx0ZD44NjkuNDc8L3RkPgo8dGQ+My40PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxNTwvdGQ+Cjx0ZD44OTYuNjY8L3RkPgo8dGQ+My4xPC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxNjwvdGQ+Cjx0ZD45NDUuMjI8L3RkPgo8dGQ+NS40PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxNzwvdGQ+Cjx0ZD4xLDAwOC4zNTwvdGQ+Cjx0ZD42Ljc8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE4PC90ZD4KPHRkPjEsMDU4LjEwPC90ZD4KPHRkPjQuOTwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTk8L3RkPgo8dGQ+MSwwNzEuNzQ8L3RkPgo8dGQ+MS4zPC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAyMDwvdGQ+Cjx0ZD4xLDA0Ni4zNzwvdGQ+Cjx0ZD4tMi40PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAyMTwvdGQ+Cjx0ZD4xLDA2MS41NDwvdGQ+Cjx0ZD4xLjQ8L3RkPgo8L3RyPgo8L3Rib2R5PjwvdGFibGU+CgpTb3VyY2U6IE5hdGlvbmFsIEFzc29jaWF0aW9uIG9mIEluc3VyYW5jZSBDb21taXNzaW9uZXJzIChOQUlDKS4gRnVydGhlciByZXByaW50IG9yIGRpc3RyaWJ1dGlvbiBzdHJpY3RseSBwcm9oaWJpdGVkIHdpdGhvdXQgd3JpdHRlbiBwZXJtaXNzaW9uIG9mIE5BSUMuPC90ZD48L3RyPgo8L3RhYmxlPjwvdGQ+IDwvdHI+CiAgICAgIDwvdGJvZHk+CiAgICA8L3RhYmxlPgogIDwvYm9keT4KPC9odG1sPgo=', 'source_content': '<tr>\n<td>2012</td>\n<td>$812.40</td>\n<td>2.2%</td>\n</tr>'}, page_content='Year: 2012, Expenditure: $812.40, Change: 2.2%')
+# ---
+# name: test_parse_insurance_table
+  list([
+    InsuranceRecord(year=2012, average_expenditure=812.4, percent_change=2.2, source_content='<tr>\n<td>2012</td>\n<td>$812.40</td>\n<td>2.2%</td>\n</tr>'),
+    InsuranceRecord(year=2013, average_expenditure=841.06, percent_change=3.5, source_content='<tr>\n<td>2013</td>\n<td>841.06</td>\n<td>3.5</td>\n</tr>'),
+    InsuranceRecord(year=2014, average_expenditure=869.47, percent_change=3.4, source_content='<tr>\n<td>2014</td>\n<td>869.47</td>\n<td>3.4</td>\n</tr>'),
+    InsuranceRecord(year=2015, average_expenditure=896.66, percent_change=3.1, source_content='<tr>\n<td>2015</td>\n<td>896.66</td>\n<td>3.1</td>\n</tr>'),
+    InsuranceRecord(year=2016, average_expenditure=945.22, percent_change=5.4, source_content='<tr>\n<td>2016</td>\n<td>945.22</td>\n<td>5.4</td>\n</tr>'),
+    InsuranceRecord(year=2017, average_expenditure=1008.35, percent_change=6.7, source_content='<tr>\n<td>2017</td>\n<td>1,008.35</td>\n<td>6.7</td>\n</tr>'),
+    InsuranceRecord(year=2018, average_expenditure=1058.1, percent_change=4.9, source_content='<tr>\n<td>2018</td>\n<td>1,058.10</td>\n<td>4.9</td>\n</tr>'),
+    InsuranceRecord(year=2019, average_expenditure=1071.74, percent_change=1.3, source_content='<tr>\n<td>2019</td>\n<td>1,071.74</td>\n<td>1.3</td>\n</tr>'),
+    InsuranceRecord(year=2020, average_expenditure=1046.37, percent_change=-2.4, source_content='<tr>\n<td>2020</td>\n<td>1,046.37</td>\n<td>-2.4</td>\n</tr>'),
+    InsuranceRecord(year=2021, average_expenditure=1061.54, percent_change=1.4, source_content='<tr>\n<td>2021</td>\n<td>1,061.54</td>\n<td>1.4</td>\n</tr>'),
+  ])
+# ---

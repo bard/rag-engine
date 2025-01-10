@@ -1,24 +1,45 @@
 [tool.poetry]
-name = "starter-python"
+name = "src"
 version = "0.1.0"
 description = ""
 authors = ["John Doe"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "3.12.8"
 python-dotenv = "^1.0.0"
-pydantic = "^2.4.2"
-pydantic-settings = "^2.0.3"
-pytest-watcher = "^0.3.4"
+pydantic = "^2.10.4"
+pydantic-settings = "^2.7.1"
+langchain = "^0.3.14"
+pinecone = "^5.4.2"
+langchain-core = "^0.3.29"
+langchain-community = "^0.3.14"
+langchain-anthropic = "^0.3.1"
+langchain-postgres = "^0.0.12"
+psycopg = {extras = ["binary"], version = "^3.2.3"}
+openai = "^1.59.5"
+langchain-openai = "^0.2.14"
+anthropic = "^0.42.0"
+unstructured = "^0.16.12"
+networkx = "^3.4.2"
+pandas = "^2.2.3"
+openpyxl = "^3.1.5"
+xlrd = "^2.0.1"
+bs4 = "^0.0.2"
+beautifulsoup4 = "^4.12.3"
+requests = "^2.32.3"
 
 [tool.poetry.group.dev.dependencies]
 taskipy = "^1.12.0"
 pytest = "^7.4.1"
 syrupy = "^4.5.0"
 mypy = "^1.5.1"
-pytest-only = "^2.0.0"
 black = "^23.9.1"
+pytest-watcher = "^0.4.3"
+pytest-only = "^2.1.2"
+# workaround for https://github.com/theY4Kman/pytest-only/issues/14
+# can be removed once pytest-only is fixed
+setuptools = "^75.8.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -27,6 +48,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.taskipy.tasks]
 test_watch = "ptw . -- --capture=no -vv"
 test = "pytest"
+test_update_snapshots = "pytest --snapshot-update"
 
 [tool.pyright]
 include = ["src", "tests"]
