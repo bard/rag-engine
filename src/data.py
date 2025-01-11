@@ -122,6 +122,7 @@ def load_insurance_data_from_url(source_url: str) -> list[Document]:
         )
         doc = Document(
             page_content=content,
+            id=f"insurance-record-{r.year}",
             metadata={
                 "source": source_url,
                 "source_content": r.source_content,

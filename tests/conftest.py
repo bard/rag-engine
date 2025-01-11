@@ -1,3 +1,4 @@
+import base64
 import pytest
 
 
@@ -82,3 +83,10 @@ Source: National Association of Insurance Commissioners (NAIC). Further reprint 
   </body>
 </html>
 """
+
+
+@pytest.fixture
+def sample_html_data_uri(sample_html) -> str:
+    """Returns the sample HTML content as a base64 encoded data URI"""
+    encoded_html = base64.b64encode(sample_html.encode("utf-8")).decode("utf-8")
+    return f"data:text/html;base64,{encoded_html}"
