@@ -1,4 +1,4 @@
-from src.data import parse_insurance_table, load_insurance_data_from_url
+from src.data import parse_insurance_table, insurance_record_to_langchain_document
 
 
 def test_parse_insurance_table(snapshot, sample_html):
@@ -6,12 +6,17 @@ def test_parse_insurance_table(snapshot, sample_html):
     assert insurance_records == snapshot
 
 
-def test_load_insurance_data_with_data_url(snapshot, sample_html_data_uri):
-    documents = load_insurance_data_from_url(sample_html_data_uri)
-    assert (len(documents)) == 10
-    assert documents[0] == snapshot
+def test_insurance_record_to_langchain_document(snapshot, sample_html):
+    insurance_records = parse_insurance_table(sample_html)
+    document = insurance_record_to_langchain_document(
+        insurance_records[0], source_url="about:blank"
+    )
+    assert document == snapshot
 
 
-def test_documents_have_stable_ids_based_on_year(sample_html_data_uri):
-    documents = load_insurance_data_from_url(sample_html_data_uri)
-    assert documents[0].id == "insurance-record-2012"
+def test_documents_have_generated_id_based_on_year(sample_html):
+    insurance_records = parse_insurance_table(sample_html)
+    document = insurance_record_to_langchain_document(
+        insurance_records[0], source_url="about:blank"
+    )
+    assert document.id == "insurance-record-2012"

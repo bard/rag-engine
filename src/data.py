@@ -2,9 +2,10 @@ from langchain.schema import Document
 from typing import List
 from pydantic import BaseModel
 from bs4 import BeautifulSoup
-import requests
-import base64
-from urllib.parse import urlparse
+from sqlalchemy.orm import Mapped, mapped_column, declarative_base
+
+
+SqlAlchemyBase = declarative_base()
 
 
 class InsuranceRecord(BaseModel):
@@ -14,6 +15,26 @@ class InsuranceRecord(BaseModel):
     average_expenditure: float
     percent_change: float
     source_content: str
+
+
+class SQLInsuranceRecord(SqlAlchemyBase):
+    """SQLAlchemy model for insurance record data"""
+
+    __tablename__ = "insurance_records"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    year: Mapped[int] = mapped_column(nullable=False)
+    average_expenditure: Mapped[float] = mapped_column(nullable=False)
+    percent_change: Mapped[float] = mapped_column(nullable=False)
+    source_content: Mapped[str] = mapped_column(nullable=False)
+
+    def __repr__(self) -> str:
+        return (
+            f"SQLInsuranceRecord(id={self.id}, "
+            f"year={self.year}, "
+            f"average_expenditure={self.average_expenditure:.2f}, "
+            f"percent_change={self.percent_change})"
+        )
 
 
 def parse_insurance_table(html_content: str) -> List[InsuranceRecord]:
@@ -60,74 +81,35 @@ def parse_insurance_table(html_content: str) -> List[InsuranceRecord]:
     return results
 
 
-def fetch_html_content(source_url: str) -> str:
+def insurance_record_to_langchain_document(
+    record: InsuranceRecord, source_url: str
+) -> Document:
     """
-    Fetch HTML content from various sources: local file, HTTP URL, or data URL.
+    Convert an InsuranceRecord to a LangChain Document.
 
     Args:
-        source_url: file URL, HTTP URL, or data URL containing HTML content
+        record: The insurance record to convert
+        source_url: The URL where the record was sourced from
 
     Returns:
-        HTML content as string
-
-    Raises:
-        ValueError: If the source type is not supported or content cannot be retrieved
+        Document object containing the record data and metadata
     """
-    parsed = urlparse(str(source_url))
+    content = "\n".join(
+        [
+            f"Year: {record.year}, "
+            f"Expenditure: ${record.average_expenditure:.2f}, "
+            f"Change: {record.percent_change}%"
+        ]
+    )
 
-    # Handle local file
-    if not parsed.scheme or parsed.scheme == "file":
-        with open(parsed.path, "r") as file:
-            return file.read()
-
-    # Handle HTTP(S) URLs
-    if parsed.scheme in ["http", "https"]:
-        response = requests.get(str(source_url))
-        response.raise_for_status()
-        return response.text
-
-    # Handle data URLs
-    if parsed.scheme == "data":
-        # Split metadata and content
-        header, encoded = source_url.split(",", 1)
-        if ";base64" in header:
-            return base64.b64decode(encoded).decode("utf-8")
-        return encoded
-
-    raise ValueError(f"Unsupported source type: {parsed.scheme}")
-
-
-def load_insurance_data_from_url(source_url: str) -> list[Document]:
-    """
-    Load insurance data file and convert to Document objects with parsed insurance records.
-    Supports HTML files containing insurance expenditure tables.
-
-    Args:
-        file_path: Path to the insurance data file
-
-    Returns:
-        List of Document objects containing parsed insurance records with metadata
-    """
-    # Fetch and parse HTML content
-    html_content = fetch_html_content(source_url)
-    records = parse_insurance_table(html_content)
-    documents = []
-    for r in records:
-        content = "\n".join(
-            [
-                f"Year: {r.year}, "
-                f"Expenditure: ${r.average_expenditure:.2f}, "
-                f"Change: {r.percent_change}%"
-            ]
-        )
-        doc = Document(
-            page_content=content,
-            id=f"insurance-record-{r.year}",
-            metadata={
-                "source": source_url,
-                "source_content": r.source_content,
-            },
-        )
-        documents.append(doc)
-
-    return documents
+    return Document(
+        page_content=content,
+        id=f"insurance-record-{record.year}",
+        metadata={
+            "source_url": source_url,
+            "source_content": record.source_content,
+            "year": record.year,
+            "average_expenditure": record.average_expenditure,
+            "percent_change": record.percent_change,
+        },
+    )

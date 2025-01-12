@@ -29,6 +29,7 @@ beautifulsoup4 = "^4.12.3"
 requests = "^2.32.3"
 pinecone = "^5.4.2"
 langchain-pinecone = "^0.2.2"
+sqlalchemy = "^2.0.37"
 
 [tool.poetry.group.dev.dependencies]
 taskipy = "^1.12.0"
