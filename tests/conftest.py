@@ -1,7 +1,8 @@
 import base64
+import os
 from unittest.mock import Mock
 import pytest
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, event
 from sqlalchemy.orm import Session
 from src.data import SqlAlchemyBase
 
@@ -114,3 +115,15 @@ def sqlite_session():
 
     with Session(engine) as session:
         yield session
+
+
+@pytest.fixture
+def tmp_db_url(tmp_path):
+    """Create a temporary SQLite database file that gets cleaned up after use"""
+    db_url = f"sqlite:///{tmp_path}/test.db"
+    engine = create_engine(db_url)
+    SqlAlchemyBase.metadata.create_all(engine)
+
+    yield db_url
+
+    engine.dispose()
