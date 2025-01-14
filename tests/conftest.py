@@ -1,8 +1,7 @@
 import base64
-import os
-from unittest.mock import Mock
 import pytest
-from sqlalchemy import create_engine, event
+from unittest.mock import Mock
+from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from src.data import SqlAlchemyBase
 
@@ -91,7 +90,7 @@ Source: National Association of Insurance Commissioners (NAIC). Further reprint 
 
 
 @pytest.fixture
-def sample_html_data_url(sample_html) -> str:
+def sample_html_as_data_url(sample_html) -> str:
     """Returns the sample HTML content as a base64 encoded data URI"""
     encoded_html = base64.b64encode(sample_html.encode("utf-8")).decode("utf-8")
     return f"data:text/html;base64,{encoded_html}"
