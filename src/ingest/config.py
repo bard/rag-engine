@@ -18,7 +18,7 @@ class ChromaVectorStoreBackend(BaseModel):
     type: Literal["chroma"]
     path: str
     collection_name: str
-    embeddings_type: Union[Literal["local-minilm"], Literal["openai"]]
+    embeddings_type: Literal["local-minilm", "openai"]
 
 
 class AgentConfig(BaseModel):

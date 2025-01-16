@@ -1,14 +1,19 @@
+from typing import TypedDict
+
+from langchain_core.runnables.config import RunnableConfig
 from .state import AgentState, SourceContent
-from .config import RunnableConfig
 from ..util import fetch_html_content
 
 
-def fetch(state: AgentState, config: RunnableConfig) -> AgentState:
+class FetchStateUpdate(TypedDict):
+    source_content: SourceContent
+
+
+def fetch(state: AgentState, config: RunnableConfig) -> FetchStateUpdate:
     url = state.get("url")
     # TODO: support more file types (e.g. excel)
     html_content = fetch_html_content(url)
 
     return {
-        **state,
         "source_content": SourceContent(data=html_content, type="text/html"),
     }

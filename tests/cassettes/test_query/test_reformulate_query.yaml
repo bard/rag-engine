@@ -1,0 +1,103 @@
+interactions:
+- request:
+    body: '{"messages":[{"content":"Reformulate the following user question into a
+      concise search query: ''what are the year-to-year changes between 2012 and 2014''","role":"user"}],"model":"gpt-4o","n":1,"stream":false,"temperature":0.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '225'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.59.5
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.59.5
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.8
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA4xSy27bMBC86yuIPVsF9bAd+xagKHoI2uaUQ1MIDLmS2FIkS66CJoH/vaDkWDbS
+        ArlIwM7OaGa0LxljoBXsGchekBy8ya9/f6m6O/58c/tVtbT7Vt3cfWrrz5uP9Ph8C6vEcA8/UdIr
+        64N0gzdI2tkZlgEFYVItttWW12u+3kzA4BSaROs85bXLS17WOb/K+eZI7J2WGGHPvmeMMfYyPZNF
+        q/AP7BlfvU4GjFF0CPvTEmMQnEkTEDHqSMISrBZQOktoJ9f38IQi5OTy9GayF7bDyEpelHnJi/oe
+        zokB2zGK5NuOxhznh5MT4zof3EM84qd5q62OfRNQRGfTVyM5DxN6yBj7MSUeL0KAD27w1JD7hTYJ
+        VttZDpaKF7CojiA5EmaZr48tXao1CkloE88aAylkj2phLvWKUWl3BmRnmd+a+Zf2nFvb7j3yCyAl
+        ekLV+IBKy8vAy1rAdID/Wzt1PBmGiOFRS2xIY0j/QWErRjPfBsSnSDg0rbYdBh/0fCCtb+rNruA7
+        Lq62kB2yvwAAAP//AwAzmUKgKQMAAA==
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 902f7e300fe9c319-VIE
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 16 Jan 2025 16:30:56 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=9mxoF8eWRKWjkcBVjRYZ1FDPYT92fz4OxJaCEtiwPdk-1737045056-1.0.1.1-p.eRa6UBMwYPYknb7UDJzvQSG76LAzBBRS8_aleC7_0v0ggKGzAuZeWnJWFlaFLeyKH8L_BEvyeun47jLnKFag;
+        path=/; expires=Thu, 16-Jan-25 17:00:56 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=cP_oEWEQF939ambC1h2JwywRFD4hKTIZxUB0nG3ULfI-1737045056764-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      access-control-expose-headers:
+      - X-Request-ID
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-organization:
+      - user-iarz4shpxfmvb4ssgkfsv3ye
+      openai-processing-ms:
+      - '520'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-ratelimit-limit-requests:
+      - '5000'
+      x-ratelimit-limit-tokens:
+      - '800000'
+      x-ratelimit-remaining-requests:
+      - '4999'
+      x-ratelimit-remaining-tokens:
+      - '799950'
+      x-ratelimit-reset-requests:
+      - 12ms
+      x-ratelimit-reset-tokens:
+      - 3ms
+      x-request-id:
+      - req_225ad93d58c892a45e78a2e0865e9b35
+    status:
+      code: 200
+      message: OK
+version: 1

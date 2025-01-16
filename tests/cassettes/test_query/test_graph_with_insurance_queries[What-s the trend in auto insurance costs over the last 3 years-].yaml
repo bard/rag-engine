@@ -1,0 +1,217 @@
+interactions:
+- request:
+    body: '{"messages":[{"content":"Analyze the following query and determine if it''s
+      asking about the weather for a location. If it is, extract the location mentioned.
+      Respond in JSON format with ''is_weather_related'' as a boolean and ''location''
+      as a string.\n\nQuery: ''What''s the trend in auto insurance costs over the
+      last 3 years?''","role":"user"}],"model":"gpt-4o","n":1,"parallel_tool_calls":false,"stream":false,"temperature":0.0,"tool_choice":{"type":"function","function":{"name":"WeatherQueryClassification"}},"tools":[{"type":"function","function":{"name":"WeatherQueryClassification","description":"","parameters":{"properties":{"is_weather_related":{"description":"whether
+      the query has to do with weather","type":"boolean"},"location":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"location
+      the query is about, if it''s weather-related"}},"required":["is_weather_related","location"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '918'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.59.5
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.59.5
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.8
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAwAAAP//jFPBbtswDL37KwSek8FJnLXzbes2bIei3YB2h2UQFIm21ciSKsldsiD/
+        XshObafLgPlgCHx8j+SjtE8IASkgJ8ArFnht1fT9483tNW7vllnzfeNLVYq7r1/us01z626uYRIZ
+        Zv2APLyw3nBTW4VBGt3B3CELGFVnF4uLdJnOs6wFaiNQRVppwzQz03k6z6bp5TR9eyRWRnL0kJOf
+        CSGE7Nt/bFEL3EJO0slLpEbvWYmQ90mEgDMqRoB5L31gOsBkALnRAXXsWjdKjYBgjKKcKTUU7r79
+        6Dz4xJSiH125UOv68rP+9Phu/qC3Vx+qP/fp06heJ72zbUNFo3nvzwjv4/mrYoSAZnXL/YEsVOi+
+        Neh2VyqOVkjOzqgRAsyVTY06xElgvwLp6e+OTh2quJQV5AVTHicrUKaTWUEeHTnAidohOXf+NfLN
+        YdF4po6GHuOHfkPKlNaZtX9lOBRSS19Rh8y3g4MPxna1Y522AjQnywXrTG0DDWaDOgrOslmnB8Pd
+        G6HzIxhMYGoUXy4mZ/SowMBku/3+wnHGKxQDdbh4rBHSjIBkNPXf3ZzT7iaXuvwf+QHgHG1AQa1D
+        IfnpxEOaw/g0/5XWu9w2DB7dk+RIg0QXNyGwYI3qXg34nQ9Y00LqEp11sn06UFi6TDkTi2WKGSSH
+        5BkAAP//AwCrh/YrQwQAAA==
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 902ffcda8fe05b19-VIE
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 16 Jan 2025 17:57:24 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=fcXVMvwcbdoLPyrNOj8CklK8KRHGrhIHsrCUIpTVLJs-1737050244-1.0.1.1-41EHMWoYXCH4a6tPE3g14XtS.Qh3DBA4wzcBK.VaNHC3pbMcwvZT_AEiDQoQk9oAgJKxroxkC8UF3KQ199FWQA;
+        path=/; expires=Thu, 16-Jan-25 18:27:24 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=J8miZ9BrurYQnR3oQg_18a8WWkWmZrrMY5nJA8Lpxys-1737050244904-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      access-control-expose-headers:
+      - X-Request-ID
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-organization:
+      - user-iarz4shpxfmvb4ssgkfsv3ye
+      openai-processing-ms:
+      - '433'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-ratelimit-limit-requests:
+      - '5000'
+      x-ratelimit-limit-tokens:
+      - '800000'
+      x-ratelimit-remaining-requests:
+      - '4999'
+      x-ratelimit-remaining-tokens:
+      - '799909'
+      x-ratelimit-reset-requests:
+      - 12ms
+      x-ratelimit-reset-tokens:
+      - 6ms
+      x-request-id:
+      - req_6a7072a60cb912fd8acd2cf7056114d3
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages":[{"content":"You are an assistant for question-answering tasks.
+      Use the following pieces of retrieved context to answer the question. If you
+      don''t know the answer, say that you don''t know. Use three sentences maximum
+      and keep the answer concise.\n\nYear: 2014, Expenditure: $869.47, Change: 3.4%\n\nYear:
+      2013, Expenditure: $841.06, Change: 3.5%\n\n","role":"system"},{"content":"What''s
+      the trend in auto insurance costs over the last 3 years?","role":"user"}],"model":"gpt-4o","n":1,"stream":false,"temperature":0.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '529'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.59.5
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.59.5
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.8
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAwAAAP//jFPBbtswDL37KwihuyWGndhJmtuQQ1Fg2HroBqzDYCgSbatxJE+kmwZF
+        /n2Qk8Yp1g27+MDH9/QeSb9EAMJosQShaslq2zbjj7++3H1Ov29uF9/K1cNd/ummftQruqlXXzcb
+        MQoMt35Exa+sWLlt2yAbZ4+w8igZg2o6n86TPJlkeQ9sncYm0KqWx5kbT5JJNk4W42R2ItbOKCSx
+        hB8RAMBL/w0WrcZnsYRk9FrZIpGsUCzPTQDCuyZUhCQyxNKyGA2gcpbR9q7vawT2aDUYC7JjB8ZS
+        56VVCMoRE7gn9MA1QiOJYQp7lJ6AarcjkKCcDQ+gZTA2pCWM4dbCJEmno56Gzy1abbjzCDtJcLXI
+        0jiZjWBXG1WfWRrWe5jG+QdgB1eL2XWczYOnSZJmMdzXhsBYbZRkDO96Q8ZW/7YeX2b2WHYkw8ht
+        1zSn+uE8xMZVrXdrOuHnemmsoboIFp0NAyN2rejRQwTws19W92b+ovVu23LBboM2CKbp5KgnhvMY
+        0Pz6BLJj2Vyw5unoHb1CI0vT0MW6hZKqRj1Qh9uQnTbuAoguUv/p5j3tY3Jjq/+RHwClsGXURetR
+        G/U28dDmMfw9f2s7T7k3LAj9k1FYsEEfNqGxlF1zPGxBe2LcFqWxFfrWm+N1l22RJ0rqaZ5gJqJD
+        9BsAAP//AwDPU8EA5gMAAA==
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 902ffce058713258-VIE
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 16 Jan 2025 17:57:27 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=hCNE.gleXSSkJ3zSdp4czaOrHwg11sK3w_PRlkYyqng-1737050247-1.0.1.1-tLkss2e0O.b2ppSiCa0gAFSYCUIJMV3uQrdDuqtt9IriDaC06s5k7fpUjOexRnpWws4qT_LYLn.b8Sy7p941Lg;
+        path=/; expires=Thu, 16-Jan-25 18:27:27 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=z7TuxD4jMEdlDp.rK_poswOZYcPtx_9qoQTxnzXfp.8-1737050247392-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      access-control-expose-headers:
+      - X-Request-ID
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-organization:
+      - user-iarz4shpxfmvb4ssgkfsv3ye
+      openai-processing-ms:
+      - '1977'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-ratelimit-limit-requests:
+      - '5000'
+      x-ratelimit-limit-tokens:
+      - '800000'
+      x-ratelimit-remaining-requests:
+      - '4999'
+      x-ratelimit-remaining-tokens:
+      - '799883'
+      x-ratelimit-reset-requests:
+      - 12ms
+      x-ratelimit-reset-tokens:
+      - 8ms
+      x-request-id:
+      - req_3c35f3879fd696a9a9da39cb87782574
+    status:
+      code: 200
+      message: OK
+version: 1

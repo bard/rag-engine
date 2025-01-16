@@ -45,6 +45,7 @@ pytest-only = "^2.1.2"
 # can be removed once pytest-only is fixed
 setuptools = "^75.8.0"
 pytest-integration-mark = "^0.2.0"
+pytest-recording = "^0.13.2"
 
 [build-system]
 requires = ["poetry-core"]
@@ -54,6 +55,7 @@ build-backend = "poetry.core.masonry.api"
 test_watch = "ptw . -- --capture=no -vv"
 test = "pytest"
 test_update_snapshots = "pytest --snapshot-update"
+test_with_network_calls = "pytest --record-mode=new_episodes"
 
 [tool.pyright]
 include = ["src", "tests"]

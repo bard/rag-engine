@@ -1,0 +1,16 @@
+# serializer version: 1
+# name: test_graph_with_insurance_queries[What's the trend in auto insurance costs over the last 3 years?]
+  'The trend in auto insurance costs over the last 3 years shows a consistent increase. In 2013, the expenditure was $841.06, which increased by 3.5% to $869.47 in 2014. This indicates a rising trend in auto insurance costs.'
+# ---
+# name: test_graph_with_travel_info_query
+  'In Paris, you can visit the Eiffel Tower for panoramic views, explore the Louvre Museum to see masterpieces like the Mona Lisa, and admire the Gothic architecture of Notre-Dame Cathedral. You can also stroll along the Champs-Élysées to reach the Arc de Triomphe and visit Montmartre to see the Basilica of the Sacré-Cœur.'
+# ---
+# name: test_graph_with_weather_query
+  'The weather in Paris is sunny with temperatures ranging from a minimum of 5°C to a maximum of 10°C.'
+# ---
+# name: test_retrieve_2
+  list([
+    Document(id='0', metadata={}, page_content="Paris, the 'City of Light,' boasts iconic landmarks such as the Eiffel Tower, offering panoramic views from its observation decks. The Louvre Museum, home to masterpieces like the Mona Lisa, attracts art enthusiasts worldwide. Notre-Dame Cathedral, a Gothic architectural marvel, stands on the Île de la Cité. The Champs-Élysées, lined with shops and cafes, leads to the Arc de Triomphe, honoring those who fought for France. Montmartre, with its artistic heritage, features the Basilica of the Sacré-Cœur atop its hill."),
+    Document(id='1', metadata={}, page_content="London, a vibrant metropolis, features the historic Tower of London, housing the Crown Jewels. The British Museum showcases a vast collection of world art and artifacts. Buckingham Palace, the monarch's residence, is famed for the Changing of the Guard ceremony. The Houses of Parliament and Big Ben are iconic symbols along the River Thames. The London Eye offers a rotating perspective of the city's skyline."),
+  ])
+# ---

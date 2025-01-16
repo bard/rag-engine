@@ -1,3 +1,4 @@
+from langchain.schema import Document
 import base64
 import pytest
 from unittest.mock import Mock
@@ -126,3 +127,45 @@ def tmp_db_url(tmp_path):
     yield db_url
 
     engine.dispose()
+
+
+@pytest.fixture(scope="module")
+def vcr_config():
+    return {"filter_headers": ["authorization"]}
+
+
+@pytest.fixture
+def insurance_data_documents():
+    return [
+        Document(page_content=content, id=str(i))
+        for i, content in enumerate(
+            [
+                "Year: 2012, Expenditure: $812.40, Change: 2.2%",
+                "Year: 2013, Expenditure: $841.06, Change: 3.5%",
+                "Year: 2014, Expenditure: $869.47, Change: 3.4%",
+                "Year: 2015, Expenditure: $896.66, Change: 3.1%",
+                "Year: 2016, Expenditure: $945.22, Change: 5.4%",
+                "Year: 2017, Expenditure: $1008.35, Change: 6.7%",
+                "Year: 2018, Expenditure: $1058.10, Change: 4.9%",
+                "Year: 2019, Expenditure: $1071.74, Change: 1.3%",
+                "Year: 2020, Expenditure: $1046.37, Change: -2.4%",
+                "Year: 2021, Expenditure: $1061.54, Change: 1.4%",
+            ]
+        )
+    ]
+
+
+@pytest.fixture
+def travel_info_documents():
+    return [
+        Document(page_content=content, id=str(i))
+        for i, content in enumerate(
+            [
+                "Paris, the 'City of Light,' boasts iconic landmarks such as the Eiffel Tower, offering panoramic views from its observation decks. The Louvre Museum, home to masterpieces like the Mona Lisa, attracts art enthusiasts worldwide. Notre-Dame Cathedral, a Gothic architectural marvel, stands on the Île de la Cité. The Champs-Élysées, lined with shops and cafes, leads to the Arc de Triomphe, honoring those who fought for France. Montmartre, with its artistic heritage, features the Basilica of the Sacré-Cœur atop its hill.",
+                "London, a vibrant metropolis, features the historic Tower of London, housing the Crown Jewels. The British Museum showcases a vast collection of world art and artifacts. Buckingham Palace, the monarch's residence, is famed for the Changing of the Guard ceremony. The Houses of Parliament and Big Ben are iconic symbols along the River Thames. The London Eye offers a rotating perspective of the city's skyline.",
+                "Rome, the 'Eternal City,' is home to the Colosseum, an ancient amphitheater echoing gladiatorial history. The Vatican City enclaves St. Peter's Basilica and the Sistine Chapel, adorned with Michelangelo's frescoes. The Pantheon, with its impressive dome, stands as a testament to Roman engineering. The Roman Forum's ruins narrate tales of imperial grandeur. Trevi Fountain invites visitors to toss a coin, ensuring their return to Rome.",
+                "Berlin, Germany's capital, presents the Brandenburg Gate, a neoclassical monument symbolizing unity. The Berlin Wall Memorial commemorates the city's divided past. Museum Island hosts a cluster of renowned museums, including the Pergamon Museum. The Reichstag Building, with its modern glass dome, offers insights into German politics. Checkpoint Charlie stands as a relic of Cold War history.",
+                "Madrid, Spain's lively capital, features the Prado Museum, exhibiting European art masterpieces. The Royal Palace impresses with its opulent architecture and historic significance. Retiro Park provides a green oasis in the city's heart. Puerta del Sol serves as a bustling public square and focal point for festivities. The Gran Vía is renowned for shopping, theaters, and vibrant nightlife.",
+            ]
+        )
+    ]

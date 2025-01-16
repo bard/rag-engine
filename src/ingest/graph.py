@@ -1,6 +1,5 @@
 from langgraph.graph import StateGraph, START, END
-
-from src.agent_ingest.config import AgentConfig
+from .config import AgentConfig
 from .state import AgentState
 from .node_extract import extract
 from .node_fetch import fetch

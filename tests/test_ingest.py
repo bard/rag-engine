@@ -60,7 +60,9 @@ def test_ingest_node(agent_config, sample_html_as_data_url, snapshot):
     )
     vector_store_state = Chroma(
         collection_name="documents",
-        persist_directory=agent_config.get("configurable")["vector_store"]["path"],
+        persist_directory=agent_config.get("configurable")
+        .get("vector_store")
+        .get("path"),
     ).get()
     assert new_agent_state == snapshot
     assert database_state == snapshot
@@ -82,7 +84,9 @@ def test_graph(agent_config, sample_html_as_data_url, snapshot):
     )
     vector_store_state = Chroma(
         collection_name="documents",
-        persist_directory=agent_config.get("configurable")["vector_store"]["path"],
+        persist_directory=agent_config.get("configurable")
+        .get("vector_store")
+        .get("path"),
     ).get()
     assert new_agent_state == snapshot
     assert database_state == snapshot

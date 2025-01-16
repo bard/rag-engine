@@ -4,8 +4,7 @@ from ..data import InsuranceRecord
 
 class SourceContent(TypedDict):
     data: str
-    # TODO Union[Literal['text/html'], Literal['application/vnd.ms-excel']]
-    type: Literal["text/html"]
+    type: Literal["text/html"]  # TODO 'application/vnd.ms-excel']]
 
 
 class AgentState(TypedDict):
