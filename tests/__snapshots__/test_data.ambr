@@ -1,5 +1,8 @@
 # serializer version: 1
-# name: test_insurance_record_to_langchain_document
+# name: test_get_langchain_document_from_generic_data
+  Document(id='generic-data-abc123', metadata={'title': 'Some Data', 'content_hash': 'abc123', 'raw_data': [{'foo': 1, 'bar': 2}, {'foo': 4, 'bar': 5}]}, page_content='Title: Some Data\nfoo: 1\nbar: 2\n\nfoo: 4\nbar: 5\n\n')
+# ---
+# name: test_get_langchain_document_from_insurance_record
   Document(id='insurance-record-2012', metadata={'source_url': 'about:blank', 'source_content': '<tr>\n<td>2012</td>\n<td>$812.40</td>\n<td>2.2%</td>\n</tr>', 'year': 2012, 'average_expenditure': 812.4, 'percent_change': 2.2}, page_content='Year: 2012, Expenditure: $812.40, Change: 2.2%')
 # ---
 # name: test_parse_insurance_table

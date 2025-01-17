@@ -1,29 +1,33 @@
+import pprint
 import pytest
 from langchain_chroma.vectorstores import Chroma
 from numpy import extract
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
-from langchain_core.runnables.config import RunnableConfig
-from sqlalchemy import create_engine
 from src.data import InsuranceRecord, SQLInsuranceRecord
-from src.ingest import AgentState, SourceContent, fetch, ingest, extract, get_graph
+from src.ingest import (
+    AgentState,
+    SourceContent,
+    fetch,
+    extract,
+    index_and_store,
+    get_graph,
+)
 
 
-def test_fetch_node(
-    agent_config, average_insurance_expenditures_html_as_data_url, snapshot
-):
+def test_fetch(agent_config, average_insurance_expenditures_html_as_data_url, snapshot):
     agent_state = AgentState(
         url=average_insurance_expenditures_html_as_data_url,
         source_content=None,
         insurance_records=[],
     )
 
-    new_agent_state = fetch(agent_state, agent_config)
+    state_update = fetch(agent_state, agent_config)
 
-    assert new_agent_state.get("source_content") == snapshot
+    assert state_update.get("source_content") == snapshot
 
 
-def test_extract_node_2(
+def test_extract_insurance_records(
     agent_config,
     average_insurance_expenditures_html,
     average_insurance_expenditures_html_as_data_url,
@@ -37,31 +41,32 @@ def test_extract_node_2(
         insurance_records=[],
     )
 
-    new_agent_state = extract(agent_state, agent_config)
+    state_update = extract(agent_state, agent_config)
 
-    assert new_agent_state.get("records") == snapshot
+    assert state_update.get("records") == snapshot
 
 
-def test_extract_node(
+@pytest.mark.vcr
+@pytest.mark.timeout(60)  # longer timeout for LLM processing
+def test_extract_generic_tabular_data(
     agent_config,
-    average_insurance_expenditures_html,
-    average_insurance_expenditures_html_as_data_url,
+    premiums_by_state_html,
+    premiums_by_state_html_as_data_url,
     snapshot,
 ):
     agent_state = AgentState(
-        url=average_insurance_expenditures_html_as_data_url,
-        source_content=SourceContent(
-            data=average_insurance_expenditures_html, type="text/html"
-        ),
+        url=premiums_by_state_html_as_data_url,
+        source_content=SourceContent(data=premiums_by_state_html, type="text/html"),
         insurance_records=[],
     )
 
-    new_agent_state = extract(agent_state, agent_config)
+    state_update = extract(agent_state, agent_config)
 
-    assert new_agent_state.get("records") == snapshot
+    assert state_update.get("insurance_records") == []
+    assert state_update.get("generic_data") == snapshot
 
 
-def test_ingest_node(
+def test_index_and_store(
     agent_config, average_insurance_expenditures_html_as_data_url, snapshot
 ):
     agent_state = AgentState(
@@ -83,10 +88,10 @@ def test_ingest_node(
         ],
     )
 
-    new_agent_state = ingest(agent_state, agent_config)
+    state_update = index_and_store(agent_state, agent_config)
 
     database_state = (
-        Session(create_engine(agent_config.get("configurable")["db_url"]))
+        Session(create_engine(agent_config.get("configurable").get("db").get("url")))
         .query(SQLInsuranceRecord)
         .all()
     )
@@ -96,7 +101,7 @@ def test_ingest_node(
         .get("vector_store")
         .get("path"),
     ).get()
-    assert new_agent_state == snapshot
+    assert state_update == snapshot
     assert database_state == snapshot
     assert vector_store_state == snapshot
 
@@ -109,10 +114,10 @@ def test_graph(agent_config, average_insurance_expenditures_html_as_data_url, sn
     )
 
     graph = get_graph()
-    new_agent_state = graph.invoke(agent_state, config=agent_config)
+    state_update = graph.invoke(agent_state, config=agent_config)
 
     database_state = (
-        Session(create_engine(agent_config.get("configurable")["db_url"]))
+        Session(create_engine(agent_config.get("configurable").get("db").get("url")))
         .query(SQLInsuranceRecord)
         .all()
     )
@@ -122,22 +127,6 @@ def test_graph(agent_config, average_insurance_expenditures_html_as_data_url, sn
         .get("vector_store")
         .get("path"),
     ).get()
-    assert new_agent_state == snapshot
+    assert state_update == snapshot
     assert database_state == snapshot
     assert vector_store_state == snapshot
-
-
-@pytest.fixture
-def agent_config(tmp_path, tmp_db_url) -> RunnableConfig:
-    return RunnableConfig(
-        configurable={
-            "openai_api_key": "fake_key",
-            "db_url": tmp_db_url,
-            "vector_store": {
-                "type": "chroma",
-                "collection_name": "documents",
-                "path": f"{tmp_path}/chroma",
-                "embeddings_type": "local-minilm",
-            },
-        }
-    )

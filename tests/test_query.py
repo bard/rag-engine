@@ -188,26 +188,3 @@ def test_graph_with_insurance_queries(
     response = get_graph().invoke(agent_state, agent_config)
 
     assert response.get("messages", [])[-1].content == snapshot
-
-
-@pytest.fixture
-def agent_config(tmp_path, tmp_db_url) -> RunnableConfig:
-    return RunnableConfig(
-        configurable={
-            "llm": {
-                "type": "openai",
-                "model": "gpt-4o",
-                "api_key": os.getenv("OPENAI_API_KEY"),
-            },
-            "weather": {"api_key": os.getenv("OPENWEATHERMAP_API_KEY")},
-            "db": {
-                "url": tmp_db_url,
-            },
-            "vector_store": {
-                "type": "chroma",
-                "collection_name": "documents",
-                "path": f"{tmp_path}/chroma",
-                "embeddings_type": "local-minilm",
-            },
-        }
-    )

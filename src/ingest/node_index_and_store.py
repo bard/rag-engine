@@ -10,31 +10,29 @@ from langchain.schema import Document
 from pydantic import SecretStr
 from sqlalchemy import Engine, create_engine
 from sqlalchemy.orm import Session
-from ..data import (
-    SQLInsuranceRecord,
-    insurance_record_to_langchain_document,
-)
+from ..data import SQLInsuranceRecord
 from .state import AgentState
-from .config import AgentConfig, validate_agent_config
+from ..config import AgentConfig
 
 
-def ingest(state: AgentState, config: RunnableConfig) -> AgentState:
-    c = validate_agent_config(config)
+def index_and_store(state: AgentState, config: RunnableConfig) -> AgentState:
+    c = AgentConfig.from_runnable_config(config)
     url = state.get("url")
 
-    engine = create_engine(c.db_url)
+    engine = create_engine(c.db.url)
     vector_store = get_vector_store(c)
-
-    insurance_records = state.get("insurance_records")
     documents: list[Document] = []
 
+    insurance_records = state.get("insurance_records")
     with Session(engine) as session:
         with session.begin():
             for r in insurance_records:
                 session.add(SQLInsuranceRecord(**r.model_dump()))
-                documents.append(
-                    insurance_record_to_langchain_document(r, source_url=url)
-                )
+                documents.append(r.to_langchain_document(source_url=url))
+
+    generic_data = state.get("generic_data")
+    if generic_data is not None:
+        documents.append(generic_data.to_langchain_document())
 
     vector_store.add_documents(documents)
 
@@ -53,9 +51,7 @@ def get_vector_store(config: AgentConfig) -> VectorStore:
             )
 
         elif config.vector_store.embeddings_type == "openai":
-            embedding_function = OpenAIEmbeddings(
-                api_key=SecretStr(config.openai_api_key)
-            )
+            embedding_function = OpenAIEmbeddings(api_key=SecretStr(config.llm.api_key))
         else:
             raise Exception(f"Unknown embedding type: {config.vector_store.type}")
 
@@ -69,7 +65,7 @@ def get_vector_store(config: AgentConfig) -> VectorStore:
 
 
 def get_db(config: AgentConfig) -> Engine:
-    return create_engine(config.db_url)
+    return create_engine(config.db.url)
 
 
 # https://cookbook.chromadb.dev/integrations/langchain/embeddings/#custom-adapter

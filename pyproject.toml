@@ -47,6 +47,7 @@ pytest-only = "^2.1.2"
 setuptools = "^75.8.0"
 pytest-integration-mark = "^0.2.0"
 pytest-recording = "^0.13.2"
+pytest-timeout = "^2.3.1"
 
 [build-system]
 requires = ["poetry-core"]
@@ -56,7 +57,8 @@ build-backend = "poetry.core.masonry.api"
 test_watch = "ptw . -- --capture=no -vv"
 test = "pytest"
 test_update_snapshots = "pytest --snapshot-update"
-test_with_network_calls = "pytest --record-mode=new_episodes"
+test_with_new_network_calls = "pytest --record-mode=new_episodes"
+test_with_all_network_calls = "pytest --record-mode=all"
 
 [tool.pyright]
 include = ["src", "tests"]

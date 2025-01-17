@@ -25,7 +25,7 @@ def get_weather_client(config: AgentConfig) -> OWM:
 
 def get_llm(config: AgentConfig) -> ChatOpenAI:
     if config.llm.type == "openai":
-        return ChatOpenAI(model=config.llm.model, temperature=0)
+        return ChatOpenAI(model=config.llm.model)
     else:
         raise Exception(f"Unsupported LLM backend: {config.llm.type}")
 

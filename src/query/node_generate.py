@@ -1,6 +1,6 @@
 import pprint
 from typing import TypedDict
-from langchain.schema import BaseMessage, Document, HumanMessage, SystemMessage
+from langchain.schema import BaseMessage, HumanMessage, SystemMessage
 from langchain_core.runnables import RunnableConfig
 
 from ..config import AgentConfig

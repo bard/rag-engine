@@ -1,10 +1,6 @@
 from langchain.schema import Document
 from sqlalchemy.orm import Session
-from ..data import (
-    SQLInsuranceRecord,
-    insurance_record_to_langchain_document,
-    parse_insurance_table,
-)
+from ..data import SQLInsuranceRecord, InsuranceRecord
 from ..util import fetch_html_content
 
 
@@ -30,14 +26,12 @@ class DocumentProcessor:
         """
 
         html_content = fetch_html_content(url)
-        insurance_records = parse_insurance_table(html_content)
+        insurance_records = InsuranceRecord.from_html_content(html_content)
 
         documents: list[Document] = []
         with self.db.begin():
             for r in insurance_records:
                 self.db.add(SQLInsuranceRecord(**r.model_dump()))
-                documents.append(
-                    insurance_record_to_langchain_document(r, source_url=url)
-                )
+                documents.append(r.to_langchain_document(source_url=url))
 
         return documents

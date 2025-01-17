@@ -1,0 +1,149 @@
+interactions:
+- request:
+    body: '{"messages":[{"content":"You are an assistant for data extraction tasks.
+      Extract a title\n                    and tabular data from the provided html.\n\n                    Provide
+      the output in JSON format: The output should be formatted as a JSON instance
+      that conforms to the JSON schema below.\n\nAs an example, for the schema {\"properties\":
+      {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of strings\", \"type\":
+      \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}\nthe
+      object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance of the schema.
+      The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is not well-formatted.\n\nHere
+      is the output schema:\n```\n{\"properties\": {\"title\": {\"title\": \"Title\",
+      \"type\": \"string\"}, \"data\": {\"items\": {\"type\": \"object\"}, \"title\":
+      \"Data\", \"type\": \"array\"}}, \"required\": [\"title\", \"data\"]}\n```.\n                    \n                    The
+      JSON should have the shape `{ \"title\": string, \"data\": [record1, record2,
+      ...]}`","role":"system"},{"content":"\n<html>\n  <head>\n    <meta http-equiv=\"Content-Type\"
+      content=\"text/html; charset=utf-8\" />\n  </head>\n  <body>\n    <table>\n    <thead><tr><th></th></tr></thead>    <tbody>
+      <tr class=\"odd\"><td><table>\n<tr><td>Direct Premiums Written, P/C Insurance
+      By State, 2023 (1)</td></tr>\n<tr><td><p>($000)</p>\n</td></tr>\n<tr><td><table>\n<thead>\n<tr>\n<th>State</th>\n<th>Total,
+      all lines</th>\n<th>State</th>\n<th>Total, all lines</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Alabama</td>\n<td>$13,146,853</td>\n<td>Montana</td>\n<td>$3,807,820</td>\n</tr>\n<tr>\n<td>Alaska</td>\n<td>1,994,750</td>\n<td>Nebraska</td>\n<td>7,573,101</td>\n</tr>\n<tr>\n<td>Arizona</td>\n<td>17,959,495</td>\n<td>Nevada</td>\n<td>8,561,822</td>\n</tr>\n<tr>\n<td>Arkansas</td>\n<td>7,931,849</td>\n<td>New
+      Hampshire</td>\n<td>3,342,091</td>\n</tr>\n<tr>\n<td>California</td>\n<td>111,243,502</td>\n<td>New
+      Jersey</td>\n<td>29,106,640</td>\n</tr>\n<tr>\n<td>Colorado</td>\n<td>20,582,327</td>\n<td>New
+      Mexico</td>\n<td>5,038,116</td>\n</tr>\n<tr>\n<td>Connecticut</td>\n<td>11,508,412</td>\n<td>New
+      York</td>\n<td>61,861,773</td>\n</tr>\n<tr>\n<td>D.C.</td>\n<td>2,699,081</td>\n<td>North
+      Carolina</td>\n<td>24,036,512</td>\n</tr>\n<tr>\n<td>Delaware</td>\n<td>3,842,583</td>\n<td>North
+      Dakota</td>\n<td>3,826,625</td>\n</tr>\n<tr>\n<td>Florida</td>\n<td>88,067,510</td>\n<td>Ohio</td>\n<td>23,397,453</td>\n</tr>\n<tr>\n<td>Georgia</td>\n<td>32,039,933</td>\n<td>Oklahoma</td>\n<td>11,325,023</td>\n</tr>\n<tr>\n<td>Hawaii</td>\n<td>3,490,752</td>\n<td>Oregon</td>\n<td>10,510,197</td>\n</tr>\n<tr>\n<td>Idaho</td>\n<td>4,757,044</td>\n<td>Pennsylvania</td>\n<td>32,532,786</td>\n</tr>\n<tr>\n<td>Illinois</td>\n<td>35,938,656</td>\n<td>Rhode
+      Island</td>\n<td>3,361,749</td>\n</tr>\n<tr>\n<td>Indiana</td>\n<td>16,321,562</td>\n<td>South
+      Carolina</td>\n<td>15,078,257</td>\n</tr>\n<tr>\n<td>Iowa</td>\n<td>9,843,752</td>\n<td>South
+      Dakota</td>\n<td>3,970,217</td>\n</tr>\n<tr>\n<td>Kansas</td>\n<td>9,565,831</td>\n<td>Tennessee</td>\n<td>17,442,243</td>\n</tr>\n<tr>\n<td>Kentucky</td>\n<td>10,147,626</td>\n<td>Texas</td>\n<td>92,331,270</td>\n</tr>\n<tr>\n<td>Louisiana</td>\n<td>16,226,096</td>\n<td>Utah</td>\n<td>8,100,467</td>\n</tr>\n<tr>\n<td>Maine</td>\n<td>3,316,037</td>\n<td>Vermont</td>\n<td>1,640,326</td>\n</tr>\n<tr>\n<td>Maryland</td>\n<td>16,186,978</td>\n<td>Virginia</td>\n<td>20,316,519</td>\n</tr>\n<tr>\n<td>Massachusetts</td>\n<td>21,453,245</td>\n<td>Washington</td>\n<td>18,109,893</td>\n</tr>\n<tr>\n<td>Michigan</td>\n<td>24,427,664</td>\n<td>West
+      Virginia</td>\n<td>3,643,445</td>\n</tr>\n<tr>\n<td>Minnesota</td>\n<td>17,081,121</td>\n<td>Wisconsin</td>\n<td>14,623,479</td>\n</tr>\n<tr>\n<td>Mississippi</td>\n<td>7,505,441</td>\n<td>Wyoming</td>\n<td>1,820,520</td>\n</tr>\n<tr>\n<td>Missouri</td>\n<td>17,261,874</td>\n<td><strong>United
+      States</strong></td>\n<td><strong>$949,898,320</strong></td>\n</tr>\n</tbody></table>\n\n(1)
+      Before reinsurance transactions, includes state funds, excludes territories.\n(2)
+      Data for the total United States may differ from similar data shown elsewhere
+      due to the use of different exhibits from S&amp;P Global Market Intelligence.\n\nSource:
+      NAIC data, sourced from S&amp;P Global Market Intelligence, Insurance Information
+      Institute.</td></tr>\n</table></td> </tr>\n      </tbody>\n    </table>\n  </body>\n</html>\n","role":"user"}],"model":"gpt-4o","n":1,"stream":false,"temperature":0.7}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '4526'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.59.5
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.59.5
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.8
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAwAAAP//jJfLbhs3FIb3eQpikOWxy/vFu9SBmzR17DYXt42Kmh7RGkYjUiGpOK6R
+        dy9GTtxuyPFGgMjhh3P9D3n3BKHOL7sj1PWDLf1mOx48++T57+L65E0+Y/Rk3Rfx4v3Zr3p98uf2
+        c9/BdCJefXR9+X7qsI+b7eiKj+F+u0/OFjdRiWKKUKEZ229s4tKN07HVthzweEAx5QdYH2D57eAQ
+        fe9yd4Q+PEEIobv972RiWLov3RHC8H1l43K2K9cdPXyEUJfiOK10Nmefiw2lg/82+xiKC3urLy8v
+        P+YYFuFuERBadMWX0S26I7Tonvvk+oLOk9v43Saji+RLcQHQ+Q/H6GXIu2RD79CPt+hNscUBopiy
+        RQf3oKUtduJ8mP4idLfo9l/do5+N9spu7KIDtOjexmJHQHYc0eiDy/efPCUMCJegBVt0X6FCyesm
+        hIAxHJTAVUTy/8TQZigwwgA3og5Z25BtblEUGEZAc1ODHNvRX8cUfNsYQoByBgLTKiiOMdllbGEo
+        BqEpMKrqlBBcX3y/K217QGANnFTNeX54fNg0BaQxgDWpAtxob2xyLQgDzSkIXS2VkzEmv2yGVmvA
+        UoEg1WL5ycW0aueHUcDMgGFVS17YG+t92xluMChRDenLpR2a6Z1KXgHmvEoYRx+ib1YsE2CYBilk
+        lRKW3s40jwRGCQhZdybeNAkGNGetaLya7T0DQgrQrFpir1wou3592/QEA+EKJK2G45e48/kRAaFU
+        AjZVzKn1YabYGZGAmaoT0u1ow3LGDqIlGKXrlJxtP+yyK6UZXkqACwaUVwXy1PeDX9nQpHDgVIGU
+        vE4JweVY5tQaawKEkjpmGonZb7e+LdgCC+C8yYm75GesoZKAVnWnYigzJfOUgcYKNK0K02t3leZG
+        oQKhGBBM6pDPdkYhQUzOUFpH3KAXdrPNg5/Ta8YpYENapJ9dyq7Zk9QAwRIkxy3Oqfvi+6ZeCsBM
+        AyGyhfkjpnULMoVGElCqKv2vYyoDOrYpjr6dcsoBMwmiPlbvWc/teqYfGGgqQdJqb54Nvn1VYMCM
+        mjq8SliPdoibmXsLMCpgf0GsUJJbxTCjwGJSYVMVvnMXQr4dP9swO6UFo6B0NeG/DXHp0Ms8J6MM
+        2JTz+rXuTdw9MudEAFYaqFBt1mNybhQGSqqgt25S0uzcjHZxTqfbZh3zZWbwUmCMAFXV/nxX7NCW
+        HIIxcFl15b1Lmxjad9RJIIDVB/d7n1Z+pmQo3k9dQaqZvrB58GFVZop48siANtWoXrhc0GNMYiA5
+        A14fuxc+9zFk3zaIg6QMuKo7dhs3PqzaIdbTk6I+od4FX9zy/qHYLJmnhk/R0cD2sIn11yJ8XYTL
+        y8v/P2GTu95lO72gw24cv61/fXgTj3G1TfEqf9t/WL/2wefh7+RsjmF6/+YS/wUAAP//dJhNCoMw
+        EIX3OYXkBIlYq4cpISSjHepPyE+hC+9eomIiretveMybWb1n6EoXUhSPNXuHU5ymxs6j8cLPL5ii
+        IL+xPXzTFPczzHm1Yx8tJlLWBzlpCg1e4uCyBE+VVE/QmWrZpMQvg8Y5MUYy8787/ZPfDoBTn6lc
+        yiegFBgPWhgLGtXZdxqzEDuRq7Hj2OvC1IF9owLhEWx8iIZOhmGrK6j7OA+j6HDqwRqLW2fRGVHV
+        LWctk82dkoV8AQAA//8DAIKDlL28EQAA
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 9037324a9a5c5adf-VIE
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 17 Jan 2025 14:57:31 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=mUiTCxqcQqgSZWsLdwB1ArJuSgcTo5zGibh4YYWUrD0-1737125851-1.0.1.1-x5pywF.257gbaoWojyQVM50Mhq8qu3GBrGD6HGmkqKIBlZu06yXe64rhObitLgtrsG2xaoePCpZN4aCKNsGyug;
+        path=/; expires=Fri, 17-Jan-25 15:27:31 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=T0HilKiYIlPCNV61uTZYI74Myl8MsBHfKMOiHR2Vb3A-1737125851899-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      access-control-expose-headers:
+      - X-Request-ID
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-organization:
+      - user-iarz4shpxfmvb4ssgkfsv3ye
+      openai-processing-ms:
+      - '18297'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-ratelimit-limit-requests:
+      - '5000'
+      x-ratelimit-limit-tokens:
+      - '800000'
+      x-ratelimit-remaining-requests:
+      - '4999'
+      x-ratelimit-remaining-tokens:
+      - '798954'
+      x-ratelimit-reset-requests:
+      - 12ms
+      x-ratelimit-reset-tokens:
+      - 78ms
+      x-request-id:
+      - req_7955f1ffe3b4945441e817887333d3f0
+    status:
+      code: 200
+      message: OK
+version: 1

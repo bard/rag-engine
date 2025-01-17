@@ -1,6 +1,8 @@
-from langchain.schema import Document
+import os
 import base64
 import pytest
+from langchain_core.runnables.config import RunnableConfig
+from langchain.schema import Document
 from unittest.mock import Mock
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
@@ -383,3 +385,27 @@ def travel_info_documents():
             ]
         )
     ]
+
+
+@pytest.fixture
+def agent_config(tmp_path, tmp_db_url) -> RunnableConfig:
+    return RunnableConfig(
+        configurable={
+            "openai_api_key": "fake_key",  # TODO remove
+            "llm": {
+                "type": "openai",
+                "model": "gpt-4o",
+                "api_key": os.getenv("OPENAI_API_KEY"),
+            },
+            "weather": {"api_key": os.getenv("OPENWEATHERMAP_API_KEY")},
+            "db": {
+                "url": tmp_db_url,
+            },
+            "vector_store": {
+                "type": "chroma",
+                "collection_name": "documents",
+                "path": f"{tmp_path}/chroma",
+                "embeddings_type": "local-minilm",
+            },
+        }
+    )
