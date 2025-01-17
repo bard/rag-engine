@@ -48,10 +48,15 @@ class DbBackend(BaseModel):
 type LlmBackend = Union[OpenaiLlmBackend, AnthropicLlmBackend]
 
 
+class OpenWeatherMapBackend(BaseModel):
+    api_key: str
+
+
 class AgentConfig(BaseModel):
     db: DbBackend
     llm: LlmBackend = Field(discriminator="type")
     vector_store: VectorStoreBackend = Field(discriminator="type")
+    weather: OpenWeatherMapBackend
 
     @classmethod
     def from_runnable_config(cls, config: RunnableConfig) -> Self:

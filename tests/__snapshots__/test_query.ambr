@@ -6,7 +6,7 @@
   'In Paris, you can visit the Eiffel Tower for panoramic views, explore the Louvre Museum to see masterpieces like the Mona Lisa, and admire the Gothic architecture of Notre-Dame Cathedral. You can also stroll along the Champs-Élysées to reach the Arc de Triomphe and visit Montmartre to see the Basilica of the Sacré-Cœur.'
 # ---
 # name: test_graph_with_weather_query
-  'The weather in Paris is sunny with temperatures ranging from a minimum of 5°C to a maximum of 10°C.'
+  'The current weather in Paris is foggy, with a temperature of 1.1°C that feels like -2.25°C, and a humidity level of 97%.'
 # ---
 # name: test_retrieve_2
   list([

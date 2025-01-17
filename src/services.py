@@ -10,12 +10,17 @@ from langchain_core.embeddings import Embeddings
 from langchain_openai import OpenAIEmbeddings
 from langchain.vectorstores import VectorStore
 from pydantic import SecretStr
+from pyowm import OWM
 
 from .config import AgentConfig
 
 
 def get_db(config: AgentConfig) -> Engine:
     return create_engine(config.db.url)
+
+
+def get_weather_client(config: AgentConfig) -> OWM:
+    return OWM(config.weather.api_key)
 
 
 def get_llm(config: AgentConfig) -> ChatOpenAI:

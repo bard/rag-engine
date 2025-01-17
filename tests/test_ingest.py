@@ -9,9 +9,13 @@ from src.data import InsuranceRecord, SQLInsuranceRecord
 from src.ingest import AgentState, SourceContent, fetch, ingest, extract, get_graph
 
 
-def test_fetch_node(agent_config, sample_html_as_data_url, snapshot):
+def test_fetch_node(
+    agent_config, average_insurance_expenditures_html_as_data_url, snapshot
+):
     agent_state = AgentState(
-        url=sample_html_as_data_url, source_content=None, insurance_records=[]
+        url=average_insurance_expenditures_html_as_data_url,
+        source_content=None,
+        insurance_records=[],
     )
 
     new_agent_state = fetch(agent_state, agent_config)
@@ -19,10 +23,17 @@ def test_fetch_node(agent_config, sample_html_as_data_url, snapshot):
     assert new_agent_state.get("source_content") == snapshot
 
 
-def test_extract_node(agent_config, sample_html, sample_html_as_data_url, snapshot):
+def test_extract_node_2(
+    agent_config,
+    average_insurance_expenditures_html,
+    average_insurance_expenditures_html_as_data_url,
+    snapshot,
+):
     agent_state = AgentState(
-        url=sample_html_as_data_url,
-        source_content=SourceContent(data=sample_html, type="text/html"),
+        url=average_insurance_expenditures_html_as_data_url,
+        source_content=SourceContent(
+            data=average_insurance_expenditures_html, type="text/html"
+        ),
         insurance_records=[],
     )
 
@@ -31,9 +42,30 @@ def test_extract_node(agent_config, sample_html, sample_html_as_data_url, snapsh
     assert new_agent_state.get("records") == snapshot
 
 
-def test_ingest_node(agent_config, sample_html_as_data_url, snapshot):
+def test_extract_node(
+    agent_config,
+    average_insurance_expenditures_html,
+    average_insurance_expenditures_html_as_data_url,
+    snapshot,
+):
     agent_state = AgentState(
-        url=sample_html_as_data_url,
+        url=average_insurance_expenditures_html_as_data_url,
+        source_content=SourceContent(
+            data=average_insurance_expenditures_html, type="text/html"
+        ),
+        insurance_records=[],
+    )
+
+    new_agent_state = extract(agent_state, agent_config)
+
+    assert new_agent_state.get("records") == snapshot
+
+
+def test_ingest_node(
+    agent_config, average_insurance_expenditures_html_as_data_url, snapshot
+):
+    agent_state = AgentState(
+        url=average_insurance_expenditures_html_as_data_url,
         source_content=None,
         insurance_records=[
             InsuranceRecord(
@@ -69,9 +101,11 @@ def test_ingest_node(agent_config, sample_html_as_data_url, snapshot):
     assert vector_store_state == snapshot
 
 
-def test_graph(agent_config, sample_html_as_data_url, snapshot):
+def test_graph(agent_config, average_insurance_expenditures_html_as_data_url, snapshot):
     agent_state = AgentState(
-        url=sample_html_as_data_url, source_content=None, insurance_records=[]
+        url=average_insurance_expenditures_html_as_data_url,
+        source_content=None,
+        insurance_records=[],
     )
 
     graph = get_graph()

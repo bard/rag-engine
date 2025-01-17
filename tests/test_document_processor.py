@@ -2,30 +2,35 @@ from src.data import SQLInsuranceRecord
 from src.agents.document_processor import DocumentProcessor
 
 
-def test_document_processor_db_interactions(sample_html_as_data_url, mock_db):
+def test_document_processor_db_interactions(
+    average_insurance_expenditures_html_as_data_url, mock_db
+):
     # Create document processor instance
     processor = DocumentProcessor(mock_db)
 
     # Load data using the processor
-    documents = processor.load_data(sample_html_as_data_url)
+    documents = processor.load_data(average_insurance_expenditures_html_as_data_url)
 
     # Verify database interactions
     assert mock_db.add.call_count == len(documents)
     mock_db.begin.assert_called_once()
 
 
-def test_document_processor_return_value(sample_html_as_data_url, mock_db):
+def test_document_processor_return_value(
+    average_insurance_expenditures_html_as_data_url, mock_db
+):
     # Create document processor instance
     processor = DocumentProcessor(mock_db)
 
     # Load data using the processor
-    documents = processor.load_data(sample_html_as_data_url)
+    documents = processor.load_data(average_insurance_expenditures_html_as_data_url)
 
     # Verify documents were returned
     assert len(documents) > 0
     assert all(hasattr(doc, "page_content") for doc in documents)
     assert all(
-        doc.metadata["source_url"] == sample_html_as_data_url for doc in documents
+        doc.metadata["source_url"] == average_insurance_expenditures_html_as_data_url
+        for doc in documents
     )
     assert documents[0].id == "insurance-record-2012"
     assert documents[0].metadata["year"] == 2012
@@ -42,11 +47,11 @@ def test_document_processor_return_value(sample_html_as_data_url, mock_db):
 
 
 def test_document_processor_database_state(
-    sample_html_as_data_url, sqlite_session, snapshot
+    average_insurance_expenditures_html_as_data_url, sqlite_session, snapshot
 ):
     processor = DocumentProcessor(sqlite_session)
 
-    processor.load_data(sample_html_as_data_url)
+    processor.load_data(average_insurance_expenditures_html_as_data_url)
     all_records = sqlite_session.query(SQLInsuranceRecord).all()
 
     assert all_records == snapshot

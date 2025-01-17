@@ -199,6 +199,7 @@ def agent_config(tmp_path, tmp_db_url) -> RunnableConfig:
                 "model": "gpt-4o",
                 "api_key": os.getenv("OPENAI_API_KEY"),
             },
+            "weather": {"api_key": os.getenv("OPENWEATHERMAP_API_KEY")},
             "db": {
                 "url": tmp_db_url,
             },

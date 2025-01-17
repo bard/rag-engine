@@ -2,6 +2,9 @@
 # name: test_extract_node
   None
 # ---
+# name: test_extract_node_2
+  None
+# ---
 # name: test_fetch_node
   dict({
     'data': '''

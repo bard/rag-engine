@@ -32,6 +32,7 @@ langchain-pinecone = "^0.2.2"
 sqlalchemy = "^2.0.37"
 langchain-chroma = "^0.2.0"
 langgraph = "^0.2.62"
+pyowm = "^3.3.0"
 
 [tool.poetry.group.dev.dependencies]
 taskipy = "^1.12.0"

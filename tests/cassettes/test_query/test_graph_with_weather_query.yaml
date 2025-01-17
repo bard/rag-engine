@@ -42,21 +42,21 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAAwAAAP//jFNdb9MwFH3Pr7Duc4uyNU3bvI0KAZoADbQiRJDlOTepN8c2tjPoqv53
-        5KRL0lEk8hBZ99xz7vc+IgREARkBvmWe10ZOr35+nN0vvi2Tjdk8pI9M7D7cpldp8cVbvIZJYOi7
-        e+T+mfWK69pI9EKrDuYWmcegerGYLeJkHs9XLVDrAmWgVcZPEz29jC+TabycxumRuNWCo4OMfI8I
-        IWTf/kOKqsDfkJF48myp0TlWIWS9EyFgtQwWYM4J55nyMBlArpVHFbJWjZQjwGstKWdSDoG7bz96
-        D31iUtLb66f3qxWmT5837+yb25udePspfb1ej+J10jvTJlQ2ivf9GeG9PXsRjBBQrG65X5H5Ldqb
-        Bu1uLUNppeDsjBohwGzV1Kh8qAT2OQhHf3V0alGGoeSQedvgJAepO5UcshwMs8LlcIATxUN07v1j
-        1DuLZeOYPDb1aD/0U5K6MlbfuRdNh1Io4bbUInNt8eC8Nl3sEKeNAM3JgMFYXRtPvX5AFQQvZvNO
-        D4b9G6NH0GvP5MieLCdn9GiBnol2A/ql44xvsRiow/KxphB6BESjqv/O5px2V7lQ1f/IDwDnaDwW
-        1FgsBD+teHCzGM7zX259l9uEwaF9FBypF2jDJAosWSO7ywG3cx5rWgpVoTVWtOcDpaHzmLNiNo8x
-        gegQ/QEAAP//AwCzDJR6RwQAAA==
+        H4sIAAAAAAAAAwAAAP//jFNba9swFH73rxDnORnObU39VsZWNtiyC3Q0cxGKdOyokyVVktuFkP9e
+        ZKe202UwPxhxvvN9575PCAEpICPAtyzwyqrx1QNeo1zx4G/elx/5Cr+sV9ObS+HX3zdzGEWG2dwj
+        Dy+sN9xUVmGQRrcwd8gCRtXJxexiMplM02UDVEagirTShvHcjKfpdD5Ol+P07ZG4NZKjh4z8Sggh
+        ZN/8Y4pa4B/ISDp6sVToPSsRss6JEHBGRQsw76UPTAcY9SA3OqCOWetaqQEQjFGUM6X6wO23H7z7
+        PjGlqFvpJ8785Yf7x/XX68/+k0R9+/DjdhCvld7ZJqGi1rzrzwDv7NmrYISAZlXD/YksbNF9q9Ht
+        3qlYWiE5O6NGCDBX1hXqECuBfQ7S06eWTh2qOJQcsuBqHOWgTKuSQ5aDZU76HA5wonhIzr3vBr1z
+        WNSeqWNTj/ZDNyVlSuvMxr9qOhRSS7+lDplvigcfjG1jxzhNBKhPBgzWmcoGGsxv1FFwMlu0etDv
+        3xA9gsEEpgb2+XJ0Ro8KDEw2G9AtHWd8i6Kn9svHaiHNAEgGVf+dzTnttnKpy/+R7wHO0QYU1DoU
+        kp9W3Ls5jOf5L7euy03C4NE9So40SHRxEgILVqv2csDvfMCKFlKX6KyTzflAYeki5UzMFinOITkk
+        zwAAAP//AwCvcYeuRwQAAA==
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 902f7e458cde5b42-VIE
+      - 9035cd38f9535b4b-VIE
       Connection:
       - keep-alive
       Content-Encoding:
@@ -64,14 +64,14 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 16 Jan 2025 16:31:00 GMT
+      - Fri, 17 Jan 2025 10:53:28 GMT
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=t3UUFblEJ74BlsMLZ9GNU9eaWLjkjrS790jLTirjRl8-1737045060-1.0.1.1-kkwYkUTG3ZJVKYAhPb9X9HWzHqIOAhoZYWECjPSokoMimB8Trxr62kYmt.udMSLjCBKFioznF4Eoi4SGmjlXzQ;
-        path=/; expires=Thu, 16-Jan-25 17:01:00 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=4eajaMaq5LziMh4A6j2KaoVfaVC0Ki61Q6jFx43XAQA-1737111208-1.0.1.1-kXSQ31c4S6aQO42SiAxonGVoJvwmSLf89Y6CrS8EEJaiHMNsaVv6KKs693L1eXVReFdIYCCOaO1xUF6MoMEgmw;
+        path=/; expires=Fri, 17-Jan-25 11:23:28 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=MYSSAvP0ZVHRcD3b1FvfgR3oZ4vruxWmC8RhVHUOFPo-1737045060261-0.0.1.1-604800000;
+      - _cfuvid=t3ttXYOYhDRKMVBORZYtxqgiUFKUtgP4pRAKIJ_D51E-1737111208740-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Transfer-Encoding:
       - chunked
@@ -84,7 +84,7 @@ interactions:
       openai-organization:
       - user-iarz4shpxfmvb4ssgkfsv3ye
       openai-processing-ms:
-      - '572'
+      - '655'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -102,7 +102,45 @@ interactions:
       x-ratelimit-reset-tokens:
       - 6ms
       x-request-id:
-      - req_bea57dfef8406c3b162b2ee26f1918b8
+      - req_023697e59443d996494f599eed587dde
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://api.openweathermap.org/data/2.5/weather?lang=en&q=paris
+  response:
+    body:
+      string: '{"coord":{"lon":2.3488,"lat":48.8534},"weather":[{"id":741,"main":"Fog","description":"fog","icon":"50d"}],"base":"stations","main":{"temp":274.25,"feels_like":270.9,"temp_min":273.25,"temp_max":275.97,"pressure":1036,"humidity":97,"sea_level":1036,"grnd_level":1026},"visibility":800,"wind":{"speed":3.09,"deg":50},"clouds":{"all":100},"dt":1737110945,"sys":{"type":2,"id":2012208,"country":"FR","sunrise":1737099425,"sunset":1737131036},"timezone":3600,"id":2988507,"name":"Paris","cod":200}'
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '493'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 17 Jan 2025 10:53:29 GMT
+      Server:
+      - openresty
+      X-Cache-Key:
+      - /data/2.5/weather?APPID=a947f9804adbf7551c9d815aa1d407af&lang=en&q=paris
     status:
       code: 200
       message: OK
@@ -110,8 +148,20 @@ interactions:
     body: "{\"messages\":[{\"content\":\"You are an assistant for question-answering
       tasks. Use the following pieces of retrieved context to answer the question.
       If you don't know the answer, say that you don't know. Use three sentences maximum
-      and keep the answer concise.\\n\\nCurrent weather information for paris: min:
-      5\xB0C min; max: 10\xB0C; sunny.\\n\\n\\n\\n\",\"role\":\"system\"},{\"content\":\"what
+      and keep the answer concise.\\n\\nCurrent weather information for paris: Temperature:
+      1.1\xB0C, Feels like: -2.25\xB0C, Humidity: 97%, Status: fog\\n\\nParis, the
+      'City of Light,' boasts iconic landmarks such as the Eiffel Tower, offering
+      panoramic views from its observation decks. The Louvre Museum, home to masterpieces
+      like the Mona Lisa, attracts art enthusiasts worldwide. Notre-Dame Cathedral,
+      a Gothic architectural marvel, stands on the \xCEle de la Cit\xE9. The Champs-\xC9lys\xE9es,
+      lined with shops and cafes, leads to the Arc de Triomphe, honoring those who
+      fought for France. Montmartre, with its artistic heritage, features the Basilica
+      of the Sacr\xE9-C\u0153ur atop its hill.\\n\\nMadrid, Spain's lively capital,
+      features the Prado Museum, exhibiting European art masterpieces. The Royal Palace
+      impresses with its opulent architecture and historic significance. Retiro Park
+      provides a green oasis in the city's heart. Puerta del Sol serves as a bustling
+      public square and focal point for festivities. The Gran V\xEDa is renowned for
+      shopping, theaters, and vibrant nightlife.\\n\\n\",\"role\":\"system\"},{\"content\":\"what
       is the weather like in paris?\",\"role\":\"user\"}],\"model\":\"gpt-4o\",\"n\":1,\"stream\":false,\"temperature\":0.0}"
     headers:
       accept:
@@ -121,7 +171,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '480'
+      - '1438'
       content-type:
       - application/json
       host:
@@ -149,20 +199,20 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAAwAAAP//jFLLbtswELzrKxY8x4Fky4/4lga5BUUPvhhFIdDUStpEfJRcNTEC/1O+
-        IV9WULItG22BXniY2Rnuzu57AiCoFGsQqpGstGsn9z+/zl4eH5dbu8t31X673eRfzFN42vhpNhM3
-        UWF3z6j4pLpVVrsWmawZaOVRMkbXbDlbpvk8XaQ9oW2JbZTVjie5nUzTaT5JV5N0cRQ2lhQGsYbv
-        CQDAe//GFk2Jb2INvU2PaAxB1ijW5yIA4W0bESFDoMDSsLgZSWUNo+m73jQIryi5QQ9k4Jv0FIAC
-        hM6YPbwSN8CoHXrJnccAXpqaTA2VtxokaDKkOw22gvnnxwOwjaB8O4FZ+vnxcHv5t8eqCzKObrq2
-        PeKH8zCtrZ23u3Dkz3hFhkJTeJTBmth4YOtEzx4SgB99aN1VDsJ5qx0XbF/QRMPVfLAT45ZGcnoi
-        2bJsRzzLjklf2xUlsqQ2XKQulFQNlqN0XJHsSrIXRHIx9J/d/M17GJxM/T/2I6EUOsaycB5LUtcT
-        j2Ue4xH/q+wcct+wCOh/kcKCCX1cRImV7NrhvkTYB0ZdVGRq9M7TcGSVK/LFXZbepXK1FMkh+Q0A
-        AP//AwCOMgcfbQMAAA==
+        H4sIAAAAAAAAAwAAAP//jFLLbtswELzrKxYEerMMSfH7FhhB0VuMOkCBohBociUxoUiWXCU1Av9T
+        viFfVlB2LBttgV54mNkZ7MzyNQFgSrIVMNFwEq3T6e1P/Nx8m27uHrYPpHdf74vNl/XUcLu93Ug2
+        igq7e0RBH6qxsK3TSMqaIy08csLoms9v5nmeF3neE62VqKOsdpRObFpkxSTNFmk2OwkbqwQGtoLv
+        CQDAa//GFY3EX2wF2egDaTEEXiNbnYcAmLc6IoyHoAJxQ2w0kMIaQtNvvW0QROc9GoIX5NSgB2Xg
+        nnsVQAWobF3vR/CiqAEOhK1Dz6nzCLaCfJy/v62BGk5QIeoAWj0hpMW4mL6/rUfAjQQOTdcqqWgP
+        Gp9RR+Fy/ml8uZDHqgs89mE6rU/44ZxQ29p5uwsn/oxXyqjQlB55sCamCWQd69lDAvCjb7K7Koc5
+        b1tHJdknNNGwWEyOfmy43cDezE4kWeL6Ai9O/V/7lRKJKx0ubsEEFw3KQTocjndS2QsiuUj95zZ/
+        8z4mV6b+H/uBEAIdoSydR6nEdeJhzGP82v8aO7fcL8wC+mclsCSFPl5CYsU7ffx1LOwDYVtWytTo
+        nVfHr1e5cjJb5tky44s5Sw7JbwAAAP//AwCXCo8ygwMAAA==
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 902f7e4cce93c31a-VIE
+      - 9035cd4ddcb45afb-VIE
       Connection:
       - keep-alive
       Content-Encoding:
@@ -170,14 +220,14 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 16 Jan 2025 16:31:01 GMT
+      - Fri, 17 Jan 2025 10:53:32 GMT
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=FJOx0K.Y_Jjvz9tvoCPn5RBRd6YuZU3RCqPFRgcs73g-1737045061-1.0.1.1-O8AFq1KSySoqxl7lAfwHFgFZba7WI27FvWiT.aKW5Jd3mA5SY1sK3dZieWUbPdcFAF6zI1yb2SiybgAY.QkIaw;
-        path=/; expires=Thu, 16-Jan-25 17:01:01 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=dXkt6FhvuMt1TlSChw8VFmWOSRDrCMS8MPE99vZqlhM-1737111212-1.0.1.1-MwLKZt1oQmMl5v.ZVngnM7HEljRXikX.Cx4Z2mGHSCO.zl1_927rI4iY9IWTzxocXgm24ulXBu8gPNCRTJvOnA;
+        path=/; expires=Fri, 17-Jan-25 11:23:32 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=Dbijdx4OhWXcuYtmczQgT5ujepliHTwswxZBSUbve4s-1737045061751-0.0.1.1-604800000;
+      - _cfuvid=RtDS2a0aKN0ZiQEk.RKbFh19qsf_zbm51ZKvbGE8JwE-1737111212032-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Transfer-Encoding:
       - chunked
@@ -190,7 +240,7 @@ interactions:
       openai-organization:
       - user-iarz4shpxfmvb4ssgkfsv3ye
       openai-processing-ms:
-      - '909'
+      - '646'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -202,13 +252,13 @@ interactions:
       x-ratelimit-remaining-requests:
       - '4999'
       x-ratelimit-remaining-tokens:
-      - '799895'
+      - '799656'
       x-ratelimit-reset-requests:
       - 12ms
       x-ratelimit-reset-tokens:
-      - 7ms
+      - 25ms
       x-request-id:
-      - req_6ae5bbcc00eccf95497781e921ed1dd1
+      - req_f8060486c0547bf090bd57b30adf708f
     status:
       code: 200
       message: OK

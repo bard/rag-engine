@@ -5,10 +5,14 @@ from unittest.mock import Mock
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from src.data import SqlAlchemyBase
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 
 @pytest.fixture(scope="session")
-def sample_html() -> str:
+def average_insurance_expenditures_html() -> str:
     return """
 <html>
   <head>
@@ -91,9 +95,215 @@ Source: National Association of Insurance Commissioners (NAIC). Further reprint 
 
 
 @pytest.fixture
-def sample_html_as_data_url(sample_html) -> str:
+def average_insurance_expenditures_html_as_data_url(
+    average_insurance_expenditures_html,
+) -> str:
     """Returns the sample HTML content as a base64 encoded data URI"""
-    encoded_html = base64.b64encode(sample_html.encode("utf-8")).decode("utf-8")
+    encoded_html = base64.b64encode(
+        average_insurance_expenditures_html.encode("utf-8")
+    ).decode("utf-8")
+    return f"data:text/html;base64,{encoded_html}"
+
+
+@pytest.fixture(scope="session")
+def premiums_by_state_html() -> str:
+    return """
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+  <body>
+    <table>
+    <thead><tr><th></th></tr></thead>    <tbody> <tr class="odd"><td><table>
+<tr><td>Direct Premiums Written, P/C Insurance By State, 2023 (1)</td></tr>
+<tr><td><p>($000)</p>
+</td></tr>
+<tr><td><table>
+<thead>
+<tr>
+<th>State</th>
+<th>Total, all lines</th>
+<th>State</th>
+<th>Total, all lines</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alabama</td>
+<td>$13,146,853</td>
+<td>Montana</td>
+<td>$3,807,820</td>
+</tr>
+<tr>
+<td>Alaska</td>
+<td>1,994,750</td>
+<td>Nebraska</td>
+<td>7,573,101</td>
+</tr>
+<tr>
+<td>Arizona</td>
+<td>17,959,495</td>
+<td>Nevada</td>
+<td>8,561,822</td>
+</tr>
+<tr>
+<td>Arkansas</td>
+<td>7,931,849</td>
+<td>New Hampshire</td>
+<td>3,342,091</td>
+</tr>
+<tr>
+<td>California</td>
+<td>111,243,502</td>
+<td>New Jersey</td>
+<td>29,106,640</td>
+</tr>
+<tr>
+<td>Colorado</td>
+<td>20,582,327</td>
+<td>New Mexico</td>
+<td>5,038,116</td>
+</tr>
+<tr>
+<td>Connecticut</td>
+<td>11,508,412</td>
+<td>New York</td>
+<td>61,861,773</td>
+</tr>
+<tr>
+<td>D.C.</td>
+<td>2,699,081</td>
+<td>North Carolina</td>
+<td>24,036,512</td>
+</tr>
+<tr>
+<td>Delaware</td>
+<td>3,842,583</td>
+<td>North Dakota</td>
+<td>3,826,625</td>
+</tr>
+<tr>
+<td>Florida</td>
+<td>88,067,510</td>
+<td>Ohio</td>
+<td>23,397,453</td>
+</tr>
+<tr>
+<td>Georgia</td>
+<td>32,039,933</td>
+<td>Oklahoma</td>
+<td>11,325,023</td>
+</tr>
+<tr>
+<td>Hawaii</td>
+<td>3,490,752</td>
+<td>Oregon</td>
+<td>10,510,197</td>
+</tr>
+<tr>
+<td>Idaho</td>
+<td>4,757,044</td>
+<td>Pennsylvania</td>
+<td>32,532,786</td>
+</tr>
+<tr>
+<td>Illinois</td>
+<td>35,938,656</td>
+<td>Rhode Island</td>
+<td>3,361,749</td>
+</tr>
+<tr>
+<td>Indiana</td>
+<td>16,321,562</td>
+<td>South Carolina</td>
+<td>15,078,257</td>
+</tr>
+<tr>
+<td>Iowa</td>
+<td>9,843,752</td>
+<td>South Dakota</td>
+<td>3,970,217</td>
+</tr>
+<tr>
+<td>Kansas</td>
+<td>9,565,831</td>
+<td>Tennessee</td>
+<td>17,442,243</td>
+</tr>
+<tr>
+<td>Kentucky</td>
+<td>10,147,626</td>
+<td>Texas</td>
+<td>92,331,270</td>
+</tr>
+<tr>
+<td>Louisiana</td>
+<td>16,226,096</td>
+<td>Utah</td>
+<td>8,100,467</td>
+</tr>
+<tr>
+<td>Maine</td>
+<td>3,316,037</td>
+<td>Vermont</td>
+<td>1,640,326</td>
+</tr>
+<tr>
+<td>Maryland</td>
+<td>16,186,978</td>
+<td>Virginia</td>
+<td>20,316,519</td>
+</tr>
+<tr>
+<td>Massachusetts</td>
+<td>21,453,245</td>
+<td>Washington</td>
+<td>18,109,893</td>
+</tr>
+<tr>
+<td>Michigan</td>
+<td>24,427,664</td>
+<td>West Virginia</td>
+<td>3,643,445</td>
+</tr>
+<tr>
+<td>Minnesota</td>
+<td>17,081,121</td>
+<td>Wisconsin</td>
+<td>14,623,479</td>
+</tr>
+<tr>
+<td>Mississippi</td>
+<td>7,505,441</td>
+<td>Wyoming</td>
+<td>1,820,520</td>
+</tr>
+<tr>
+<td>Missouri</td>
+<td>17,261,874</td>
+<td><strong>United States</strong></td>
+<td><strong>$949,898,320</strong></td>
+</tr>
+</tbody></table>
+
+(1) Before reinsurance transactions, includes state funds, excludes territories.
+(2) Data for the total United States may differ from similar data shown elsewhere due to the use of different exhibits from S&amp;P Global Market Intelligence.
+
+Source: NAIC data, sourced from S&amp;P Global Market Intelligence, Insurance Information Institute.</td></tr>
+</table></td> </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
+"""
+
+
+@pytest.fixture
+def premiums_by_state_html_as_data_url(premiums_by_state_html) -> str:
+    """Returns the sample HTML content as a base64 encoded data URI"""
+    encoded_html = base64.b64encode(premiums_by_state_html.encode("utf-8")).decode(
+        "utf-8"
+    )
     return f"data:text/html;base64,{encoded_html}"
 
 
@@ -131,7 +341,11 @@ def tmp_db_url(tmp_path):
 
 @pytest.fixture(scope="module")
 def vcr_config():
-    return {"filter_headers": ["authorization"]}
+    return {
+        "filter_headers": ["authorization"],
+        # openweathermap
+        "filter_query_parameters": ["APPID"],
+    }
 
 
 @pytest.fixture
