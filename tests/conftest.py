@@ -391,7 +391,6 @@ def travel_info_documents():
 def agent_config(tmp_path, tmp_db_url) -> RunnableConfig:
     return RunnableConfig(
         configurable={
-            "openai_api_key": "fake_key",  # TODO remove
             "llm": {
                 "type": "openai",
                 "model": "gpt-4o",
@@ -406,7 +405,6 @@ def agent_config(tmp_path, tmp_db_url) -> RunnableConfig:
                 "type": "chroma",
                 "collection_name": "documents",
                 "path": f"{tmp_path}/chroma",
-                "embeddings_type": "local-minilm",
             },
         }
     )

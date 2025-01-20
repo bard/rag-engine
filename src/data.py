@@ -1,3 +1,4 @@
+import json
 from langchain.schema import Document
 from typing import Dict, Any, Self
 from pydantic import BaseModel
@@ -138,6 +139,6 @@ class GenericTabularData(RawGenericTabularData):
             metadata={
                 "title": self.title,
                 "content_hash": self.content_hash,
-                "raw_data": self.data,
+                "raw_data": json.dumps(self.data),
             },
         )

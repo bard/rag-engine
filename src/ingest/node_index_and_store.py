@@ -1,3 +1,4 @@
+import pprint
 from langchain_core.runnables.config import RunnableConfig
 from langchain.schema import Document
 from sqlalchemy.orm import Session
@@ -10,11 +11,15 @@ from ..config import AgentConfig
 
 def index_and_store(state: AgentState, config: RunnableConfig) -> None:
     c = AgentConfig.from_runnable_config(config)
-    url = state["url"]
+
+    log = services.get_logger(c)
+    log.debug("node/index_and_store")
 
     db = services.get_db(c)
     vector_store = services.get_vector_store(c)
     documents: list[Document] = []
+
+    url = state["url"]
 
     insurance_records = state["insurance_records"]
     with Session(db) as session:

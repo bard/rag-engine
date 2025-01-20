@@ -1,3 +1,4 @@
+import logging
 from chromadb.utils.embedding_functions import (
     DefaultEmbeddingFunction as ChromaDefaultEmbeddingFunction,
 )
@@ -11,12 +12,17 @@ from langchain_openai import OpenAIEmbeddings
 from langchain.vectorstores import VectorStore
 from pydantic import SecretStr
 from pyowm import OWM  # type: ignore[import-untyped]
-
 from .config import AgentConfig
+
+logger = logging.getLogger()
 
 
 def get_db(config: AgentConfig) -> Engine:
     return create_engine(config.db.url)
+
+
+def get_logger(config: AgentConfig) -> logging.Logger:
+    return logger
 
 
 def get_weather_client(config: AgentConfig) -> OWM:

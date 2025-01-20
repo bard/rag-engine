@@ -17,6 +17,10 @@ class ExtractStateUpdate(TypedDict):
 
 def extract(state: AgentState, config: RunnableConfig) -> ExtractStateUpdate:
     c = AgentConfig.from_runnable_config(config)
+
+    log = services.get_logger(c)
+    log.debug("node/extract")
+
     content = state.get("source_content")
     assert content is not None
 
@@ -31,6 +35,8 @@ def extract(state: AgentState, config: RunnableConfig) -> ExtractStateUpdate:
     else:
         insurance_records = []
         generic_data = parse_generic_tabular_data_with_llm(html, c)
+
+    # provide a warning if no data at all was extracted
 
     return {"insurance_records": insurance_records, "generic_data": generic_data}
 

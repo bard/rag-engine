@@ -1,5 +1,4 @@
 from langchain_core.runnables.config import RunnableConfig
-from langchain_openai import OpenAIEmbeddings
 from pydantic import BaseModel, Field
 from typing import Self, Union, Literal
 
@@ -8,7 +7,6 @@ class PineconeVectorStoreBackend(BaseModel):
     type: Literal["pinecone"]
     index_name: str
     api_key: str
-    embeddings_type: Literal["openai"]
     score_threshold: float = 0.1
 
 
