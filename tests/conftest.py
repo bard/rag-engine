@@ -6,8 +6,8 @@ from langchain.schema import Document
 from unittest.mock import Mock
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
-from src.data import SqlAlchemyBase
 from dotenv import load_dotenv
+from src.data import SqlAlchemyBase
 
 
 load_dotenv()
@@ -401,6 +401,7 @@ def agent_config(tmp_path, tmp_db_url) -> RunnableConfig:
             "db": {
                 "url": tmp_db_url,
             },
+            "embeddings": {"type": "chroma-internal"},
             "vector_store": {
                 "type": "chroma",
                 "collection_name": "documents",

@@ -1,7 +1,5 @@
-import pprint
 import pytest
 from langchain_chroma.vectorstores import Chroma
-from numpy import extract
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 from src.data import InsuranceRecord, SQLInsuranceRecord
@@ -20,6 +18,7 @@ def test_fetch(agent_config, average_insurance_expenditures_html_as_data_url, sn
         url=average_insurance_expenditures_html_as_data_url,
         source_content=None,
         insurance_records=[],
+        generic_data=None,
     )
 
     state_update = fetch(agent_state, agent_config)
@@ -39,6 +38,7 @@ def test_extract_insurance_records(
             data=average_insurance_expenditures_html, type="text/html"
         ),
         insurance_records=[],
+        generic_data=None,
     )
 
     state_update = extract(agent_state, agent_config)
@@ -58,6 +58,7 @@ def test_extract_generic_tabular_data(
         url=premiums_by_state_html_as_data_url,
         source_content=SourceContent(data=premiums_by_state_html, type="text/html"),
         insurance_records=[],
+        generic_data=None,
     )
 
     state_update = extract(agent_state, agent_config)
@@ -86,6 +87,7 @@ def test_index_and_store(
                 source_content="<tr>\n<td>2013</td>\n<td>841.06</td>\n<td>3.5</td>\n</tr>",
             ),
         ],
+        generic_data=None,
     )
 
     state_update = index_and_store(agent_state, agent_config)
@@ -111,6 +113,7 @@ def test_graph(agent_config, average_insurance_expenditures_html_as_data_url, sn
         url=average_insurance_expenditures_html_as_data_url,
         source_content=None,
         insurance_records=[],
+        generic_data=None,
     )
 
     graph = get_graph()
@@ -127,6 +130,7 @@ def test_graph(agent_config, average_insurance_expenditures_html_as_data_url, sn
         .get("vector_store")
         .get("path"),
     ).get()
+
     assert state_update == snapshot
     assert database_state == snapshot
     assert vector_store_state == snapshot

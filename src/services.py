@@ -10,7 +10,7 @@ from langchain_core.embeddings import Embeddings
 from langchain_openai import OpenAIEmbeddings
 from langchain.vectorstores import VectorStore
 from pydantic import SecretStr
-from pyowm import OWM
+from pyowm import OWM  # type: ignore[import-untyped]
 
 from .config import AgentConfig
 
@@ -32,15 +32,16 @@ def get_llm(config: AgentConfig) -> ChatOpenAI:
 
 def get_vector_store(config: AgentConfig) -> VectorStore:
     if config.vector_store.type == "chroma":
-        if config.vector_store.embeddings_type == "local-minilm":
+        embedding_function: ChromaEmbeddingsAdapter | OpenAIEmbeddings
+        if config.embeddings.type == "chroma-internal":
             default_chroma_embedding_function = ChromaDefaultEmbeddingFunction()
             assert default_chroma_embedding_function is not None
             embedding_function = ChromaEmbeddingsAdapter(
                 default_chroma_embedding_function
             )
-        elif config.vector_store.embeddings_type == "openai":
+        elif config.embeddings.type == "openai":
             embedding_function = OpenAIEmbeddings(
-                api_key=SecretStr(config.openai_api_key)
+                api_key=SecretStr(config.embeddings.api_key)
             )
         else:
             raise Exception(f"Unknown embedding type: {config.vector_store.type}")

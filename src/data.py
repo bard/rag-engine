@@ -2,10 +2,7 @@ from langchain.schema import Document
 from typing import Dict, Any, Self
 from pydantic import BaseModel
 from bs4 import BeautifulSoup
-from sqlalchemy.orm import Mapped, mapped_column, declarative_base
-
-
-SqlAlchemyBase = declarative_base()
+from sqlalchemy.orm import Mapped, mapped_column, DeclarativeBase
 
 
 class InsuranceRecord(BaseModel):
@@ -89,6 +86,10 @@ class InsuranceRecord(BaseModel):
             results.append(record)
 
         return results
+
+
+class SqlAlchemyBase(DeclarativeBase):
+    pass
 
 
 class SQLInsuranceRecord(SqlAlchemyBase):

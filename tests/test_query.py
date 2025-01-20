@@ -1,9 +1,6 @@
-import pprint
-import os
 import pytest
 from langchain.schema import HumanMessage
 from langchain_core.messages import HumanMessage
-from langchain_core.runnables.config import RunnableConfig
 
 from src.config import AgentConfig
 from src.query import AgentState, get_graph, retrieve, reformulate_query, classify_query

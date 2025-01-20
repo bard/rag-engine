@@ -1,4 +1,5 @@
 from langchain_core.runnables.config import RunnableConfig
+from langchain_openai import OpenAIEmbeddings
 from pydantic import BaseModel, Field
 from typing import Self, Union, Literal
 
@@ -20,13 +21,24 @@ class ChromaVectorStoreBackend(BaseModel):
     type: Literal["chroma"]
     path: str
     collection_name: str
-    embeddings_type: Literal["local-minilm", "openai"]
     score_threshold: float = 0.1
 
 
 type VectorStoreBackend = Union[
     PineconeVectorStoreBackend, MockVectorStoreBackend, ChromaVectorStoreBackend
 ]
+
+
+class OpenaiEmbeddingsBackend(BaseModel):
+    type: Literal["openai"]
+    api_key: str
+
+
+class ChromaInternalEmbeddingsBackend(BaseModel):
+    type: Literal["chroma-internal"]
+
+
+type EmbeddingsBackend = Union[OpenaiEmbeddingsBackend, ChromaInternalEmbeddingsBackend]
 
 
 class OpenaiLlmBackend(BaseModel):
@@ -55,6 +67,7 @@ class OpenWeatherMapBackend(BaseModel):
 class AgentConfig(BaseModel):
     db: DbBackend
     llm: LlmBackend = Field(discriminator="type")
+    embeddings: EmbeddingsBackend = Field(discriminator="type")
     vector_store: VectorStoreBackend = Field(discriminator="type")
     weather: OpenWeatherMapBackend
 

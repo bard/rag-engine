@@ -1,18 +1,17 @@
-import pprint
 from typing import Union
 from langchain_core.prompts.prompt import PromptTemplate
 from langchain.schema import HumanMessage
 from langchain_core.runnables import RunnableConfig
 from pydantic import BaseModel, Field
 
-from src.config import AgentConfig
-from src.query.state import AgentState
-from src.services import get_llm
+from ..config import AgentConfig
+from ..query.state import AgentState
+from ..services import get_llm
 
 
 def classify_query(state: AgentState, config: RunnableConfig):
     c = AgentConfig.from_runnable_config(config)
-    last_message = state.get("messages")[-1]
+    last_message = state["messages"][-1]
     assert isinstance(last_message, HumanMessage)
     query = last_message.content
 

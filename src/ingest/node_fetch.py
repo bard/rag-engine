@@ -10,7 +10,7 @@ class FetchStateUpdate(TypedDict):
 
 
 def fetch(state: AgentState, config: RunnableConfig) -> FetchStateUpdate:
-    url = state.get("url")
+    url = state["url"]
     # TODO: support more file types (e.g. excel)
     html_content = fetch_html_content(url)
 

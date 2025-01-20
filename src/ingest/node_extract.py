@@ -24,7 +24,7 @@ def extract(state: AgentState, config: RunnableConfig) -> ExtractStateUpdate:
     # strategy to extract data from known sources and a
     # expensive/generic/slow best-effort fallback for unknown data.
 
-    html = content.get("data")
+    html = content["data"]
     if "Average Expenditures for Auto Insurance" in html:
         insurance_records = InsuranceRecord.from_html_content(html)
         generic_data = None
