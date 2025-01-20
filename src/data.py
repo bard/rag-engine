@@ -1,9 +1,10 @@
-import json
+import hashlib
 from langchain.schema import Document
 from typing import Dict, Any, Self
 from pydantic import BaseModel
 from bs4 import BeautifulSoup
 from sqlalchemy.orm import Mapped, mapped_column, DeclarativeBase
+from sqlalchemy import inspect
 
 
 class InsuranceRecord(BaseModel):
@@ -14,38 +15,14 @@ class InsuranceRecord(BaseModel):
     percent_change: float
     source_content: str
 
-    def to_langchain_document(self, source_url: str) -> Document:
-        """
-        Convert this InsuranceRecord to a LangChain Document.
 
-        Args:
-            source_url: The URL where the record was sourced from
-
-        Returns:
-            Document object containing the record data and metadata
-        """
-        content = "\n".join(
-            [
-                f"Year: {self.year}, "
-                f"Expenditure: ${self.average_expenditure:.2f}, "
-                f"Change: {self.percent_change}%"
-            ]
-        )
-
-        return Document(
-            page_content=content,
-            id=f"insurance-record-{self.year}",
-            metadata={
-                "source_url": source_url,
-                "source_content": self.source_content,
-                "year": self.year,
-                "average_expenditure": self.average_expenditure,
-                "percent_change": self.percent_change,
-            },
-        )
+class ExpenditureReport(BaseModel):
+    title: str
+    data: list[InsuranceRecord]
+    source_url: str
 
     @classmethod
-    def from_html_content(cls, html_content: str) -> list[Self]:
+    def from_html_content(cls, html_content: str, source_url: str) -> Self:
         """
         Parse the auto insurance expenditure table and return a list of dictionaries.
         Each dictionary represents a row with year, expenditure, and percent change.
@@ -55,10 +32,15 @@ class InsuranceRecord(BaseModel):
 
         # Find the innermost table with the actual data
         tables = soup.find_all("table")
-        data_table = tables[2]  # The third table contains our data
+
+        title_table = tables[1]
+        title_td = title_table.find("td")
+        title = title_td.get_text(strip=True)
+
+        data_table = tables[2]
 
         # Initialize list to store results
-        results = []
+        data: list[InsuranceRecord] = []
 
         # Process each row in tbody
         for row in data_table.tbody.find_all("tr"):
@@ -78,39 +60,41 @@ class InsuranceRecord(BaseModel):
             percent_change = float(percent_change)
 
             # Create dictionary for current row
-            record = cls(
+            record = InsuranceRecord(
                 year=year,
                 average_expenditure=expenditure,
                 percent_change=percent_change,
                 source_content=str(row),
             )
-            results.append(record)
+            data.append(record)
 
-        return results
+        return cls(title=title, data=data, source_url=source_url)
 
+    def to_readable(self) -> str:
+        md = f"# {self.title}\n\n"
+        for entry in self.data:
+            line = ",".join(
+                [f"{key}: {value}" for key, value in entry.model_dump().items()]
+            )
+            line += "\n\n"
+        return md
 
-class SqlAlchemyBase(DeclarativeBase):
-    pass
-
-
-class SQLInsuranceRecord(SqlAlchemyBase):
-    """SQLAlchemy model for insurance record data"""
-
-    __tablename__ = "insurance_records"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    year: Mapped[int] = mapped_column(nullable=False)
-    average_expenditure: Mapped[float] = mapped_column(nullable=False)
-    percent_change: Mapped[float] = mapped_column(nullable=False)
-    source_content: Mapped[str] = mapped_column(nullable=False)
-
-    def __repr__(self) -> str:
-        return (
-            f"SQLInsuranceRecord(id={self.id}, "
-            f"year={self.year}, "
-            f"average_expenditure={self.average_expenditure:.2f}, "
-            f"percent_change={self.percent_change})"
+    def to_langchain_document(self) -> Document:
+        return Document(
+            page_content=self.to_readable(),
+            id=self.id(),
+            metadata={
+                "source_url": self.source_url,
+                "title": self.title,
+            },
         )
+
+    def id(self) -> str:
+        content_hash = hashlib.sha256(
+            (self.title + "".join(str(item) for item in self.data)).encode("utf-8")
+        ).hexdigest()
+
+        return f"expenditure-report-{content_hash[:8]}"
 
 
 class RawGenericTabularData(BaseModel):
@@ -119,7 +103,7 @@ class RawGenericTabularData(BaseModel):
 
 
 class GenericTabularData(RawGenericTabularData):
-    content_hash: str
+    source_url: str
 
     def to_langchain_document(self) -> Document:
         """
@@ -128,17 +112,44 @@ class GenericTabularData(RawGenericTabularData):
         Returns:
             Document object containing the data and metadata
         """
-        content = f"Title: {self.title}\n"
-        for item in self.data:
-            content += "\n".join(f"{k}: {v}" for k, v in item.items())
-            content += "\n\n"
 
         return Document(
-            page_content=content,
-            id=f"generic-data-{self.content_hash[:8]}",
-            metadata={
-                "title": self.title,
-                "content_hash": self.content_hash,
-                "raw_data": json.dumps(self.data),
-            },
+            page_content=self.to_readable(),
+            id=self.id(),
+            metadata={"title": self.title, "source_url": self.source_url},
         )
+
+    def to_readable(self) -> str:
+        md = f"# {self.title}\n\n"
+        for entry in self.data:
+            line = ",".join([f"{key}: {value}" for key, value in entry.items()])
+            line += "\n\n"
+        return md
+
+    def id(self) -> str:
+        content_hash = hashlib.sha256(
+            (self.title + "".join(str(item) for item in self.data)).encode("utf-8")
+        ).hexdigest()
+
+        return f"expenditure-report-{content_hash[:8]}"
+
+
+class SqlAlchemyBase(DeclarativeBase):
+    pass
+
+
+class SqlDocument(SqlAlchemyBase):
+    """SqlAlchemy model for stored document"""
+
+    __tablename__ = "documents"
+
+    id: Mapped[str] = mapped_column(primary_key=True)
+    data: Mapped[str] = mapped_column(nullable=False)
+    readable: Mapped[str] = mapped_column(nullable=False)
+    # TODO add title and source url fields
+
+    def __repr__(self) -> str:
+        return f"SqlDocument(id={self.id}, data={self.data}, readable={self.readable}"
+
+    def to_dict(self):
+        return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}

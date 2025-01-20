@@ -22,10 +22,7 @@ def cmd_ingest(data):
         input_url = f"file://{abs_path}"
 
     initial_agent_state = ingest.AgentState(
-        url=input_url,
-        source_content=None,
-        insurance_records=[],
-        generic_data=None,
+        url=input_url, source_content=None, extracted_data=[]
     )
 
     ingest.get_graph().invoke(initial_agent_state, get_config())

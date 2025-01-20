@@ -1,9 +1,13 @@
 # serializer version: 1
-# name: test_extract_generic_tabular_data
-  GenericTabularData(title='Direct Premiums Written, P/C Insurance By State, 2023', data=[{'State': 'Alabama', 'Total, all lines': '$13,146,853'}, {'State': 'Alaska', 'Total, all lines': '1,994,750'}, {'State': 'Arizona', 'Total, all lines': '17,959,495'}, {'State': 'Arkansas', 'Total, all lines': '7,931,849'}, {'State': 'California', 'Total, all lines': '111,243,502'}, {'State': 'Colorado', 'Total, all lines': '20,582,327'}, {'State': 'Connecticut', 'Total, all lines': '11,508,412'}, {'State': 'D.C.', 'Total, all lines': '2,699,081'}, {'State': 'Delaware', 'Total, all lines': '3,842,583'}, {'State': 'Florida', 'Total, all lines': '88,067,510'}, {'State': 'Georgia', 'Total, all lines': '32,039,933'}, {'State': 'Hawaii', 'Total, all lines': '3,490,752'}, {'State': 'Idaho', 'Total, all lines': '4,757,044'}, {'State': 'Illinois', 'Total, all lines': '35,938,656'}, {'State': 'Indiana', 'Total, all lines': '16,321,562'}, {'State': 'Iowa', 'Total, all lines': '9,843,752'}, {'State': 'Kansas', 'Total, all lines': '9,565,831'}, {'State': 'Kentucky', 'Total, all lines': '10,147,626'}, {'State': 'Louisiana', 'Total, all lines': '16,226,096'}, {'State': 'Maine', 'Total, all lines': '3,316,037'}, {'State': 'Maryland', 'Total, all lines': '16,186,978'}, {'State': 'Massachusetts', 'Total, all lines': '21,453,245'}, {'State': 'Michigan', 'Total, all lines': '24,427,664'}, {'State': 'Minnesota', 'Total, all lines': '17,081,121'}, {'State': 'Mississippi', 'Total, all lines': '7,505,441'}, {'State': 'Missouri', 'Total, all lines': '17,261,874'}, {'State': 'Montana', 'Total, all lines': '$3,807,820'}, {'State': 'Nebraska', 'Total, all lines': '7,573,101'}, {'State': 'Nevada', 'Total, all lines': '8,561,822'}, {'State': 'New Hampshire', 'Total, all lines': '3,342,091'}, {'State': 'New Jersey', 'Total, all lines': '29,106,640'}, {'State': 'New Mexico', 'Total, all lines': '5,038,116'}, {'State': 'New York', 'Total, all lines': '61,861,773'}, {'State': 'North Carolina', 'Total, all lines': '24,036,512'}, {'State': 'North Dakota', 'Total, all lines': '3,826,625'}, {'State': 'Ohio', 'Total, all lines': '23,397,453'}, {'State': 'Oklahoma', 'Total, all lines': '11,325,023'}, {'State': 'Oregon', 'Total, all lines': '10,510,197'}, {'State': 'Pennsylvania', 'Total, all lines': '32,532,786'}, {'State': 'Rhode Island', 'Total, all lines': '3,361,749'}, {'State': 'South Carolina', 'Total, all lines': '15,078,257'}, {'State': 'South Dakota', 'Total, all lines': '3,970,217'}, {'State': 'Tennessee', 'Total, all lines': '17,442,243'}, {'State': 'Texas', 'Total, all lines': '92,331,270'}, {'State': 'Utah', 'Total, all lines': '8,100,467'}, {'State': 'Vermont', 'Total, all lines': '1,640,326'}, {'State': 'Virginia', 'Total, all lines': '20,316,519'}, {'State': 'Washington', 'Total, all lines': '18,109,893'}, {'State': 'West Virginia', 'Total, all lines': '3,643,445'}, {'State': 'Wisconsin', 'Total, all lines': '14,623,479'}, {'State': 'Wyoming', 'Total, all lines': '1,820,520'}, {'State': 'United States', 'Total, all lines': '$949,898,320'}], content_hash='9afff75b8cf3e081b33a422189f91851c2a49650aa00ad490242ec8ca889e753')
+# name: test_extract_expenditure_reports
+  list([
+    ExpenditureReport(title='Average Expenditures for Auto Insurance, 2012-2021', data=[InsuranceRecord(year=2012, average_expenditure=812.4, percent_change=2.2, source_content='<tr>\n<td>2012</td>\n<td>$812.40</td>\n<td>2.2%</td>\n</tr>'), InsuranceRecord(year=2013, average_expenditure=841.06, percent_change=3.5, source_content='<tr>\n<td>2013</td>\n<td>841.06</td>\n<td>3.5</td>\n</tr>'), InsuranceRecord(year=2014, average_expenditure=869.47, percent_change=3.4, source_content='<tr>\n<td>2014</td>\n<td>869.47</td>\n<td>3.4</td>\n</tr>'), InsuranceRecord(year=2015, average_expenditure=896.66, percent_change=3.1, source_content='<tr>\n<td>2015</td>\n<td>896.66</td>\n<td>3.1</td>\n</tr>'), InsuranceRecord(year=2016, average_expenditure=945.22, percent_change=5.4, source_content='<tr>\n<td>2016</td>\n<td>945.22</td>\n<td>5.4</td>\n</tr>'), InsuranceRecord(year=2017, average_expenditure=1008.35, percent_change=6.7, source_content='<tr>\n<td>2017</td>\n<td>1,008.35</td>\n<td>6.7</td>\n</tr>'), InsuranceRecord(year=2018, average_expenditure=1058.1, percent_change=4.9, source_content='<tr>\n<td>2018</td>\n<td>1,058.10</td>\n<td>4.9</td>\n</tr>'), InsuranceRecord(year=2019, average_expenditure=1071.74, percent_change=1.3, source_content='<tr>\n<td>2019</td>\n<td>1,071.74</td>\n<td>1.3</td>\n</tr>'), InsuranceRecord(year=2020, average_expenditure=1046.37, percent_change=-2.4, source_content='<tr>\n<td>2020</td>\n<td>1,046.37</td>\n<td>-2.4</td>\n</tr>'), InsuranceRecord(year=2021, average_expenditure=1061.54, percent_change=1.4, source_content='<tr>\n<td>2021</td>\n<td>1,061.54</td>\n<td>1.4</td>\n</tr>')], source_url='data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg=='),
+  ])
 # ---
-# name: test_extract_insurance_records
-  None
+# name: test_extract_generic_tabular_data
+  list([
+    GenericTabularData(title='Direct Premiums Written, P/C Insurance By State, 2023', data=[{'State': 'Alabama', 'Total, all lines': '$13,146,853'}, {'State': 'Alaska', 'Total, all lines': '1,994,750'}, {'State': 'Arizona', 'Total, all lines': '17,959,495'}, {'State': 'Arkansas', 'Total, all lines': '7,931,849'}, {'State': 'California', 'Total, all lines': '111,243,502'}, {'State': 'Colorado', 'Total, all lines': '20,582,327'}, {'State': 'Connecticut', 'Total, all lines': '11,508,412'}, {'State': 'D.C.', 'Total, all lines': '2,699,081'}, {'State': 'Delaware', 'Total, all lines': '3,842,583'}, {'State': 'Florida', 'Total, all lines': '88,067,510'}, {'State': 'Georgia', 'Total, all lines': '32,039,933'}, {'State': 'Hawaii', 'Total, all lines': '3,490,752'}, {'State': 'Idaho', 'Total, all lines': '4,757,044'}, {'State': 'Illinois', 'Total, all lines': '35,938,656'}, {'State': 'Indiana', 'Total, all lines': '16,321,562'}, {'State': 'Iowa', 'Total, all lines': '9,843,752'}, {'State': 'Kansas', 'Total, all lines': '9,565,831'}, {'State': 'Kentucky', 'Total, all lines': '10,147,626'}, {'State': 'Louisiana', 'Total, all lines': '16,226,096'}, {'State': 'Maine', 'Total, all lines': '3,316,037'}, {'State': 'Maryland', 'Total, all lines': '16,186,978'}, {'State': 'Massachusetts', 'Total, all lines': '21,453,245'}, {'State': 'Michigan', 'Total, all lines': '24,427,664'}, {'State': 'Minnesota', 'Total, all lines': '17,081,121'}, {'State': 'Mississippi', 'Total, all lines': '7,505,441'}, {'State': 'Missouri', 'Total, all lines': '17,261,874'}, {'State': 'Montana', 'Total, all lines': '$3,807,820'}, {'State': 'Nebraska', 'Total, all lines': '7,573,101'}, {'State': 'Nevada', 'Total, all lines': '8,561,822'}, {'State': 'New Hampshire', 'Total, all lines': '3,342,091'}, {'State': 'New Jersey', 'Total, all lines': '29,106,640'}, {'State': 'New Mexico', 'Total, all lines': '5,038,116'}, {'State': 'New York', 'Total, all lines': '61,861,773'}, {'State': 'North Carolina', 'Total, all lines': '24,036,512'}, {'State': 'North Dakota', 'Total, all lines': '3,826,625'}, {'State': 'Ohio', 'Total, all lines': '23,397,453'}, {'State': 'Oklahoma', 'Total, all lines': '11,325,023'}, {'State': 'Oregon', 'Total, all lines': '10,510,197'}, {'State': 'Pennsylvania', 'Total, all lines': '32,532,786'}, {'State': 'Rhode Island', 'Total, all lines': '3,361,749'}, {'State': 'South Carolina', 'Total, all lines': '15,078,257'}, {'State': 'South Dakota', 'Total, all lines': '3,970,217'}, {'State': 'Tennessee', 'Total, all lines': '17,442,243'}, {'State': 'Texas', 'Total, all lines': '92,331,270'}, {'State': 'Utah', 'Total, all lines': '8,100,467'}, {'State': 'Vermont', 'Total, all lines': '1,640,326'}, {'State': 'Virginia', 'Total, all lines': '20,316,519'}, {'State': 'Washington', 'Total, all lines': '18,109,893'}, {'State': 'West Virginia', 'Total, all lines': '3,643,445'}, {'State': 'Wisconsin', 'Total, all lines': '14,623,479'}, {'State': 'Wyoming', 'Total, all lines': '1,820,520'}, {'State': 'United States', 'Total, all lines': '$949,898,320'}], source_url='data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgogICAgPHRoZWFkPjx0cj48dGg+PC90aD48L3RyPjwvdGhlYWQ+ICAgIDx0Ym9keT4gPHRyIGNsYXNzPSJvZGQiPjx0ZD48dGFibGU+Cjx0cj48dGQ+RGlyZWN0IFByZW1pdW1zIFdyaXR0ZW4sIFAvQyBJbnN1cmFuY2UgQnkgU3RhdGUsIDIwMjMgKDEpPC90ZD48L3RyPgo8dHI+PHRkPjxwPigkMDAwKTwvcD4KPC90ZD48L3RyPgo8dHI+PHRkPjx0YWJsZT4KPHRoZWFkPgo8dHI+Cjx0aD5TdGF0ZTwvdGg+Cjx0aD5Ub3RhbCwgYWxsIGxpbmVzPC90aD4KPHRoPlN0YXRlPC90aD4KPHRoPlRvdGFsLCBhbGwgbGluZXM8L3RoPgo8L3RyPgo8L3RoZWFkPgo8dGJvZHk+Cjx0cj4KPHRkPkFsYWJhbWE8L3RkPgo8dGQ+JDEzLDE0Niw4NTM8L3RkPgo8dGQ+TW9udGFuYTwvdGQ+Cjx0ZD4kMyw4MDcsODIwPC90ZD4KPC90cj4KPHRyPgo8dGQ+QWxhc2thPC90ZD4KPHRkPjEsOTk0LDc1MDwvdGQ+Cjx0ZD5OZWJyYXNrYTwvdGQ+Cjx0ZD43LDU3MywxMDE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD5Bcml6b25hPC90ZD4KPHRkPjE3LDk1OSw0OTU8L3RkPgo8dGQ+TmV2YWRhPC90ZD4KPHRkPjgsNTYxLDgyMjwvdGQ+CjwvdHI+Cjx0cj4KPHRkPkFya2Fuc2FzPC90ZD4KPHRkPjcsOTMxLDg0OTwvdGQ+Cjx0ZD5OZXcgSGFtcHNoaXJlPC90ZD4KPHRkPjMsMzQyLDA5MTwvdGQ+CjwvdHI+Cjx0cj4KPHRkPkNhbGlmb3JuaWE8L3RkPgo8dGQ+MTExLDI0Myw1MDI8L3RkPgo8dGQ+TmV3IEplcnNleTwvdGQ+Cjx0ZD4yOSwxMDYsNjQwPC90ZD4KPC90cj4KPHRyPgo8dGQ+Q29sb3JhZG88L3RkPgo8dGQ+MjAsNTgyLDMyNzwvdGQ+Cjx0ZD5OZXcgTWV4aWNvPC90ZD4KPHRkPjUsMDM4LDExNjwvdGQ+CjwvdHI+Cjx0cj4KPHRkPkNvbm5lY3RpY3V0PC90ZD4KPHRkPjExLDUwOCw0MTI8L3RkPgo8dGQ+TmV3IFlvcms8L3RkPgo8dGQ+NjEsODYxLDc3MzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPkQuQy48L3RkPgo8dGQ+Miw2OTksMDgxPC90ZD4KPHRkPk5vcnRoIENhcm9saW5hPC90ZD4KPHRkPjI0LDAzNiw1MTI8L3RkPgo8L3RyPgo8dHI+Cjx0ZD5EZWxhd2FyZTwvdGQ+Cjx0ZD4zLDg0Miw1ODM8L3RkPgo8dGQ+Tm9ydGggRGFrb3RhPC90ZD4KPHRkPjMsODI2LDYyNTwvdGQ+CjwvdHI+Cjx0cj4KPHRkPkZsb3JpZGE8L3RkPgo8dGQ+ODgsMDY3LDUxMDwvdGQ+Cjx0ZD5PaGlvPC90ZD4KPHRkPjIzLDM5Nyw0NTM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD5HZW9yZ2lhPC90ZD4KPHRkPjMyLDAzOSw5MzM8L3RkPgo8dGQ+T2tsYWhvbWE8L3RkPgo8dGQ+MTEsMzI1LDAyMzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPkhhd2FpaTwvdGQ+Cjx0ZD4zLDQ5MCw3NTI8L3RkPgo8dGQ+T3JlZ29uPC90ZD4KPHRkPjEwLDUxMCwxOTc8L3RkPgo8L3RyPgo8dHI+Cjx0ZD5JZGFobzwvdGQ+Cjx0ZD40LDc1NywwNDQ8L3RkPgo8dGQ+UGVubnN5bHZhbmlhPC90ZD4KPHRkPjMyLDUzMiw3ODY8L3RkPgo8L3RyPgo8dHI+Cjx0ZD5JbGxpbm9pczwvdGQ+Cjx0ZD4zNSw5MzgsNjU2PC90ZD4KPHRkPlJob2RlIElzbGFuZDwvdGQ+Cjx0ZD4zLDM2MSw3NDk8L3RkPgo8L3RyPgo8dHI+Cjx0ZD5JbmRpYW5hPC90ZD4KPHRkPjE2LDMyMSw1NjI8L3RkPgo8dGQ+U291dGggQ2Fyb2xpbmE8L3RkPgo8dGQ+MTUsMDc4LDI1NzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPklvd2E8L3RkPgo8dGQ+OSw4NDMsNzUyPC90ZD4KPHRkPlNvdXRoIERha290YTwvdGQ+Cjx0ZD4zLDk3MCwyMTc8L3RkPgo8L3RyPgo8dHI+Cjx0ZD5LYW5zYXM8L3RkPgo8dGQ+OSw1NjUsODMxPC90ZD4KPHRkPlRlbm5lc3NlZTwvdGQ+Cjx0ZD4xNyw0NDIsMjQzPC90ZD4KPC90cj4KPHRyPgo8dGQ+S2VudHVja3k8L3RkPgo8dGQ+MTAsMTQ3LDYyNjwvdGQ+Cjx0ZD5UZXhhczwvdGQ+Cjx0ZD45MiwzMzEsMjcwPC90ZD4KPC90cj4KPHRyPgo8dGQ+TG91aXNpYW5hPC90ZD4KPHRkPjE2LDIyNiwwOTY8L3RkPgo8dGQ+VXRhaDwvdGQ+Cjx0ZD44LDEwMCw0Njc8L3RkPgo8L3RyPgo8dHI+Cjx0ZD5NYWluZTwvdGQ+Cjx0ZD4zLDMxNiwwMzc8L3RkPgo8dGQ+VmVybW9udDwvdGQ+Cjx0ZD4xLDY0MCwzMjY8L3RkPgo8L3RyPgo8dHI+Cjx0ZD5NYXJ5bGFuZDwvdGQ+Cjx0ZD4xNiwxODYsOTc4PC90ZD4KPHRkPlZpcmdpbmlhPC90ZD4KPHRkPjIwLDMxNiw1MTk8L3RkPgo8L3RyPgo8dHI+Cjx0ZD5NYXNzYWNodXNldHRzPC90ZD4KPHRkPjIxLDQ1MywyNDU8L3RkPgo8dGQ+V2FzaGluZ3RvbjwvdGQ+Cjx0ZD4xOCwxMDksODkzPC90ZD4KPC90cj4KPHRyPgo8dGQ+TWljaGlnYW48L3RkPgo8dGQ+MjQsNDI3LDY2NDwvdGQ+Cjx0ZD5XZXN0IFZpcmdpbmlhPC90ZD4KPHRkPjMsNjQzLDQ0NTwvdGQ+CjwvdHI+Cjx0cj4KPHRkPk1pbm5lc290YTwvdGQ+Cjx0ZD4xNywwODEsMTIxPC90ZD4KPHRkPldpc2NvbnNpbjwvdGQ+Cjx0ZD4xNCw2MjMsNDc5PC90ZD4KPC90cj4KPHRyPgo8dGQ+TWlzc2lzc2lwcGk8L3RkPgo8dGQ+Nyw1MDUsNDQxPC90ZD4KPHRkPld5b21pbmc8L3RkPgo8dGQ+MSw4MjAsNTIwPC90ZD4KPC90cj4KPHRyPgo8dGQ+TWlzc291cmk8L3RkPgo8dGQ+MTcsMjYxLDg3NDwvdGQ+Cjx0ZD48c3Ryb25nPlVuaXRlZCBTdGF0ZXM8L3N0cm9uZz48L3RkPgo8dGQ+PHN0cm9uZz4kOTQ5LDg5OCwzMjA8L3N0cm9uZz48L3RkPgo8L3RyPgo8L3Rib2R5PjwvdGFibGU+CgooMSkgQmVmb3JlIHJlaW5zdXJhbmNlIHRyYW5zYWN0aW9ucywgaW5jbHVkZXMgc3RhdGUgZnVuZHMsIGV4Y2x1ZGVzIHRlcnJpdG9yaWVzLgooMikgRGF0YSBmb3IgdGhlIHRvdGFsIFVuaXRlZCBTdGF0ZXMgbWF5IGRpZmZlciBmcm9tIHNpbWlsYXIgZGF0YSBzaG93biBlbHNld2hlcmUgZHVlIHRvIHRoZSB1c2Ugb2YgZGlmZmVyZW50IGV4aGliaXRzIGZyb20gUyZhbXA7UCBHbG9iYWwgTWFya2V0IEludGVsbGlnZW5jZS4KClNvdXJjZTogTkFJQyBkYXRhLCBzb3VyY2VkIGZyb20gUyZhbXA7UCBHbG9iYWwgTWFya2V0IEludGVsbGlnZW5jZSwgSW5zdXJhbmNlIEluZm9ybWF0aW9uIEluc3RpdHV0ZS48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg=='),
+  ])
 # ---
 # name: test_fetch
   dict({
@@ -93,18 +97,8 @@
 # ---
 # name: test_graph
   AddableValuesDict({
-    'generic_data': None,
-    'insurance_records': list([
-      InsuranceRecord(year=2012, average_expenditure=812.4, percent_change=2.2, source_content='<tr>\n<td>2012</td>\n<td>$812.40</td>\n<td>2.2%</td>\n</tr>'),
-      InsuranceRecord(year=2013, average_expenditure=841.06, percent_change=3.5, source_content='<tr>\n<td>2013</td>\n<td>841.06</td>\n<td>3.5</td>\n</tr>'),
-      InsuranceRecord(year=2014, average_expenditure=869.47, percent_change=3.4, source_content='<tr>\n<td>2014</td>\n<td>869.47</td>\n<td>3.4</td>\n</tr>'),
-      InsuranceRecord(year=2015, average_expenditure=896.66, percent_change=3.1, source_content='<tr>\n<td>2015</td>\n<td>896.66</td>\n<td>3.1</td>\n</tr>'),
-      InsuranceRecord(year=2016, average_expenditure=945.22, percent_change=5.4, source_content='<tr>\n<td>2016</td>\n<td>945.22</td>\n<td>5.4</td>\n</tr>'),
-      InsuranceRecord(year=2017, average_expenditure=1008.35, percent_change=6.7, source_content='<tr>\n<td>2017</td>\n<td>1,008.35</td>\n<td>6.7</td>\n</tr>'),
-      InsuranceRecord(year=2018, average_expenditure=1058.1, percent_change=4.9, source_content='<tr>\n<td>2018</td>\n<td>1,058.10</td>\n<td>4.9</td>\n</tr>'),
-      InsuranceRecord(year=2019, average_expenditure=1071.74, percent_change=1.3, source_content='<tr>\n<td>2019</td>\n<td>1,071.74</td>\n<td>1.3</td>\n</tr>'),
-      InsuranceRecord(year=2020, average_expenditure=1046.37, percent_change=-2.4, source_content='<tr>\n<td>2020</td>\n<td>1,046.37</td>\n<td>-2.4</td>\n</tr>'),
-      InsuranceRecord(year=2021, average_expenditure=1061.54, percent_change=1.4, source_content='<tr>\n<td>2021</td>\n<td>1,061.54</td>\n<td>1.4</td>\n</tr>'),
+    'extracted_data': list([
+      ExpenditureReport(title='Average Expenditures for Auto Insurance, 2012-2021', data=[InsuranceRecord(year=2012, average_expenditure=812.4, percent_change=2.2, source_content='<tr>\n<td>2012</td>\n<td>$812.40</td>\n<td>2.2%</td>\n</tr>'), InsuranceRecord(year=2013, average_expenditure=841.06, percent_change=3.5, source_content='<tr>\n<td>2013</td>\n<td>841.06</td>\n<td>3.5</td>\n</tr>'), InsuranceRecord(year=2014, average_expenditure=869.47, percent_change=3.4, source_content='<tr>\n<td>2014</td>\n<td>869.47</td>\n<td>3.4</td>\n</tr>'), InsuranceRecord(year=2015, average_expenditure=896.66, percent_change=3.1, source_content='<tr>\n<td>2015</td>\n<td>896.66</td>\n<td>3.1</td>\n</tr>'), InsuranceRecord(year=2016, average_expenditure=945.22, percent_change=5.4, source_content='<tr>\n<td>2016</td>\n<td>945.22</td>\n<td>5.4</td>\n</tr>'), InsuranceRecord(year=2017, average_expenditure=1008.35, percent_change=6.7, source_content='<tr>\n<td>2017</td>\n<td>1,008.35</td>\n<td>6.7</td>\n</tr>'), InsuranceRecord(year=2018, average_expenditure=1058.1, percent_change=4.9, source_content='<tr>\n<td>2018</td>\n<td>1,058.10</td>\n<td>4.9</td>\n</tr>'), InsuranceRecord(year=2019, average_expenditure=1071.74, percent_change=1.3, source_content='<tr>\n<td>2019</td>\n<td>1,071.74</td>\n<td>1.3</td>\n</tr>'), InsuranceRecord(year=2020, average_expenditure=1046.37, percent_change=-2.4, source_content='<tr>\n<td>2020</td>\n<td>1,046.37</td>\n<td>-2.4</td>\n</tr>'), InsuranceRecord(year=2021, average_expenditure=1061.54, percent_change=1.4, source_content='<tr>\n<td>2021</td>\n<td>1,061.54</td>\n<td>1.4</td>\n</tr>')], source_url='data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg=='),
     ]),
     'source_content': dict({
       'data': '''
@@ -195,45 +189,24 @@
 # ---
 # name: test_graph.1
   list([
-    SQLInsuranceRecord(id=1, year=2012, average_expenditure=812.40, percent_change=2.2),
-    SQLInsuranceRecord(id=2, year=2013, average_expenditure=841.06, percent_change=3.5),
-    SQLInsuranceRecord(id=3, year=2014, average_expenditure=869.47, percent_change=3.4),
-    SQLInsuranceRecord(id=4, year=2015, average_expenditure=896.66, percent_change=3.1),
-    SQLInsuranceRecord(id=5, year=2016, average_expenditure=945.22, percent_change=5.4),
-    SQLInsuranceRecord(id=6, year=2017, average_expenditure=1008.35, percent_change=6.7),
-    SQLInsuranceRecord(id=7, year=2018, average_expenditure=1058.10, percent_change=4.9),
-    SQLInsuranceRecord(id=8, year=2019, average_expenditure=1071.74, percent_change=1.3),
-    SQLInsuranceRecord(id=9, year=2020, average_expenditure=1046.37, percent_change=-2.4),
-    SQLInsuranceRecord(id=10, year=2021, average_expenditure=1061.54, percent_change=1.4),
+    SqlDocument(id=expenditure-report-710116cb, data={"title":"Average Expenditures for Auto Insurance, 2012-2021","data":[{"year":2012,"average_expenditure":812.4,"percent_change":2.2,"source_content":"<tr>\n<td>2012</td>\n<td>$812.40</td>\n<td>2.2%</td>\n</tr>"},{"year":2013,"average_expenditure":841.06,"percent_change":3.5,"source_content":"<tr>\n<td>2013</td>\n<td>841.06</td>\n<td>3.5</td>\n</tr>"},{"year":2014,"average_expenditure":869.47,"percent_change":3.4,"source_content":"<tr>\n<td>2014</td>\n<td>869.47</td>\n<td>3.4</td>\n</tr>"},{"year":2015,"average_expenditure":896.66,"percent_change":3.1,"source_content":"<tr>\n<td>2015</td>\n<td>896.66</td>\n<td>3.1</td>\n</tr>"},{"year":2016,"average_expenditure":945.22,"percent_change":5.4,"source_content":"<tr>\n<td>2016</td>\n<td>945.22</td>\n<td>5.4</td>\n</tr>"},{"year":2017,"average_expenditure":1008.35,"percent_change":6.7,"source_content":"<tr>\n<td>2017</td>\n<td>1,008.35</td>\n<td>6.7</td>\n</tr>"},{"year":2018,"average_expenditure":1058.1,"percent_change":4.9,"source_content":"<tr>\n<td>2018</td>\n<td>1,058.10</td>\n<td>4.9</td>\n</tr>"},{"year":2019,"average_expenditure":1071.74,"percent_change":1.3,"source_content":"<tr>\n<td>2019</td>\n<td>1,071.74</td>\n<td>1.3</td>\n</tr>"},{"year":2020,"average_expenditure":1046.37,"percent_change":-2.4,"source_content":"<tr>\n<td>2020</td>\n<td>1,046.37</td>\n<td>-2.4</td>\n</tr>"},{"year":2021,"average_expenditure":1061.54,"percent_change":1.4,"source_content":"<tr>\n<td>2021</td>\n<td>1,061.54</td>\n<td>1.4</td>\n</tr>"}],"source_url":"data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg=="}, readable=# Average Expenditures for Auto Insurance, 2012-2021
+  
+  ,
   ])
 # ---
 # name: test_graph.2
   dict({
     'data': None,
     'documents': list([
-      'Year: 2012, Expenditure: $812.40, Change: 2.2%',
-      'Year: 2013, Expenditure: $841.06, Change: 3.5%',
-      'Year: 2014, Expenditure: $869.47, Change: 3.4%',
-      'Year: 2015, Expenditure: $896.66, Change: 3.1%',
-      'Year: 2016, Expenditure: $945.22, Change: 5.4%',
-      'Year: 2017, Expenditure: $1008.35, Change: 6.7%',
-      'Year: 2018, Expenditure: $1058.10, Change: 4.9%',
-      'Year: 2019, Expenditure: $1071.74, Change: 1.3%',
-      'Year: 2020, Expenditure: $1046.37, Change: -2.4%',
-      'Year: 2021, Expenditure: $1061.54, Change: 1.4%',
+      '''
+        # Average Expenditures for Auto Insurance, 2012-2021
+        
+  
+      ''',
     ]),
     'embeddings': None,
     'ids': list([
-      'insurance-record-2012',
-      'insurance-record-2013',
-      'insurance-record-2014',
-      'insurance-record-2015',
-      'insurance-record-2016',
-      'insurance-record-2017',
-      'insurance-record-2018',
-      'insurance-record-2019',
-      'insurance-record-2020',
-      'insurance-record-2021',
+      'expenditure-report-710116cb',
     ]),
     'included': list([
       <IncludeEnum.documents: 'documents'>,
@@ -241,134 +214,8 @@
     ]),
     'metadatas': list([
       dict({
-        'average_expenditure': 812.4,
-        'percent_change': 2.2,
-        'source_content': '''
-          <tr>
-          <td>2012</td>
-          <td>$812.40</td>
-          <td>2.2%</td>
-          </tr>
-        ''',
         'source_url': 'data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg==',
-        'year': 2012,
-      }),
-      dict({
-        'average_expenditure': 841.06,
-        'percent_change': 3.5,
-        'source_content': '''
-          <tr>
-          <td>2013</td>
-          <td>841.06</td>
-          <td>3.5</td>
-          </tr>
-        ''',
-        'source_url': 'data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg==',
-        'year': 2013,
-      }),
-      dict({
-        'average_expenditure': 869.47,
-        'percent_change': 3.4,
-        'source_content': '''
-          <tr>
-          <td>2014</td>
-          <td>869.47</td>
-          <td>3.4</td>
-          </tr>
-        ''',
-        'source_url': 'data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg==',
-        'year': 2014,
-      }),
-      dict({
-        'average_expenditure': 896.66,
-        'percent_change': 3.1,
-        'source_content': '''
-          <tr>
-          <td>2015</td>
-          <td>896.66</td>
-          <td>3.1</td>
-          </tr>
-        ''',
-        'source_url': 'data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg==',
-        'year': 2015,
-      }),
-      dict({
-        'average_expenditure': 945.22,
-        'percent_change': 5.4,
-        'source_content': '''
-          <tr>
-          <td>2016</td>
-          <td>945.22</td>
-          <td>5.4</td>
-          </tr>
-        ''',
-        'source_url': 'data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg==',
-        'year': 2016,
-      }),
-      dict({
-        'average_expenditure': 1008.35,
-        'percent_change': 6.7,
-        'source_content': '''
-          <tr>
-          <td>2017</td>
-          <td>1,008.35</td>
-          <td>6.7</td>
-          </tr>
-        ''',
-        'source_url': 'data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg==',
-        'year': 2017,
-      }),
-      dict({
-        'average_expenditure': 1058.1,
-        'percent_change': 4.9,
-        'source_content': '''
-          <tr>
-          <td>2018</td>
-          <td>1,058.10</td>
-          <td>4.9</td>
-          </tr>
-        ''',
-        'source_url': 'data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg==',
-        'year': 2018,
-      }),
-      dict({
-        'average_expenditure': 1071.74,
-        'percent_change': 1.3,
-        'source_content': '''
-          <tr>
-          <td>2019</td>
-          <td>1,071.74</td>
-          <td>1.3</td>
-          </tr>
-        ''',
-        'source_url': 'data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg==',
-        'year': 2019,
-      }),
-      dict({
-        'average_expenditure': 1046.37,
-        'percent_change': -2.4,
-        'source_content': '''
-          <tr>
-          <td>2020</td>
-          <td>1,046.37</td>
-          <td>-2.4</td>
-          </tr>
-        ''',
-        'source_url': 'data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg==',
-        'year': 2020,
-      }),
-      dict({
-        'average_expenditure': 1061.54,
-        'percent_change': 1.4,
-        'source_content': '''
-          <tr>
-          <td>2021</td>
-          <td>1,061.54</td>
-          <td>1.4</td>
-          </tr>
-        ''',
-        'source_url': 'data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg==',
-        'year': 2021,
+        'title': 'Average Expenditures for Auto Insurance, 2012-2021',
       }),
     ]),
     'uris': None,
@@ -379,21 +226,24 @@
 # ---
 # name: test_index_and_store.1
   list([
-    SQLInsuranceRecord(id=1, year=2012, average_expenditure=812.40, percent_change=2.2),
-    SQLInsuranceRecord(id=2, year=2013, average_expenditure=841.06, percent_change=3.5),
+    SqlDocument(id=expenditure-report-710116cb, data={"title":"Average Expenditures for Auto Insurance, 2012-2021","data":[{"year":2012,"average_expenditure":812.4,"percent_change":2.2,"source_content":"<tr>\n<td>2012</td>\n<td>$812.40</td>\n<td>2.2%</td>\n</tr>"},{"year":2013,"average_expenditure":841.06,"percent_change":3.5,"source_content":"<tr>\n<td>2013</td>\n<td>841.06</td>\n<td>3.5</td>\n</tr>"},{"year":2014,"average_expenditure":869.47,"percent_change":3.4,"source_content":"<tr>\n<td>2014</td>\n<td>869.47</td>\n<td>3.4</td>\n</tr>"},{"year":2015,"average_expenditure":896.66,"percent_change":3.1,"source_content":"<tr>\n<td>2015</td>\n<td>896.66</td>\n<td>3.1</td>\n</tr>"},{"year":2016,"average_expenditure":945.22,"percent_change":5.4,"source_content":"<tr>\n<td>2016</td>\n<td>945.22</td>\n<td>5.4</td>\n</tr>"},{"year":2017,"average_expenditure":1008.35,"percent_change":6.7,"source_content":"<tr>\n<td>2017</td>\n<td>1,008.35</td>\n<td>6.7</td>\n</tr>"},{"year":2018,"average_expenditure":1058.1,"percent_change":4.9,"source_content":"<tr>\n<td>2018</td>\n<td>1,058.10</td>\n<td>4.9</td>\n</tr>"},{"year":2019,"average_expenditure":1071.74,"percent_change":1.3,"source_content":"<tr>\n<td>2019</td>\n<td>1,071.74</td>\n<td>1.3</td>\n</tr>"},{"year":2020,"average_expenditure":1046.37,"percent_change":-2.4,"source_content":"<tr>\n<td>2020</td>\n<td>1,046.37</td>\n<td>-2.4</td>\n</tr>"},{"year":2021,"average_expenditure":1061.54,"percent_change":1.4,"source_content":"<tr>\n<td>2021</td>\n<td>1,061.54</td>\n<td>1.4</td>\n</tr>"}],"source_url":"data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg=="}, readable=# Average Expenditures for Auto Insurance, 2012-2021
+  
+  ,
   ])
 # ---
 # name: test_index_and_store.2
   dict({
     'data': None,
     'documents': list([
-      'Year: 2012, Expenditure: $812.40, Change: 2.2%',
-      'Year: 2013, Expenditure: $841.06, Change: 3.5%',
+      '''
+        # Average Expenditures for Auto Insurance, 2012-2021
+        
+  
+      ''',
     ]),
     'embeddings': None,
     'ids': list([
-      'insurance-record-2012',
-      'insurance-record-2013',
+      'expenditure-report-710116cb',
     ]),
     'included': list([
       <IncludeEnum.documents: 'documents'>,
@@ -401,30 +251,8 @@
     ]),
     'metadatas': list([
       dict({
-        'average_expenditure': 812.4,
-        'percent_change': 2.2,
-        'source_content': '''
-          <tr>
-          <td>2012</td>
-          <td>$812.40</td>
-          <td>2.2%</td>
-          </tr>
-        ''',
         'source_url': 'data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg==',
-        'year': 2012,
-      }),
-      dict({
-        'average_expenditure': 841.06,
-        'percent_change': 3.5,
-        'source_content': '''
-          <tr>
-          <td>2013</td>
-          <td>841.06</td>
-          <td>3.5</td>
-          </tr>
-        ''',
-        'source_url': 'data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg==',
-        'year': 2013,
+        'title': 'Average Expenditures for Auto Insurance, 2012-2021',
       }),
     ]),
     'uris': None,

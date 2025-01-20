@@ -76,12 +76,20 @@ def test_retrieve(agent_config):
     )
     vector_store.add_texts(
         [
-            "Year: 2012, Expenditure: $812.40, Change: 2.2%",
-            "Year: 2013, Expenditure: $841.06, Change: 3.5%",
-            "Year: 2014, Expenditure: $869.47, Change: 3.4%",
-            "Year: 2015, Expenditure: $896.66, Change: 3.1%",
+            """# Average expenditures 2012-2013
+Year: 2012, Expenditure: $812.40, Change: 2.2%
+Year: 2013, Expenditure: $841.06, Change: 3.5%
+""",
+            """# Average expenditures 2014-2015
+Year: 2014, Expenditure: $869.47, Change: 3.4%
+Year: 2015, Expenditure: $896.66, Change: 3.1%
+""",
+            """# Average expenditures 2015-2016
+Year: 2014, Expenditure: $869.47, Change: 3.4%
+Year: 2015, Expenditure: $896.66, Change: 3.1%
+""",
         ],
-        metadatas=[{"year": 2012}, {"year": 2013}, {"year": 2014}, {"year": 2015}],
+        metadatas=[],
     )
     agent_state = AgentState(
         messages=[
@@ -102,8 +110,14 @@ def test_retrieve(agent_config):
 
     assert (
         documents_content
-        == """Year: 2014, Expenditure: $869.47, Change: 3.4%
-Year: 2013, Expenditure: $841.06, Change: 3.5%"""
+        == """# Average expenditures 2014-2015
+Year: 2014, Expenditure: $869.47, Change: 3.4%
+Year: 2015, Expenditure: $896.66, Change: 3.1%
+
+# Average expenditures 2015-2016
+Year: 2014, Expenditure: $869.47, Change: 3.4%
+Year: 2015, Expenditure: $896.66, Change: 3.1%
+"""
     )
 
 
