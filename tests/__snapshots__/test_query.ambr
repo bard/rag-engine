@@ -1,12 +1,12 @@
 # serializer version: 1
 # name: test_graph_with_insurance_queries[What's the trend in auto insurance costs over the last 3 years?]
-  'The trend in auto insurance costs over the last 3 years shows a consistent increase. In 2013, the expenditure was $841.06, which increased by 3.5% to $869.47 in 2014. This indicates a rising trend in auto insurance costs.'
+  "The auto insurance costs increased from $841.06 in 2013 to $869.47 in 2014, showing a trend of rising costs with a change of 3.5% in 2013 and 3.4% in 2014. I don't have data for the third year, but the trend indicates a consistent increase."
 # ---
 # name: test_graph_with_travel_info_query
-  'In Paris, you can visit the Eiffel Tower for panoramic views, explore the Louvre Museum to see masterpieces like the Mona Lisa, and admire the Gothic architecture of Notre-Dame Cathedral. You can also stroll along the Champs-Élysées to reach the Arc de Triomphe and visit Montmartre to see the Basilica of the Sacré-Cœur.'
+  'In Paris, you can visit the iconic Eiffel Tower for panoramic views, explore the Louvre Museum to see masterpieces like the Mona Lisa, and admire the Gothic architecture of Notre-Dame Cathedral. Stroll down the Champs-Élysées to the Arc de Triomphe, and enjoy the artistic heritage of Montmartre with the Basilica of the Sacré-Cœur.'
 # ---
 # name: test_graph_with_weather_query
-  'The current weather in Paris is foggy, with a temperature of 1.1°C that feels like -2.25°C, and a humidity level of 97%.'
+  'The current weather in Paris is misty, with a temperature of -0.55°C and it feels like -3.75°C. The humidity is at 95%.'
 # ---
 # name: test_retrieve_2
   list([

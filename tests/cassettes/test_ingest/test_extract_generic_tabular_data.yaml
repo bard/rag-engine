@@ -1,7 +1,7 @@
 interactions:
 - request:
     body: '{"messages":[{"content":"You are an assistant for data extraction tasks.
-      Extract a title\n                    and tabular data from the provided html.\n\n                    Provide
+      Extract a title\n                    and tabular data from the provided html.\n                    Provide
       the output in JSON format: The output should be formatted as a JSON instance
       that conforms to the JSON schema below.\n\nAs an example, for the schema {\"properties\":
       {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of strings\", \"type\":
@@ -10,10 +10,8 @@ interactions:
       The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is not well-formatted.\n\nHere
       is the output schema:\n```\n{\"properties\": {\"title\": {\"title\": \"Title\",
       \"type\": \"string\"}, \"data\": {\"items\": {\"type\": \"object\"}, \"title\":
-      \"Data\", \"type\": \"array\"}}, \"required\": [\"title\", \"data\"]}\n```.\n                    \n                    The
-      JSON should have the shape `{ \"title\": string, \"data\": [record1, record2,
-      ...]}`","role":"system"},{"content":"\n<html>\n  <head>\n    <meta http-equiv=\"Content-Type\"
-      content=\"text/html; charset=utf-8\" />\n  </head>\n  <body>\n    <table>\n    <thead><tr><th></th></tr></thead>    <tbody>
+      \"Data\", \"type\": \"array\"}}, \"required\": [\"title\", \"data\"]}\n```.`","role":"system"},{"content":"\n<html>\n  <head>\n    <meta
+      http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n  </head>\n  <body>\n    <table>\n    <thead><tr><th></th></tr></thead>    <tbody>
       <tr class=\"odd\"><td><table>\n<tr><td>Direct Premiums Written, P/C Insurance
       By State, 2023 (1)</td></tr>\n<tr><td><p>($000)</p>\n</td></tr>\n<tr><td><table>\n<thead>\n<tr>\n<th>State</th>\n<th>Total,
       all lines</th>\n<th>State</th>\n<th>Total, all lines</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Alabama</td>\n<td>$13,146,853</td>\n<td>Montana</td>\n<td>$3,807,820</td>\n</tr>\n<tr>\n<td>Alaska</td>\n<td>1,994,750</td>\n<td>Nebraska</td>\n<td>7,573,101</td>\n</tr>\n<tr>\n<td>Arizona</td>\n<td>17,959,495</td>\n<td>Nevada</td>\n<td>8,561,822</td>\n</tr>\n<tr>\n<td>Arkansas</td>\n<td>7,931,849</td>\n<td>New
@@ -41,7 +39,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '4526'
+      - '4393'
       content-type:
       - application/json
       host:
@@ -69,34 +67,34 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAAwAAAP//jJfLbhs3FIb3eQpikOWxy/vFu9SBmzR17DYXt42Kmh7RGkYjUiGpOK6R
-        dy9GTtxuyPFGgMjhh3P9D3n3BKHOL7sj1PWDLf1mOx48++T57+L65E0+Y/Rk3Rfx4v3Zr3p98uf2
-        c9/BdCJefXR9+X7qsI+b7eiKj+F+u0/OFjdRiWKKUKEZ229s4tKN07HVthzweEAx5QdYH2D57eAQ
-        fe9yd4Q+PEEIobv972RiWLov3RHC8H1l43K2K9cdPXyEUJfiOK10Nmefiw2lg/82+xiKC3urLy8v
-        P+YYFuFuERBadMWX0S26I7Tonvvk+oLOk9v43Saji+RLcQHQ+Q/H6GXIu2RD79CPt+hNscUBopiy
-        RQf3oKUtduJ8mP4idLfo9l/do5+N9spu7KIDtOjexmJHQHYc0eiDy/efPCUMCJegBVt0X6FCyesm
-        hIAxHJTAVUTy/8TQZigwwgA3og5Z25BtblEUGEZAc1ODHNvRX8cUfNsYQoByBgLTKiiOMdllbGEo
-        BqEpMKrqlBBcX3y/K217QGANnFTNeX54fNg0BaQxgDWpAtxob2xyLQgDzSkIXS2VkzEmv2yGVmvA
-        UoEg1WL5ycW0aueHUcDMgGFVS17YG+t92xluMChRDenLpR2a6Z1KXgHmvEoYRx+ib1YsE2CYBilk
-        lRKW3s40jwRGCQhZdybeNAkGNGetaLya7T0DQgrQrFpir1wou3592/QEA+EKJK2G45e48/kRAaFU
-        AjZVzKn1YabYGZGAmaoT0u1ow3LGDqIlGKXrlJxtP+yyK6UZXkqACwaUVwXy1PeDX9nQpHDgVIGU
-        vE4JweVY5tQaawKEkjpmGonZb7e+LdgCC+C8yYm75GesoZKAVnWnYigzJfOUgcYKNK0K02t3leZG
-        oQKhGBBM6pDPdkYhQUzOUFpH3KAXdrPNg5/Ta8YpYENapJ9dyq7Zk9QAwRIkxy3Oqfvi+6ZeCsBM
-        AyGyhfkjpnULMoVGElCqKv2vYyoDOrYpjr6dcsoBMwmiPlbvWc/teqYfGGgqQdJqb54Nvn1VYMCM
-        mjq8SliPdoibmXsLMCpgf0GsUJJbxTCjwGJSYVMVvnMXQr4dP9swO6UFo6B0NeG/DXHp0Ms8J6MM
-        2JTz+rXuTdw9MudEAFYaqFBt1mNybhQGSqqgt25S0uzcjHZxTqfbZh3zZWbwUmCMAFXV/nxX7NCW
-        HIIxcFl15b1Lmxjad9RJIIDVB/d7n1Z+pmQo3k9dQaqZvrB58GFVZop48siANtWoXrhc0GNMYiA5
-        A14fuxc+9zFk3zaIg6QMuKo7dhs3PqzaIdbTk6I+od4FX9zy/qHYLJmnhk/R0cD2sIn11yJ8XYTL
-        y8v/P2GTu95lO72gw24cv61/fXgTj3G1TfEqf9t/WL/2wefh7+RsjmF6/+YS/wUAAP//dJhNCoMw
-        EIX3OYXkBIlYq4cpISSjHepPyE+hC+9eomIiretveMybWb1n6EoXUhSPNXuHU5ymxs6j8cLPL5ii
-        IL+xPXzTFPczzHm1Yx8tJlLWBzlpCg1e4uCyBE+VVE/QmWrZpMQvg8Y5MUYy8787/ZPfDoBTn6lc
-        yiegFBgPWhgLGtXZdxqzEDuRq7Hj2OvC1IF9owLhEWx8iIZOhmGrK6j7OA+j6HDqwRqLW2fRGVHV
-        LWctk82dkoV8AQAA//8DAIKDlL28EQAA
+        H4sIAAAAAAAAA4yXSW8bNxTH7/kUxMDH55T74lvipE2aZkGzGEVU1PSI0TCmSIWk4riGv3sxcpr2
+        Qo4vAkQOf3jr/5E3DxAa/Ho4QcM42Tpud+H4UQ6bp8Jdb+uHp5vHXy6wfEz92/Bl/eXq4tEA84l0
+        8dmN9d9TD8e03QVXfYp322N2trqZShRTTGnM8GFjm9YuzMc2u3rM0zHFlB9jfYzl94NT8qMrwwn6
+        +AAhhG4Ov7OJce2+DSfogDmsbF0pduOGkx8fITTkFOaVwZbiS7WxDvDf5phidfFg9fn5+eeS4ire
+        rCJCq6H6GtxqOEGr4YnPbqzoTXZbv98WdJZ9rS4CevPTKXoeyz7bODr0+Bq9rbY6QBRTthrgDrS2
+        1c6cj/NfhG5Ww+GrO/SjYC/s1q4GQKvhXao2ALIhoOCjK3efHBEGhEvQgq2GW2hQymUXQsAYDkrg
+        JiL7v1PsMxQYYYAb0YZc2lhs6VEUGEZAc9OCnNrgP6Ucfd8YQoByBgLTJiiFlO069TAUg9AUGFVt
+        SoxurH7c1749ILAGTprmPHl4+rBrCkhjAGvSBLhgr2x2PQgDzSkI3SyVn0PKft0NrdaApQJBmsXy
+        i0t5088Po4CZAcOaljyzV9b7vjPcYFCiGdLnazt10zuXvALMeZMQgo/JdyuWCTBMgxSySYlrbxea
+        RwKjBIRsO5OuugQDmrNeNF4s9p4BIQVo1iyxFy7W/Xh53fUEA+EKJG2G47e09+UeAaFUAjZNzEvr
+        40KxMyIBM9Um5Otg43rBDqIlGKXblFLsOO2Lq7UbXkqACwaUNwXypR8nv7GxS+HAqQIpeZsSoyup
+        Lqk11gQIJW3MPBKL3+18X7AFFsB5l5P22S9YQyUBrdpOpVgXSuaIgcYKNG0K0yt3kZdGoQKhGBBM
+        2pCvdkEhQczOUNpGXKFndrsrk1/Sa8YpYEN6pF9dLq7bk9QAwRIkxz3OS/fNj129FICZBkJkD/NH
+        ypc9yBwaSUCppvS/SrlO6NTmFHw/5ZQDZhJEe6zesZ7Yy4V+YKCpBEmbvfl68v2rAgNm1NzhTcJl
+        sFPaLtxbgFEBhwtig5LdJsUFBRazCpum8L1xMZbr8NXGxSktGAWlmwn/fUprh56XJRllwOact691
+        b9P+njknArDSQIXqs+6Tc6MwUNIEvXOzkhbnFrSLczrfNtuYbwuDlwJjBKhq9uf7aqe+5BCMgcum
+        Kx9c3qbYv6POAgGsPbg/+LzxCyVD8WHqCtLM9Jktk4+bulDEs0cGtGlG9cyViu5jEgPJGfD22D3z
+        ZUyx+L5BHCRlwFXbseu09XHTD7GenxTtCfU++urWdw/FbskcGT5HRwM7wGbWn6t4u4rn5+f/f8Jm
+        92lf7PyCjvsQvq/f/ngTh7TZ5XRRvu//WP/koy/TX9nZkuL8/i01/QMAAP//jJjNCsMgEITvPkXw
+        3EPSJKQvU0R0ky7Nj+ha6CHvXoylGppCz9867LinGcM3urKiuG7Z2+/iNDd2mQwJWu4wB8Gq6eoo
+        yFPcz3BVNW9MwWIi5/bSnQ40hQaSOLoswXMl1Q10epvivvQalwywzPn3Qkfa0T3Owz/yCSgFhkAL
+        Y0Gj2ptOYxZCIfJr7PPT28LcgX2gAkEINlxDQy/9GLsK7p6OYBI9zgNYYzEWFr0RbamkrtsSGs5W
+        9gIAAP//AwAx0BGWuREAAA==
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 9037324a9a5c5adf-VIE
+      - 904f3f6d0f895bac-VIE
       Connection:
       - keep-alive
       Content-Encoding:
@@ -104,14 +102,14 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 17 Jan 2025 14:57:31 GMT
+      - Mon, 20 Jan 2025 13:01:06 GMT
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=mUiTCxqcQqgSZWsLdwB1ArJuSgcTo5zGibh4YYWUrD0-1737125851-1.0.1.1-x5pywF.257gbaoWojyQVM50Mhq8qu3GBrGD6HGmkqKIBlZu06yXe64rhObitLgtrsG2xaoePCpZN4aCKNsGyug;
-        path=/; expires=Fri, 17-Jan-25 15:27:31 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=Xgl16b8hvb9v2CSS5SZL.eAqfh3FKfFt3iTq9J5Kbgo-1737378066-1.0.1.1-21hFRu1Of0Ft5OB7InjaIXfZF.aUmFcI9Y3moBoAvX79tFITmWvcWixhzBa.K7QpDOJKr9AdNT45P6KmUSDRPw;
+        path=/; expires=Mon, 20-Jan-25 13:31:06 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=T0HilKiYIlPCNV61uTZYI74Myl8MsBHfKMOiHR2Vb3A-1737125851899-0.0.1.1-604800000;
+      - _cfuvid=R94OvgX_nEeb1X7b1PhS4LH60EoRCWWmkl_IY6GPkuU-1737378066642-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Transfer-Encoding:
       - chunked
@@ -119,12 +117,10 @@ interactions:
       - nosniff
       access-control-expose-headers:
       - X-Request-ID
-      alt-svc:
-      - h3=":443"; ma=86400
       openai-organization:
       - user-iarz4shpxfmvb4ssgkfsv3ye
       openai-processing-ms:
-      - '18297'
+      - '36161'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -136,13 +132,13 @@ interactions:
       x-ratelimit-remaining-requests:
       - '4999'
       x-ratelimit-remaining-tokens:
-      - '798954'
+      - '798985'
       x-ratelimit-reset-requests:
       - 12ms
       x-ratelimit-reset-tokens:
-      - 78ms
+      - 76ms
       x-request-id:
-      - req_7955f1ffe3b4945441e817887333d3f0
+      - req_a094d77ca71c869ee4e3310c8737a394
     status:
       code: 200
       message: OK

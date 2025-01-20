@@ -24,7 +24,7 @@ def test_reformulate_query(agent_config):
 
     state_update = reformulate_query(agent_state, agent_config)
 
-    assert state_update == {"query": '"year-to-year changes 2012-2014"'}
+    assert state_update == {"query": '"Year-to-year changes 2012-2014"'}
 
 
 @pytest.mark.vcr

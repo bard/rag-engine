@@ -3,7 +3,7 @@ interactions:
     body: '{"messages":[{"content":"Analyze the following query and determine if it''s
       asking about the weather for a location. If it is, extract the location mentioned.
       Respond in JSON format with ''is_weather_related'' as a boolean and ''location''
-      as a string.\n\nQuery: ''what are some nice things to see in Paris?''","role":"user"}],"model":"gpt-4o","n":1,"parallel_tool_calls":false,"stream":false,"temperature":0.0,"tool_choice":{"type":"function","function":{"name":"WeatherQueryClassification"}},"tools":[{"type":"function","function":{"name":"WeatherQueryClassification","description":"","parameters":{"properties":{"is_weather_related":{"description":"whether
+      as a string.\n\nQuery: ''what are some nice things to see in Paris?''","role":"user"}],"model":"gpt-4o","n":1,"parallel_tool_calls":false,"stream":false,"temperature":0.7,"tool_choice":{"type":"function","function":{"name":"WeatherQueryClassification"}},"tools":[{"type":"function","function":{"name":"WeatherQueryClassification","description":"","parameters":{"properties":{"is_weather_related":{"description":"whether
       the query has to do with weather","type":"boolean"},"location":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"location
       the query is about, if it''s weather-related"}},"required":["is_weather_related","location"],"type":"object"}}}]}'
     headers:
@@ -42,21 +42,21 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAAwAAAP//jFPBjtMwEL3nK6w5NyhN0y3NbamoxAoQe0CgpchynUlicGxjO7tUVf8d
-        Oekm6VIkcoisefPezLyxjxEhIArICfCaed4YGd/++rhoPuMaP7n392maNtv2a7lePWzuHpM9zAJD
-        738g98+sV1w3RqIXWvUwt8g8BtX5arFKsmVyk3ZAowuUgVYZH2c6TpM0i5PXcXJzJtZacHSQk28R
-        IYQcu39oURX4G3KSzJ4jDTrHKoR8SCIErJYhAsw54TxTHmYjyLXyqELXqpVyAnitJeVMyrFw/x0n
-        59EnJiXdPrz7cFtaq+/e7v186Rab/dN2Wb+Z1OulD6ZrqGwVH/yZ4EM8f1GMEFCs6bhfkPka7X2L
-        9rCRYbRScHZFjRBgtmobVD5MAscdCEefejq1KMNSdpCXTDqc7UDqXmYHeXDkBBdqp+ja+fvEN4tl
-        65g8G3qOn4YNSV0Zq/fuheFQCiVcTS0y1w0OzmvT1w51ugrQXiwXjNWN8dTrn6iC4Hyx6vVgvHsT
-        ND2DXnsmJ/FsPbuiRwv0THTbHy4cZ7zGYqSOF4+1hdATIJpM/Xc317T7yYWq/kd+BDhH47GgxmIh
-        +OXEY5rF8DT/lTa43DUMDu2j4Ei9QBs2UWDJWtm/GnAH57GhpVAVWmNF93SgNHSZcFYslglmEJ2i
-        PwAAAP//AwD+CDNoQwQAAA==
+        H4sIAAAAAAAAAwAAAP//jFNdj9MwEHzPr7D2uUW5ftAjbwjpOJ0OpHKIk0qR5dqbxMWxfbYDhKr/
+        HTnpJelRJPIQWTs7s7uz9iEhBKSAjAAvWeCVVdO3TpXpnbh/bO6/bD7V7z9v7ppiNtvVH9a/b2AS
+        GWa3Rx6eWa+4qazCII3uYO6QBYyqV6v5ar66TlfXLVAZgSrSChumCzOdpbPFNL2epq9PxNJIjh4y
+        8jUhhJBD+48taoG/ICPp5DlSofesQMj6JELAGRUjwLyXPjAdYDKA3OiAOnata6VGQDBGUc6UGgp3
+        32F0HnxiStHdw+2NKZVaf9zvNw3K24cn97RZ8lG9TrqxbUN5rXnvzwjv49mLYoSAZlXLfUQWSnTr
+        Gl3zTsXRcsnZBTVCgLmirlCHOAkctiA9/dnRqUMVl7KFLGfK42QLynQyW8iiI0c4Uzsml87fRr45
+        zGvP1MnQU/zYb0iZwjqz8y8Mh1xq6UvqkPl2cPDB2K52rNNWgPpsuWCdqWygwXxHHQWv5qtOD4a7
+        N0JnJzCYwNQovngzuaBHBQYm2+33F44zXqIYqMPFY7WQZgQko6n/7uaSdje51MX/yA8A52gDCmod
+        CsnPJx7SHMan+a+03uW2YfDofkiONEh0cRMCc1ar7tWAb3zAiuZSF+isk+3TgdzSZcqZmC9TXEBy
+        TP4AAAD//wMAo5W06kMEAAA=
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 902f7e563e255bb4-VIE
+      - 904f409c3a74c2f0-VIE
       Connection:
       - keep-alive
       Content-Encoding:
@@ -64,14 +64,14 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 16 Jan 2025 16:31:03 GMT
+      - Mon, 20 Jan 2025 13:01:18 GMT
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=smZwCvR2G18a99reketTkuFIroN05kED3ufmQA8l0c4-1737045063-1.0.1.1-RYhtciU6vjQepqtvjkNxAxKggsyYuAzFxYW0KrZCacklzQO3Tq5c4z0cLeUf8BLMvteU4TK6ghoGhA9XSTDsGA;
-        path=/; expires=Thu, 16-Jan-25 17:01:03 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=tVV9IZe8MToP0Lvf9eF9esCb3wV7ialVkOqwUIjYAaM-1737378078-1.0.1.1-yPWchMsfniGqb_nmNFCtZYv4iOGBS7xbZLp8MGaZ1WKdDPFUGO2_izBxV2TAfknqjq3KT9QTLbPKfgaLobZ7RQ;
+        path=/; expires=Mon, 20-Jan-25 13:31:18 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=X1IQ92tyzZZnMzVm7zT9K6sIoTc9ap8wJh_gdBVW2ao-1737045063137-0.0.1.1-604800000;
+      - _cfuvid=fUahmlVQMv3vZk84KhJUhpHKLpWmpzc0gJ8Z5pdVZJw-1737378078808-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Transfer-Encoding:
       - chunked
@@ -79,12 +79,10 @@ interactions:
       - nosniff
       access-control-expose-headers:
       - X-Request-ID
-      alt-svc:
-      - h3=":443"; ma=86400
       openai-organization:
       - user-iarz4shpxfmvb4ssgkfsv3ye
       openai-processing-ms:
-      - '538'
+      - '474'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -102,7 +100,7 @@ interactions:
       x-ratelimit-reset-tokens:
       - 6ms
       x-request-id:
-      - req_9b573843edf6bfcefddd6912620cea94
+      - req_da392dac86e3d73d37f41de4ca64635b
     status:
       code: 200
       message: OK
@@ -123,7 +121,7 @@ interactions:
       for the Changing of the Guard ceremony. The Houses of Parliament and Big Ben
       are iconic symbols along the River Thames. The London Eye offers a rotating
       perspective of the city's skyline.\\n\\n\",\"role\":\"system\"},{\"content\":\"what
-      are some nice things to see in Paris?\",\"role\":\"user\"}],\"model\":\"gpt-4o\",\"n\":1,\"stream\":false,\"temperature\":0.0}"
+      are some nice things to see in Paris?\",\"role\":\"user\"}],\"model\":\"gpt-4o\",\"n\":1,\"stream\":false,\"temperature\":0.7}"
     headers:
       accept:
       - application/json
@@ -160,22 +158,22 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAAwAAAP//jFPBTttAEL3nK0Z7jpFJQgK5UWgrVECtilRVVRUN63E8sN5xZ9cBhPiA
-        nvsVfAfqf1W2QxxUKvViyfPePL23M3M/ADCcmTkYW2C0ZeWSwx/nY3+Sn/Dlu0/FTW2vOLVfjvX6
-        A2dezbDpkMsrsvG5a8dKWTmKLL6DrRJGalR3Z+NZOtlLp+MWKCUj17Qtq5hMJBmlo0mS7ifpdN1Y
-        CFsKZg7fBgAA9+23segzujVzSIfPlZJCwCWZ+YYEYFRcUzEYAoeIPpphD1rxkXzr+sTDR1QOQ7iT
-        Gix6WHHgCLEgeMt5Tg4u5IYUclGo0ItiyRZWTDdhCHRbOVFq2adSr5TgrA5UlxAFAhGUGCJpxWQp
-        gOPrjnomHuGUAw4BfQaYlbwWeS+xYAuotuBINtZKIDmcS1RKjrEkOMJYUKboduDr2jG6IBCiinOA
-        TvyylToqsKxC8vTT3YWnRwqNJSW0RYseqoWM4EJZyqqg1keX/Ex8LFFj46gL0fDfYGDHFhs3zf9n
-        tPr0mBz9/lXrzvbbKuV1wGa0vnZuXX/YDMvJslK5DGt8U8/ZcygWShjEN4MJUSrTog8DgO/tUtQv
-        5mwqlbKKiyjX5BvB0d5ep2f6NezR2e4ajBLR9fXxaDp8RW+RUUR2YWutjEVbUNa39juIdcayBQy2
-        Uv/t5jXtLjn75f/I94C1VEXKFpVSxvZl4p6m1Fzpv2ibV24Nm0C6YkuLyKTNJDLKsXbdAZlwFyKV
-        i5z9krRS7q4orxaT6cFuepDi/swMHgZ/AAAA//8DAI6Xv/JOBAAA
+        H4sIAAAAAAAAAwAAAP//jFPbThtBDH3PV1jznKCQAAHeKEVVEQQkkIpUVZGZ9WYNs+ORx8tFiA/o
+        c7+C70D9r2o3gYBKpb6MNOf4nLHH9kMPwHHhdsH5Cs3XKQz2NFTraXSK04sp80maGs4vLBcnhweH
+        31y/VcjlFXl7Ua15qVMgY4kL2iuhUeu6PhlPxpPt4WSnI2opKLSyebLBhgxGw9HGYLg9GG4thZWw
+        p+x24XsPAOChO9sUY0F3bheG/RekppxxTm73NQjAqYQWcZgzZ8Norr8ivUSj2GX9NcIpKuc+3EsD
+        HiPccGYDqwjYS2QPB1yWFOBcbkmhFIWEURRr9nDDdJv7QHcpiFInOpLmRgmOm0xNDSaQiaDGbKSJ
+        yVOGwNeL0GOJCEecsQ8YC8Ci5qXJF7GKPaD6io28NUogJUzFlAafsSbYR6uoUAxrcGYqIUAht7ET
+        71dYpzx4/hnu8/MT5TaJFt9TDwXBubLUqaLFoxSv5L6jUY2zsYeKlA3n3YvHEq1GNSW4Zau6wE+Y
+        ObDHlm/vZ+j1+Wmw//tXo2tvv1mpbDK2XY5NCEv88bVvQeZJ5TIv+Ve85Mi5milhltj2KJsk17GP
+        PYAf3Xw071rukkqdbGZyTbE1HG1uLvzcaiJX7GS8JE0Mwwofj7b7H/jNCjLkkN9MmPPoKypW0tU4
+        YlOwvCF6b6r+O5uPvBeVc5z/j/2K8J6SUTFLSgX79xWvwpTahf1X2Osvdwm7THrDnmbGpG0nCiqx
+        CYtdcvk+G9WzkuOcNCkvFqpMs42tnfXhzhC3J6732PsDAAD//wMAzyD74VkEAAA=
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 902f7e5df8735b91-VIE
+      - 904f40a20b465b3c-VIE
       Connection:
       - keep-alive
       Content-Encoding:
@@ -183,14 +181,14 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 16 Jan 2025 16:31:05 GMT
+      - Mon, 20 Jan 2025 13:01:21 GMT
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=XG6xLlpXeZmHmp1yLe0NHgXcLtmhHlVaBYtSc8bL_I8-1737045065-1.0.1.1-3R6WgCz4a5rkXbED_UP5eWGSYnS92ZTHGKFdkqtSd.SBmlN65YXJPjCM_dGkUa1e2ohe3TZVthihXnjSGssxQw;
-        path=/; expires=Thu, 16-Jan-25 17:01:05 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=MZKp9Uqt0wzxVpqI5lKbx0JgSgw5IS71pV2PohzjRcw-1737378081-1.0.1.1-WcLTsalIzaay8dw_BAxAXx1oPJBtk9_RpOU4GJD4UN_N2dYjNTvxlIshpS8L9ja9mqkgOI5v.PO.WkzBKaaO_g;
+        path=/; expires=Mon, 20-Jan-25 13:31:21 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=AZHKelaOWFnzCkRVoY9aYTvmOMj902YW5gcpbgq7ZhY-1737045065028-0.0.1.1-604800000;
+      - _cfuvid=GuqJeoqogJp.FNNFkQE63wGJD7eyRe5rGZe52LcyRK8-1737378081258-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Transfer-Encoding:
       - chunked
@@ -198,12 +196,10 @@ interactions:
       - nosniff
       access-control-expose-headers:
       - X-Request-ID
-      alt-svc:
-      - h3=":443"; ma=86400
       openai-organization:
       - user-iarz4shpxfmvb4ssgkfsv3ye
       openai-processing-ms:
-      - '1342'
+      - '1960'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -221,7 +217,7 @@ interactions:
       x-ratelimit-reset-tokens:
       - 24ms
       x-request-id:
-      - req_f1c01ec3a983001e5f41c7ce00adfe07
+      - req_334ea63c9a5118df601fb824fab1221f
     status:
       code: 200
       message: OK

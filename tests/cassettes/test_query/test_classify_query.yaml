@@ -3,7 +3,7 @@ interactions:
     body: '{"messages":[{"content":"Analyze the following query and determine if it''s
       asking about the weather for a location. If it is, extract the location mentioned.
       Respond in JSON format with ''is_weather_related'' as a boolean and ''location''
-      as a string.\n\nQuery: ''how is the weather in Paris?''","role":"user"}],"model":"gpt-4o","n":1,"parallel_tool_calls":false,"stream":false,"temperature":0.0,"tool_choice":{"type":"function","function":{"name":"WeatherQueryClassification"}},"tools":[{"type":"function","function":{"name":"WeatherQueryClassification","description":"","parameters":{"properties":{"is_weather_related":{"description":"whether
+      as a string.\n\nQuery: ''how is the weather in Paris?''","role":"user"}],"model":"gpt-4o","n":1,"parallel_tool_calls":false,"stream":false,"temperature":0.7,"tool_choice":{"type":"function","function":{"name":"WeatherQueryClassification"}},"tools":[{"type":"function","function":{"name":"WeatherQueryClassification","description":"","parameters":{"properties":{"is_weather_related":{"description":"whether
       the query has to do with weather","type":"boolean"},"location":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"location
       the query is about, if it''s weather-related"}},"required":["is_weather_related","location"],"type":"object"}}}]}'
     headers:
@@ -42,21 +42,21 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAA4xTXW/TMBR9z6+w7nOL0jZpUN4mBkgIJpBAaBBkec5N4tWxje1slKr/HTnpknQU
-        iTxE1j33nPt9iAgBUUJOgDfM89bI5dXPm02zfmjeZFll2O/XqXi/ym5RqG9f7DtYBIa+u0fun1gv
-        uG6NRC+0GmBukXkMqqtsk8VJGqdZD7S6RBlotfHLRC/X8TpZxi+X8fZEbLTg6CAn3yNCCDn0/5Ci
-        KvEX5CRePFladI7VCPnoRAhYLYMFmHPCeaY8LCaQa+VRhaxVJ+UM8FpLypmUU+DhO8zeU5+YlPTz
-        26vtrbn/kKw2q5v0sZa73fW1Z/Us3iC9N31CVaf42J8ZPtrzZ8EIAcXanvsVmW/QfurQ7l/JUFol
-        OLugRggwW3ctKh8qgUMBwtHHgU4tyjCUAnJvO1wUIPWgUkBewEdmhSvgCGeKx+jS+8esdxarzjF5
-        aurJfhynJHVtrL5zz5oOlVDCNdQic33x4Lw2Q+wQp48A3dmAwVjdGk+93qEKgqtNMujBtH8zdH0C
-        vfZMzuzJdnFBj5bomeg3YFw6zniD5USdlo91pdAzIJpV/Xc2l7SHyoWq/0d+AjhH47GkxmIp+HnF
-        k5vFcJ7/chu73CcMDu2D4Ei9QBsmUWLFOjlcDri989jSSqgarbGiPx+oDE1jzspNGmMC0TH6AwAA
-        //8DAMumQ8xHBAAA
+        H4sIAAAAAAAAA4xT227TQBB991es5tlBzr3xG0JClKLQCihSMbI267G9ZW/aXUNDlH9Ha6e2U4KE
+        H6zVnDln7oeIEOAFpARYTT2TRkxeW1HZ7f2Hzaayn94tH6bq7vZxd31/XT+ZG4gDQ+8ekfln1ium
+        pRHouVYdzCxSj0F1up6v5+urZLVpAakLFIFWGT9Z6MksmS0mydUkWZ2IteYMHaTkW0QIIYf2H1JU
+        BT5BSpL42SLROVohpL0TIWC1CBagznHnqfIQDyDTyqMKWatGiBHgtRY5o0IMgbvvMHoPfaJC5PvN
+        2+0XyW1y09Ti4/uHz1Ky3+vtehSvk96bNqGyUazvzwjv7emLYISAorLlfkXqa7R3Ddr9GxFKKzmj
+        F9QIAWqrRqLyoRI4ZMBd/quj5xZFGEoGqbcNxhkI3alkkGZwSy13GRzhTPEYXXp/H/XOYtk4Kk5N
+        PdmP/ZSErozVO/ei6VByxV2dW6SuLR6c16aLHeK0EaA5GzAYq6Xxudc/UAXB6XzR6cGwfyN0dgK9
+        9lSM7ItVfEEvL9BT3m5Av3SMshqLgTosH20KrkdANKr672wuaXeVc1X9j/wAMIbGY5EbiwVn5xUP
+        bhbDef7Lre9ymzA4tD85w9xztGESBZa0Ed3lgNs7jzIvuarQGsvb84HS5MuE0WK+THAB0TH6AwAA
+        //8DAIrlc2hHBAAA
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 902f7e361fea3257-VIE
+      - 904f4060bb505b09-VIE
       Connection:
       - keep-alive
       Content-Encoding:
@@ -64,14 +64,14 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 16 Jan 2025 16:30:57 GMT
+      - Mon, 20 Jan 2025 13:01:09 GMT
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=PdHh7YX3fqhK181Ff841yPHnrXQodSwL3WwS1TdVkn4-1737045057-1.0.1.1-e_eqf9CT.P.W7alP0ss.6159nOaMxGJ7c0WQGUgyg_HGEgDwpdaeD2y9DeC6G9P9Asl8b3tD5yfbGUh3QbiGuw;
-        path=/; expires=Thu, 16-Jan-25 17:00:57 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=Ztio690TmJcTD.og3iZxGUozgi2_meEjYHA.DdVTXl8-1737378069-1.0.1.1-MYGqy6Hgb2iAYIG9g2_SR4yI4KZ7R3CKE4WFGuimZ.4roYW4JlZn8hrp0jOO2je76yPMCCIGz_ngHPPp.osMng;
+        path=/; expires=Mon, 20-Jan-25 13:31:09 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=eNRN8Ujt7vqxCVbww0yDVUt6TbPi_ePVvgFGYLxC.Ww-1737045057623-0.0.1.1-604800000;
+      - _cfuvid=I2LHxaqdYzdthn4xecHBFGbj6Nh9zMDejVGdrqZkmeQ-1737378069961-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Transfer-Encoding:
       - chunked
@@ -79,12 +79,10 @@ interactions:
       - nosniff
       access-control-expose-headers:
       - X-Request-ID
-      alt-svc:
-      - h3=":443"; ma=86400
       openai-organization:
       - user-iarz4shpxfmvb4ssgkfsv3ye
       openai-processing-ms:
-      - '422'
+      - '820'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -102,7 +100,7 @@ interactions:
       x-ratelimit-reset-tokens:
       - 6ms
       x-request-id:
-      - req_2bbb69d0a71f723883faaf91831e7420
+      - req_8f0658ddfce000533390c4687a9aa5aa
     status:
       code: 200
       message: OK
