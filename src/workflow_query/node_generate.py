@@ -3,7 +3,7 @@ from typing import TypedDict
 from langchain.schema import BaseMessage, HumanMessage, SystemMessage
 from langchain_core.runnables import RunnableConfig
 
-from ..config import AgentConfig
+from ..config import Config
 from ..services import get_llm
 from .state import AgentState
 
@@ -14,7 +14,7 @@ class GenerateStateUpdate(TypedDict):
 
 def generate(state: AgentState, config: RunnableConfig) -> GenerateStateUpdate:
     """Generate answer."""
-    c = AgentConfig.from_runnable_config(config)
+    c = Config.from_runnable_config(config)
     llm = get_llm(c)
 
     documents = state.get("documents")

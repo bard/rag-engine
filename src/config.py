@@ -3,59 +3,27 @@ from pydantic import BaseModel, Field
 from typing import Self, Union, Literal
 
 
-class PineconeVectorStoreBackend(BaseModel):
+class PineconeVectorStoreConfig(BaseModel):
     type: Literal["pinecone"]
     index_name: str
     api_key: str
     score_threshold: float = 0.1
 
 
-class MockVectorStoreBackend(BaseModel):
-    type: Literal["mock"]
-    score_threshold: float = 0.1
-
-
-class ChromaVectorStoreBackend(BaseModel):
+class ChromaVectorStoreConfig(BaseModel):
     type: Literal["chroma"]
     path: str
     collection_name: str
     score_threshold: float = 0.1
 
 
-type VectorStoreBackend = Union[
-    PineconeVectorStoreBackend, MockVectorStoreBackend, ChromaVectorStoreBackend
-]
-
-
-class OpenaiEmbeddingsBackend(BaseModel):
+class OpenaiEmbeddingsConfig(BaseModel):
     type: Literal["openai"]
     api_key: str
 
 
-class ChromaInternalEmbeddingsBackend(BaseModel):
+class ChromaInternalEmbeddingsConfig(BaseModel):
     type: Literal["chroma-internal"]
-
-
-type EmbeddingsBackend = Union[OpenaiEmbeddingsBackend, ChromaInternalEmbeddingsBackend]
-
-
-class OpenaiLlmBackend(BaseModel):
-    type: Literal["openai"]
-    model: str
-    api_key: str
-
-
-class AnthropicLlmBackend(BaseModel):
-    type: Literal["anthropic"]
-    model: str
-    api_key: str
-
-
-class DbBackend(BaseModel):
-    url: str
-
-
-type LlmBackend = Union[OpenaiLlmBackend, AnthropicLlmBackend]
 
 
 class IndexingConfig(BaseModel):
@@ -63,17 +31,37 @@ class IndexingConfig(BaseModel):
     chunk_overlap: int
 
 
-class OpenWeatherMapBackend(BaseModel):
+class OpenaiLlmConfig(BaseModel):
+    type: Literal["openai"]
+    model: str
     api_key: str
 
 
-class AgentConfig(BaseModel):
-    db: DbBackend
-    llm: LlmBackend = Field(discriminator="type")
-    embeddings: EmbeddingsBackend = Field(discriminator="type")
-    vector_store: VectorStoreBackend = Field(discriminator="type")
+class AnthropicLlmConfig(BaseModel):
+    type: Literal["anthropic"]
+    model: str
+    api_key: str
+
+
+class DbConfig(BaseModel):
+    url: str
+
+
+class OpenWeatherMapConfig(BaseModel):
+    api_key: str
+
+
+class Config(BaseModel):
+    db: DbConfig
+    llm: Union[OpenaiLlmConfig, AnthropicLlmConfig] = Field(discriminator="type")
+    embeddings: Union[OpenaiEmbeddingsConfig, ChromaInternalEmbeddingsConfig] = Field(
+        discriminator="type"
+    )
+    vector_store: Union[PineconeVectorStoreConfig, ChromaVectorStoreConfig] = Field(
+        discriminator="type"
+    )
     indexing: IndexingConfig = IndexingConfig(chunk_size=1000, chunk_overlap=100)
-    weather: OpenWeatherMapBackend
+    weather: OpenWeatherMapConfig
 
     @classmethod
     def from_runnable_config(cls, config: RunnableConfig) -> Self:

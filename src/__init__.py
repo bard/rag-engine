@@ -1,2 +1,2 @@
-from . import ingest
-from . import query
+from . import workflow_ingest
+from . import workflow_query

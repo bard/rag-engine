@@ -1,11 +1,18 @@
+from typing import TypedDict
 from langchain_core.runnables.config import RunnableConfig
 from .. import services
-from ..config import AgentConfig
-from ..query.state import AgentState
+from ..config import Config
+from ..workflow_query.state import AgentState
 
 
-def fetch_weather_info(state: AgentState, config: RunnableConfig):
-    c = AgentConfig.from_runnable_config(config)
+class FetchWeatherInfoStateUpdate(TypedDict):
+    weather_info: str
+
+
+def fetch_weather_info(
+    state: AgentState, config: RunnableConfig
+) -> FetchWeatherInfoStateUpdate:
+    c = Config.from_runnable_config(config)
     weather = services.get_weather_client(c)
 
     location = state.get("location")

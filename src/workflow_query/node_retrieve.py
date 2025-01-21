@@ -2,7 +2,7 @@ from typing import TypedDict
 from langchain.schema import Document
 from langchain_core.runnables import RunnableConfig
 
-from ..config import AgentConfig
+from ..config import Config
 from ..services import get_vector_store
 from .state import AgentState
 
@@ -12,7 +12,7 @@ class RetrieveStateUpdate(TypedDict):
 
 
 def retrieve(state: AgentState, config: RunnableConfig) -> RetrieveStateUpdate:
-    c = AgentConfig.from_runnable_config(config)
+    c = Config.from_runnable_config(config)
     vector_store = get_vector_store(c)
     query = state.get("query")
     assert query is not None

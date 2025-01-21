@@ -3,11 +3,9 @@ import pytest
 from langchain_chroma.vectorstores import Chroma
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
-from src.data import (
-    ExpenditureReport,
-    SqlDocument,
-)
-from src.ingest import (
+from src.sql import SqlKnowledgeBaseDocument
+from src.data import InsuranceAverageExpenditureData
+from src.workflow_ingest import (
     AgentState,
     SourceContent,
     fetch,
@@ -29,7 +27,7 @@ def test_fetch(agent_config, average_insurance_expenditures_html_as_data_url, sn
     assert state_update.get("source_content") == snapshot
 
 
-def test_extract_expenditure_reports(
+def test_extract_expenditure_data(
     agent_config,
     average_insurance_expenditures_html,
     average_insurance_expenditures_html_as_data_url,
@@ -66,6 +64,22 @@ def test_extract_generic_tabular_data(
     assert state_update["extracted_data"] == snapshot
 
 
+def test_extract_textual_data(agent_config, snapshot):
+    source_content = SourceContent(
+        data="<h1>lorem ipsum</h1><p>Vivamus id enim.  Aenean in sem ac leo mollis blandit.</p>",
+        type="text/html",
+    )
+
+    agent_state = AgentState(
+        url="about:blank",
+        source_content=source_content,
+        extracted_data=[],
+    )
+
+    state_update = extract(agent_state, agent_config)
+    assert state_update == snapshot
+
+
 def test_index_and_store(
     agent_config,
     average_insurance_expenditures_html_as_data_url,
@@ -76,9 +90,10 @@ def test_index_and_store(
         url=average_insurance_expenditures_html_as_data_url,
         source_content=None,
         extracted_data=[
-            ExpenditureReport.from_html_content(
+            InsuranceAverageExpenditureData.from_html(
                 average_insurance_expenditures_html,
                 source_url=average_insurance_expenditures_html_as_data_url,
+                llm=None,
             )
         ],
     )
@@ -86,7 +101,7 @@ def test_index_and_store(
     state_update = index_and_store(agent_state, agent_config)
     database_state = (
         Session(create_engine(agent_config.get("configurable").get("db").get("url")))
-        .query(SqlDocument)
+        .query(SqlKnowledgeBaseDocument)
         .all()
     )
     vector_store_state = Chroma(
@@ -113,7 +128,7 @@ def test_graph(agent_config, average_insurance_expenditures_html_as_data_url, sn
 
     database_state = (
         Session(create_engine(agent_config.get("configurable").get("db").get("url")))
-        .query(SqlDocument)
+        .query(SqlKnowledgeBaseDocument)
         .all()
     )
     vector_store_state = Chroma(

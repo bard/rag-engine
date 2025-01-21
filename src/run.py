@@ -5,11 +5,12 @@ from langchain_core.runnables.config import RunnableConfig
 from langchain_core.messages import HumanMessage, AIMessage
 
 
-from src import ingest, services, data, config, query
+from src import services, data, workflow_query, workflow_ingest
 from src.settings import Settings
+from src.config import Config
 
 
-SETTINGS = Settings()  # pyright: ignore[reportCallIssue] https://github.com/pydantic/pydantic-settings/issues/201
+SETTINGS = Settings()  # type: ignore # https://github.com/pydantic/pydantic-settings/issues/201
 
 
 @click.group()
@@ -25,20 +26,21 @@ def cmd_ingest(data):
     else:
         abs_path = path.abspath(data)
         input_url = f"file://{abs_path}"
-    initial_agent_state = ingest.AgentState(
+    initial_agent_state = workflow_ingest.AgentState(
         url=input_url, source_content=None, extracted_data=[]
     )
 
-    ingest.get_graph().invoke(initial_agent_state, get_agent_config())
+    workflow_ingest.get_graph().invoke(
+        initial_agent_state,
+        RunnableConfig(configurable=get_config().model_dump()),
+    )
 
     click.echo("Data ingested successfully")
 
 
 @click.command(name="initdb")
 def cmd_initdb():
-    engine = services.get_db(
-        config.AgentConfig.from_runnable_config(get_agent_config())
-    )
+    engine = services.get_db(get_config())
 
     data.SqlAlchemyBase.metadata.create_all(engine)
 
@@ -48,7 +50,7 @@ def cmd_initdb():
 @click.command(name="query")
 @click.argument("user_query")
 def cmd_query(user_query: str):
-    initial_agent_state = query.AgentState(
+    initial_agent_state = workflow_query.AgentState(
         messages=[HumanMessage(content=user_query)],
         documents=[],
         weather_info=None,
@@ -57,7 +59,10 @@ def cmd_query(user_query: str):
         location=None,
     )
 
-    response = query.get_graph().invoke(initial_agent_state, get_agent_config())
+    response = workflow_query.get_graph().invoke(
+        initial_agent_state,
+        RunnableConfig(configurable=get_config().model_dump()),
+    )
 
     ai_messages = [msg for msg in response["messages"] if isinstance(msg, AIMessage)]
     if ai_messages:
@@ -66,9 +71,9 @@ def cmd_query(user_query: str):
         click.echo("No AI response found")
 
 
-def get_agent_config() -> RunnableConfig:
-    return RunnableConfig(
-        configurable={
+def get_config() -> Config:
+    return Config(
+        **{
             "llm": {
                 "type": "openai",
                 "model": "gpt-4o",
@@ -88,7 +93,8 @@ def get_agent_config() -> RunnableConfig:
                 "collection_name": "documents",
                 "path": SETTINGS.chroma_db_path,
             },
-        }
+            # ignoring type errors here due to https://docs.pydantic.dev/latest/integrations/visual_studio_code/#strict-errors
+        }  # type: ignore
     )
 
 

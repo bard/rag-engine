@@ -2,14 +2,14 @@ from typing import Literal
 from langchain_core.runnables.config import RunnableConfig
 
 from ..services import get_llm
-from ..config import AgentConfig
+from ..config import Config
 from .state import AgentState
 
 
 def reformulate_query(
     state: AgentState, config: RunnableConfig
 ) -> dict[Literal["query"], str]:
-    c = AgentConfig.from_runnable_config(config)
+    c = Config.from_runnable_config(config)
 
     llm = get_llm(c)
     user_message = state["messages"][-1].content

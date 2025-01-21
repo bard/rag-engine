@@ -13,31 +13,31 @@ from langchain.vectorstores import VectorStore
 from langchain_core.language_models.chat_models import BaseChatModel
 from pydantic import SecretStr
 from pyowm import OWM  # type: ignore[import-untyped]
-from .config import AgentConfig
+from .config import Config
 
 logger = logging.getLogger()
 
 
-def get_db(config: AgentConfig) -> Engine:
+def get_db(config: Config) -> Engine:
     return create_engine(config.db.url)
 
 
-def get_logger(config: AgentConfig) -> logging.Logger:
+def get_logger(config: Config) -> logging.Logger:
     return logger
 
 
-def get_weather_client(config: AgentConfig) -> OWM:
+def get_weather_client(config: Config) -> OWM:
     return OWM(config.weather.api_key)
 
 
-def get_llm(config: AgentConfig) -> BaseChatModel:
+def get_llm(config: Config) -> BaseChatModel:
     if config.llm.type == "openai":
         return ChatOpenAI(model=config.llm.model)
     else:
         raise Exception(f"Unsupported LLM backend: {config.llm.type}")
 
 
-def get_vector_store(config: AgentConfig) -> VectorStore:
+def get_vector_store(config: Config) -> VectorStore:
     if config.vector_store.type == "chroma":
         embedding_function: ChromaEmbeddingsAdapter | OpenAIEmbeddings
         if config.embeddings.type == "chroma-internal":

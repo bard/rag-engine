@@ -4,13 +4,13 @@ from langchain.schema import HumanMessage
 from langchain_core.runnables import RunnableConfig
 from pydantic import BaseModel, Field
 
-from ..config import AgentConfig
-from ..query.state import AgentState
+from ..config import Config
+from ..workflow_query.state import AgentState
 from ..services import get_llm
 
 
 def classify_query(state: AgentState, config: RunnableConfig):
-    c = AgentConfig.from_runnable_config(config)
+    c = Config.from_runnable_config(config)
     last_message = state["messages"][-1]
     assert isinstance(last_message, HumanMessage)
     query = last_message.content

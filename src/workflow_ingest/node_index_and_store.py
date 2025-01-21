@@ -1,19 +1,16 @@
-import json
-import pprint
 from langchain_core.runnables.config import RunnableConfig
 from langchain.schema import Document
 from sqlalchemy.orm import Session
-from sqlalchemy import insert
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from .. import services
-from ..data import SqlDocument
+from ..sql import SqlKnowledgeBaseDocument
+from ..config import Config
 from .state import AgentState
-from ..config import AgentConfig
 
 
 def index_and_store(state: AgentState, config: RunnableConfig) -> None:
-    c = AgentConfig.from_runnable_config(config)
+    c = Config.from_runnable_config(config)
 
     log = services.get_logger(c)
     log.debug("node/index_and_store")
@@ -22,13 +19,15 @@ def index_and_store(state: AgentState, config: RunnableConfig) -> None:
     vector_store = services.get_vector_store(c)
     documents: list[Document] = []
 
-    reports = state["extracted_data"]
+    extracted_data = state["extracted_data"]
     with Session(db) as session:
         with session.begin():
-            for r in reports:
-                # TODO: since id's are content-ids, use on_conflict_do_nothing instead
+            for r in extracted_data:
+                # TODO: since hash-based id's reliably represent the
+                # document, use on_conflict_do_nothing instead to
+                # avoid the useless update
                 session.merge(
-                    SqlDocument(
+                    SqlKnowledgeBaseDocument(
                         id=r.id(),
                         readable=r.to_readable(),
                         data=r.model_dump_json(),

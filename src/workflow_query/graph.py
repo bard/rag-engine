@@ -2,7 +2,7 @@ import pprint
 from typing import Literal
 from langgraph.graph import StateGraph, END
 
-from ..config import AgentConfig
+from ..config import Config
 from .state import AgentState
 from .node_rerank import rerank
 from .node_retrieve import retrieve
@@ -20,7 +20,7 @@ def route_based_on_classification(
 
 
 def get_graph():
-    builder = StateGraph(AgentState, AgentConfig)
+    builder = StateGraph(AgentState, Config)
     builder.set_entry_point("classify_query")
     builder.add_node("classify_query", classify_query)
     builder.add_node("fetch_weather_info", fetch_weather_info)

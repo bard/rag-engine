@@ -1,4 +1,48 @@
 # serializer version: 1
-# name: test_parse_average_expenditures_document
-  ExpenditureReport(title='Average Expenditures for Auto Insurance, 2012-2021', source_url='about:blank', data=[InsuranceRecord(year=2012, average_expenditure=812.4, percent_change=2.2), InsuranceRecord(year=2013, average_expenditure=841.06, percent_change=3.5), InsuranceRecord(year=2014, average_expenditure=869.47, percent_change=3.4), InsuranceRecord(year=2015, average_expenditure=896.66, percent_change=3.1), InsuranceRecord(year=2016, average_expenditure=945.22, percent_change=5.4), InsuranceRecord(year=2017, average_expenditure=1008.35, percent_change=6.7), InsuranceRecord(year=2018, average_expenditure=1058.1, percent_change=4.9), InsuranceRecord(year=2019, average_expenditure=1071.74, percent_change=1.3), InsuranceRecord(year=2020, average_expenditure=1046.37, percent_change=-2.4), InsuranceRecord(year=2021, average_expenditure=1061.54, percent_change=1.4)])
+# name: test_expenditure_data_from_html
+  InsuranceAverageExpenditureData(title='Average Expenditures for Auto Insurance, 2012-2021', source_url='about:blank', data=[InsuranceRecord(year=2012, average_expenditure=812.4, percent_change=2.2), InsuranceRecord(year=2013, average_expenditure=841.06, percent_change=3.5), InsuranceRecord(year=2014, average_expenditure=869.47, percent_change=3.4), InsuranceRecord(year=2015, average_expenditure=896.66, percent_change=3.1), InsuranceRecord(year=2016, average_expenditure=945.22, percent_change=5.4), InsuranceRecord(year=2017, average_expenditure=1008.35, percent_change=6.7), InsuranceRecord(year=2018, average_expenditure=1058.1, percent_change=4.9), InsuranceRecord(year=2019, average_expenditure=1071.74, percent_change=1.3), InsuranceRecord(year=2020, average_expenditure=1046.37, percent_change=-2.4), InsuranceRecord(year=2021, average_expenditure=1061.54, percent_change=1.4)])
+# ---
+# name: test_expenditure_data_from_html.1
+  '''
+  # Average Expenditures for Auto Insurance, 2012-2021
+  
+  year: 2012, average_expenditure: 812.4, percent_change: 2.2
+  
+  year: 2013, average_expenditure: 841.06, percent_change: 3.5
+  
+  year: 2014, average_expenditure: 869.47, percent_change: 3.4
+  
+  year: 2015, average_expenditure: 896.66, percent_change: 3.1
+  
+  year: 2016, average_expenditure: 945.22, percent_change: 5.4
+  
+  year: 2017, average_expenditure: 1008.35, percent_change: 6.7
+  
+  year: 2018, average_expenditure: 1058.1, percent_change: 4.9
+  
+  year: 2019, average_expenditure: 1071.74, percent_change: 1.3
+  
+  year: 2020, average_expenditure: 1046.37, percent_change: -2.4
+  
+  year: 2021, average_expenditure: 1061.54, percent_change: 1.4
+  
+  
+  '''
+# ---
+# name: test_generic_tabular_data_to_readable
+  '''
+  # Title
+  
+  foo: bar
+  
+  
+  '''
+# ---
+# name: test_textual_data_to_readable
+  '''
+  foobar
+  
+  foobar
+  Hello, world!
+  '''
 # ---

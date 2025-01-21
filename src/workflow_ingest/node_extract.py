@@ -1,3 +1,4 @@
+from langchain_core.language_models import BaseChatModel
 from pydantic import BaseModel
 from typing import TypedDict, Dict, Any
 from langchain.schema import HumanMessage, SystemMessage
@@ -5,20 +6,22 @@ from langchain_core.output_parsers import PydanticOutputParser
 from langchain_core.runnables.config import RunnableConfig
 
 from .state import AgentState
-from ..config import AgentConfig
+from ..config import Config
 from ..data import (
-    ExpenditureReport,
-    GenericReport,
+    IndexableData,
+    InsuranceAverageExpenditureData,
+    GenericTabularData,
+    TextualData,
 )
 from .. import services
 
 
 class ExtractStateUpdate(TypedDict):
-    extracted_data: list[ExpenditureReport | GenericReport]
+    extracted_data: list[IndexableData]
 
 
 def extract(state: AgentState, config: RunnableConfig) -> ExtractStateUpdate:
-    c = AgentConfig.from_runnable_config(config)
+    c = Config.from_runnable_config(config)
 
     log = services.get_logger(c)
     log.debug("node/extract")
@@ -27,21 +30,29 @@ def extract(state: AgentState, config: RunnableConfig) -> ExtractStateUpdate:
     content = state["source_content"]
     assert content is not None
 
-    # naive example of deciding between a cheap/specialized/fast
-    # strategy to extract data from known sources and a
-    # expensive/generic/slow best-effort fallback for unknown data.
-
     html = content["data"]
-    extracted_data: list[ExpenditureReport | GenericReport] = []
-    if "Average Expenditures for Auto Insurance" in html:
-        generic_data = None
-        extracted_data.append(ExpenditureReport.from_html_content(html, source_url=url))
-    else:
-        generic_data = parse_generic_tabular_data_with_llm(html, c, source_url=url)
-        if generic_data is not None:
-            extracted_data.append(generic_data)
+    extracted_data: list[IndexableData] = []
+    llm = services.get_llm(c)
 
-    # TODO log a warning if no data was extracted
+    # naive example of deciding between a cheap/specialized/fast
+    # strategy to extract data from known source type, a
+    # expensive/generic/slow best-effort fallback for structured but
+    # otherwise unknown data, and a final fallback for purerly textual data
+    # TODO: make extractors configurable at a system level
+    extractors: list[type[IndexableData]] = [
+        InsuranceAverageExpenditureData,
+        GenericTabularData,
+        TextualData,
+    ]
+
+    for extractor in extractors:
+        result = extractor.from_html(html, url, llm)
+        if result is not None:
+            extracted_data.append(result)
+            break
+
+    if not extracted_data:
+        log.warning(f"No data could be extracted from {url}")
 
     return {
         "extracted_data": extracted_data,
@@ -54,14 +65,14 @@ class GenericTabularDataExtraction(BaseModel):
 
 
 def parse_generic_tabular_data_with_llm(
-    html: str, config: AgentConfig, source_url: str
-) -> GenericReport | None:
+    html: str, source_url: str, llm: BaseChatModel
+) -> GenericTabularData | None:
     try:
         # `with_structured_output` consistently causes the
         # `data` field to not be generated, so we fall back to
         # old-style output parser
         parser = PydanticOutputParser(pydantic_object=GenericTabularDataExtraction)
-        response = services.get_llm(config).invoke(
+        response = llm.invoke(
             [
                 SystemMessage(f"""You are an assistant for data extraction tasks. Extract a title
                     and tabular data from the provided html.
@@ -71,7 +82,7 @@ def parse_generic_tabular_data_with_llm(
         )
         raw_generic_data = parser.parse(str(response.content))
 
-        return GenericReport(
+        return GenericTabularData(
             source_url=source_url,
             **raw_generic_data.model_dump(),
         )

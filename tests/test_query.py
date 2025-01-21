@@ -2,8 +2,14 @@ import pytest
 from langchain.schema import HumanMessage
 from langchain_core.messages import HumanMessage
 
-from src.config import AgentConfig
-from src.query import AgentState, get_graph, retrieve, reformulate_query, classify_query
+from src.config import Config
+from src.workflow_query import (
+    AgentState,
+    get_graph,
+    retrieve,
+    reformulate_query,
+    classify_query,
+)
 from src import services
 
 
@@ -49,9 +55,7 @@ def test_classify_query(agent_config):
 
 # TODO rename
 def test_retrieve_2(agent_config, travel_info_documents, snapshot):
-    vector_store = services.get_vector_store(
-        AgentConfig.from_runnable_config(agent_config)
-    )
+    vector_store = services.get_vector_store(Config.from_runnable_config(agent_config))
     vector_store.add_documents(travel_info_documents)
 
     agent_state = AgentState(
@@ -71,9 +75,7 @@ def test_retrieve_2(agent_config, travel_info_documents, snapshot):
 
 
 def test_retrieve(agent_config):
-    vector_store = services.get_vector_store(
-        AgentConfig.from_runnable_config(agent_config)
-    )
+    vector_store = services.get_vector_store(Config.from_runnable_config(agent_config))
     vector_store.add_texts(
         [
             """# Average expenditures 2012-2013
@@ -123,9 +125,7 @@ Year: 2015, Expenditure: $896.66, Change: 3.1%
 
 @pytest.mark.vcr
 def test_graph_with_weather_query(agent_config, travel_info_documents, snapshot):
-    vector_store = services.get_vector_store(
-        AgentConfig.from_runnable_config(agent_config)
-    )
+    vector_store = services.get_vector_store(Config.from_runnable_config(agent_config))
     vector_store.add_documents(travel_info_documents)
     agent_state = AgentState(
         messages=[
@@ -145,9 +145,7 @@ def test_graph_with_weather_query(agent_config, travel_info_documents, snapshot)
 
 @pytest.mark.vcr
 def test_graph_with_travel_info_query(agent_config, travel_info_documents, snapshot):
-    vector_store = services.get_vector_store(
-        AgentConfig.from_runnable_config(agent_config)
-    )
+    vector_store = services.get_vector_store(Config.from_runnable_config(agent_config))
     vector_store.add_documents(travel_info_documents)
     agent_state = AgentState(
         messages=[
@@ -178,9 +176,7 @@ def test_graph_with_travel_info_query(agent_config, travel_info_documents, snaps
 def test_graph_with_insurance_queries(
     agent_config, user_query, insurance_data_documents, snapshot
 ):
-    vector_store = services.get_vector_store(
-        AgentConfig.from_runnable_config(agent_config)
-    )
+    vector_store = services.get_vector_store(Config.from_runnable_config(agent_config))
     vector_store.add_documents(insurance_data_documents)
 
     agent_state = AgentState(

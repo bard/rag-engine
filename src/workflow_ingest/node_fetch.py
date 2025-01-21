@@ -3,7 +3,7 @@ from langchain_core.runnables.config import RunnableConfig
 
 from .. import services
 from ..util import fetch_html_content
-from ..config import AgentConfig
+from ..config import Config
 from .state import AgentState, SourceContent
 
 
@@ -12,7 +12,7 @@ class FetchStateUpdate(TypedDict):
 
 
 def fetch(state: AgentState, config: RunnableConfig) -> FetchStateUpdate:
-    c = AgentConfig.from_runnable_config(config)
+    c = Config.from_runnable_config(config)
 
     log = services.get_logger(c)
     log.debug("node/fetch")
