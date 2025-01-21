@@ -1,11 +1,10 @@
 import pprint
 from typing import Literal
-from langgraph.prebuilt import ToolNode, tools_condition
 from langgraph.graph import StateGraph, END
+
 from ..config import AgentConfig
 from .state import AgentState
-
-
+from .node_rerank import rerank
 from .node_retrieve import retrieve
 from .node_fetch_weather_info import fetch_weather_info
 from .node_classify_query import classify_query
@@ -26,6 +25,7 @@ def get_graph():
     builder.add_node("classify_query", classify_query)
     builder.add_node("fetch_weather_info", fetch_weather_info)
     builder.add_node("retrieve", retrieve)
+    builder.add_node("rerank", rerank)
     builder.add_node("generate", generate)
     builder.add_conditional_edges(
         "classify_query",
@@ -36,7 +36,8 @@ def get_graph():
         },
     )
     builder.add_edge("fetch_weather_info", "retrieve")
-    builder.add_edge("retrieve", "generate")
+    builder.add_edge("retrieve", "rerank")
+    builder.add_edge("rerank", "generate")
     builder.add_edge("generate", END)
 
     graph = builder.compile()

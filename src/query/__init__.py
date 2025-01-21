@@ -5,6 +5,7 @@ from .node_fetch_weather_info import fetch_weather_info
 from .node_generate import generate
 from .node_reformulate_query import reformulate_query
 from .node_retrieve import retrieve
+from .node_rerank import rerank
 
 __all__ = [
     "AgentState",
@@ -14,4 +15,5 @@ __all__ = [
     "generate",
     "reformulate_query",
     "retrieve",
+    "rerank",
 ]
