@@ -3,6 +3,7 @@ import pprint
 from langchain_core.runnables.config import RunnableConfig
 from langchain.schema import Document
 from sqlalchemy.orm import Session
+from sqlalchemy import insert
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from .. import services
@@ -25,7 +26,8 @@ def index_and_store(state: AgentState, config: RunnableConfig) -> None:
     with Session(db) as session:
         with session.begin():
             for r in reports:
-                session.add(
+                # TODO: since id's are content-ids, use on_conflict_do_nothing instead
+                session.merge(
                     SqlDocument(
                         id=r.id(),
                         readable=r.to_readable(),
