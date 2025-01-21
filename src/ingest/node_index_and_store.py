@@ -31,7 +31,7 @@ def index_and_store(state: AgentState, config: RunnableConfig) -> None:
                         data=r.model_dump_json(),
                     )
                 )
-                documents.append(r.to_langchain_document())
+                # split the report's readable representation as returned by to_readable() into multiple langchain documents using a textsplitter, and append them to the documents array ai!
 
     vector_store.add_documents(documents)
 
