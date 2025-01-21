@@ -1,10 +1,41 @@
 import hashlib
-from langchain.schema import Document
 from typing import Dict, Any, Self
 from pydantic import BaseModel
 from bs4 import BeautifulSoup
 from sqlalchemy.orm import Mapped, mapped_column, DeclarativeBase
 from sqlalchemy import inspect
+
+
+class BaseIndexedContent(BaseModel):
+    title: str
+    source_url: str
+    data: list[Any]
+
+    def id(self) -> str:
+        content_hash = hashlib.sha256(
+            (self.title + "".join(str(item) for item in self.data)).encode("utf-8")
+        ).hexdigest()
+
+        # TODO evaluate url-based id (allows replacing/updating as long as urls are stable)
+        return f"{self.__class__.__name__}-{content_hash[:8]}"
+
+    def to_readable(self) -> str:
+        md = f"# {self.title}\n\n"
+
+        if isinstance(self.data, BaseModel):
+            kv_pairs = self.data.model_dump()
+        else:
+            kv_pairs = self.data
+
+        for kv_pair in kv_pairs:
+            line = ", ".join([f"{k}: {v}" for k, v in kv_pair])
+            line += "\n\n"
+            md += line
+        return md
+
+
+class GenericReport(BaseIndexedContent):
+    data: list[Dict[str, Any]]
 
 
 class InsuranceRecord(BaseModel):
@@ -15,10 +46,8 @@ class InsuranceRecord(BaseModel):
     percent_change: float
 
 
-class ExpenditureReport(BaseModel):
-    title: str
+class ExpenditureReport(BaseIndexedContent):
     data: list[InsuranceRecord]
-    source_url: str
 
     @classmethod
     def from_html_content(cls, html_content: str, source_url: str) -> Self:
@@ -67,48 +96,6 @@ class ExpenditureReport(BaseModel):
             data.append(record)
 
         return cls(title=title, data=data, source_url=source_url)
-
-    def to_readable(self) -> str:
-        md = f"# {self.title}\n\n"
-        for entry in self.data:
-            line = ", ".join(
-                [f"{key}: {value}" for key, value in entry.model_dump().items()]
-            )
-            line += "\n\n"
-            md += line
-
-        return md
-
-    def id(self) -> str:
-        content_hash = hashlib.sha256(
-            (self.title + "".join(str(item) for item in self.data)).encode("utf-8")
-        ).hexdigest()
-
-        return f"expenditure-report-{content_hash[:8]}"
-
-
-class RawGenericTabularData(BaseModel):
-    title: str
-    data: list[Dict[str, Any]]
-
-
-class GenericTabularData(RawGenericTabularData):
-    source_url: str
-
-    def to_readable(self) -> str:
-        md = f"# {self.title}\n\n"
-        for entry in self.data:
-            line = ", ".join([f"{key}: {value}" for key, value in entry.items()])
-            line += "\n\n"
-            md += line
-        return md
-
-    def id(self) -> str:
-        content_hash = hashlib.sha256(
-            (self.title + "".join(str(item) for item in self.data)).encode("utf-8")
-        ).hexdigest()
-
-        return f"expenditure-report-{content_hash[:8]}"
 
 
 class SqlAlchemyBase(DeclarativeBase):

@@ -1,10 +1,13 @@
 import click
-import os
 import logging
-from dotenv import load_dotenv
+from os import path
 from langchain_core.runnables.config import RunnableConfig
 
 from src import ingest, services, data, config
+from src.settings import Settings
+
+
+SETTINGS = Settings()  # pyright: ignore[reportCallIssue] https://github.com/pydantic/pydantic-settings/issues/201
 
 
 @click.group()
@@ -18,7 +21,7 @@ def cmd_ingest(data):
     if data.startswith(("http://", "https://", "file://", "data://")):
         input_url = data
     else:
-        abs_path = os.path.abspath(data)
+        abs_path = path.abspath(data)
         input_url = f"file://{abs_path}"
 
     initial_agent_state = ingest.AgentState(
@@ -41,13 +44,13 @@ def get_config() -> RunnableConfig:
             "llm": {
                 "type": "openai",
                 "model": "gpt-4o",
-                "api_key": os.getenv("OPENAI_API_KEY"),
+                "api_key": SETTINGS.openai_api_key.get_secret_value(),
             },
             "weather": {
-                "api_key": os.getenv("OPENWEATHERMAP_API_KEY"),
+                "api_key": SETTINGS.openweathermap_api_key.get_secret_value(),
             },
             "db": {
-                "url": os.getenv("DB_URL"),
+                "url": SETTINGS.db_url.get_secret_value(),
             },
             "embeddings": {
                 "type": "chroma-internal",
@@ -55,16 +58,14 @@ def get_config() -> RunnableConfig:
             "vector_store": {
                 "type": "chroma",
                 "collection_name": "documents",
-                "path": os.getenv("CHROMA_DB_PATH"),
+                "path": SETTINGS.chroma_db_path,
             },
         }
     )
 
 
 if __name__ == "__main__":
-    load_dotenv()
-
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=getattr(logging, SETTINGS.log_level))
 
     cli.add_command(cmd_ingest)
     cli.add_command(cmd_initdb)

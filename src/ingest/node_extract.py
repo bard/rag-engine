@@ -1,5 +1,5 @@
-import hashlib
-from typing import Sequence, TypedDict
+from pydantic import BaseModel
+from typing import TypedDict, Dict, Any
 from langchain.schema import HumanMessage, SystemMessage
 from langchain_core.output_parsers import PydanticOutputParser
 from langchain_core.runnables.config import RunnableConfig
@@ -8,15 +8,13 @@ from .state import AgentState
 from ..config import AgentConfig
 from ..data import (
     ExpenditureReport,
-    InsuranceRecord,
-    RawGenericTabularData,
-    GenericTabularData,
+    GenericReport,
 )
 from .. import services
 
 
 class ExtractStateUpdate(TypedDict):
-    extracted_data: list[ExpenditureReport | GenericTabularData]
+    extracted_data: list[ExpenditureReport | GenericReport]
 
 
 def extract(state: AgentState, config: RunnableConfig) -> ExtractStateUpdate:
@@ -34,7 +32,7 @@ def extract(state: AgentState, config: RunnableConfig) -> ExtractStateUpdate:
     # expensive/generic/slow best-effort fallback for unknown data.
 
     html = content["data"]
-    extracted_data: list[ExpenditureReport | GenericTabularData] = []
+    extracted_data: list[ExpenditureReport | GenericReport] = []
     if "Average Expenditures for Auto Insurance" in html:
         generic_data = None
         extracted_data.append(ExpenditureReport.from_html_content(html, source_url=url))
@@ -50,14 +48,19 @@ def extract(state: AgentState, config: RunnableConfig) -> ExtractStateUpdate:
     }
 
 
+class GenericTabularDataExtraction(BaseModel):
+    title: str
+    data: list[Dict[str, Any]]
+
+
 def parse_generic_tabular_data_with_llm(
     html: str, config: AgentConfig, source_url: str
-) -> GenericTabularData | None:
+) -> GenericReport | None:
     try:
         # `with_structured_output` consistently causes the
         # `data` field to not be generated, so we fall back to
         # old-style output parser
-        parser = PydanticOutputParser(pydantic_object=RawGenericTabularData)
+        parser = PydanticOutputParser(pydantic_object=GenericTabularDataExtraction)
         response = services.get_llm(config).invoke(
             [
                 SystemMessage(f"""You are an assistant for data extraction tasks. Extract a title
@@ -68,7 +71,7 @@ def parse_generic_tabular_data_with_llm(
         )
         raw_generic_data = parser.parse(str(response.content))
 
-        return GenericTabularData(
+        return GenericReport(
             source_url=source_url,
             **raw_generic_data.model_dump(),
         )

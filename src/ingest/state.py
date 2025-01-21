@@ -1,5 +1,5 @@
 from typing import TypedDict, Literal
-from ..data import ExpenditureReport, GenericTabularData
+from ..data import ExpenditureReport, GenericReport
 
 
 class SourceContent(TypedDict):
@@ -10,4 +10,4 @@ class SourceContent(TypedDict):
 class AgentState(TypedDict):
     url: str
     source_content: SourceContent | None
-    extracted_data: list[ExpenditureReport | GenericTabularData]
+    extracted_data: list[ExpenditureReport | GenericReport]

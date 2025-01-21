@@ -5,8 +5,6 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 from src.data import (
     ExpenditureReport,
-    GenericTabularData,
-    InsuranceRecord,
     SqlDocument,
 )
 from src.ingest import (

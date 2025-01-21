@@ -10,6 +10,7 @@ from langchain_chroma import Chroma
 from langchain_core.embeddings import Embeddings
 from langchain_openai import OpenAIEmbeddings
 from langchain.vectorstores import VectorStore
+from langchain_core.language_models.chat_models import BaseChatModel
 from pydantic import SecretStr
 from pyowm import OWM  # type: ignore[import-untyped]
 from .config import AgentConfig
@@ -29,7 +30,7 @@ def get_weather_client(config: AgentConfig) -> OWM:
     return OWM(config.weather.api_key)
 
 
-def get_llm(config: AgentConfig) -> ChatOpenAI:
+def get_llm(config: AgentConfig) -> BaseChatModel:
     if config.llm.type == "openai":
         return ChatOpenAI(model=config.llm.model)
     else:
