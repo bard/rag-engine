@@ -73,11 +73,11 @@ class ExpenditureReport(BaseModel):
     def to_readable(self) -> str:
         md = f"# {self.title}\n\n"
         for entry in self.data:
-            line = ",".join(
+            line = ", ".join(
                 [f"{key}: {value}" for key, value in entry.model_dump().items()]
             )
             line += "\n\n"
-        return md
+            md += line
 
     def to_langchain_document(self) -> Document:
         return Document(
@@ -122,8 +122,9 @@ class GenericTabularData(RawGenericTabularData):
     def to_readable(self) -> str:
         md = f"# {self.title}\n\n"
         for entry in self.data:
-            line = ",".join([f"{key}: {value}" for key, value in entry.items()])
+            line = ", ".join([f"{key}: {value}" for key, value in entry.items()])
             line += "\n\n"
+            md += line
         return md
 
     def id(self) -> str:
