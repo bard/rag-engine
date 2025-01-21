@@ -3,6 +3,7 @@ import pprint
 from langchain_core.runnables.config import RunnableConfig
 from langchain.schema import Document
 from sqlalchemy.orm import Session
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from .. import services
 from ..data import SqlDocument
@@ -31,7 +32,26 @@ def index_and_store(state: AgentState, config: RunnableConfig) -> None:
                         data=r.model_dump_json(),
                     )
                 )
-                # split the report's readable representation as returned by to_readable() into multiple langchain documents using a textsplitter, and append them to the documents array ai!
+
+                chunks = RecursiveCharacterTextSplitter(
+                    chunk_size=c.indexing.chunk_size,
+                    chunk_overlap=c.indexing.chunk_overlap,
+                ).split_text(r.to_readable())
+
+                for i, chunk in enumerate(chunks):
+                    doc_id = r.id()
+                    chunk_id = i
+                    doc = Document(
+                        id=f"{doc_id}-{chunk_id}",
+                        page_content=chunk,
+                        metadata={
+                            "source_id": doc_id,
+                            "chunk_id": chunk_id,
+                            "source_url": r.source_url,
+                            "title": r.title,
+                        },
+                    )
+                    documents.append(doc)
 
     vector_store.add_documents(documents)
 

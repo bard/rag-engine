@@ -58,6 +58,11 @@ class DbBackend(BaseModel):
 type LlmBackend = Union[OpenaiLlmBackend, AnthropicLlmBackend]
 
 
+class IndexingConfig(BaseModel):
+    chunk_size: int
+    chunk_overlap: int
+
+
 class OpenWeatherMapBackend(BaseModel):
     api_key: str
 
@@ -67,6 +72,7 @@ class AgentConfig(BaseModel):
     llm: LlmBackend = Field(discriminator="type")
     embeddings: EmbeddingsBackend = Field(discriminator="type")
     vector_store: VectorStoreBackend = Field(discriminator="type")
+    indexing: IndexingConfig = IndexingConfig(chunk_size=1000, chunk_overlap=100)
     weather: OpenWeatherMapBackend
 
     @classmethod

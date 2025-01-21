@@ -13,7 +13,6 @@ class InsuranceRecord(BaseModel):
     year: int
     average_expenditure: float
     percent_change: float
-    source_content: str
 
 
 class ExpenditureReport(BaseModel):
@@ -64,7 +63,6 @@ class ExpenditureReport(BaseModel):
                 year=year,
                 average_expenditure=expenditure,
                 percent_change=percent_change,
-                source_content=str(row),
             )
             data.append(record)
 
@@ -79,15 +77,7 @@ class ExpenditureReport(BaseModel):
             line += "\n\n"
             md += line
 
-    def to_langchain_document(self) -> Document:
-        return Document(
-            page_content=self.to_readable(),
-            id=self.id(),
-            metadata={
-                "source_url": self.source_url,
-                "title": self.title,
-            },
-        )
+        return md
 
     def id(self) -> str:
         content_hash = hashlib.sha256(
@@ -104,20 +94,6 @@ class RawGenericTabularData(BaseModel):
 
 class GenericTabularData(RawGenericTabularData):
     source_url: str
-
-    def to_langchain_document(self) -> Document:
-        """
-        Convert this GenericTabularData to a LangChain Document.
-
-        Returns:
-            Document object containing the data and metadata
-        """
-
-        return Document(
-            page_content=self.to_readable(),
-            id=self.id(),
-            metadata={"title": self.title, "source_url": self.source_url},
-        )
 
     def to_readable(self) -> str:
         md = f"# {self.title}\n\n"
