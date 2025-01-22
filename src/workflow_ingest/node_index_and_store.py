@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from .. import services
-from ..sql import SqlKnowledgeBaseDocument
+from ..db import SqlKnowledgeBaseDocument
 from ..config import Config
 from .state import AgentState
 

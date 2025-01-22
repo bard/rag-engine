@@ -3,7 +3,7 @@ import pytest
 from langchain_chroma.vectorstores import Chroma
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
-from src.sql import SqlKnowledgeBaseDocument
+from src.db import SqlKnowledgeBaseDocument
 from src.data import InsuranceAverageExpenditureData
 from src.workflow_ingest import (
     AgentState,
