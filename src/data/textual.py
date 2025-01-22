@@ -30,5 +30,5 @@ class TextualData(IndexableData):
 
         return cls(title=title, source_url=source_url, data=converted_text)
 
-    def to_readable(self) -> str:
+    def to_text(self) -> str:
         return self.title + "\n\n" + self.data

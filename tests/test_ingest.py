@@ -86,16 +86,17 @@ def test_index_and_store(
     average_insurance_expenditures_html,
     snapshot,
 ):
+    data = InsuranceAverageExpenditureData.from_html(
+        average_insurance_expenditures_html,
+        source_url=average_insurance_expenditures_html_as_data_url,
+        llm=None,
+    )
+    assert data is not None
+
     agent_state = AgentState(
         url=average_insurance_expenditures_html_as_data_url,
         source_content=None,
-        extracted_data=[
-            InsuranceAverageExpenditureData.from_html(
-                average_insurance_expenditures_html,
-                source_url=average_insurance_expenditures_html_as_data_url,
-                llm=None,
-            )
-        ],
+        extracted_data=[data],
     )
 
     state_update = index_and_store(agent_state, agent_config)

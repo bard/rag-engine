@@ -14,7 +14,7 @@ class InsuranceAverageExpenditureData(IndexableData):
 
     data: list[InsuranceRecord]
 
-    def to_readable(self) -> str:
+    def to_text(self) -> str:
         md = f"# {self.title}\n\n"
         for kv_pair in self.data:
             line = ", ".join([f"{k}: {v}" for k, v in kv_pair])

@@ -29,7 +29,7 @@
   
   '''
 # ---
-# name: test_generic_tabular_data_to_readable
+# name: test_generic_tabular_data_to_text
   '''
   # Title
   
@@ -38,7 +38,7 @@
   
   '''
 # ---
-# name: test_textual_data_to_readable
+# name: test_textual_data_to_text
   '''
   foobar
   

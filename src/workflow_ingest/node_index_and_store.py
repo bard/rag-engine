@@ -29,7 +29,7 @@ def index_and_store(state: AgentState, config: RunnableConfig) -> None:
                 session.merge(
                     SqlKnowledgeBaseDocument(
                         id=r.id(),
-                        readable=r.to_readable(),
+                        content=r.to_text(),
                         data=r.model_dump_json(),
                     )
                 )
@@ -37,7 +37,7 @@ def index_and_store(state: AgentState, config: RunnableConfig) -> None:
                 chunks = RecursiveCharacterTextSplitter(
                     chunk_size=c.indexing.chunk_size,
                     chunk_overlap=c.indexing.chunk_overlap,
-                ).split_text(r.to_readable())
+                ).split_text(r.to_text())
 
                 for i, chunk in enumerate(chunks):
                     doc_id = r.id()

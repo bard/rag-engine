@@ -11,7 +11,7 @@ from .base import IndexableData
 class GenericTabularData(IndexableData):
     data: list[Dict[str, Any]]
 
-    def to_readable(self) -> str:
+    def to_text(self) -> str:
         md = f"# {self.title}\n\n"
         for kv_pair in self.data:
             line = ", ".join([f"{k}: {v}" for k, v in kv_pair.items()])
