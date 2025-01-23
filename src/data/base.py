@@ -1,11 +1,11 @@
 import hashlib
-from typing import Self
+from typing import Self, Optional
 from langchain_core.language_models import BaseChatModel
 from pydantic import BaseModel
 
 
 class IndexableData(BaseModel):
-    title: str
+    title: Optional[str]
     source_url: str
 
     def id(self) -> str:
@@ -17,7 +17,11 @@ class IndexableData(BaseModel):
         raise Exception("to_text() not defined")
 
     @classmethod
-    def from_html(
-        cls, html: str, source_url: str, llm: BaseChatModel | None
+    def from_content(
+        cls,
+        content_data: str,
+        content_type: str,
+        source_url: str,
+        llm: BaseChatModel | None,
     ) -> Self | None:
-        raise Exception("from_html() not defined")
+        raise Exception("from_content() not defined")

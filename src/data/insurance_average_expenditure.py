@@ -24,19 +24,25 @@ class InsuranceAverageExpenditureData(IndexableData):
         return md
 
     @classmethod
-    def from_html(
-        cls, html: str, source_url: str, llm: BaseChatModel | None
+    def from_content(
+        cls,
+        content_data: str,
+        content_type: str,
+        source_url: str,
+        llm: BaseChatModel | None,
     ) -> Self | None:
         """
         Parse the auto insurance expenditure table and return a list of dictionaries.
         Each dictionary represents a row with year, expenditure, and percent change.
         """
 
-        if "Average Expenditures for Auto Insurance" not in html:
+        if content_type != "text/html":
+            return None
+        if "Average Expenditures for Auto Insurance" not in content_data:
             return None
 
         # Create BeautifulSoup object
-        soup = BeautifulSoup(html, "html.parser")
+        soup = BeautifulSoup(content_data, "html.parser")
 
         # Find the innermost table with the actual data
         tables = soup.find_all("table")

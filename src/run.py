@@ -1,16 +1,13 @@
 import click
 import logging
 from os import path
-from langchain_core.runnables.config import RunnableConfig
 from langchain_core.messages import HumanMessage, AIMessage
 
-
-from src import services, data, workflow_query, workflow_ingest
-from src.settings import Settings
+from src import services, workflow_query, workflow_ingest, db
 from src.config import Config
 
 
-SETTINGS = Settings()  # type: ignore # https://github.com/pydantic/pydantic-settings/issues/201
+CONFIG = Config.from_env()
 
 
 @click.group()
@@ -30,19 +27,16 @@ def cmd_ingest(data):
         url=input_url, source_content=None, extracted_data=[]
     )
 
-    workflow_ingest.get_graph().invoke(
-        initial_agent_state,
-        RunnableConfig(configurable=get_config().model_dump()),
-    )
+    workflow_ingest.get_graph().invoke(initial_agent_state, CONFIG.to_runnable_config())
 
     click.echo("Data ingested successfully")
 
 
 @click.command(name="initdb")
 def cmd_initdb():
-    engine = services.get_db(get_config())
+    engine = services.get_db(CONFIG)
 
-    data.SqlAlchemyBase.metadata.create_all(engine)
+    db.SqlAlchemyBase.metadata.create_all(engine)
 
     click.echo("Database initialized successfully")
 
@@ -60,8 +54,7 @@ def cmd_query(user_query: str):
     )
 
     response = workflow_query.get_graph().invoke(
-        initial_agent_state,
-        RunnableConfig(configurable=get_config().model_dump()),
+        initial_agent_state, CONFIG.to_runnable_config()
     )
 
     ai_messages = [msg for msg in response["messages"] if isinstance(msg, AIMessage)]
@@ -71,35 +64,8 @@ def cmd_query(user_query: str):
         click.echo("No AI response found")
 
 
-def get_config() -> Config:
-    return Config(
-        **{
-            "llm": {
-                "type": "openai",
-                "model": "gpt-4o",
-                "api_key": SETTINGS.openai_api_key.get_secret_value(),
-            },
-            "weather": {
-                "api_key": SETTINGS.openweathermap_api_key.get_secret_value(),
-            },
-            "db": {
-                "url": SETTINGS.db_url.get_secret_value(),
-            },
-            "embeddings": {
-                "type": "chroma-internal",
-            },
-            "vector_store": {
-                "type": "chroma",
-                "collection_name": "documents",
-                "path": SETTINGS.chroma_db_path,
-            },
-            # ignoring type errors here due to https://docs.pydantic.dev/latest/integrations/visual_studio_code/#strict-errors
-        }  # type: ignore
-    )
-
-
 if __name__ == "__main__":
-    logging.basicConfig(level=getattr(logging, SETTINGS.log_level))
+    logging.basicConfig(level=getattr(logging, CONFIG.log_level))
 
     cli.add_command(cmd_ingest)
     cli.add_command(cmd_initdb)

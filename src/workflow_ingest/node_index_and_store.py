@@ -19,6 +19,7 @@ def index_and_store(state: AgentState, config: RunnableConfig) -> None:
     vector_store = services.get_vector_store(c)
     documents: list[Document] = []
 
+    topic_id = state["topic_id"]
     extracted_data = state["extracted_data"]
     with Session(db) as session:
         with session.begin():
@@ -31,6 +32,7 @@ def index_and_store(state: AgentState, config: RunnableConfig) -> None:
                         id=r.id(),
                         content=r.to_text(),
                         data=r.model_dump_json(),
+                        topic_id=topic_id,
                     )
                 )
 

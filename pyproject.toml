@@ -33,6 +33,7 @@ sqlalchemy = "^2.0.37"
 langchain-chroma = "^0.2.0"
 langgraph = "^0.2.62"
 pyowm = "^3.3.0"
+data-uri-parser = "^0.1.11"
 
 [tool.poetry.group.dev.dependencies]
 taskipy = "^1.12.0"
@@ -73,6 +74,8 @@ types-tqdm = "^4.67.0.20241221"
 types-tree-sitter = "^0.20.1.20240311"
 types-tree-sitter-languages = "^1.10.0.20240612"
 types-xmltodict = "^0.14.0.20241009"
+pytest-fastapi-deps = "^0.2.3"
+fastapi = {extras = ["testclient"], version = "^0.115.6"}
 
 [build-system]
 requires = ["poetry-core"]

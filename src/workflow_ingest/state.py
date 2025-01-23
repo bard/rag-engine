@@ -4,10 +4,11 @@ from ..data import IndexableData
 
 class SourceContent(TypedDict):
     data: str
-    type: Literal["text/html"]  # TODO 'application/vnd.ms-excel', 'text/plain'
+    type: Literal["text/html", "text/plain"]  # TODO 'application/vnd.ms-excel'
 
 
 class AgentState(TypedDict):
     url: str
+    topic_id: str | None
     source_content: SourceContent | None
     extracted_data: list[IndexableData]

@@ -21,12 +21,18 @@ class GenericTabularData(IndexableData):
         return md
 
     @classmethod
-    def from_html(
-        cls, html: str, source_url: str, llm: BaseChatModel | None
+    def from_content(
+        cls,
+        content_data: str,
+        content_type: str,
+        source_url: str,
+        llm: BaseChatModel | None,
     ) -> Self | None:
         assert llm is not None
 
-        if "<table>" not in html:
+        if content_type != "text/html":
+            return None
+        if "<table>" not in content_data:
             return None
 
         class GenericTabularDataExtraction(BaseModel):
@@ -43,7 +49,7 @@ class GenericTabularData(IndexableData):
                     SystemMessage(f"""You are an assistant for data extraction tasks. Extract a title
                         and tabular data from the provided html.
                         Provide the output in JSON format: {parser.get_format_instructions()}.`"""),
-                    HumanMessage(html),
+                    HumanMessage(content_data),
                 ]
             )
             raw_generic_data = parser.parse(str(response.content))

@@ -2,6 +2,8 @@ from langchain_core.runnables.config import RunnableConfig
 from pydantic import BaseModel, Field
 from typing import Self, Union, Literal
 
+from .settings import Settings
+
 
 class PineconeVectorStoreConfig(BaseModel):
     type: Literal["pinecone"]
@@ -62,6 +64,12 @@ class Config(BaseModel):
     )
     indexing: IndexingConfig = IndexingConfig(chunk_size=1000, chunk_overlap=100)
     weather: OpenWeatherMapConfig
+    log_level: Literal["CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG", "NOTSET"] = (
+        "INFO"
+    )
+
+    def to_runnable_config(self) -> RunnableConfig:
+        return RunnableConfig(configurable=self.model_dump())
 
     @classmethod
     def from_runnable_config(cls, config: RunnableConfig) -> Self:
@@ -69,3 +77,31 @@ class Config(BaseModel):
         configurable = config.get("configurable")
         assert configurable is not None
         return cls(**configurable)
+
+    @classmethod
+    def from_env(cls) -> Self:
+        settings = Settings()  # type: ignore # https://github.com/pydantic/pydantic-settings/issues/201
+        return cls(
+            **{
+                "llm": {
+                    "type": "openai",
+                    "model": "gpt-4o",
+                    "api_key": settings.openai_api_key.get_secret_value(),
+                },
+                "weather": {
+                    "api_key": settings.openweathermap_api_key.get_secret_value(),
+                },
+                "db": {
+                    "url": settings.db_url.get_secret_value(),
+                },
+                "embeddings": {
+                    "type": "chroma-internal",
+                },
+                "vector_store": {
+                    "type": "chroma",
+                    "collection_name": "documents",
+                    "path": settings.chroma_db_path,
+                },
+                # ignoring type errors here due to https://docs.pydantic.dev/latest/integrations/visual_studio_code/#strict-errors
+            }  # type: ignore
+        )

@@ -46,7 +46,12 @@ def extract(state: AgentState, config: RunnableConfig) -> ExtractStateUpdate:
     ]
 
     for extractor in extractors:
-        result = extractor.from_html(html, url, llm)
+        result = extractor.from_content(
+            content_data=content["data"],
+            source_url=url,
+            content_type=content["type"],
+            llm=llm,
+        )
         if result is not None:
             extracted_data.append(result)
             break
@@ -57,35 +62,3 @@ def extract(state: AgentState, config: RunnableConfig) -> ExtractStateUpdate:
     return {
         "extracted_data": extracted_data,
     }
-
-
-class GenericTabularDataExtraction(BaseModel):
-    title: str
-    data: list[Dict[str, Any]]
-
-
-def parse_generic_tabular_data_with_llm(
-    html: str, source_url: str, llm: BaseChatModel
-) -> GenericTabularData | None:
-    try:
-        # `with_structured_output` consistently causes the
-        # `data` field to not be generated, so we fall back to
-        # old-style output parser
-        parser = PydanticOutputParser(pydantic_object=GenericTabularDataExtraction)
-        response = llm.invoke(
-            [
-                SystemMessage(f"""You are an assistant for data extraction tasks. Extract a title
-                    and tabular data from the provided html.
-                    Provide the output in JSON format: {parser.get_format_instructions()}.`"""),
-                HumanMessage(html),
-            ]
-        )
-        raw_generic_data = parser.parse(str(response.content))
-
-        return GenericTabularData(
-            source_url=source_url,
-            **raw_generic_data.model_dump(),
-        )
-
-    except:  # TODO log errors
-        return None

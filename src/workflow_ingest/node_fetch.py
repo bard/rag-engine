@@ -2,7 +2,7 @@ from typing import TypedDict
 from langchain_core.runnables.config import RunnableConfig
 
 from .. import services
-from ..util import fetch_html_content
+from ..util import fetch_content
 from ..config import Config
 from .state import AgentState, SourceContent
 
@@ -17,10 +17,8 @@ def fetch(state: AgentState, config: RunnableConfig) -> FetchStateUpdate:
     log = services.get_logger(c)
     log.debug("node/fetch")
 
-    url = state["url"]
-    # TODO: support more file types (e.g. excel)
-    html_content = fetch_html_content(url)
+    result = fetch_content(state["url"])
 
     return {
-        "source_content": SourceContent(data=html_content, type="text/html"),
+        "source_content": SourceContent(data=result["data"], type=result["type"]),
     }

@@ -8,6 +8,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from dotenv import load_dotenv
 from src.db import SqlAlchemyBase
+from src.config import Config
 
 
 load_dotenv()
@@ -388,23 +389,29 @@ def travel_info_documents():
 
 
 @pytest.fixture
-def agent_config(tmp_path, tmp_db_url) -> RunnableConfig:
-    return RunnableConfig(
-        configurable={
+def config(tmp_path, tmp_db_url) -> Config:
+    return Config(
+        **{
             "llm": {
                 "type": "openai",
                 "model": "gpt-4o",
                 "api_key": os.getenv("OPENAI_API_KEY"),
             },
-            "weather": {"api_key": os.getenv("OPENWEATHERMAP_API_KEY")},
+            "weather": {
+                "api_key": os.getenv("OPENWEATHERMAP_API_KEY"),
+            },
             "db": {
                 "url": tmp_db_url,
             },
-            "embeddings": {"type": "chroma-internal"},
+            "embeddings": {
+                "type": "chroma-internal",
+            },
             "vector_store": {
                 "type": "chroma",
                 "collection_name": "documents",
                 "path": f"{tmp_path}/chroma",
             },
-        }
+            # ignoring type errors here due to https://docs.pydantic.dev/latest/integrations/visual_studio_code/#strict-errors
+        }  # type: ignore
     )
+

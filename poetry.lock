@@ -763,6 +763,17 @@ test = ["certifi (>=2024)", "cryptography-vectors (==44.0.0)", "pretend (>=0.7)"
 test-randomorder = ["pytest-randomly"]
 
 [[package]]
+name = "data-uri-parser"
+version = "0.1.11"
+description = "A Pythonic data uri parser"
+optional = false
+python-versions = ">=3.6,<4.0"
+files = [
+    {file = "data-uri-parser-0.1.11.tar.gz", hash = "sha256:abe8263a3f218cf884b6c72d93c791b0096483506103a46b2fb4e1a9aeb55eac"},
+    {file = "data_uri_parser-0.1.11-py3-none-any.whl", hash = "sha256:f7eb68b42157a60d551a01785c7f8e00207893640d1b8083fbb1e082f7fca4fa"},
+]
+
+[[package]]
 name = "dataclasses-json"
 version = "0.6.7"
 description = "Easily serialize dataclasses to and from JSON."
@@ -3873,6 +3884,21 @@ docs = ["sphinx (>=5.3)", "sphinx-rtd-theme (>=1.0)"]
 testing = ["coverage (>=6.2)", "hypothesis (>=5.7.1)"]
 
 [[package]]
+name = "pytest-fastapi-deps"
+version = "0.2.3"
+description = "A fixture which allows easy replacement of fastapi dependencies for testing"
+optional = false
+python-versions = ">=3.7,<4.0"
+files = [
+    {file = "pytest-fastapi-deps-0.2.3.tar.gz", hash = "sha256:b472c147967218d458fec3c7ac29bcad64d81e0c17e8519bb41628b6fac318fa"},
+    {file = "pytest_fastapi_deps-0.2.3-py3-none-any.whl", hash = "sha256:f1f405317623d13e9b5c220a9e962905500cc9a3ce3736dd55aeb0b7d665e3aa"},
+]
+
+[package.dependencies]
+fastapi = "*"
+pytest = "*"
+
+[[package]]
 name = "pytest-integration-mark"
 version = "0.2.0"
 description = "Automatic integration test marking and excluding plugin for pytest"
@@ -6049,4 +6075,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "3.12.8"
-content-hash = "e74278e7e8b47aafb38acbf45a2a767612ba8f7ca1672248638d207211e56cb6"
+content-hash = "161c84a7cd5edb6841a637ee9aa994ad6f8d17797d6b6ec69c017ba7a5d135da"

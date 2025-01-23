@@ -14,7 +14,7 @@ from src import services
 
 
 @pytest.mark.vcr
-def test_reformulate_query(agent_config):
+def test_reformulate_query(config):
     agent_state = AgentState(
         messages=[
             HumanMessage(
@@ -28,13 +28,13 @@ def test_reformulate_query(agent_config):
         location=None,
     )
 
-    state_update = reformulate_query(agent_state, agent_config)
+    state_update = reformulate_query(agent_state, config.to_runnable_config())
 
     assert state_update == {"query": '"Year-to-year changes 2012-2014"'}
 
 
 @pytest.mark.vcr
-def test_classify_query(agent_config):
+def test_classify_query(config):
     agent_state = AgentState(
         messages=[HumanMessage(content="how is the weather in Paris?")],
         documents=[],
@@ -44,7 +44,7 @@ def test_classify_query(agent_config):
         location=None,
     )
 
-    state_update = classify_query(agent_state, agent_config)
+    state_update = classify_query(agent_state, config.to_runnable_config())
 
     assert state_update == {
         "is_weather_query": True,
@@ -54,8 +54,8 @@ def test_classify_query(agent_config):
 
 
 # TODO rename
-def test_retrieve_2(agent_config, travel_info_documents, snapshot):
-    vector_store = services.get_vector_store(Config.from_runnable_config(agent_config))
+def test_retrieve_2(config, travel_info_documents, snapshot):
+    vector_store = services.get_vector_store(config)
     vector_store.add_documents(travel_info_documents)
 
     agent_state = AgentState(
@@ -69,13 +69,13 @@ def test_retrieve_2(agent_config, travel_info_documents, snapshot):
         location=None,
     )
 
-    state_update = retrieve(agent_state, agent_config)
+    state_update = retrieve(agent_state, config.to_runnable_config())
 
     assert state_update.get("documents") == snapshot
 
 
-def test_retrieve(agent_config):
-    vector_store = services.get_vector_store(Config.from_runnable_config(agent_config))
+def test_retrieve(config):
+    vector_store = services.get_vector_store(config)
     vector_store.add_texts(
         [
             """# Average expenditures 2012-2013
@@ -104,7 +104,7 @@ Year: 2015, Expenditure: $896.66, Change: 3.1%
         location=None,
     )
 
-    state_update = retrieve(agent_state, agent_config)
+    state_update = retrieve(agent_state, config.to_runnable_config())
 
     documents_content = "\n".join(
         [doc.page_content for doc in state_update.get("documents")]
@@ -124,8 +124,8 @@ Year: 2015, Expenditure: $896.66, Change: 3.1%
 
 
 @pytest.mark.vcr
-def test_graph_with_weather_query(agent_config, travel_info_documents, snapshot):
-    vector_store = services.get_vector_store(Config.from_runnable_config(agent_config))
+def test_graph_with_weather_query(config, travel_info_documents, snapshot):
+    vector_store = services.get_vector_store(config)
     vector_store.add_documents(travel_info_documents)
     agent_state = AgentState(
         messages=[
@@ -138,14 +138,14 @@ def test_graph_with_weather_query(agent_config, travel_info_documents, snapshot)
         location=None,
     )
 
-    response = get_graph().invoke(agent_state, agent_config)
+    response = get_graph().invoke(agent_state, config.to_runnable_config())
 
     assert response.get("messages", [])[-1].content == snapshot
 
 
 @pytest.mark.vcr
-def test_graph_with_travel_info_query(agent_config, travel_info_documents, snapshot):
-    vector_store = services.get_vector_store(Config.from_runnable_config(agent_config))
+def test_graph_with_travel_info_query(config, travel_info_documents, snapshot):
+    vector_store = services.get_vector_store(config)
     vector_store.add_documents(travel_info_documents)
     agent_state = AgentState(
         messages=[
@@ -158,7 +158,7 @@ def test_graph_with_travel_info_query(agent_config, travel_info_documents, snaps
         location=None,
     )
 
-    response = get_graph().invoke(agent_state, agent_config)
+    response = get_graph().invoke(agent_state, config.to_runnable_config())
 
     assert response.get("messages", [])[-1].content == snapshot
 
@@ -174,9 +174,9 @@ def test_graph_with_travel_info_query(agent_config, travel_info_documents, snaps
 )
 @pytest.mark.vcr
 def test_graph_with_insurance_queries(
-    agent_config, user_query, insurance_data_documents, snapshot
+    config, user_query, insurance_data_documents, snapshot
 ):
-    vector_store = services.get_vector_store(Config.from_runnable_config(agent_config))
+    vector_store = services.get_vector_store(config)
     vector_store.add_documents(insurance_data_documents)
 
     agent_state = AgentState(
@@ -192,6 +192,6 @@ def test_graph_with_insurance_queries(
         location=None,
     )
 
-    response = get_graph().invoke(agent_state, agent_config)
+    response = get_graph().invoke(agent_state, config.to_runnable_config())
 
     assert response.get("messages", [])[-1].content == snapshot
