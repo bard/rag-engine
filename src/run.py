@@ -24,7 +24,7 @@ def cmd_ingest(data):
         abs_path = path.abspath(data)
         input_url = f"file://{abs_path}"
     initial_agent_state = workflow_ingest.AgentState(
-        url=input_url, source_content=None, extracted_data=[]
+        url=input_url, source_content=None, extracted_data=[], topic_id=None
     )
 
     workflow_ingest.get_graph().invoke(initial_agent_state, CONFIG.to_runnable_config())
@@ -49,8 +49,9 @@ def cmd_query(user_query: str):
         documents=[],
         weather_info=None,
         is_weather_query=False,
-        query=None,  # TODO rename to clarify that it's a rewritten query
+        query=None,
         location=None,
+        sources=[],
     )
 
     response = workflow_query.get_graph().invoke(

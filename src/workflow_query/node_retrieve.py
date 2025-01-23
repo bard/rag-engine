@@ -14,7 +14,7 @@ class RetrieveStateUpdate(TypedDict):
 def retrieve(state: AgentState, config: RunnableConfig) -> RetrieveStateUpdate:
     c = Config.from_runnable_config(config)
     vector_store = get_vector_store(c)
-    query = state.get("query")
+    query = state["query"]
     assert query is not None
 
     documents_with_scores = vector_store.similarity_search_with_relevance_scores(

@@ -89,8 +89,8 @@ test_with_new_network_calls = "pytest --record-mode=new_episodes"
 test_with_all_network_calls = "pytest --record-mode=all"
 typecheck = "mypy src tests"
 initdb = "python src/run.py initdb"
-ingest-demo = "python src/run.py ingest --data 'data/Average Expenditures for Auto Insurance, 2012-2021.xls'"
-query-demo = "python src/run.py query 'What is the trend in auto insurance costs over the last 3 years?'"
+demo_ingest = "python src/run.py ingest --data 'data/Average Expenditures for Auto Insurance, 2012-2021.xls'"
+demo_query = "python src/run.py query 'What is the trend in auto insurance costs over the last 3 years?'"
 
 
 [tool.pyright]

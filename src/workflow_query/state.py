@@ -1,4 +1,3 @@
-from typing import Union
 from langchain.schema import Document
 from langgraph.graph import MessagesState
 
@@ -9,3 +8,4 @@ class AgentState(MessagesState):
     weather_info: str | None
     query: str | None
     location: str | None
+    sources: list[str]

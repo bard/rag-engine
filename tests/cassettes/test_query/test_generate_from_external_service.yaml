@@ -1,8 +1,11 @@
 interactions:
 - request:
-    body: '{"messages":[{"content":"Reformulate the following user question into a
-      concise search query: ''What''s the trend in auto insurance costs from year
-      2012 to year 2014?''","role":"user"}],"model":"gpt-4o","n":1,"stream":false,"temperature":0.7}'
+    body: "{\"messages\":[{\"content\":\"You are an assistant for question-answering
+      tasks. Use the following pieces of retrieved context to answer If you don't
+      know the answer, say that you don't know. Use three sentences maximum and keep
+      the answer concise.\\n\\nCurrent weather information for paris: Temperature:
+      -0.55\xB0C, Feels like: -3.75\xB0C, Humidity: 95%, Status: mist\\n\\n\\n\\n\",\"role\":\"system\"},{\"content\":\"what
+      is the weather like in paris?\",\"role\":\"user\"}],\"model\":\"gpt-4o\",\"n\":1,\"stream\":false,\"temperature\":0.7}"
     headers:
       accept:
       - application/json
@@ -11,7 +14,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '239'
+      - '505'
       content-type:
       - application/json
       host:
@@ -39,19 +42,20 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAAwAAAP//jFLLitwwELz7K4TO42B7XjtzGxYWQg45JOSQEIxWatvayGpF3Q4Jy/x7
-        kO0dz7AJ7MWHqq5yVaufMyGkNfIopO4U6z64/ETYlO6hfKruD6dPB/rwuf/y/iN3O//w9adcJQU+
-        PoHmF9U7jX1wwBb9ROsIiiG5lvv1flft78rtSPRowCVZGzjfYF4V1SYv7vJiNws7tBpIHsW3TAgh
-        nsdviugN/JZHUaxekB6IVAvyeBkSQkZ0CZGKyBIrz3K1kBo9gx9TnwZGYT0NUXkNQiOx4AjeiKoo
-        q7wqys21MkIzkErB/eDcjJ8vURy2IeIjzfwFb6y31NURFKFPvyXGIEf2nAnxfaw83LSQIWIfuGb8
-        AT4Zrg+TnVx2vJBlOZOMrNyCb+c13brVBlhZR1crk1rpDsyiXParBmPxisiuOr8O8y/vqbf17Vvs
-        F0JrCAymDhGM1beFl7EI6QL/N3bZ8RhYEsRfVkPNFmJ6BwONGtx0HJL+EENfN9a3EEO004U0od4W
-        Wpn1toCNzM7ZXwAAAP//AwDR1D9JKgMAAA==
+        H4sIAAAAAAAAAwAAAP//jFLLbtswELzrKxYEerMM+SE79i3pvS2KtilQBAJNrqytKZIlV0mMwP/U
+        b+iXFZRdy0ETIBceZnaHM7v7lAEI0mINQjWSVetNfh3d54+3XN6HRfzW7HbfN48f4s3t118311da
+        jFKH2/xExf+6xsq13iCTs0daBZSMSXWynC0X08VqWfRE6zSa1Lb1nM9dPi2m87y4yovFqbFxpDCK
+        NfzIAACe+jdZtBofxRp6mR5pMUa5RbE+FwGI4ExChIyRIkvLYjSQyllG27v+0iCoLgS0DA8oucEA
+        ZOGTDBSBIrQUeT+CB+IGJDC2HoPkLiC4GvJiXJZ/fr8HaTUQQ41oIhjaIeSz8TJRY0g/NF1Lmnif
+        FCXDqnw3vvQTsO6iTOOwnTEn/HAOaNzWB7eJJ/6M12QpNlVAGZ1NYSI7L3r2kAHc9YPsns1G+OBa
+        zxW7HdokuCqPcmLY3EDOFieSHUsz4JPZZPSCXKWRJZl4sQmhpGpQD63D2mSnyV0Q2UXo/928pH0M
+        Tnb7FvmBUAo9o658QE3qeeKhLGA67NfKzkPuDYuI4Z4UVkwY0iI01rIzx5sTcR8Z26omu8XgAx0P
+        r/ZVWSipZ2WBc5Edsr8AAAD//wMAl43qdYEDAAA=
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 906711b72b3d5b13-VIE
+      - 9066fd118b915b73-VIE
       Connection:
       - keep-alive
       Content-Encoding:
@@ -59,14 +63,14 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 23 Jan 2025 10:23:36 GMT
+      - Thu, 23 Jan 2025 10:09:31 GMT
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=_eLWqTN_SmMRfjjHQXrc3HMIchlX5CIN80r_RkaI_ZQ-1737627816-1.0.1.1-dRM.o876vBSoivW9LWsdABvZXBg7hXJY_hK1cAPsoHCK2lfAIHU0nhyc2aIpZ_gq3wf8HKuezm9TWgbNNVS5XQ;
-        path=/; expires=Thu, 23-Jan-25 10:53:36 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=Zo6ysPegmdBM7FMEZZiH4uNcImL1.NnZdf9m9hmnx7Q-1737626971-1.0.1.1-TQkf.1P7PX2zY0575e0Xhv4GMZ4DG7bqww1xAC3TBuYS24DkWjcgtCO9z5UtPmds2m3GTJjH622VHMPRXEH4QQ;
+        path=/; expires=Thu, 23-Jan-25 10:39:31 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=ZN_CyXXkb5aA3lXqKRsF69vmYquSuRO.Xj7CIGeN9EY-1737627816577-0.0.1.1-604800000;
+      - _cfuvid=lyIqZ6oyJbudf132BsafMy_nAUrAo99upleWMG.Xayo-1737626971547-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Transfer-Encoding:
       - chunked
@@ -79,7 +83,7 @@ interactions:
       openai-organization:
       - user-iarz4shpxfmvb4ssgkfsv3ye
       openai-processing-ms:
-      - '817'
+      - '1444'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -91,13 +95,13 @@ interactions:
       x-ratelimit-remaining-requests:
       - '4999'
       x-ratelimit-remaining-tokens:
-      - '799948'
+      - '799889'
       x-ratelimit-reset-requests:
       - 12ms
       x-ratelimit-reset-tokens:
-      - 3ms
+      - 8ms
       x-request-id:
-      - req_8880d8bc565106de0037306eebc38629
+      - req_ec2bdf170c354bb9554b59b7a51ac109
     status:
       code: 200
       message: OK

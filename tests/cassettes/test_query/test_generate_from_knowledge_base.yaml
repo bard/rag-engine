@@ -1,0 +1,116 @@
+interactions:
+- request:
+    body: "{\"messages\":[{\"content\":\"You are an assistant for question-answering
+      tasks. Use the following pieces of retrieved context to answer If you don't
+      know the answer, say that you don't know. Use three sentences maximum and keep
+      the answer concise.\\n\\nParis, the 'City of Light,' boasts iconic landmarks
+      such as the Eiffel Tower, offering panoramic views from its observation decks.
+      The Louvre Museum, home to masterpieces like the Mona Lisa, attracts art enthusiasts
+      worldwide. Notre-Dame Cathedral, a Gothic architectural marvel, stands on the
+      \xCEle de la Cit\xE9. The Champs-\xC9lys\xE9es, lined with shops and cafes,
+      leads to the Arc de Triomphe, honoring those who fought for France. Montmartre,
+      with its artistic heritage, features the Basilica of the Sacr\xE9-C\u0153ur
+      atop its hill.\\n\\n\",\"role\":\"system\"},{\"content\":\"what are some nice
+      things to see in Paris?\",\"role\":\"user\"}],\"model\":\"gpt-4o\",\"n\":1,\"stream\":false,\"temperature\":0.7}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '924'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.59.5
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.59.5
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.8
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAwAAAP//jFPLbttADLz7K4g9S4HjPNz45qYvoEmRIkGBpigMZkVZbFfL7XLlvJAP
+        6Llfke8I+l+FZMdy0BToRYBmSGJmObwdABguzASMrTDZOrh8qnJ68uZ9mL4bn1/dXFc/anUnN1fN
+        1H48/2SytkMuvpFNj11bVurgKLH4JW0jYaJ26vZ4Z7w/Gg93djqiloJc2zYPKd+VfDQc7ebDF/lw
+        f9VYCVtSM4EvAwCA2+7bSvQFXZkJDLNHpCZVnJOZrIsATBTXIgZVWRP6ZLKetOIT+U71qdQEni1B
+        qtjPFZKAEgF7OMHICuyta4qWJnjNZUkOzuSSIpQSgZNCQC8Ra7awYLrUrKs8kmYRCY4bpabO4LJi
+        W0EljZJ2/LF4hCNWzAB90UEfJEXKX2FNcIipoiKiywDhraSKLWC0FSeyqYnooMa4ILcFn6UBix7Q
+        qQBdBSdxKfWwwjpo/vDTXevDPWkGjrBgP28NtgXTaKEgOIssdahoqWPByqkVl2qMKdLaJMbEmthC
+        RZETzmkt+yUqO7YIUnb/p2jjw31++PtXE7c2Hz1S2Si2O/eNcyv8br1FJ/MQ5UJX/Bov2bNWs0io
+        4tuNaZJgOvZuAPC1S0vzJAAmRKlDmiX5Tl677O0t55k+nz07Hq/IJAldj4/2Rtkz82YFJWSnG3kz
+        Fm1FRd/ahxObgmWDGGy4/lvNc7OXztnP/2d8T1hLIVExC5EKtk8d92WR2vP9V9n6lTvBRiku2NIs
+        McV2EwWV2LjlZRm91kT1rGQ/pxgiL8+rDLPd/YPt4cEQX4zN4G7wBwAA//8DAGFyL9xnBAAA
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 9066fe9bdb6a5aee-VIE
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 23 Jan 2025 10:10:35 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=c03r63A1ULp4EPnzOq2F7NMNhxzY7lga.2ZRglUY2I8-1737627035-1.0.1.1-D9J_LfPlRtYwzE5YbYQh7kHHEzYZE_LiGH1BnHbfEPLK.HibNBtipjgOQLYB81xQCIQmPWNRV1z4D6u5DN8oqQ;
+        path=/; expires=Thu, 23-Jan-25 10:40:35 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=sQzp.9rnpuSj3tsRZ7MVr2KYINLfFXCparpWxSbJ0OI-1737627035088-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      access-control-expose-headers:
+      - X-Request-ID
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-organization:
+      - user-iarz4shpxfmvb4ssgkfsv3ye
+      openai-processing-ms:
+      - '1918'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-ratelimit-limit-requests:
+      - '5000'
+      x-ratelimit-limit-tokens:
+      - '800000'
+      x-ratelimit-remaining-requests:
+      - '4999'
+      x-ratelimit-remaining-tokens:
+      - '799784'
+      x-ratelimit-reset-requests:
+      - 12ms
+      x-ratelimit-reset-tokens:
+      - 16ms
+      x-request-id:
+      - req_bfca581553bc9906231fe6ebe913adf7
+    status:
+      code: 200
+      message: OK
+version: 1

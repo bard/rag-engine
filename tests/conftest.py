@@ -7,8 +7,11 @@ from unittest.mock import Mock
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from dotenv import load_dotenv
+from fastapi.testclient import TestClient
 from src.db import SqlAlchemyBase
 from src.config import Config
+from src.api.app import app
+from src.api.deps import get_config
 
 
 load_dotenv()
@@ -357,23 +360,26 @@ def insurance_data_documents():
         Document(page_content=content, id=str(i))
         for i, content in enumerate(
             [
-                "Year: 2012, Expenditure: $812.40, Change: 2.2%",
-                "Year: 2013, Expenditure: $841.06, Change: 3.5%",
-                "Year: 2014, Expenditure: $869.47, Change: 3.4%",
-                "Year: 2015, Expenditure: $896.66, Change: 3.1%",
-                "Year: 2016, Expenditure: $945.22, Change: 5.4%",
-                "Year: 2017, Expenditure: $1008.35, Change: 6.7%",
-                "Year: 2018, Expenditure: $1058.10, Change: 4.9%",
-                "Year: 2019, Expenditure: $1071.74, Change: 1.3%",
-                "Year: 2020, Expenditure: $1046.37, Change: -2.4%",
-                "Year: 2021, Expenditure: $1061.54, Change: 1.4%",
+                "Average Expenditures for Auto Insurance, 2012-2014\n\n"
+                + "Year: 2012, Expenditure: $812.40, Change: 2.2%\n"
+                + "Year: 2013, Expenditure: $841.06, Change: 3.5%\n"
+                "Year: 2014, Expenditure: $869.47, Change: 3.4%\n",
+                "Average Expenditures for Auto Insurance, 2015-2017\n\n"
+                + "Year: 2015, Expenditure: $896.66, Change: 3.1%\n"
+                + "Year: 2016, Expenditure: $945.22, Change: 5.4%\n"
+                + "Year: 2017, Expenditure: $1008.35, Change: 6.7%\n",
+                "Average Expenditures for Auto Insurance, 2018-2021\n\n"
+                + "Year: 2018, Expenditure: $1058.10, Change: 4.9%\n"
+                + "Year: 2019, Expenditure: $1071.74, Change: 1.3%\n"
+                + "Year: 2020, Expenditure: $1046.37, Change: -2.4%\n"
+                + "Year: 2021, Expenditure: $1061.54, Change: 1.4%\n",
             ]
         )
     ]
 
 
 @pytest.fixture
-def travel_info_documents():
+def travel_knowledge_documents():
     return [
         Document(page_content=content, id=str(i))
         for i, content in enumerate(

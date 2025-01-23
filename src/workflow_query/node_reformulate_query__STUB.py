@@ -1,7 +1,7 @@
 from typing import Literal
 from langchain_core.runnables.config import RunnableConfig
 
-from ..services import get_llm
+from .. import services
 from ..config import Config
 from .state import AgentState
 
@@ -11,11 +11,11 @@ def reformulate_query(
 ) -> dict[Literal["query"], str]:
     c = Config.from_runnable_config(config)
 
-    llm = get_llm(c)
+    llm = services.get_llm(c)
     user_message = state["messages"][-1].content
 
     prompt = f"Reformulate the following user question into a concise search query: '{user_message}'"
     response = llm.invoke(prompt)
-    reformulated_query = str(response.content)
+    query = str(response.content)
 
-    return {"query": reformulated_query}
+    return {"query": query}

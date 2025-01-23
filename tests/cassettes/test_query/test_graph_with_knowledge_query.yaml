@@ -1,0 +1,228 @@
+interactions:
+- request:
+    body: '{"messages":[{"content":"Analyze the following query and determine if it''s
+      asking about the weather for a location. If it is, extract the location mentioned.
+      Respond in JSON format with ''is_weather_related'' as a boolean and ''location''
+      as a string or null.\n\nQuery: ''what are some nice things to see in Paris?''","role":"user"}],"model":"gpt-4o","n":1,"parallel_tool_calls":false,"stream":false,"temperature":0.7,"tool_choice":{"type":"function","function":{"name":"WeatherQueryClassification"}},"tools":[{"type":"function","function":{"name":"WeatherQueryClassification","description":"","parameters":{"properties":{"is_weather_related":{"description":"whether
+      the query is weather-related","type":"boolean"},"location":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"location
+      the query is about, if any"}},"required":["is_weather_related","location"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '884'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.59.5
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.59.5
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.8
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAwAAAP//jFPbitswEH33V4h5jouTeHPxWyllS1vo9gK70BShyGNbqSypkpxuCPn3
+        IjtrO7tZqB+MmDPnzMwZ6RgRAiKHjACvmOe1kfFbZ5Ifrtg/7G+/7BbfuMb0051//PxnZ/YCJoGh
+        tzvk/on1huvaSPRCqw7mFpnHoDpdzpeL2Xqa3rRArXOUgVYaH6c6niWzNE5WcbI4EystODrIyM+I
+        EEKO7T+0qHJ8hIwkk6dIjc6xEiHrkwgBq2WIAHNOOM+Uh8kAcq08qtC1aqQcAV5rSTmTcijcfcfR
+        efCJSUnrD/ei/P5xtbC7h7xS27tbPX8/q8tRvU76YNqGikbx3p8R3sezZ8UIAcXqlnuPzFdovzZo
+        D+9kGK0QnF1RIwSYLZsalQ+TwHEDwtG/HZ1alGEpG8gKJh1ONiB1J7OBLDhyggu1U3Tt/Gvkm8Wi
+        cUyeDT3HT/2GpC6N1Vv3zHAohBKuohaZawcH57Xpaoc6bQVoLpYLxuraeOr1b1RBcDq/6fRguHsj
+        dHYGvfZMjuLpcnJFj+bomWi33184zniF+UAdLh5rcqFHQDSa+mU317S7yYUq/0d+ADhH4zGnxmIu
+        +OXEQ5rF8DRfS+tdbhsGh3YvOFIv0IZN5FiwRnavBtzBeaxpIVSJ1ljRPh0oDE0X62myTthqCdEp
+        +gcAAP//AwCl4YSmQwQAAA==
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 90673229f857c2e6-VIE
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 23 Jan 2025 10:45:45 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=8SlVJtHQ_UkLka88gL281Gb8pl9Ne7qp5bHvgOT72Iw-1737629145-1.0.1.1-382yL1RLriRnV0P9k3ofXeLhbnNnRW6BZnQkDp3.oZ8B23iu.FLXnJeyiOn4m3M9dcL5kleYpVIXZToC.vjDzA;
+        path=/; expires=Thu, 23-Jan-25 11:15:45 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=EG0YHU23OjZaeQwtRqO0dqV2gm3sZ3g0MNN4IwR2ALQ-1737629145935-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      access-control-expose-headers:
+      - X-Request-ID
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-organization:
+      - user-iarz4shpxfmvb4ssgkfsv3ye
+      openai-processing-ms:
+      - '593'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-ratelimit-limit-requests:
+      - '5000'
+      x-ratelimit-limit-tokens:
+      - '800000'
+      x-ratelimit-remaining-requests:
+      - '4999'
+      x-ratelimit-remaining-tokens:
+      - '799911'
+      x-ratelimit-reset-requests:
+      - 12ms
+      x-ratelimit-reset-tokens:
+      - 6ms
+      x-request-id:
+      - req_9189691ec11fd83eb152fe21b5b0e2cf
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"messages\":[{\"content\":\"You are an assistant for question-answering
+      tasks. Use the following pieces of retrieved context to answer If you don't
+      know the answer, say that you don't know. Use three sentences maximum and keep
+      the answer concise.\\n\\nParis, the 'City of Light,' boasts iconic landmarks
+      such as the Eiffel Tower, offering panoramic views from its observation decks.
+      The Louvre Museum, home to masterpieces like the Mona Lisa, attracts art enthusiasts
+      worldwide. Notre-Dame Cathedral, a Gothic architectural marvel, stands on the
+      \xCEle de la Cit\xE9. The Champs-\xC9lys\xE9es, lined with shops and cafes,
+      leads to the Arc de Triomphe, honoring those who fought for France. Montmartre,
+      with its artistic heritage, features the Basilica of the Sacr\xE9-C\u0153ur
+      atop its hill.\\n\\nLondon, a vibrant metropolis, features the historic Tower
+      of London, housing the Crown Jewels. The British Museum showcases a vast collection
+      of world art and artifacts. Buckingham Palace, the monarch's residence, is famed
+      for the Changing of the Guard ceremony. The Houses of Parliament and Big Ben
+      are iconic symbols along the River Thames. The London Eye offers a rotating
+      perspective of the city's skyline.\\n\\n\",\"role\":\"system\"},{\"content\":\"what
+      are some nice things to see in Paris?\",\"role\":\"user\"}],\"model\":\"gpt-4o\",\"n\":1,\"stream\":false,\"temperature\":0.7}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '1338'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.59.5
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.59.5
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.8
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA4xTzWobMRC++ykGne2wcRz/3dI0lNKklDahhVLMRDvrnUQridGsHRPyAD33KfIc
+        oe9Vdu3YDk2hl4X9/jSjGd13AAznZgrGlqi2iq53kmJ2heeT4mtdH48+f7iib6vsrL7Jxv1xNN3G
+        Ea5vyOqz68CGKjpSDn5NWyFUalIPR0ejYX9yOBi2RBVyco1tHrU3CL1+1h/0snEvG26MZWBLyUzh
+        ewcA4L79NiX6nO7MFLLuM1JRSjgnM92KAIwE1yAGU+Kk6NV0d6QNXsm3Vb/38AmFUxdWoQaLHhac
+        WEFLgjMuCnJwGZYkUASBiD4IVmxhwbRMXaC76IJQqz4P9UIILupEdQUaIBFBhUlJIpOlBI5v19KL
+        4BHOOWEX0OeAecWbkHdBS7aAYktWsloLQSjgY1Ch3lusCE5RS8oF3QF8UQnOQR6WvjWflljF1Hv6
+        6Vbp6ZFSU0SDn4iFnOBSOFSxpPWh5G/CqqVRlJOyhZKEFeftiRfBa4WiQrBkLVvhG0zs2GLDN/9f
+        0MrTY+/0969aDvbvV6ioEzbj9bVzG/xhOzAX5lHCddrwW7xgz6mcCWEKvhlO0hBNyz50AH60i1G/
+        mLWJEqqoMw235JvA/nF/nWd2q7hjR8+kBkW3w4/6g+4rebOcFNmlvdUyFm1J+c6620Oscw57RGev
+        67+reS173Tn7+f/E7whrKSrlsyiUs33Z8U4m1LzUf8m2t9wWbBLJgi3NlEmaSeRUYO3Wj8ikVVKq
+        ZgX7OUkUXr+kIs4Gw8lhNslwPDKdh84fAAAA//8DAGmyWKRSBAAA
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 90673233ff1ec301-VIE
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 23 Jan 2025 10:45:48 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=2KOlVJLiODiVjqcpyOaV.Uo9s7Aa09TdUctIKOHEOIg-1737629148-1.0.1.1-ES.x89SIU3UfuTewJHzSBTUkNQuubjrVoyDj4dVQGLdhvDK3Badr7l6vv6W2FpwzaTZubRva2DFuHydoY3Olcw;
+        path=/; expires=Thu, 23-Jan-25 11:15:48 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=t2DnVw5FT9tWvUOw9VRwCZtqaeV8yhi4TwNfJX28DPs-1737629148445-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      access-control-expose-headers:
+      - X-Request-ID
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-organization:
+      - user-iarz4shpxfmvb4ssgkfsv3ye
+      openai-processing-ms:
+      - '1997'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-ratelimit-limit-requests:
+      - '5000'
+      x-ratelimit-limit-tokens:
+      - '800000'
+      x-ratelimit-remaining-requests:
+      - '4999'
+      x-ratelimit-remaining-tokens:
+      - '799680'
+      x-ratelimit-reset-requests:
+      - 12ms
+      x-ratelimit-reset-tokens:
+      - 23ms
+      x-request-id:
+      - req_59587a316db4645cc69c3adf4a2d1580
+    status:
+      code: 200
+      message: OK
+version: 1

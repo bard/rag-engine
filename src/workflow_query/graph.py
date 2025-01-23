@@ -4,14 +4,14 @@ from langgraph.graph import StateGraph, END
 
 from ..config import Config
 from .state import AgentState
-from .node_rerank import rerank
 from .node_retrieve import retrieve
 from .node_fetch_weather_info import fetch_weather_info
 from .node_classify_query import classify_query
 from .node_generate import generate
+from .node_rerank__STUB import rerank
 
 
-def route_based_on_classification(
+def route_based_on_query_classification(
     state: AgentState,
 ) -> Literal["fetch_weather_info", "retrieve"]:
     if state.get("is_weather_query"):
@@ -29,7 +29,7 @@ def get_graph():
     builder.add_node("generate", generate)
     builder.add_conditional_edges(
         "classify_query",
-        route_based_on_classification,
+        route_based_on_query_classification,
         {
             "fetch_weather_info": "fetch_weather_info",
             "retrieve": "retrieve",
