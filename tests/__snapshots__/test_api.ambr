@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_poor_mans_e2e_test
+  'The current weather in Paris is 11.3°C with a "feels like" temperature of 10.6°C, humidity at 81%, and the status is broken clouds.'
+# ---

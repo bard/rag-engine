@@ -351,6 +351,7 @@ def vcr_config():
         "filter_headers": ["authorization"],
         # openweathermap
         "filter_query_parameters": ["APPID"],
+        "ignore_hosts": ["testserver"],
     }
 
 
@@ -421,3 +422,16 @@ def config(tmp_path, tmp_db_url) -> Config:
         }  # type: ignore
     )
 
+
+@pytest.fixture
+def api_client(config):
+    def mock_override_get_config():
+        return config
+
+    app.dependency_overrides[get_config] = mock_override_get_config
+
+    client = TestClient(app)
+
+    yield client
+
+    app.dependency_overrides[get_config] = get_config
