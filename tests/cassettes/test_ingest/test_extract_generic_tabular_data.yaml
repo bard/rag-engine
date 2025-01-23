@@ -142,4 +142,296 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: '{"messages":[{"content":"You are an assistant for data extraction tasks.
+      Extract a title\n                        and tabular data from the provided
+      html.\n                        Provide the output in JSON format: The output
+      should be formatted as a JSON instance that conforms to the JSON schema below.\n\nAs
+      an example, for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\":
+      \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}},
+      \"required\": [\"foo\"]}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+      instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}}
+      is not well-formatted.\n\nHere is the output schema:\n```\n{\"properties\":
+      {\"title\": {\"title\": \"Title\", \"type\": \"string\"}, \"data\": {\"items\":
+      {\"type\": \"object\"}, \"title\": \"Data\", \"type\": \"array\"}}, \"required\":
+      [\"title\", \"data\"]}\n```.`","role":"system"},{"content":"\n<html>\n  <head>\n    <meta
+      http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n  </head>\n  <body>\n    <table>\n    <thead><tr><th></th></tr></thead>    <tbody>
+      <tr class=\"odd\"><td><table>\n<tr><td>Direct Premiums Written, P/C Insurance
+      By State, 2023 (1)</td></tr>\n<tr><td><p>($000)</p>\n</td></tr>\n<tr><td><table>\n<thead>\n<tr>\n<th>State</th>\n<th>Total,
+      all lines</th>\n<th>State</th>\n<th>Total, all lines</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Alabama</td>\n<td>$13,146,853</td>\n<td>Montana</td>\n<td>$3,807,820</td>\n</tr>\n<tr>\n<td>Alaska</td>\n<td>1,994,750</td>\n<td>Nebraska</td>\n<td>7,573,101</td>\n</tr>\n<tr>\n<td>Arizona</td>\n<td>17,959,495</td>\n<td>Nevada</td>\n<td>8,561,822</td>\n</tr>\n<tr>\n<td>Arkansas</td>\n<td>7,931,849</td>\n<td>New
+      Hampshire</td>\n<td>3,342,091</td>\n</tr>\n<tr>\n<td>California</td>\n<td>111,243,502</td>\n<td>New
+      Jersey</td>\n<td>29,106,640</td>\n</tr>\n<tr>\n<td>Colorado</td>\n<td>20,582,327</td>\n<td>New
+      Mexico</td>\n<td>5,038,116</td>\n</tr>\n<tr>\n<td>Connecticut</td>\n<td>11,508,412</td>\n<td>New
+      York</td>\n<td>61,861,773</td>\n</tr>\n<tr>\n<td>D.C.</td>\n<td>2,699,081</td>\n<td>North
+      Carolina</td>\n<td>24,036,512</td>\n</tr>\n<tr>\n<td>Delaware</td>\n<td>3,842,583</td>\n<td>North
+      Dakota</td>\n<td>3,826,625</td>\n</tr>\n<tr>\n<td>Florida</td>\n<td>88,067,510</td>\n<td>Ohio</td>\n<td>23,397,453</td>\n</tr>\n<tr>\n<td>Georgia</td>\n<td>32,039,933</td>\n<td>Oklahoma</td>\n<td>11,325,023</td>\n</tr>\n<tr>\n<td>Hawaii</td>\n<td>3,490,752</td>\n<td>Oregon</td>\n<td>10,510,197</td>\n</tr>\n<tr>\n<td>Idaho</td>\n<td>4,757,044</td>\n<td>Pennsylvania</td>\n<td>32,532,786</td>\n</tr>\n<tr>\n<td>Illinois</td>\n<td>35,938,656</td>\n<td>Rhode
+      Island</td>\n<td>3,361,749</td>\n</tr>\n<tr>\n<td>Indiana</td>\n<td>16,321,562</td>\n<td>South
+      Carolina</td>\n<td>15,078,257</td>\n</tr>\n<tr>\n<td>Iowa</td>\n<td>9,843,752</td>\n<td>South
+      Dakota</td>\n<td>3,970,217</td>\n</tr>\n<tr>\n<td>Kansas</td>\n<td>9,565,831</td>\n<td>Tennessee</td>\n<td>17,442,243</td>\n</tr>\n<tr>\n<td>Kentucky</td>\n<td>10,147,626</td>\n<td>Texas</td>\n<td>92,331,270</td>\n</tr>\n<tr>\n<td>Louisiana</td>\n<td>16,226,096</td>\n<td>Utah</td>\n<td>8,100,467</td>\n</tr>\n<tr>\n<td>Maine</td>\n<td>3,316,037</td>\n<td>Vermont</td>\n<td>1,640,326</td>\n</tr>\n<tr>\n<td>Maryland</td>\n<td>16,186,978</td>\n<td>Virginia</td>\n<td>20,316,519</td>\n</tr>\n<tr>\n<td>Massachusetts</td>\n<td>21,453,245</td>\n<td>Washington</td>\n<td>18,109,893</td>\n</tr>\n<tr>\n<td>Michigan</td>\n<td>24,427,664</td>\n<td>West
+      Virginia</td>\n<td>3,643,445</td>\n</tr>\n<tr>\n<td>Minnesota</td>\n<td>17,081,121</td>\n<td>Wisconsin</td>\n<td>14,623,479</td>\n</tr>\n<tr>\n<td>Mississippi</td>\n<td>7,505,441</td>\n<td>Wyoming</td>\n<td>1,820,520</td>\n</tr>\n<tr>\n<td>Missouri</td>\n<td>17,261,874</td>\n<td><strong>United
+      States</strong></td>\n<td><strong>$949,898,320</strong></td>\n</tr>\n</tbody></table>\n\n(1)
+      Before reinsurance transactions, includes state funds, excludes territories.\n(2)
+      Data for the total United States may differ from similar data shown elsewhere
+      due to the use of different exhibits from S&amp;P Global Market Intelligence.\n\nSource:
+      NAIC data, sourced from S&amp;P Global Market Intelligence, Insurance Information
+      Institute.</td></tr>\n</table></td> </tr>\n      </tbody>\n    </table>\n  </body>\n</html>\n","role":"user"}],"model":"gpt-4o","n":1,"stream":false,"temperature":0.7}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '4401'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.59.5
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.59.5
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.8
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAwAAAP//lJZNUyM3EIbv+ytUUzk2RN8jcSN4E0zihcru5mt9QMxosbBGIpIMOFT+
+        e2rwbnJLNZdxzbT0+K1W6+1+fkNIF8buhHTDxrVhuo9Hp/XPt/v89mJaPJyX38bFxbS5O20fl398
+        jivZwbwj39z5oX3ddTzk6T76FnI6hIfiXfMzlfWi10IYY14CUx59nLfd3rcjmY845fKImiOqv2zc
+        5DD42p2QT28IIeT55TlLTKN/6k4Iha9fJl+ru/Xdyb+LCOlKjvOXztUaanOpdfBfcMip+fSi+vr6
+        +q7mtE7P60TIumuhRb/uTsi6W4Tih0auip/Cbqrk1xJa8wnI1bdnZJnqrrg0ePLdnrxvrnkgnHKx
+        7uAAGl1zM+fT/ErI8+FnjrysPvzFaXQ3bnJfNh3CH3JzEYiLkcSQfD2s/IYJYFKDUWLdHRb/Df+H
+        XuXUXEKhBRjag+EURz6Nrm4xYAbWSugVkvvO3xQkuQfVC2CUIRWX8FdG5YL1YJUFaRVW84MbMWAD
+        SjMwnGMVb12qrqJyYQUDIy1W8SM5d9N93YTiEXgBQnKgFpnqMxfD51xSQGWbMeBSgKIcL/7Cl+r3
+        CDq3wKgGLZH1d5ZjLm7MGDQFZTgI3uN1r/xTGDBwBVQYYExjZafkhxaGXUOlHBQ1INkrMv57LlsE
+        eq5vzaDvkQ61OD47xuQatLVADbIA3+XSNuTMlRwD6spzCVRoUNiMLHx0jw55d4zkoIx4jfSF2+bm
+        cHSuQXOkVX0fcwk4rzJAdQ+KIS/O5SagLo0AYXuQ2A72g8/lFuUjggMVFqxAki+30W3yhLMoEFzB
+        S2fHoM/dowsBdXrSUugVsuoui7/NCSOYzgcHzCKtaTm6Deb05kbeA5USh73yKdV9fHAJe4JKcOgN
+        0vSWMYaUA6Y/CgVWGNAKif55k0dPljW6NOL642x62Pa7TGPAjWVMg+AMlEZWyPu8e53xMQW0N8AV
+        tlLyIwZrwUiBL+yD7FeYnu0pcIbU/CN2irKgtAIjkF3mg0/J1+o9bqaUks+DDlKzT203bPe4y85k
+        D5prrOwnXDY4CMGA98gO8FPehYqva841UIvU/LG5DWrAZpSC1MjCWLmQkOMv00AFEvuLL1NOqEFs
+        HkxBYE9u5coe6UhMAzMabG9w6H8AAAD//5SYwW6DMAyG732KCu2YQ4FQ2ofYceulFc2CAWs0ieIw
+        qQfefUqpCtU2yTsh5Q+WbRzjfO/oW+S16WxzS0eR7rleEyndDQQhcOouS+N4IDLJnGkOijo0beD9
+        GWOJ7MVuz71Bo+6wVYY3Q8qsFNst8+94AArrf+Q9F1uZC8lNyyvG7sRrqGkZZ2uRZszOd0DS1hCy
+        Mi7FNsuFLLnlgpHWEDqHPAiwKYSUXMev9oKmZR3NXbzgcXlI9NoOHnnJzuI1qWTWyZvBAPXElzjn
+        52UvY4HvRL5wPj5ORzMezfl8XmIwD81AKlI4M/T9fX18cLXets7bD7rrj/UGDVJXeVBkTWRoFKxL
+        buq4Wq9PN343PCG5xHl7caEK9hNMNJjKMp8MJjMyXMh5Ke9yiIHOSraTpfjFZlVDUNjTggImWukO
+        6vndGRmqoUa7EFaLyH869JvtKXo0Lcf8LGgNLkBdOQ816ueg520eIlT9a9sj0zeHEwL/hRqqgODj
+        16ihUUM/8c6ErhTgUjVoWvDO4wQ9G1cVG63qvNiATFbj6hsAAP//AwDLd7z1/RUAAA==
+    headers:
+      CF-RAY:
+      - 9067a5f33caa2c6b-FRA
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 23 Jan 2025 12:05:15 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=O9SgHaibcZlj2Gb4J7lNIqlVQgHfMV5sziOYEkdrISU-1737633915-1.0.1.1-xJUmsR7Uh3QGcInBdKWQANU.t_CPci.SX2HMBFMpk4xRZWaZuy2PfMy55Ow6vff72z.P3.8vA.W0Rt73UMgIuA;
+        path=/; expires=Thu, 23-Jan-25 12:35:15 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=AVrAdnGpPwT62UoQE9sbPPydSiTp.H62uPLiGWq_dcc-1737633915299-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      access-control-expose-headers:
+      - X-Request-ID
+      alt-svc:
+      - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      openai-organization:
+      - user-iarz4shpxfmvb4ssgkfsv3ye
+      openai-processing-ms:
+      - '27242'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-ratelimit-limit-requests:
+      - '5000'
+      x-ratelimit-limit-tokens:
+      - '800000'
+      x-ratelimit-remaining-requests:
+      - '4999'
+      x-ratelimit-remaining-tokens:
+      - '798983'
+      x-ratelimit-reset-requests:
+      - 12ms
+      x-ratelimit-reset-tokens:
+      - 76ms
+      x-request-id:
+      - req_ea5be7c8e8616077e8eefe53fcd480ea
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages":[{"content":"You are an assistant for data extraction tasks.
+      Extract a title\n                        and tabular data from the provided
+      html.\n                        Provide the output in JSON format: The output
+      should be formatted as a JSON instance that conforms to the JSON schema below.\n\nAs
+      an example, for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\":
+      \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}},
+      \"required\": [\"foo\"]}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+      instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}}
+      is not well-formatted.\n\nHere is the output schema:\n```\n{\"properties\":
+      {\"title\": {\"title\": \"Title\", \"type\": \"string\"}, \"data\": {\"items\":
+      {\"type\": \"object\"}, \"title\": \"Data\", \"type\": \"array\"}}, \"required\":
+      [\"title\", \"data\"]}\n```.`","role":"system"},{"content":"\n<html>\n  <head>\n    <meta
+      http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n  </head>\n  <body>\n    <table>\n    <thead><tr><th></th></tr></thead>    <tbody>
+      <tr class=\"odd\"><td><table>\n<tr><td>Direct Premiums Written, P/C Insurance
+      By State, 2023 (1)</td></tr>\n<tr><td><p>($000)</p>\n</td></tr>\n<tr><td><table>\n<thead>\n<tr>\n<th>State</th>\n<th>Total,
+      all lines</th>\n<th>State</th>\n<th>Total, all lines</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Alabama</td>\n<td>$13,146,853</td>\n<td>Montana</td>\n<td>$3,807,820</td>\n</tr>\n<tr>\n<td>Alaska</td>\n<td>1,994,750</td>\n<td>Nebraska</td>\n<td>7,573,101</td>\n</tr>\n<tr>\n<td>Arizona</td>\n<td>17,959,495</td>\n<td>Nevada</td>\n<td>8,561,822</td>\n</tr>\n<tr>\n<td>Arkansas</td>\n<td>7,931,849</td>\n<td>New
+      Hampshire</td>\n<td>3,342,091</td>\n</tr>\n<tr>\n<td>California</td>\n<td>111,243,502</td>\n<td>New
+      Jersey</td>\n<td>29,106,640</td>\n</tr>\n<tr>\n<td>Colorado</td>\n<td>20,582,327</td>\n<td>New
+      Mexico</td>\n<td>5,038,116</td>\n</tr>\n<tr>\n<td>Connecticut</td>\n<td>11,508,412</td>\n<td>New
+      York</td>\n<td>61,861,773</td>\n</tr>\n<tr>\n<td>D.C.</td>\n<td>2,699,081</td>\n<td>North
+      Carolina</td>\n<td>24,036,512</td>\n</tr>\n<tr>\n<td>Delaware</td>\n<td>3,842,583</td>\n<td>North
+      Dakota</td>\n<td>3,826,625</td>\n</tr>\n<tr>\n<td>Florida</td>\n<td>88,067,510</td>\n<td>Ohio</td>\n<td>23,397,453</td>\n</tr>\n<tr>\n<td>Georgia</td>\n<td>32,039,933</td>\n<td>Oklahoma</td>\n<td>11,325,023</td>\n</tr>\n<tr>\n<td>Hawaii</td>\n<td>3,490,752</td>\n<td>Oregon</td>\n<td>10,510,197</td>\n</tr>\n<tr>\n<td>Idaho</td>\n<td>4,757,044</td>\n<td>Pennsylvania</td>\n<td>32,532,786</td>\n</tr>\n<tr>\n<td>Illinois</td>\n<td>35,938,656</td>\n<td>Rhode
+      Island</td>\n<td>3,361,749</td>\n</tr>\n<tr>\n<td>Indiana</td>\n<td>16,321,562</td>\n<td>South
+      Carolina</td>\n<td>15,078,257</td>\n</tr>\n<tr>\n<td>Iowa</td>\n<td>9,843,752</td>\n<td>South
+      Dakota</td>\n<td>3,970,217</td>\n</tr>\n<tr>\n<td>Kansas</td>\n<td>9,565,831</td>\n<td>Tennessee</td>\n<td>17,442,243</td>\n</tr>\n<tr>\n<td>Kentucky</td>\n<td>10,147,626</td>\n<td>Texas</td>\n<td>92,331,270</td>\n</tr>\n<tr>\n<td>Louisiana</td>\n<td>16,226,096</td>\n<td>Utah</td>\n<td>8,100,467</td>\n</tr>\n<tr>\n<td>Maine</td>\n<td>3,316,037</td>\n<td>Vermont</td>\n<td>1,640,326</td>\n</tr>\n<tr>\n<td>Maryland</td>\n<td>16,186,978</td>\n<td>Virginia</td>\n<td>20,316,519</td>\n</tr>\n<tr>\n<td>Massachusetts</td>\n<td>21,453,245</td>\n<td>Washington</td>\n<td>18,109,893</td>\n</tr>\n<tr>\n<td>Michigan</td>\n<td>24,427,664</td>\n<td>West
+      Virginia</td>\n<td>3,643,445</td>\n</tr>\n<tr>\n<td>Minnesota</td>\n<td>17,081,121</td>\n<td>Wisconsin</td>\n<td>14,623,479</td>\n</tr>\n<tr>\n<td>Mississippi</td>\n<td>7,505,441</td>\n<td>Wyoming</td>\n<td>1,820,520</td>\n</tr>\n<tr>\n<td>Missouri</td>\n<td>17,261,874</td>\n<td><strong>United
+      States</strong></td>\n<td><strong>$949,898,320</strong></td>\n</tr>\n</tbody></table>\n\n(1)
+      Before reinsurance transactions, includes state funds, excludes territories.\n(2)
+      Data for the total United States may differ from similar data shown elsewhere
+      due to the use of different exhibits from S&amp;P Global Market Intelligence.\n\nSource:
+      NAIC data, sourced from S&amp;P Global Market Intelligence, Insurance Information
+      Institute.</td></tr>\n</table></td> </tr>\n      </tbody>\n    </table>\n  </body>\n</html>\n","role":"user"}],"model":"gpt-4o","n":1,"stream":false,"temperature":0.7}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '4401'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.59.5
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.59.5
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.8
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA4xYW08bORR+51dYoz4eur7OjHnrgrawWwrqDXWbCsyMSVwmdtZ2gCziv6+cUKBa
+        7OElUnzsT9+5nzO3WwhVpq92UNXNVOzmi2H7TfjnrboZ3u2/PZLmq/jwZf53OOLhy7XcP/5aQXrh
+        zn/oLv589bpz88Wgo3F2I+68VlEnVNKwpmZMtu1aMHe9HtKz6SJuc7dNMeXbuN3G9f3DmTOdDtUO
+        +raFEEK3699E0fb6ptpBGH6ezHUIaqqrnYdLCFXeDemkUiGYEJWNFTwKO2ejtmvWZ2dnP4KzE3s7
+        sQhNqmjioCfVDppUe8brLqJjr+dmOQ/oxJsYtQV0/NsuOrBh6ZXtNPp9hT5GFTUgiimbVLAB6lVU
+        Cedb+ovQ7aRa39pAvxnUuZqrSQVoUn1yUQ2A1DCgwVgdNldeEQaE19AKNqnu4DmUQ2ejsmUUBi1u
+        oKU4B/JmUOGyiEFASg6NyEK81+d+DKQB0TAgmGR5ePOvKytDGpBCApciz+RK9UWMFkRNoKU0z+NS
+        2aBCWRnJCLRc5nlco301X4SZ8bqExIBxClhmzbKrBnPhvDVlyxAClDMQmJYo/al90KsSEJVAcA01
+        zzp71w3Oq94VUTCIlgKjTYnNob4xXRFHAGYtEFLnyViru2i6ZSybBwRugZOidb46f1lCSXFTE2ia
+        bELuvd59XbQL1FICbrPefu98nKFd5d1gyrlAOWBWg8irtKcHda3Gwq/lFETLyoT21KWLagSI1lDT
+        bGb+MThvRlKzBVw3IEg29o5mphx3DJhsgOdL5lvt/LScS4wCZhIky4IcXQ5q5uYjGQmMClh3hOdR
+        9tW1MqZsVC4xNCLr4iOvp84WaeBkTyAym4kHvZoVjZpKfwOY8xzCsbY2rIYrZUcNKxiFps2m88Ew
+        GOtMsfYyAZK1UIssyoeZ6zU6CIOy/UjtTemcr+IHtjcj/ZXUwCgBUWd99NEtX5jSRABuWqAi7yt3
+        XUSQ0HJWCpgNmZeks2wwUJJl8tdoj5QgagEty9a6T9paHYLWIy2fc5p6W5aJtnHZXa5GsoDwBmpa
+        58ncjKhDgTECtMkWp3duacIL4oXSGrDMMvkc1aw8wBCMgddZ1xwqY8dmDlIDZlmEL9rPnS131DQi
+        AMsb9FD51VgCkhpIW4Ns2iwT46dmpKxQvNZHEJnnEoLqZsugYyw6mZLUO4DybBs7UWFm7DSOVN3k
+        JAmtzI/uppuZqbIjLZ7TBuo6W3lPdIjoJTZiUHMGPK/XoUnJOFIVSJNmFyA0m9MnJnTOBlO2Doea
+        MuBN3mEmbW3BLBZmZKfAAjjP01m5ubHTciC3aVrN70eJi1t6M2IYmqbDJuupz9ZE3W8WxWIIvpI8
+        BU4LbE0pYX2f2LuJPTs7e7rCen2xDCpt0HY5DPfndw878eCmC+/Ow7384fzCWBNmp16r4Gzaf0N0
+        i2otvdtC6Pt6917+sk5XC+/mi3ga3aW2CZDwhm0Aq8d1/4mYEH4vjknFRwkVbQPPYJ72OiozhCcb
+        fNWpbqb7J6i0fdz41bI37lGGt54o/39Oz8FvDGDs9AlKFv5R0HV6EXV/uvC6N92vej9e8zp9E8ld
+        ezD2mnAVtL8ynT6NRvvkkF5fqOWw+VxRhVWIen56YexU+4U3m28WF4tTgTvVM4E1r7butv4DAAD/
+        /wMAPxmuX7wRAAA=
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 9067a86b183d4d88-FRA
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 23 Jan 2025 12:06:57 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=rNea.GeQ8qvCf68S.12hcxJUpLepWb1Bfpw2NDqp9hg-1737634017-1.0.1.1-VuTXr3tUeTO8LUZzXUSt1x_c12CTS.3xoLMyv3gG0IEPTFZDZI6yXd6x60Oyw3FdfAY_N9dHyrXq3y83ccF9uA;
+        path=/; expires=Thu, 23-Jan-25 12:36:57 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=bv4ejFkCW7bdENu_lKSFIISmpPGjQFaly3c1KlcFtH4-1737634017237-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      access-control-expose-headers:
+      - X-Request-ID
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-organization:
+      - user-iarz4shpxfmvb4ssgkfsv3ye
+      openai-processing-ms:
+      - '28690'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-ratelimit-limit-requests:
+      - '5000'
+      x-ratelimit-limit-tokens:
+      - '800000'
+      x-ratelimit-remaining-requests:
+      - '4999'
+      x-ratelimit-remaining-tokens:
+      - '798983'
+      x-ratelimit-reset-requests:
+      - 12ms
+      x-ratelimit-reset-tokens:
+      - 76ms
+      x-request-id:
+      - req_2a5042dbd879967a8748bb5d479869c9
+    status:
+      code: 200
+      message: OK
 version: 1

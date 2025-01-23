@@ -4,7 +4,7 @@ interactions:
       tasks. Use the following pieces of retrieved context to answer If you don't
       know the answer, say that you don't know. Use three sentences maximum and keep
       the answer concise.\\n\\nCurrent weather information for paris: Temperature:
-      -0.55\xB0C, Feels like: -3.75\xB0C, Humidity: 95%, Status: mist\\n\\n\\n\\n\",\"role\":\"system\"},{\"content\":\"what
+      -0.55\xB0C, Feels like: -3.75\xB0C, Humidity: 95%, Status: mist\\n\\n\",\"role\":\"system\"},{\"content\":\"what
       is the weather like in paris?\",\"role\":\"user\"}],\"model\":\"gpt-4o\",\"n\":1,\"stream\":false,\"temperature\":0.7}"
     headers:
       accept:
@@ -14,7 +14,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '505'
+      - '501'
       content-type:
       - application/json
       host:
@@ -42,20 +42,20 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAAwAAAP//jFLLbtswELzrKxYEerMM+SE79i3pvS2KtilQBAJNrqytKZIlV0mMwP/U
-        b+iXFZRdy0ETIBceZnaHM7v7lAEI0mINQjWSVetNfh3d54+3XN6HRfzW7HbfN48f4s3t118311da
-        jFKH2/xExf+6xsq13iCTs0daBZSMSXWynC0X08VqWfRE6zSa1Lb1nM9dPi2m87y4yovFqbFxpDCK
-        NfzIAACe+jdZtBofxRp6mR5pMUa5RbE+FwGI4ExChIyRIkvLYjSQyllG27v+0iCoLgS0DA8oucEA
-        ZOGTDBSBIrQUeT+CB+IGJDC2HoPkLiC4GvJiXJZ/fr8HaTUQQ41oIhjaIeSz8TJRY0g/NF1Lmnif
-        FCXDqnw3vvQTsO6iTOOwnTEn/HAOaNzWB7eJJ/6M12QpNlVAGZ1NYSI7L3r2kAHc9YPsns1G+OBa
-        zxW7HdokuCqPcmLY3EDOFieSHUsz4JPZZPSCXKWRJZl4sQmhpGpQD63D2mSnyV0Q2UXo/928pH0M
-        Tnb7FvmBUAo9o658QE3qeeKhLGA67NfKzkPuDYuI4Z4UVkwY0iI01rIzx5sTcR8Z26omu8XgAx0P
-        r/ZVWSipZ2WBc5Edsr8AAAD//wMAl43qdYEDAAA=
+        H4sIAAAAAAAAA4xSQW7bMBC86xULAr1ZhmxJTu1bkADNsUXdU1EIDLmStqZIllzFNQL/qW/oywpZ
+        juWgKdALDzM7g5ldPicAgrTYgFCtZNV5k97GH82Xosv32wd5t109PdyGe7P8vNh9uDefxGxQuMfv
+        qPhFNVeu8waZnB1pFVAyDq6Lm/xmlZflujgRndNoBlnjOS1cusyWRZq9T7PVWdg6UhjFBr4mAADP
+        p3eIaDX+FBvIZi9IhzHKBsXmMgQggjMDImSMFFlaFrOJVM4y2lPqbYuwR8ktBiALH2WgCBRB9SGg
+        ZXOAjiIfYE/cggTGzmOQ3AcEV0Oazcvy96+7GdSIhmwDhnYIaT6/GWFpNUho+4408WGQrMt38+ss
+        Aes+ymEVtjfmjB8v5YxrfHCP8cxf8JosxbYKKKOzQ5HIzosTe0wAvp2W2L/ai/DBdZ4rdju0g+G6
+        HO3EdLWJzIszyY6lmfDFcj17w67SyJJMvLqCUFK1qCfpdDLZa3JXRHJV+u80b3mPxck2/2M/EUqh
+        Z9SVD6hJvW48jQUcPvW/xi5LPgUWEcMTKayYMAyH0FjL3oz/TcRDZOyqmmyDwQcaP13tqzJTUudl
+        hoVIjskfAAAA//8DAL8Jhx99AwAA
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 9066fd118b915b73-VIE
+      - 9067cfa1fc2c4da0-FRA
       Connection:
       - keep-alive
       Content-Encoding:
@@ -63,14 +63,14 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 23 Jan 2025 10:09:31 GMT
+      - Thu, 23 Jan 2025 12:33:16 GMT
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=Zo6ysPegmdBM7FMEZZiH4uNcImL1.NnZdf9m9hmnx7Q-1737626971-1.0.1.1-TQkf.1P7PX2zY0575e0Xhv4GMZ4DG7bqww1xAC3TBuYS24DkWjcgtCO9z5UtPmds2m3GTJjH622VHMPRXEH4QQ;
-        path=/; expires=Thu, 23-Jan-25 10:39:31 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=7_6K99umT8xSDnn9vd93_D38fFKT19Z_d99npBAhbPY-1737635596-1.0.1.1-EbgqEenGA3H6ndGwte0A2fBGZM89aDoo8bREOUbSvzPV2Q98SMSEpI5_z0kKVP4ElcfsE2ny9H51jCUirVGnqQ;
+        path=/; expires=Thu, 23-Jan-25 13:03:16 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=lyIqZ6oyJbudf132BsafMy_nAUrAo99upleWMG.Xayo-1737626971547-0.0.1.1-604800000;
+      - _cfuvid=R.l5vGYVL.uYgJ6LOB_atQdB2ZdVDVnMsyfbcQ.n1ls-1737635596213-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Transfer-Encoding:
       - chunked
@@ -83,7 +83,7 @@ interactions:
       openai-organization:
       - user-iarz4shpxfmvb4ssgkfsv3ye
       openai-processing-ms:
-      - '1444'
+      - '1366'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -95,13 +95,13 @@ interactions:
       x-ratelimit-remaining-requests:
       - '4999'
       x-ratelimit-remaining-tokens:
-      - '799889'
+      - '799890'
       x-ratelimit-reset-requests:
       - 12ms
       x-ratelimit-reset-tokens:
       - 8ms
       x-request-id:
-      - req_ec2bdf170c354bb9554b59b7a51ac109
+      - req_11d752d94ce760dd54f5f01a260e25f0
     status:
       code: 200
       message: OK

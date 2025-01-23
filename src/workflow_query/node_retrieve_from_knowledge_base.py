@@ -11,7 +11,9 @@ class RetrieveStateUpdate(TypedDict):
     documents: list[Document]
 
 
-def retrieve(state: AgentState, config: RunnableConfig) -> RetrieveStateUpdate:
+def retrieve_from_knowledge_base(
+    state: AgentState, config: RunnableConfig
+) -> RetrieveStateUpdate:
     c = Config.from_runnable_config(config)
     vector_store = get_vector_store(c)
     query = state["query"]
@@ -21,10 +23,10 @@ def retrieve(state: AgentState, config: RunnableConfig) -> RetrieveStateUpdate:
         query, k=2
     )
 
-    filtered_documents = [
+    most_relevant_documents = [
         doc
         for doc, score in documents_with_scores
         if score >= c.vector_store.score_threshold
     ]
 
-    return {"documents": filtered_documents}
+    return {"documents": [*state["documents"], *most_relevant_documents]}

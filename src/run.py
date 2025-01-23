@@ -47,11 +47,9 @@ def cmd_query(user_query: str):
     initial_agent_state = workflow_query.AgentState(
         messages=[HumanMessage(content=user_query)],
         documents=[],
-        weather_info=None,
-        is_weather_query=False,
         query=None,
         location=None,
-        sources=[],
+        external_knowledge_sources=[],
     )
 
     response = workflow_query.get_graph().invoke(

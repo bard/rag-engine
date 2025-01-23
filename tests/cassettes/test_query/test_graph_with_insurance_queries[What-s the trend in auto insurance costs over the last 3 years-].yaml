@@ -3,10 +3,10 @@ interactions:
     body: '{"messages":[{"content":"Analyze the following query and determine if it''s
       asking about the weather for a location. If it is, extract the location mentioned.
       Respond in JSON format with ''is_weather_related'' as a boolean and ''location''
-      as a string.\n\nQuery: ''What''s the trend in auto insurance costs over the
-      last 3 years?''","role":"user"}],"model":"gpt-4o","n":1,"parallel_tool_calls":false,"stream":false,"temperature":0.7,"tool_choice":{"type":"function","function":{"name":"WeatherQueryClassification"}},"tools":[{"type":"function","function":{"name":"WeatherQueryClassification","description":"","parameters":{"properties":{"is_weather_related":{"description":"whether
-      the query has to do with weather","type":"boolean"},"location":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"location
-      the query is about, if it''s weather-related"}},"required":["is_weather_related","location"],"type":"object"}}}]}'
+      as a string or null.\n\nQuery: ''What''s the trend in auto insurance costs over
+      the last 3 years?''","role":"user"}],"model":"gpt-4o","n":1,"parallel_tool_calls":false,"stream":false,"temperature":0.7,"tool_choice":{"type":"function","function":{"name":"WeatherQueryClassification"}},"tools":[{"type":"function","function":{"name":"WeatherQueryClassification","description":"","parameters":{"properties":{"is_weather_related":{"description":"whether
+      the query is weather-related","type":"boolean"},"location":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"location
+      the query is about, if any"}},"required":["is_weather_related","location"],"type":"object"}}}]}'
     headers:
       accept:
       - application/json
@@ -15,7 +15,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '918'
+      - '905'
       content-type:
       - application/json
       host:
@@ -43,21 +43,21 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAAwAAAP//jFNRa9swEH73rxD3nAw7TubUb6PrYAzGOja2sQyjymdbrSwJ6bw2hPz3
-        ITu1nS6D+cGI++777u476RAxBrKEnIFoOInWquUbp5q0e5t0n2uRrd9lafIoM//p+v3tjX6CRWCY
-        u3sU9Mx6JUxrFZI0eoCFQ04YVJMszdJsG2+THmhNiSrQakvLtVmu4tV6GW+X8esTsTFSoIec/YwY
-        Y+zQ/0OLusQnyFm8eI606D2vEfIxiTFwRoUIcO+lJ64JFhMojCbUoWvdKTUDyBhVCK7UVHj4DrPz
-        5BNXqnDNl48PbU33SD/kV2+vmu8xXn24mdUbpPe2b6jqtBj9meFjPH9RjDHQvO2535BTg+62Q7e/
-        VmG0Sgp+QY0x4K7uWtQUJoHDDqQvHgd64VCFpewgr7jyuNiBMoPMDvLgyBHO1I7RpfOvmW8Oq85z
-        dTL0FD+OG1Kmts7c+ReGQyW19E3hkPt+cPBk7FA71OkrQHe2XLDOtJYKMg+og2CyTgY9mO7eDF2d
-        QDLE1Sy+SRcX9IoSict+++OFE1w0WE7U6eLxrpRmBkSzqf/u5pL2MLnU9f/IT4AQaAnLwjospTif
-        eEpzGJ7mv9JGl/uGwaP7LQUWJNGFTZRY8U4Nrwb83hO2RSV1jc462T8dqGyxiQUv002Ma4iO0R8A
-        AAD//wMAqQbWAkMEAAA=
+        H4sIAAAAAAAAAwAAAP//jFNNb9swDL37Vwg8J4PtpEnj276wAttSNBi2wzIIqkzbWmVJkeS1WZD/
+        PshObafLgPlgCHx8j+SjdIgIAZFDRoBXzPPayOlrt7u5aTaPtyv3lfvlG3HLbXr3wNP0i3kPk8DQ
+        9z+R+2fWK65rI9ELrTqYW2Qeg2qynC0Xs3k8S1qg1jnKQCuNn871NI3T+TS+nsaLE7HSgqODjHyP
+        CCHk0P5DiyrHJ8hIPHmO1OgcKxGyPokQsFqGCDDnhPNMeZgMINfKowpdq0bKEeC1lpQzKYfC3XcY
+        nQefmJT0av1p96Q2iw+79bvlZr7++Nkk+9+mGtXrpPembahoFO/9GeF9PHtRjBBQrG6535D5Cu1d
+        g3b/VobRCsHZBTVCgNmyqVH5MAkctiAcfezo1KIMS9lCVjDpcLIFqTuZLWTBkSOcqR2jS+cfI98s
+        Fo1j8mToKX7sNyR1aay+dy8Mh0Io4Spqkbl2cHBem652qNNWgOZsuWCsro2nXj+gCoLJbNXpwXD3
+        Rmh6Ar32TI7iV8nkgh7N0TPRbr+/cJzxCvOBOlw81uRCj4BoNPXf3VzS7iYXqvwf+QHgHI3HnBqL
+        ueDnEw9pFsPT/Fda73LbMDi0vwRH6gXasIkcC9bI7tWA2zuPNS2EKtEaK9qnA4Wh88UqiVcxu15C
+        dIz+AAAA//8DAO2EGWZDBAAA
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 904f40b2bc605a78-VIE
+      - 9067a975cb54920e-FRA
       Connection:
       - keep-alive
       Content-Encoding:
@@ -65,14 +65,14 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 20 Jan 2025 13:01:22 GMT
+      - Thu, 23 Jan 2025 12:07:11 GMT
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=BcALH6rRbycJp2CiJmxo83qkWgvFy5_CRQKwre4Tv7I-1737378082-1.0.1.1-c7cAigiqFlvgBi2BNNgnIw0t8QBrdDams1bfE44x0lfXPjWV_cMVFX.CC3KuHzrIPgLIwoGbFr8gSV3sVHkAlw;
-        path=/; expires=Mon, 20-Jan-25 13:31:22 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=I60BHzOeGcKZILQZ2MJSgjlTKqMvBewSi0lmE4c2al8-1737634031-1.0.1.1-kfQ.Hokdudcd6juOEOmp8YbD.H8fh2Ztv_5aULpIQsqgdaJo4lJQ4NXnioW2PEw_QKb7nKsbZQ_sgm4.OyZ17g;
+        path=/; expires=Thu, 23-Jan-25 12:37:11 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=ToJNycMb6M8FnTCiu4Zt.OZB5lWzm3W..LAob0.6vQA-1737378082505-0.0.1.1-604800000;
+      - _cfuvid=G8tyCFYHEedeJc6rosgWOwJ4mPuk0Wow7ZUspjG2JhI-1737634031650-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Transfer-Encoding:
       - chunked
@@ -80,10 +80,12 @@ interactions:
       - nosniff
       access-control-expose-headers:
       - X-Request-ID
+      alt-svc:
+      - h3=":443"; ma=86400
       openai-organization:
       - user-iarz4shpxfmvb4ssgkfsv3ye
       openai-processing-ms:
-      - '563'
+      - '437'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -95,23 +97,27 @@ interactions:
       x-ratelimit-remaining-requests:
       - '4999'
       x-ratelimit-remaining-tokens:
-      - '799909'
+      - '799907'
       x-ratelimit-reset-requests:
       - 12ms
       x-ratelimit-reset-tokens:
       - 6ms
       x-request-id:
-      - req_49c0d6af14273ce1396673dcfb02478a
+      - req_5f5ab24f499791d059e37b252bad1793
     status:
       code: 200
       message: OK
 - request:
     body: '{"messages":[{"content":"You are an assistant for question-answering tasks.
-      Use the following pieces of retrieved context to answer the question. If you
-      don''t know the answer, say that you don''t know. Use three sentences maximum
-      and keep the answer concise.\n\nYear: 2014, Expenditure: $869.47, Change: 3.4%\n\nYear:
-      2013, Expenditure: $841.06, Change: 3.5%\n\n","role":"system"},{"content":"What''s
-      the trend in auto insurance costs over the last 3 years?","role":"user"}],"model":"gpt-4o","n":1,"stream":false,"temperature":0.7}'
+      Use the following pieces of retrieved context to answer If you don''t know the
+      answer, say that you don''t know. Use three sentences maximum and keep the answer
+      concise.\n\nAverage Expenditures for Auto Insurance, 2012-2014\n\nYear: 2012,
+      Expenditure: $812.40, Change: 2.2%\nYear: 2013, Expenditure: $841.06, Change:
+      3.5%\nYear: 2014, Expenditure: $869.47, Change: 3.4%\n\n\nAverage Expenditures
+      for Auto Insurance, 2015-2017\n\nYear: 2015, Expenditure: $896.66, Change: 3.1%\nYear:
+      2016, Expenditure: $945.22, Change: 5.4%\nYear: 2017, Expenditure: $1008.35,
+      Change: 6.7%\n\n\n","role":"system"},{"content":"What''s the trend in auto insurance
+      costs over the last 3 years?","role":"user"}],"model":"gpt-4o","n":1,"stream":false,"temperature":0.7}'
     headers:
       accept:
       - application/json
@@ -120,7 +126,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '529'
+      - '820'
       content-type:
       - application/json
       host:
@@ -148,21 +154,21 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAAwAAAP//jFNNj9MwEL33V4ysRVzaKG3SNtsb7AWuCwckhCLXnsSGxBPZk5Zl1f+O
-        nLRNV7tIXHJ4b97zm488zwCE1WIHQhnJqu2axQffmPXm8c/DMvt0fHwwvuOP33Qovsjm/iDmUUH7
-        n6j4okoUtV2DbMmNtPIoGaPrcptts22RFtlAtKSxibK640VOi1W6yhdpsUg3Z6EhqzCIHXyfAQA8
-        D98Y0Wn8LXaQzi9IiyHIGsXuWgQgPDURETIEG1g6FvOJVOQY3ZD6q0GQPRNYF3ovnUJQFDiAdTF7
-        QA2VpxbuinyZpBuwDlbpMgMmuCs290m+PUP5HIKho3U1SGCPTgNV4G2IyGh5tGxAgjLS1RjZLFm/
-        uzpKpyFL8guQJ/AZNLn3DEYeELRkCRV5YIPAxnoNTyj9HPY9j9jwpnXaKskY4kPkYvPo+NpNcjsG
-        j1UfZNyC65vmjJ+uc22o7jztw5m/4pV1Npgy+pGLMwxMnRjY0wzgx7C//sVKROep7bhk+oUuGi6X
-        q9FPTBczsdsLycSyuVEV+fwNv1IjS9uEmwsQSiqDepJO5yJ7bemGmN10/TrNW95j59bV/2M/EUph
-        x6jLzqO26mXHU5nH+EP9q+w65SGwCOgPVmHJFn3chMZK9s146yI8Bca2rKyr0XfejgdfdeU6VVJn
-        6xRzMTvN/gIAAP//AwAgJvCE+QMAAA==
+        H4sIAAAAAAAAAwAAAP//jFNNb9swDL37VxBCd0sMx0nsJLcBG9DdBrQ7bENhMBJta7UlT6LTZkX+
+        +yDnwwm2Abvo8B7fAx9JvUUAQiuxASFrZNl2zfS9/3n/6eFl/2H3/PWh/nbvP+NHX2frx/5X9UVM
+        gsJuf5DksyqWtu0aYm3NkZaOkCm4zvJ5ns0XyTwdiNYqaoKs6ni6sNM0SRfTZDVNspOwtlqSFxv4
+        HgEAvA1vaNEoehUbSCZnpCXvsSKxuRQBCGebgAj0XntGw2IyktIaJjN0/VgT4I4cVgT02pFRmntH
+        HkrrAHu2oI3vHRpJUOOOYEtkQFoTbMlwswdtQkqvTQV2Rw64JmjQM3DtiGBP6PwESmdbuFsvlnGa
+        gjaQJrMM2MLdLElW8Xx5wvIJ+Nq+BDMEWaOpCGwJy3jx7qJCoyCL8zOQxxBSsCOjQBulJTJ5QHB6
+        aEpaz6H0Nk18PRBHZe8x7MP0TXPCD5cJN7bqnN36E3/BS220r4uQ3powTc+2EwN7iACehk32N8sR
+        nbNtxwXbZzLBME2zo58Yb2dk89OaBVvG5kq1Pqtu/ApFjLrxV7cgJMqa1CgdDwd7pe0VEV2l/rOb
+        v3kfk2tT/Y/9SEhJHZMqOkdKy9vEY5mj8LX+VXaZ8tCw8OR2WlLBmlzYhKIS++Z49cLvPVNblNpU
+        5Dqnj6dfdsUiW8+SdYKrXESH6DcAAAD//wMAYNGHygMEAAA=
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 904f40ba6bfcc2d2-VIE
+      - 9067a97c6d0e9bb6-FRA
       Connection:
       - keep-alive
       Content-Encoding:
@@ -170,14 +176,14 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 20 Jan 2025 13:01:24 GMT
+      - Thu, 23 Jan 2025 12:07:13 GMT
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=.Yyf9NSD5yqt5SaF3tdQND48fJPKeIbaf6d3O7IPKxQ-1737378084-1.0.1.1-p2j46A48mPvSGVAsavdRJm113cBUWMv4rlkxhXXNFGqPUOemo9YwcSDpC2EPf2M64lbxClBqSA7ImGJvLATofA;
-        path=/; expires=Mon, 20-Jan-25 13:31:24 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=RuO4CV25gOaY0QYCvxAYusc5DBw..hHug2Ah1pfO49A-1737634033-1.0.1.1-gJTQohlH0SMQtilZCDPOZ2_FUIIGHRoBqr3kkuuTYNzLdgVmSogEYP92x4CXFS9h5M.9SgVvrTlAAhp0WATWrw;
+        path=/; expires=Thu, 23-Jan-25 12:37:13 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=1TvfIeSXOYTIJ6O4v9Epo25XybOWc7qMujDzQdiHTNI-1737378084520-0.0.1.1-604800000;
+      - _cfuvid=hDW8lXcurEbjOdfK9BaUSeur7E8Ke.YwszkLpXHe5Yk-1737634033648-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Transfer-Encoding:
       - chunked
@@ -185,10 +191,12 @@ interactions:
       - nosniff
       access-control-expose-headers:
       - X-Request-ID
+      alt-svc:
+      - h3=":443"; ma=86400
       openai-organization:
       - user-iarz4shpxfmvb4ssgkfsv3ye
       openai-processing-ms:
-      - '1353'
+      - '1368'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -200,13 +208,13 @@ interactions:
       x-ratelimit-remaining-requests:
       - '4999'
       x-ratelimit-remaining-tokens:
-      - '799882'
+      - '799813'
       x-ratelimit-reset-requests:
       - 12ms
       x-ratelimit-reset-tokens:
-      - 8ms
+      - 14ms
       x-request-id:
-      - req_f0a0b7fe2a86d474a5d94fe5857de100
+      - req_c8fe091f5aab43a6eb04e87d8b60091e
     status:
       code: 200
       message: OK

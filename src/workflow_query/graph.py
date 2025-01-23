@@ -4,8 +4,8 @@ from langgraph.graph import StateGraph, END
 
 from ..config import Config
 from .state import AgentState
-from .node_retrieve import retrieve
-from .node_fetch_weather_info import fetch_weather_info
+from .node_retrieve_from_knowledge_base import retrieve_from_knowledge_base
+from .node_retrieve_from_weather_service import retrieve_from_weather_service
 from .node_classify_query import classify_query
 from .node_generate import generate
 from .node_rerank__STUB import rerank
@@ -13,30 +13,33 @@ from .node_rerank__STUB import rerank
 
 def route_based_on_query_classification(
     state: AgentState,
-) -> Literal["fetch_weather_info", "retrieve"]:
-    if state.get("is_weather_query"):
-        return "fetch_weather_info"
-    return "retrieve"
+) -> Literal["retrieve_from_weather_service", "retrieve_from_knowledge_base"]:
+    if any(
+        source["type"] == "weather" for source in state["external_knowledge_sources"]
+    ):
+        return "retrieve_from_weather_service"
+    else:
+        return "retrieve_from_knowledge_base"
 
 
 def get_graph():
     builder = StateGraph(AgentState, Config)
     builder.set_entry_point("classify_query")
     builder.add_node("classify_query", classify_query)
-    builder.add_node("fetch_weather_info", fetch_weather_info)
-    builder.add_node("retrieve", retrieve)
+    builder.add_node("retrieve_from_weather_service", retrieve_from_weather_service)
+    builder.add_node("retrieve_from_knowledge_base", retrieve_from_knowledge_base)
     builder.add_node("rerank", rerank)
     builder.add_node("generate", generate)
     builder.add_conditional_edges(
         "classify_query",
         route_based_on_query_classification,
         {
-            "fetch_weather_info": "fetch_weather_info",
-            "retrieve": "retrieve",
+            "retrieve_from_weather_service": "retrieve_from_weather_service",
+            "retrieve_from_knowledge_base": "retrieve_from_knowledge_base",
         },
     )
-    builder.add_edge("fetch_weather_info", "retrieve")
-    builder.add_edge("retrieve", "rerank")
+    builder.add_edge("retrieve_from_weather_service", "retrieve_from_knowledge_base")
+    builder.add_edge("retrieve_from_knowledge_base", "rerank")
     builder.add_edge("rerank", "generate")
     builder.add_edge("generate", END)
 

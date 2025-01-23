@@ -1,12 +1,12 @@
 import pprint
 import pytest
-from langchain.schema import HumanMessage
+from langchain.schema import HumanMessage, Document
 from langchain_core.messages import HumanMessage
 
 from src.workflow_query import (
     AgentState,
     get_graph,
-    retrieve,
+    retrieve_from_knowledge_base,
     reformulate_query,
     classify_query,
 )
@@ -19,19 +19,17 @@ def test_classify_query(config):
     agent_state = AgentState(
         messages=[HumanMessage(content="how is the weather in Paris?")],
         documents=[],
-        weather_info=None,
-        is_weather_query=False,
         query=None,
         location=None,
-        sources=[],
+        external_knowledge_sources=[],
     )
 
     state_update = classify_query(agent_state, config.to_runnable_config())
 
     assert state_update == {
-        "is_weather_query": True,
         "location": "Paris",
         "query": "how is the weather in Paris?",
+        "external_knowledge_sources": [{"type": "weather", "location": "Paris"}],
     }
 
 
@@ -46,14 +44,14 @@ def test_retrieve_with_travel_knowledge_base(
             HumanMessage(content="o"),
         ],
         documents=[],
-        weather_info=None,
-        is_weather_query=False,
         query="what are some nice things to see in Paris?",
         location=None,
-        sources=[],
+        external_knowledge_sources=[],
     )
 
-    state_update = retrieve(agent_state, config.to_runnable_config())
+    state_update = retrieve_from_knowledge_base(
+        agent_state, config.to_runnable_config()
+    )
 
     assert state_update.get("documents") == snapshot
 
@@ -82,14 +80,14 @@ Year: 2015, Expenditure: $896.66, Change: 3.1%
             HumanMessage(content="what is the expenditure in 2014?"),
         ],
         documents=[],
-        weather_info=None,
-        is_weather_query=False,
         query="what is the expenditure in 2014?",
         location=None,
-        sources=[],
+        external_knowledge_sources=[],
     )
 
-    state_update = retrieve(agent_state, config.to_runnable_config())
+    state_update = retrieve_from_knowledge_base(
+        agent_state, config.to_runnable_config()
+    )
 
     documents_content = "\n".join(
         [doc.page_content for doc in state_update.get("documents")]
@@ -113,16 +111,13 @@ def test_generate_from_knowledge_base(config, travel_knowledge_documents, snapsh
     agent_state = AgentState(
         messages=[HumanMessage(content="what are some nice things to see in Paris?")],
         documents=travel_knowledge_documents[0:1],
-        weather_info=None,
-        is_weather_query=False,
         query="what are some nice things to see in Paris?",
         location=None,
-        sources=[],
+        external_knowledge_sources=[],
     )
 
     state_update = generate(agent_state, config.to_runnable_config())
 
-    assert state_update["sources"] == ["knowledge_base[0]"]
     assert state_update["messages"][-1].content == snapshot
 
 
@@ -130,17 +125,19 @@ def test_generate_from_knowledge_base(config, travel_knowledge_documents, snapsh
 def test_generate_from_external_service(config, snapshot):
     agent_state = AgentState(
         messages=[HumanMessage(content="what is the weather like in paris?")],
-        documents=[],
-        weather_info="Temperature: -0.55°C, Feels like: -3.75°C, Humidity: 95%, Status: mist",
-        is_weather_query=True,
+        documents=[
+            Document(
+                page_content="Current weather information for paris: Temperature: -0.55°C, Feels like: -3.75°C, Humidity: 95%, Status: mist",
+                id="external[weather]",
+            )
+        ],
         query="what is the weather like in paris?",
-        location="paris",
-        sources=[],
+        location=None,
+        external_knowledge_sources=[],
     )
 
     state_update = generate(agent_state, config.to_runnable_config())
 
-    assert state_update["sources"] == ["external[weather]"]
     assert state_update["messages"][-1].content == snapshot
 
 
@@ -151,11 +148,9 @@ def test_graph_with_weather_query(config, travel_knowledge_documents, snapshot):
     agent_state = AgentState(
         messages=[HumanMessage(content="what is the weather like in paris?")],
         documents=[],
-        weather_info=None,
-        is_weather_query=False,
         query=None,
         location=None,
-        sources=[],
+        external_knowledge_sources=[],
     )
 
     response = get_graph().invoke(agent_state, config.to_runnable_config())
@@ -170,11 +165,9 @@ def test_graph_with_knowledge_query(config, travel_knowledge_documents, snapshot
     agent_state = AgentState(
         messages=[HumanMessage(content="what are some nice things to see in Paris?")],
         documents=[],
-        weather_info=None,
-        is_weather_query=False,
         query=None,
         location=None,
-        sources=[],
+        external_knowledge_sources=[],
     )
 
     response = get_graph().invoke(agent_state, config.to_runnable_config())
@@ -201,11 +194,9 @@ def test_graph_with_insurance_queries(
     agent_state = AgentState(
         messages=[HumanMessage(content=user_query)],
         documents=[],
-        weather_info=None,
-        is_weather_query=False,
         query=None,
         location=None,
-        sources=[],
+        external_knowledge_sources=[],
     )
 
     response = get_graph().invoke(agent_state, config.to_runnable_config())
@@ -223,11 +214,9 @@ def test_reformulate_query__STUB(config):
             )
         ],
         documents=[],
-        weather_info=None,
-        is_weather_query=False,
         query=None,
         location=None,
-        sources=[],
+        external_knowledge_sources=[],
     )
 
     state_update = reformulate_query(agent_state, config.to_runnable_config())

@@ -3,9 +3,9 @@ interactions:
     body: '{"messages":[{"content":"Analyze the following query and determine if it''s
       asking about the weather for a location. If it is, extract the location mentioned.
       Respond in JSON format with ''is_weather_related'' as a boolean and ''location''
-      as a string.\n\nQuery: ''what is the weather like in paris?''","role":"user"}],"model":"gpt-4o","n":1,"parallel_tool_calls":false,"stream":false,"temperature":0.7,"tool_choice":{"type":"function","function":{"name":"WeatherQueryClassification"}},"tools":[{"type":"function","function":{"name":"WeatherQueryClassification","description":"","parameters":{"properties":{"is_weather_related":{"description":"whether
-      the query has to do with weather","type":"boolean"},"location":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"location
-      the query is about, if it''s weather-related"}},"required":["is_weather_related","location"],"type":"object"}}}]}'
+      as a string or null.\n\nQuery: ''what is the weather like in paris?''","role":"user"}],"model":"gpt-4o","n":1,"parallel_tool_calls":false,"stream":false,"temperature":0.7,"tool_choice":{"type":"function","function":{"name":"WeatherQueryClassification"}},"tools":[{"type":"function","function":{"name":"WeatherQueryClassification","description":"","parameters":{"properties":{"is_weather_related":{"description":"whether
+      the query is weather-related","type":"boolean"},"location":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"location
+      the query is about, if any"}},"required":["is_weather_related","location"],"type":"object"}}}]}'
     headers:
       accept:
       - application/json
@@ -14,7 +14,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '889'
+      - '876'
       content-type:
       - application/json
       host:
@@ -42,21 +42,21 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAA4xTXW/TMBR9z6+w7nOK0vWTvEFBYkhojIdOGkGR59ykZo7t2TeMqup/R066JB1F
-        Ig+RdY/POffLh4gxkAWkDMSOk6itmrxzqqI7RPO5/riR+MGQef/4dlk/Lc23LxAHhnn4iYJeWG+E
-        qa1CkkZ3sHDICYPqdDVbzVbrZDVtgdoUqAKtsjSZm8lVcjWfJOtJsjwRd0YK9JCy7xFjjB3af0hR
-        F/gbUpbEL5EavecVQtpfYgycUSEC3HvpiWuCeACF0YQ6ZK0bpUYAGaNywZUajLvvMDoPfeJK5U9f
-        rzf3z/cCb25u6y2fT7f8+tN2M/brpPe2TahstOj7M8L7ePrKjDHQvG65d8hph+62QbffqFBaKQW/
-        oMYYcFc1NWoKlcAhA+nz546eO1RhKBmk5BqMM1CmU8kgzcByJ30GRzhTPEaXzj9GvXNYNp6rU1NP
-        8WM/JWUq68yDf9V0KKWWfpc75L4tHjwZ23kHn9YBmrMBg3WmtpSTeUQdBKezRacHw/6N0RNIhrga
-        xefr+IJeXiBx2W5Av3SCix0WA3VYPt4U0oyAaFT139lc0u4ql7r6H/kBEAItYZFbh4UU5xUP1xyG
-        5/mva32X24TBo/slBeYk0YVJFFjyRnWbDH7vCeu8lLpCZ51snw+UNl8kghezRYJziI7RHwAAAP//
-        AwA/6IhiRwQAAA==
+        H4sIAAAAAAAAAwAAAP//jFNda9swFH33rxD3ORlJY/Lht9JllA3ajdGmYx5Gka5trbKkSXK2EPLf
+        i+zUdroM5gcj7rnn3O9DRAgIDgkBVlLPKiPH1+7Xgyvcbv9pvRPLu011v+Elf7r5oB9vv8IoMPT2
+        JzL/ynrHdGUkeqFVCzOL1GNQnS5mi/ksXi7iBqg0RxlohfHjWI+vJlfxeLIcT+YnYqkFQwcJ+R4R
+        Qsih+YcUFcc/kJDJ6NVSoXO0QEg6J0LAahksQJ0TzlPlYdSDTCuPKmStaikHgNdaZoxK2Qduv8Pg
+        3feJSpl9frx+qG+f198W/MlsxfuPq9lK3a/vBvFa6b1pEsprxbr+DPDOnrwJRggoWjXcDVJfov1S
+        o93fyFBaLhi9oEYIUFvUFSofKoFDCsJlv1t6ZlGGoaSQeFvjKAWpW5UUkhQMtcKlcIQzxWN06f1j
+        0DuLee2oPDX1ZD92U5K6MFZv3ZumQy6UcGVmkbqmeHBemzZ2iNNEgPpswGCsrozPvH5GFQSns1mr
+        B/3+DdET6LWncmCP56MLehlHT0WzAd3SMcpK5D21Xz5ac6EHQDSo+u9sLmm3lQtV/I98DzCGxiPP
+        jEUu2HnFvZvFcJ7/cuu63CQMDu1OMMy8QBsmwTGntWwvB9zeeayyXKgCrbGiOR/ITRbPV9PJakKX
+        C4iO0QsAAAD//wMAeHvQe0cEAAA=
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 904f406e5a9e5a48-VIE
+      - 9067be0ecf5bdc55-FRA
       Connection:
       - keep-alive
       Content-Encoding:
@@ -64,14 +64,14 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 20 Jan 2025 13:01:11 GMT
+      - Thu, 23 Jan 2025 12:21:16 GMT
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=TL4uRReUFmvk1VB5C0AZjYC6Q6fknpArJaZXyAG843s-1737378071-1.0.1.1-.0EZA8X2OZdAMo_B8hF1Dc.RayAoU126BkVOH3FURDGpiUYv6hVL2Q8yccUHlopax5ricjHqdS12nOHUeGKiNQ;
-        path=/; expires=Mon, 20-Jan-25 13:31:11 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=FvDPpveiDH26weS.oHK2e9wyd0_0S374qfUu8ldDKd8-1737634876-1.0.1.1-bkCmEvJ6A9zOKMvzAA7iqOYJS9Wnhz5RxiSCDelpAP3ZcGlbL_.T1GnYzInhCH9NNIDbJn3AIBuT_wxR9gXRUg;
+        path=/; expires=Thu, 23-Jan-25 12:51:16 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=cFPI7jsNHL1aVPn_c3gfAVP_Mi7VQt7390X9Eyv.eCI-1737378071524-0.0.1.1-604800000;
+      - _cfuvid=YilWWQ7gKN77ogMcMDN_0uXz4TkWc2.PPZ88sX6S_FA-1737634876067-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Transfer-Encoding:
       - chunked
@@ -79,10 +79,12 @@ interactions:
       - nosniff
       access-control-expose-headers:
       - X-Request-ID
+      alt-svc:
+      - h3=":443"; ma=86400
       openai-organization:
       - user-iarz4shpxfmvb4ssgkfsv3ye
       openai-processing-ms:
-      - '520'
+      - '1178'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -94,13 +96,13 @@ interactions:
       x-ratelimit-remaining-requests:
       - '4999'
       x-ratelimit-remaining-tokens:
-      - '799915'
+      - '799914'
       x-ratelimit-reset-requests:
       - 12ms
       x-ratelimit-reset-tokens:
       - 6ms
       x-request-id:
-      - req_cdcb8491305753f0a1efde8d1cc140dd
+      - req_9d0f7638a385eba038f5380c90d77d4a
     status:
       code: 200
       message: OK
@@ -119,7 +121,8 @@ interactions:
     uri: https://api.openweathermap.org/data/2.5/weather?lang=en&q=paris
   response:
     body:
-      string: '{"coord":{"lon":2.3488,"lat":48.8534},"weather":[{"id":701,"main":"Mist","description":"mist","icon":"50d"}],"base":"stations","main":{"temp":272.6,"feels_like":269.4,"temp_min":271.58,"temp_max":273.03,"pressure":1019,"humidity":95,"sea_level":1019,"grnd_level":1009},"visibility":5000,"wind":{"speed":2.57,"deg":90},"clouds":{"all":100},"dt":1737377816,"sys":{"type":1,"id":6550,"country":"FR","sunrise":1737358471,"sunset":1737390504},"timezone":3600,"id":2988507,"name":"Paris","cod":200}'
+      string: '{"coord":{"lon":2.3488,"lat":48.8534},"weather":[{"id":500,"main":"Rain","description":"light
+        rain","icon":"10d"}],"base":"stations","main":{"temp":279.9,"feels_like":275.85,"temp_min":279.29,"temp_max":281.05,"pressure":1012,"humidity":83,"sea_level":1012,"grnd_level":1002},"visibility":10000,"wind":{"speed":7.2,"deg":200},"rain":{"1h":0.18},"clouds":{"all":75},"dt":1737634611,"sys":{"type":2,"id":2012208,"country":"FR","sunrise":1737617494,"sunset":1737649982},"timezone":3600,"id":2988507,"name":"Paris","cod":200}'
     headers:
       Access-Control-Allow-Credentials:
       - 'true'
@@ -130,11 +133,11 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '492'
+      - '521'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Mon, 20 Jan 2025 13:01:16 GMT
+      - Thu, 23 Jan 2025 12:21:17 GMT
       Server:
       - openresty
       X-Cache-Key:
@@ -144,10 +147,10 @@ interactions:
       message: OK
 - request:
     body: "{\"messages\":[{\"content\":\"You are an assistant for question-answering
-      tasks. Use the following pieces of retrieved context to answer the question.
-      If you don't know the answer, say that you don't know. Use three sentences maximum
-      and keep the answer concise.\\n\\nCurrent weather information for paris: Temperature:
-      -0.55\xB0C, Feels like: -3.75\xB0C, Humidity: 95%, Status: mist\\n\\nParis,
+      tasks. Use the following pieces of retrieved context to answer If you don't
+      know the answer, say that you don't know. Use three sentences maximum and keep
+      the answer concise.\\n\\nCurrent weather information for paris: Temperature:
+      6.75\xB0C, Feels like: 2.7\xB0C, Humidity: 83%, Status: light rain\\n\\nParis,
       the 'City of Light,' boasts iconic landmarks such as the Eiffel Tower, offering
       panoramic views from its observation decks. The Louvre Museum, home to masterpieces
       like the Mona Lisa, attracts art enthusiasts worldwide. Notre-Dame Cathedral,
@@ -169,7 +172,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '1441'
+      - '1430'
       content-type:
       - application/json
       host:
@@ -197,20 +200,20 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAAwAAAP//jFJNj9MwEL3nV4wscWuq0I9N6Q31VhAsAoQQQpFrT5LZdWxjT1i6q/1P
-        /AZ+GXLabVoBEhcf5s17fm9mHjIAQVqsQahWsuq8yV8G09xvFt/eb7evwqePr6/ffi43O3vzZvvu
-        fi8mieF2N6j4iTVVrvMGmZw9wCqgZEyqz8t5OS9XRVkOQOc0mkRrPOcLl8+K2SIvVnlxdSS2jhRG
-        sYYvGQDAw/Ami1bjD7GGYvJU6TBG2aBYn5oARHAmVYSMkSJLy2IygspZRju4/tAiqD4EtAx3KLnF
-        AGThWgaKQBE6iryfwB1xCxIYO49Bch8QXA15MV0uf/3cgLQaiKFGNBEM3SLk82mZoCmkH9q+I028
-        T4qS4cXy2fTcT8C6jzKNw/bGHOuPp4DGNT64XTzip3pNlmJbBZTR2RQmsvNiQB8zgK/DIPuL2Qgf
-        XOe5YneLNgnOVouDnhhXN6LzqyPIjqU5q8+O47/UqzSyJBPPViGUVC3qkTruTfaa3BmQnaX+083f
-        tA/JyTb/Iz8CSqFn1JUPqEldJh7bAqbL/lfbacqDYRExfCeFFROGtAmNtezN4ehE3EfGrqrJNhh8
-        oMPl1b5aFkrq+bLAhcges98AAAD//wMAewaLzYIDAAA=
+        H4sIAAAAAAAAAwAAAP//jFLLbtswELzrKxYEerMM+VFL9s0IWhTtJSjSU1EINLmSmFAkTa6SuIH/
+        Kd+QLysoOZaDpkAvPMzsDmd29ykBYEqyDTDRcBKt0+k27H/c38rfn9vtt6+rbbGrH9f77/vZp+vF
+        DbJJ7LC7WxT02jUVtnUaSVkz0MIjJ4yqs3yRrxbLIs97orUSdWyrHaVLm86z+TLNijRbnRobqwQG
+        toGfCQDAU/9Gi0biI9tANnlFWgyB18g25yIA5q2OCOMhqEDcEJuMpLCG0PSubxqEB+TUoAdl4Jp7
+        FUAFEJ33aEgfYDXNP748X8GDogY4VIg6pFrdIRC2Dj2nziPYCubT/OX5agpfulZJRYcowwmKxYcJ
+        cCMh/oER1KpuCDxXZnrpymPVBR6HYjqtT/jxHFPb2nm7Cyf+jFfKqNCUHnmwJkYKZB3r2WMC8Ksf
+        Z/dmQsx52zoqyd6hiYLzYj7osXGBI7vITyRZ4voCn60n7+iVEokrHS4WwgQXDcqxddwe76SyF0Ry
+        kfpvN+9pD8mVqf9HfiSEQEcoS+dRKvE28VjmMd73v8rOU+4Ns4D+XgksSaGPm5BY8U4Pp8fCIRC2
+        ZaVMjd55Ndxf5crlaj3L1hkvcpYckz8AAAD//wMACjw5LogDAAA=
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 904f40947cb15b9c-VIE
+      - 9067be1f6fce915c-FRA
       Connection:
       - keep-alive
       Content-Encoding:
@@ -218,14 +221,14 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 20 Jan 2025 13:01:17 GMT
+      - Thu, 23 Jan 2025 12:21:18 GMT
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=ZlagT_DspBtqe6neClNM.qE2FD3GYoBEirRPnzqNPL8-1737378077-1.0.1.1-AQLh2ZwGfMDWmmw8toMft2ra8v2HNUIpcUnOLJUlsMMVOgZ_WBA0qypNZNPXPq6dFQjdldiN_6TfbLFL5MrsuA;
-        path=/; expires=Mon, 20-Jan-25 13:31:17 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=L_08X4LRb3B_ATqZtH5u.mf9S0Lqv_Ekm9vVBTEYgK0-1737634878-1.0.1.1-AVtYxaJswdqFAPWNy.GR6.J2dw3fCDB9fMK4WEzZL9iKL7GqMPsABuDOui5m297EqE1myG_n8D37CjNFGEy0vA;
+        path=/; expires=Thu, 23-Jan-25 12:51:18 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=nCwzdwkSw0LgrjxfbT7q8wfqxmNdNiPzv0GZjm1byTQ-1737378077811-0.0.1.1-604800000;
+      - _cfuvid=wGiCBPlYFT.V1D.Qv7o74pOlNEIejJmiW8Cw3fpaIFQ-1737634878595-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Transfer-Encoding:
       - chunked
@@ -233,10 +236,12 @@ interactions:
       - nosniff
       access-control-expose-headers:
       - X-Request-ID
+      alt-svc:
+      - h3=":443"; ma=86400
       openai-organization:
       - user-iarz4shpxfmvb4ssgkfsv3ye
       openai-processing-ms:
-      - '680'
+      - '1046'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -248,13 +253,13 @@ interactions:
       x-ratelimit-remaining-requests:
       - '4999'
       x-ratelimit-remaining-tokens:
-      - '799655'
+      - '799659'
       x-ratelimit-reset-requests:
       - 12ms
       x-ratelimit-reset-tokens:
       - 25ms
       x-request-id:
-      - req_7afa530b17d0286ce884db15a2cdba53
+      - req_929175a44f008a01e214beb1dfe505d4
     status:
       code: 200
       message: OK

@@ -3,9 +3,9 @@ interactions:
     body: '{"messages":[{"content":"Analyze the following query and determine if it''s
       asking about the weather for a location. If it is, extract the location mentioned.
       Respond in JSON format with ''is_weather_related'' as a boolean and ''location''
-      as a string.\n\nQuery: ''how is the weather in Paris?''","role":"user"}],"model":"gpt-4o","n":1,"parallel_tool_calls":false,"stream":false,"temperature":0.7,"tool_choice":{"type":"function","function":{"name":"WeatherQueryClassification"}},"tools":[{"type":"function","function":{"name":"WeatherQueryClassification","description":"","parameters":{"properties":{"is_weather_related":{"description":"whether
-      the query has to do with weather","type":"boolean"},"location":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"location
-      the query is about, if it''s weather-related"}},"required":["is_weather_related","location"],"type":"object"}}}]}'
+      as a string or null.\n\nQuery: ''how is the weather in Paris?''","role":"user"}],"model":"gpt-4o","n":1,"parallel_tool_calls":false,"stream":false,"temperature":0.7,"tool_choice":{"type":"function","function":{"name":"WeatherQueryClassification"}},"tools":[{"type":"function","function":{"name":"WeatherQueryClassification","description":"","parameters":{"properties":{"is_weather_related":{"description":"whether
+      the query is weather-related","type":"boolean"},"location":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"location
+      the query is about, if any"}},"required":["is_weather_related","location"],"type":"object"}}}]}'
     headers:
       accept:
       - application/json
@@ -14,7 +14,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '883'
+      - '870'
       content-type:
       - application/json
       host:
@@ -42,21 +42,21 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAA4xT227TQBB991es5tlBzr3xG0JClKLQCihSMbI267G9ZW/aXUNDlH9Ha6e2U4KE
-        H6zVnDln7oeIEOAFpARYTT2TRkxeW1HZ7f2Hzaayn94tH6bq7vZxd31/XT+ZG4gDQ+8ekfln1ium
-        pRHouVYdzCxSj0F1up6v5+urZLVpAakLFIFWGT9Z6MksmS0mydUkWZ2IteYMHaTkW0QIIYf2H1JU
-        BT5BSpL42SLROVohpL0TIWC1CBagznHnqfIQDyDTyqMKWatGiBHgtRY5o0IMgbvvMHoPfaJC5PvN
-        2+0XyW1y09Ti4/uHz1Ky3+vtehSvk96bNqGyUazvzwjv7emLYISAorLlfkXqa7R3Ddr9GxFKKzmj
-        F9QIAWqrRqLyoRI4ZMBd/quj5xZFGEoGqbcNxhkI3alkkGZwSy13GRzhTPEYXXp/H/XOYtk4Kk5N
-        PdmP/ZSErozVO/ei6VByxV2dW6SuLR6c16aLHeK0EaA5GzAYq6Xxudc/UAXB6XzR6cGwfyN0dgK9
-        9lSM7ItVfEEvL9BT3m5Av3SMshqLgTosH20KrkdANKr672wuaXeVc1X9j/wAMIbGY5EbiwVn5xUP
-        bhbDef7Lre9ymzA4tD85w9xztGESBZa0Ed3lgNs7jzIvuarQGsvb84HS5MuE0WK+THAB0TH6AwAA
-        //8DAIrlc2hHBAAA
+        H4sIAAAAAAAAAwAAAP//jFPbjtMwEH3PV1jz3KK0Db3kDS1FC1SClVgtEkGR60wSg2N7bYe2VP13
+        5KRN0qVI5CGy5sw5cz8GhADPICbASupYpcX4jX2+jz5+WeN+Fy3Xm0+Pi6fV4/uv63wT7RFGnqG2
+        P5C5C+sVU5UW6LiSLcwMUodedbKYLeazKJwsG6BSGQpPK7QbR2o8DafROFyOw/mZWCrO0EJMvgWE
+        EHJs/j5FmeEeYhKOLpYKraUFQtw5EQJGCW8Bai23jkoHox5kSjqUPmtZCzEAnFIiZVSIPnD7HQfv
+        vk9UiHR3/1C+PZR6s7lbi+3rD6tn9y5bH34P4rXSB90klNeSdf0Z4J09fhGMEJC0arhPSF2J5qFG
+        c7gTvrScM3pDjRCgpqgrlM5XAscEuE13LT01KPxQEoidqXGUgFCtSgJxAp+p4TaBE1wpnoJb7++D
+        3hnMa0vFualn+6mbklCFNmprXzQdci65LVOD1DbFg3VKt7F9nCYC1FcDBm1UpV3q1E+UXnAym7Z6
+        0O/fAL2ATjkqBvYoGt3QSzN0lDcb0C0do6zErKf2y0frjKsBEAyq/jubW9pt5VwW/yPfA4yhdpil
+        2mDG2XXFvZtBf57/cuu63CQMFs0vzjB1HI2fRIY5rUV7OWAP1mGV5lwWaLThzflArtNovpqEq5Au
+        FxCcgj8AAAD//wMAIwdCTEcEAAA=
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 904f4060bb505b09-VIE
+      - 9067a9251a3c2bde-FRA
       Connection:
       - keep-alive
       Content-Encoding:
@@ -64,14 +64,14 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 20 Jan 2025 13:01:09 GMT
+      - Thu, 23 Jan 2025 12:06:58 GMT
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=Ztio690TmJcTD.og3iZxGUozgi2_meEjYHA.DdVTXl8-1737378069-1.0.1.1-MYGqy6Hgb2iAYIG9g2_SR4yI4KZ7R3CKE4WFGuimZ.4roYW4JlZn8hrp0jOO2je76yPMCCIGz_ngHPPp.osMng;
-        path=/; expires=Mon, 20-Jan-25 13:31:09 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=xWx9R4fYwJwn12IEj17eN8Ln5VVkOeeU.96JzGEGjD8-1737634018-1.0.1.1-LgF1JvscOp9OjTmuM7fjeKykmzOFpC15UTun6UBV3.kEjLqBZg0Iny2vSfkTZL1n5IB9llhHJQlx4lJzZu9vIg;
+        path=/; expires=Thu, 23-Jan-25 12:36:58 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=I2LHxaqdYzdthn4xecHBFGbj6Nh9zMDejVGdrqZkmeQ-1737378069961-0.0.1.1-604800000;
+      - _cfuvid=58IROukRjdtEPspJPaLqEx6sXY87XF6aRteGaSN.2WE-1737634018820-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Transfer-Encoding:
       - chunked
@@ -79,10 +79,12 @@ interactions:
       - nosniff
       access-control-expose-headers:
       - X-Request-ID
+      alt-svc:
+      - h3=":443"; ma=86400
       openai-organization:
       - user-iarz4shpxfmvb4ssgkfsv3ye
       openai-processing-ms:
-      - '820'
+      - '522'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -94,13 +96,13 @@ interactions:
       x-ratelimit-remaining-requests:
       - '4999'
       x-ratelimit-remaining-tokens:
-      - '799917'
+      - '799915'
       x-ratelimit-reset-requests:
       - 12ms
       x-ratelimit-reset-tokens:
       - 6ms
       x-request-id:
-      - req_8f0658ddfce000533390c4687a9aa5aa
+      - req_a1a9e453fe8592036e63d469319d40c3
     status:
       code: 200
       message: OK

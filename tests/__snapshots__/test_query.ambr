@@ -1,22 +1,22 @@
 # serializer version: 1
 # name: test_generate_from_external_service
-  'The current weather in Paris is misty, with a temperature of -0.55°C and it feels like -3.75°C. The humidity is at 95%.'
+  'The weather in Paris is currently misty with a temperature of -0.55°C, feeling like -3.75°C, and a humidity of 95%.'
 # ---
 # name: test_generate_from_knowledge_base
-  'Some nice things to see in Paris include the Eiffel Tower for its panoramic views, the Louvre Museum, which houses the Mona Lisa, and the Notre-Dame Cathedral, a Gothic architectural marvel. You can also explore the Champs-Élysées, leading to the Arc de Triomphe, and visit Montmartre for its artistic heritage and the Basilica of the Sacré-Cœur.'
+  'Some nice things to see in Paris include the Eiffel Tower for its panoramic views, the Louvre Museum for its art masterpieces like the Mona Lisa, and the Notre-Dame Cathedral for its Gothic architecture. Additionally, you can explore the Champs-Élysées leading to the Arc de Triomphe and visit Montmartre with the Basilica of the Sacré-Cœur.'
 # ---
 # name: test_graph_with_insurance_queries[What's the trend in auto insurance costs over the last 3 years?]
-  "The auto insurance costs increased from $841.06 in 2013 to $869.47 in 2014, showing a trend of rising costs with a change of 3.5% in 2013 and 3.4% in 2014. I don't have data for the third year, but the trend indicates a consistent increase."
+  'The average expenditures for auto insurance have been consistently increasing over the last three years, from $945.22 in 2016 to $1008.35 in 2017, showing a change of 5.4% in 2016 and 6.7% in 2017. The trend indicates a rising cost in auto insurance.'
 # ---
 # name: test_graph_with_knowledge_query
-  'In Paris, you can visit the Eiffel Tower for panoramic views, explore the Louvre Museum to see masterpieces like the Mona Lisa, and admire the Gothic architecture of Notre-Dame Cathedral. Stroll down the Champs-Élysées to the Arc de Triomphe, and enjoy the artistic heritage of Montmartre with the Basilica of the Sacré-Cœur.'
+  'Some nice things to see in Paris include the Eiffel Tower, which offers panoramic views from its observation decks, the Louvre Museum with masterpieces like the Mona Lisa, and the Gothic architectural marvel of Notre-Dame Cathedral. The Champs-Élysées, leading to the Arc de Triomphe, and Montmartre with the Basilica of the Sacré-Cœur are also must-visit spots.'
 # ---
 # name: test_graph_with_weather_query
-  'The current weather in Paris is misty, with a temperature of -0.55°C and it feels like -3.75°C. The humidity is at 95%.'
+  'The weather in Paris is currently 6.75°C with a feels-like temperature of 2.7°C. Humidity is at 83%, and there is light rain.'
 # ---
 # name: test_retrieve_with_travel_knowledge_base
   list([
-    Document(id='0', metadata={}, page_content="Paris, the 'City of Light,' boasts iconic landmarks such as the Eiffel Tower, offering panoramic views from its observation decks. The Louvre Museum, home to masterpieces like the Mona Lisa, attracts art enthusiasts worldwide. Notre-Dame Cathedral, a Gothic architectural marvel, stands on the Île de la Cité. The Champs-Élysées, lined with shops and cafes, leads to the Arc de Triomphe, honoring those who fought for France. Montmartre, with its artistic heritage, features the Basilica of the Sacré-Cœur atop its hill."),
-    Document(id='1', metadata={}, page_content="London, a vibrant metropolis, features the historic Tower of London, housing the Crown Jewels. The British Museum showcases a vast collection of world art and artifacts. Buckingham Palace, the monarch's residence, is famed for the Changing of the Guard ceremony. The Houses of Parliament and Big Ben are iconic symbols along the River Thames. The London Eye offers a rotating perspective of the city's skyline."),
+    Document(id='knowledge_base[0]', metadata={}, page_content="Paris, the 'City of Light,' boasts iconic landmarks such as the Eiffel Tower, offering panoramic views from its observation decks. The Louvre Museum, home to masterpieces like the Mona Lisa, attracts art enthusiasts worldwide. Notre-Dame Cathedral, a Gothic architectural marvel, stands on the Île de la Cité. The Champs-Élysées, lined with shops and cafes, leads to the Arc de Triomphe, honoring those who fought for France. Montmartre, with its artistic heritage, features the Basilica of the Sacré-Cœur atop its hill."),
+    Document(id='knowledge_base[1]', metadata={}, page_content="London, a vibrant metropolis, features the historic Tower of London, housing the Crown Jewels. The British Museum showcases a vast collection of world art and artifacts. Buckingham Palace, the monarch's residence, is famed for the Changing of the Guard ceremony. The Houses of Parliament and Big Ben are iconic symbols along the River Thames. The London Eye offers a rotating perspective of the city's skyline."),
   ])
 # ---

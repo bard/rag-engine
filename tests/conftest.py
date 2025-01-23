@@ -381,7 +381,7 @@ def insurance_data_documents():
 @pytest.fixture
 def travel_knowledge_documents():
     return [
-        Document(page_content=content, id=str(i))
+        Document(page_content=content, id=f"knowledge_base[{i}]")
         for i, content in enumerate(
             [
                 "Paris, the 'City of Light,' boasts iconic landmarks such as the Eiffel Tower, offering panoramic views from its observation decks. The Louvre Museum, home to masterpieces like the Mona Lisa, attracts art enthusiasts worldwide. Notre-Dame Cathedral, a Gothic architectural marvel, stands on the Île de la Cité. The Champs-Élysées, lined with shops and cafes, leads to the Arc de Triomphe, honoring those who fought for France. Montmartre, with its artistic heritage, features the Basilica of the Sacré-Cœur atop its hill.",

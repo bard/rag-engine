@@ -6,13 +6,13 @@ from pydantic import BaseModel, Field
 
 from .. import services
 from ..config import Config
-from ..workflow_query.state import AgentState
+from ..workflow_query.state import AgentState, ExternalKnowledgeSource
 
 
 class ClassifyStateUpdate(TypedDict):
-    is_weather_query: bool
-    location: str | None
     query: str
+    location: str | None
+    external_knowledge_sources: list[ExternalKnowledgeSource]
 
 
 CLASSIFICATION_PROMPT_TEMPLATE = PromptTemplate(
@@ -48,8 +48,15 @@ def classify_query(state: AgentState, config: RunnableConfig) -> ClassifyStateUp
     # workaround for https://github.com/langchain-ai/langchain/discussions/28853
     assert isinstance(response, WeatherQueryClassification)
 
+    external_knowledge_sources: list[ExternalKnowledgeSource] = []
+    if response.is_weather_related:
+        assert response.location is not None
+        external_knowledge_sources.append(
+            {"type": "weather", "location": response.location}
+        )
+
     return {
-        "is_weather_query": response.is_weather_related,
         "location": response.location,
         "query": query,
+        "external_knowledge_sources": external_knowledge_sources,
     }

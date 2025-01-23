@@ -10,7 +10,6 @@ from .state import AgentState
 
 class GenerateStateUpdate(TypedDict):
     messages: list[BaseMessage]
-    sources: list[str]
 
 
 def generate(state: AgentState, config: RunnableConfig) -> GenerateStateUpdate:
@@ -21,12 +20,8 @@ def generate(state: AgentState, config: RunnableConfig) -> GenerateStateUpdate:
     documents = state["documents"]
     query = state["query"]
     assert query is not None
-    weather_info = state["weather_info"]
-    location = state["location"]
 
     docs_content = "\n\n".join(doc.page_content for doc in documents)
-
-    sources = [f"knowledge_base[{doc.id}]" for doc in documents]
 
     system_message_content = (
         "You are an assistant for question-answering tasks. "
@@ -36,15 +31,12 @@ def generate(state: AgentState, config: RunnableConfig) -> GenerateStateUpdate:
         "answer concise."
         "\n\n"
     )
-    if weather_info is not None and location is not None:
-        sources.append("external[weather]")
-        system_message_content += (
-            f"Current weather information for {location}: {weather_info}\n\n"
-        )
 
     system_message_content += f"{docs_content}\n\n"
 
     prompt = [SystemMessage(system_message_content), HumanMessage(query)]
 
     response = llm.invoke(prompt)
-    return {"messages": [response], "sources": sources}
+    return {
+        "messages": [response],
+    }
