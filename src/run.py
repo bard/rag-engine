@@ -46,9 +46,9 @@ def cmd_initdb():
 def cmd_query(user_query: str):
     initial_agent_state = workflow_query.AgentState(
         messages=[HumanMessage(content=user_query)],
-        documents=[],
+        retrieved_knowledge=[],
         query=None,
-        location=None,
+        topic_id=None,
         external_knowledge_sources=[],
     )
 

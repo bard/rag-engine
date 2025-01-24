@@ -358,7 +358,9 @@ def vcr_config():
 @pytest.fixture
 def insurance_data_documents():
     return [
-        Document(page_content=content, id=str(i))
+        Document(
+            page_content=content, id=str(i), metadata={"topic_id": "UNCATEGORIZED"}
+        )
         for i, content in enumerate(
             [
                 "Average Expenditures for Auto Insurance, 2012-2014\n\n"
@@ -382,14 +384,33 @@ def insurance_data_documents():
 @pytest.fixture
 def travel_knowledge_documents():
     return [
-        Document(page_content=content, id=f"knowledge_base[{i}]")
-        for i, content in enumerate(
+        Document(
+            page_content=entry["content"],
+            id=f"knowledge_base[{i}]",
+            metadata={"topic_id": entry["city"]},
+        )
+        for i, entry in enumerate(
             [
-                "Paris, the 'City of Light,' boasts iconic landmarks such as the Eiffel Tower, offering panoramic views from its observation decks. The Louvre Museum, home to masterpieces like the Mona Lisa, attracts art enthusiasts worldwide. Notre-Dame Cathedral, a Gothic architectural marvel, stands on the Île de la Cité. The Champs-Élysées, lined with shops and cafes, leads to the Arc de Triomphe, honoring those who fought for France. Montmartre, with its artistic heritage, features the Basilica of the Sacré-Cœur atop its hill.",
-                "London, a vibrant metropolis, features the historic Tower of London, housing the Crown Jewels. The British Museum showcases a vast collection of world art and artifacts. Buckingham Palace, the monarch's residence, is famed for the Changing of the Guard ceremony. The Houses of Parliament and Big Ben are iconic symbols along the River Thames. The London Eye offers a rotating perspective of the city's skyline.",
-                "Rome, the 'Eternal City,' is home to the Colosseum, an ancient amphitheater echoing gladiatorial history. The Vatican City enclaves St. Peter's Basilica and the Sistine Chapel, adorned with Michelangelo's frescoes. The Pantheon, with its impressive dome, stands as a testament to Roman engineering. The Roman Forum's ruins narrate tales of imperial grandeur. Trevi Fountain invites visitors to toss a coin, ensuring their return to Rome.",
-                "Berlin, Germany's capital, presents the Brandenburg Gate, a neoclassical monument symbolizing unity. The Berlin Wall Memorial commemorates the city's divided past. Museum Island hosts a cluster of renowned museums, including the Pergamon Museum. The Reichstag Building, with its modern glass dome, offers insights into German politics. Checkpoint Charlie stands as a relic of Cold War history.",
-                "Madrid, Spain's lively capital, features the Prado Museum, exhibiting European art masterpieces. The Royal Palace impresses with its opulent architecture and historic significance. Retiro Park provides a green oasis in the city's heart. Puerta del Sol serves as a bustling public square and focal point for festivities. The Gran Vía is renowned for shopping, theaters, and vibrant nightlife.",
+                {
+                    "city": "Paris",
+                    "content": "Paris, the 'City of Light,' boasts iconic landmarks such as the Eiffel Tower, offering panoramic views from its observation decks. The Louvre Museum, home to masterpieces like the Mona Lisa, attracts art enthusiasts worldwide. Notre-Dame Cathedral, a Gothic architectural marvel, stands on the Île de la Cité. The Champs-Élysées, lined with shops and cafes, leads to the Arc de Triomphe, honoring those who fought for France. Montmartre, with its artistic heritage, features the Basilica of the Sacré-Cœur atop its hill.",
+                },
+                {
+                    "city": "London",
+                    "content": "London, a vibrant metropolis, features the historic Tower of London, housing the Crown Jewels. The British Museum showcases a vast collection of world art and artifacts. Buckingham Palace, the monarch's residence, is famed for the Changing of the Guard ceremony. The Houses of Parliament and Big Ben are iconic symbols along the River Thames. The London Eye offers a rotating perspective of the city's skyline.",
+                },
+                {
+                    "city": "Rome",
+                    "content": "Rome, the 'Eternal City,' is home to the Colosseum, an ancient amphitheater echoing gladiatorial history. The Vatican City enclaves St. Peter's Basilica and the Sistine Chapel, adorned with Michelangelo's frescoes. The Pantheon, with its impressive dome, stands as a testament to Roman engineering. The Roman Forum's ruins narrate tales of imperial grandeur. Trevi Fountain invites visitors to toss a coin, ensuring their return to Rome.",
+                },
+                {
+                    "city": "Berlin",
+                    "content": "Berlin, Germany's capital, presents the Brandenburg Gate, a neoclassical monument symbolizing unity. The Berlin Wall Memorial commemorates the city's divided past. Museum Island hosts a cluster of renowned museums, including the Pergamon Museum. The Reichstag Building, with its modern glass dome, offers insights into German politics. Checkpoint Charlie stands as a relic of Cold War history.",
+                },
+                {
+                    "city": "Madrid",
+                    "content": "Madrid, Spain's lively capital, features the Prado Museum, exhibiting European art masterpieces. The Royal Palace impresses with its opulent architecture and historic significance. Retiro Park provides a green oasis in the city's heart. Puerta del Sol serves as a bustling public square and focal point for festivities. The Gran Vía is renowned for shopping, theaters, and vibrant nightlife.",
+                },
             ]
         )
     ]

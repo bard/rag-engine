@@ -9,9 +9,9 @@ from .state import AgentState
 def reformulate_query(
     state: AgentState, config: RunnableConfig
 ) -> dict[Literal["query"], str]:
-    c = Config.from_runnable_config(config)
+    conf = Config.from_runnable_config(config)
 
-    llm = services.get_llm(c)
+    llm = services.get_llm(conf)
     user_message = state["messages"][-1].content
 
     prompt = f"Reformulate the following user question into a concise search query: '{user_message}'"

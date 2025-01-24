@@ -13,15 +13,12 @@ class GenerateStateUpdate(TypedDict):
 
 
 def generate(state: AgentState, config: RunnableConfig) -> GenerateStateUpdate:
-    """Generate answer."""
-    c = Config.from_runnable_config(config)
-    llm = services.get_llm(c)
+    conf = Config.from_runnable_config(config)
 
-    documents = state["documents"]
     query = state["query"]
     assert query is not None
 
-    docs_content = "\n\n".join(doc.page_content for doc in documents)
+    docs_content = "\n\n".join(doc.page_content for doc in state["retrieved_knowledge"])
 
     system_message_content = (
         "You are an assistant for question-answering tasks. "
@@ -30,13 +27,11 @@ def generate(state: AgentState, config: RunnableConfig) -> GenerateStateUpdate:
         "don't know. Use three sentences maximum and keep the "
         "answer concise."
         "\n\n"
+        f"{docs_content}\n\n"
     )
-
-    system_message_content += f"{docs_content}\n\n"
 
     prompt = [SystemMessage(system_message_content), HumanMessage(query)]
 
-    response = llm.invoke(prompt)
-    return {
-        "messages": [response],
-    }
+    response = services.get_llm(conf).invoke(prompt)
+
+    return {"messages": [response]}

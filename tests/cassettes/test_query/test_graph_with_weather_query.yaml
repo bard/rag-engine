@@ -263,4 +263,43 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://api.openweathermap.org/data/2.5/weather?lang=en&q=Paris
+  response:
+    body:
+      string: '{"coord":{"lon":2.3488,"lat":48.8534},"weather":[{"id":804,"main":"Clouds","description":"overcast
+        clouds","icon":"04n"}],"base":"stations","main":{"temp":285.24,"feels_like":284.67,"temp_min":284.38,"temp_max":285.58,"pressure":1005,"humidity":83,"sea_level":1005,"grnd_level":995},"visibility":10000,"wind":{"speed":8.75,"deg":190},"clouds":{"all":100},"dt":1737745591,"sys":{"type":2,"id":2012208,"country":"FR","sunrise":1737703830,"sunset":1737736477},"timezone":3600,"id":2988507,"name":"Paris","cod":200}'
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '511'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 24 Jan 2025 19:09:40 GMT
+      Server:
+      - openresty
+      X-Cache-Key:
+      - /data/2.5/weather?APPID=a947f9804adbf7551c9d815aa1d407af&lang=en&q=paris
+    status:
+      code: 200
+      message: OK
 version: 1

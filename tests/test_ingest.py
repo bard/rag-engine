@@ -127,7 +127,7 @@ def test_graph(config, average_insurance_expenditures_html_as_data_url, snapshot
     )
 
     graph = get_graph()
-    state_update = graph.invoke(agent_state, config.to_runnable_config())
+    result = graph.invoke(agent_state, config.to_runnable_config())
 
     database_state = (
         Session(create_engine(config.db.url)).query(SqlKnowledgeBaseDocument).all()
@@ -136,6 +136,6 @@ def test_graph(config, average_insurance_expenditures_html_as_data_url, snapshot
         collection_name="documents", persist_directory=config.vector_store.path
     ).get()
 
-    assert state_update == snapshot
+    assert result == snapshot
     assert database_state == snapshot
     assert vector_store_state == snapshot

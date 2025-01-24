@@ -68,11 +68,15 @@ def test_poor_mans_e2e_test(api_client, config, snapshot):
 
     response = api_client.get(
         "/query",
-        params={"q": "What are the good things to see in Paris?"},
+        params={
+            "q": "What are the good things to see?",
+            "topic_id": paris_topic_id,
+        },
     )
 
     assert response.status_code == 200
     answer = response.json()["answer"]
+
     # The answer should mention at least some of these landmarks
     assert any(
         landmark in answer
@@ -88,12 +92,15 @@ def test_poor_mans_e2e_test(api_client, config, snapshot):
     # run query requiring external knowledge
 
     response = api_client.get(
-        "/query", params={"q": "What is the current weather in Paris?"}
+        "/query",
+        params={
+            "q": "What is the current weather?",
+            "topic_id": paris_topic_id,
+        },
     )
 
     assert response.status_code == 200
-    answer = response.json()["answer"]
-    assert answer == snapshot
+    assert response.json() == snapshot
 
     # delete note
 

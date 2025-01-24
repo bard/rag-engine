@@ -1,0 +1,109 @@
+interactions:
+- request:
+    body: '{"messages":[{"content":"Analyze the following query and topic and determine
+      if it''s asking about the weather at a given location. Respond in JSON format
+      with ''is_weather_related'' as a boolean and ''location'' as a string.\n\nLocation:
+      Paris\nQuery: ''how is the weather?''\n","role":"user"}],"model":"gpt-4o","n":1,"parallel_tool_calls":false,"stream":false,"temperature":0.7,"tool_choice":{"type":"function","function":{"name":"WeatherQueryClassification"}},"tools":[{"type":"function","function":{"name":"WeatherQueryClassification","description":"","parameters":{"properties":{"is_weather_related":{"description":"whether
+      the query is weather-related","type":"boolean"},"location":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"location
+      the query is about, if any"}},"required":["is_weather_related","location"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '845'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.59.5
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.59.5
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.8
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAwAAAP//jFNNj5swEL3zK6w5JxXkY2m4rSrlsL2kh6hblQo5ZgDvGtuyTdI0yn+v
+        DCyQ3VQqB2TNm/fm+xIQAjyHhACrqGO1FvNH97TbRdvT1n7Noz/H17A5iPV+XR3O+sXBzDPU4QWZ
+        e2N9YqrWAh1XsoOZQerQq0bxMo5XD2EUtUCtchSeVmo3X6n5Ilys5uHnefjQEyvFGVpIyM+AEEIu
+        7d+nKHP8DQkJZ2+WGq2lJUIyOBECRglvAWott47KLt0eZEo6lD5r2QgxAZxSImNUiDFw910m77FP
+        VIis2cTVCZ83T8d9Gf8ozlsV7t0zfZzE66TPuk2oaCQb+jPBB3vyLhghIGndcr8jdRWabw2a8xfh
+        Sys4o3fUCAFqyqZG6XwlcEmB2+zU0TODwg8lhcSZBmcpCNWppJCksKOG2xSucKN4De69f016Z7Bo
+        LBV9U3v7dZiSUKU26mDfNR0KLrmtMoPUtsWDdUp3sX2cNgI0NwMGbVStXebUK0ovGC3iTg/G/Zui
+        PeiUo2JiX25md/SyHB3l7QYMS8coqzAfqePy0SbnagIEk6o/ZnNPu6ucy/J/5EeAMdQO80wbzDm7
+        rXh0M+jP819uQ5fbhMGiOXKGmeNo/CRyLGgj+kO3Z+uwzgouSzTa8PZ8oNDZOmQ0X65DXEFwDf4C
+        AAD//wMA5bJ8I0cEAAA=
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 90725759381d3605-FRA
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 24 Jan 2025 19:13:32 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=_Ykk1VLY5r.G0NNLI_L_9stngIzMsu7wIUeXWvhkblE-1737746012-1.0.1.1-6S2NxQUcgTN9Kyx5l48F0Bx99tTysc40S.r.83hQPyPVfM.sWJeoBgnBQjIznwjDHknWqcHy1Ixp0AGeNjd_Zg;
+        path=/; expires=Fri, 24-Jan-25 19:43:32 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=UZQ.eZkyNCgX80EJJtRSXGlQKVyaqFV9TSgYpffYC1o-1737746012569-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      access-control-expose-headers:
+      - X-Request-ID
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-organization:
+      - user-iarz4shpxfmvb4ssgkfsv3ye
+      openai-processing-ms:
+      - '1072'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-ratelimit-limit-requests:
+      - '5000'
+      x-ratelimit-limit-tokens:
+      - '800000'
+      x-ratelimit-remaining-requests:
+      - '4999'
+      x-ratelimit-remaining-tokens:
+      - '799921'
+      x-ratelimit-reset-requests:
+      - 12ms
+      x-ratelimit-reset-tokens:
+      - 5ms
+      x-request-id:
+      - req_aff7ccb3dc0f832aa9f15c5d84df2d54
+    status:
+      code: 200
+      message: OK
+version: 1

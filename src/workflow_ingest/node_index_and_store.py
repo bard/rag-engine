@@ -1,3 +1,4 @@
+import pprint
 from langchain_core.runnables.config import RunnableConfig
 from langchain.schema import Document
 from sqlalchemy.orm import Session
@@ -10,13 +11,13 @@ from .state import AgentState
 
 
 def index_and_store(state: AgentState, config: RunnableConfig) -> None:
-    c = Config.from_runnable_config(config)
+    conf = Config.from_runnable_config(config)
 
-    log = services.get_logger(c)
+    log = services.get_logger(conf)
     log.debug("node/index_and_store")
 
-    db = services.get_db(c)
-    vector_store = services.get_vector_store(c)
+    db = services.get_db(conf)
+    vector_store = services.get_vector_store(conf)
     documents: list[Document] = []
 
     topic_id = state["topic_id"]
@@ -37,8 +38,8 @@ def index_and_store(state: AgentState, config: RunnableConfig) -> None:
                 )
 
                 chunks = RecursiveCharacterTextSplitter(
-                    chunk_size=c.indexing.chunk_size,
-                    chunk_overlap=c.indexing.chunk_overlap,
+                    chunk_size=conf.indexing.chunk_size,
+                    chunk_overlap=conf.indexing.chunk_overlap,
                 ).split_text(r.to_text())
 
                 for i, chunk in enumerate(chunks):
@@ -52,12 +53,18 @@ def index_and_store(state: AgentState, config: RunnableConfig) -> None:
                     if r.title is not None:
                         metadata["title"] = r.title
 
-                    doc = Document(
-                        id=f"{doc_id}-{chunk_id}",
-                        page_content=chunk,
-                        metadata=metadata,
+                    if state["topic_id"] is None:
+                        metadata["topic_id"] = "UNCATEGORIZED"
+                    else:
+                        metadata["topic_id"] = state["topic_id"]
+
+                    documents.append(
+                        Document(
+                            id=f"{doc_id}-{chunk_id}",
+                            page_content=chunk,
+                            metadata=metadata,
+                        )
                     )
-                    documents.append(doc)
 
     vector_store.add_documents(documents)
 

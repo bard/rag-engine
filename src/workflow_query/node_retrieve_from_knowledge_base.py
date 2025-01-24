@@ -1,32 +1,40 @@
+import pprint
 from typing import TypedDict
 from langchain.schema import Document
 from langchain_core.runnables import RunnableConfig
 
+from .. import services
 from ..config import Config
-from ..services import get_vector_store
 from .state import AgentState
 
 
 class RetrieveStateUpdate(TypedDict):
-    documents: list[Document]
+    retrieved_knowledge: list[Document]
 
 
 def retrieve_from_knowledge_base(
     state: AgentState, config: RunnableConfig
 ) -> RetrieveStateUpdate:
-    c = Config.from_runnable_config(config)
-    vector_store = get_vector_store(c)
+    conf = Config.from_runnable_config(config)
+
     query = state["query"]
     assert query is not None
 
-    documents_with_scores = vector_store.similarity_search_with_relevance_scores(
-        query, k=2
-    )
+    if state["topic_id"] is None:
+        metadata_filter = {"topic_id": "UNCATEGORIZED"}
+    else:
+        metadata_filter = {"topic_id": state["topic_id"]}
+
+    documents_with_scores = services.get_vector_store(
+        conf
+    ).similarity_search_with_relevance_scores(query, k=2, filter=metadata_filter)
 
     most_relevant_documents = [
         doc
         for doc, score in documents_with_scores
-        if score >= c.vector_store.score_threshold
+        if score >= conf.vector_store.score_threshold
     ]
 
-    return {"documents": [*state["documents"], *most_relevant_documents]}
+    return {
+        "retrieved_knowledge": [*state["retrieved_knowledge"], *most_relevant_documents]
+    }

@@ -7,19 +7,30 @@ from ..workflow_query.state import AgentState
 
 
 class FetchWeatherInfoStateUpdate(TypedDict):
-    documents: list[Document]
+    retrieved_knowledge: list[Document]
 
 
 def retrieve_from_weather_service(
     state: AgentState, config: RunnableConfig
 ) -> FetchWeatherInfoStateUpdate:
-    c = Config.from_runnable_config(config)
-    weather = services.get_weather_client(c)
+    conf = Config.from_runnable_config(config)
 
-    location = state["location"]
-    assert location is not None
+    weather_query = next(
+        (
+            source
+            for source in state["external_knowledge_sources"]
+            if source["type"] == "weather"
+        ),
+        None,
+    )
+    if weather_query is None:
+        raise Exception("No weather query found")
 
+    location = weather_query["location"]
+
+    weather = services.get_weather_client(conf)
     observation = weather.weather_manager().weather_at_place(location)
+
     # TODO: handle case in which no observation is available
     assert observation is not None
 
@@ -33,8 +44,8 @@ def retrieve_from_weather_service(
     )
 
     return {
-        "documents": [
-            *state["documents"],
+        "retrieved_knowledge": [
+            *state["retrieved_knowledge"],
             Document(page_content=weather_info, id="weather-info"),
         ]
     }

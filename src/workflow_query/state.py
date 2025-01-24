@@ -9,17 +9,16 @@ class WeatherExternalKnowledgeSource(TypedDict):
     # TODO add 'time' to support forecasts
 
 
-# TODO stub only, not used
+# TODO demo purpose only, not used
 class NewsExternalKnowledgeSource(TypedDict):
     type: Literal["news"]
-    location: str
 
 
 ExternalKnowledgeSource = WeatherExternalKnowledgeSource | NewsExternalKnowledgeSource
 
 
 class AgentState(MessagesState):
-    documents: list[Document]
     query: str | None
-    location: str | None
+    topic_id: str | None
+    retrieved_knowledge: list[Document]
     external_knowledge_sources: list[ExternalKnowledgeSource]

@@ -12,9 +12,9 @@ class FetchStateUpdate(TypedDict):
 
 
 def fetch(state: AgentState, config: RunnableConfig) -> FetchStateUpdate:
-    c = Config.from_runnable_config(config)
+    conf = Config.from_runnable_config(config)
 
-    log = services.get_logger(c)
+    log = services.get_logger(conf)
     log.debug("node/fetch")
 
     result = fetch_content(state["url"])
