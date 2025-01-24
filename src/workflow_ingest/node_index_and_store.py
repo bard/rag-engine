@@ -44,15 +44,18 @@ def index_and_store(state: AgentState, config: RunnableConfig) -> None:
                 for i, chunk in enumerate(chunks):
                     doc_id = r.id()
                     chunk_id = i
+                    metadata = {
+                        "source_id": doc_id,
+                        "chunk_id": chunk_id,
+                        "source_url": r.source_url,
+                    }
+                    if r.title is not None:
+                        metadata["title"] = r.title
+
                     doc = Document(
                         id=f"{doc_id}-{chunk_id}",
                         page_content=chunk,
-                        metadata={
-                            "source_id": doc_id,
-                            "chunk_id": chunk_id,
-                            "source_url": r.source_url,
-                            "title": r.title,
-                        },
+                        metadata=metadata,
                     )
                     documents.append(doc)
 

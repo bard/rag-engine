@@ -40,9 +40,7 @@ def test_retrieve_with_travel_knowledge_base(
     vector_store.add_documents(travel_knowledge_documents)
 
     agent_state = AgentState(
-        messages=[
-            HumanMessage(content="o"),
-        ],
+        messages=[HumanMessage(content="what are some nice things to see in Paris?")],
         documents=[],
         query="what are some nice things to see in Paris?",
         location=None,

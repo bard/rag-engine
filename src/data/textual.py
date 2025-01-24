@@ -17,7 +17,7 @@ class TextualData(IndexableData):
         llm: BaseChatModel | None,
     ) -> Self | None:
         if content_type == "text/plain":
-            return cls(title=source_url, data=content_data, source_url=source_url)
+            return cls(title=None, data=content_data, source_url=source_url)
         elif content_type == "text/html":
             soup = BeautifulSoup(content_data, "html.parser")
 
