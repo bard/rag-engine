@@ -5,9 +5,6 @@
 # name: test_generate_from_knowledge_base
   'Some nice things to see in Paris include the Eiffel Tower for its panoramic views, the Louvre Museum for its art masterpieces like the Mona Lisa, and the Notre-Dame Cathedral for its Gothic architecture. Additionally, you can explore the Champs-Élysées leading to the Arc de Triomphe and visit Montmartre with the Basilica of the Sacré-Cœur.'
 # ---
-# name: test_graph_with_insurance_queries[What's the trend in auto insurance costs over the last 3 years?]
-  'The average expenditures for auto insurance have been increasing over the last three years. From 2015 to 2017, the expenditures rose from $896.66 to $1008.35, with annual increases of 3.1%, 5.4%, and 6.7%, respectively. This indicates a trend of rising costs.'
-# ---
 # name: test_graph_with_knowledge_query
   'Some nice things to see in Paris include the Eiffel Tower, which offers panoramic views from its observation decks, the Louvre Museum with masterpieces like the Mona Lisa, and the Gothic architectural marvel of Notre-Dame Cathedral. The Champs-Élysées, leading to the Arc de Triomphe, and Montmartre with the Basilica of the Sacré-Cœur are also must-visit spots.'
 # ---

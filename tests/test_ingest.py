@@ -3,6 +3,8 @@ import pytest
 from langchain_chroma.vectorstores import Chroma
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
+
+from src.data.textual import TextualData
 from src.db import SqlKnowledgeBaseDocument
 from src.data import InsuranceAverageExpenditureData
 from src.workflow_ingest import (
@@ -90,16 +92,16 @@ def test_index_and_store(
     average_insurance_expenditures_html,
     snapshot,
 ):
-    data = InsuranceAverageExpenditureData.from_content(
-        content_data=average_insurance_expenditures_html,
-        content_type="text/html",
-        source_url=average_insurance_expenditures_html_as_data_url,
+    data = TextualData.from_content(
+        content_data="Paris, the 'City of Light,' boasts iconic landmarks such as the Eiffel Tower, offering panoramic views from its observation decks. The Louvre Museum, home to masterpieces like the Mona Lisa, attracts art enthusiasts worldwide. Notre-Dame Cathedral, a Gothic architectural marvel, stands on the Île de la Cité. The Champs-Élysées, lined with shops and cafes, leads to the Arc de Triomphe, honoring those who fought for France. Montmartre, with its artistic heritage, features the Basilica of the Sacré-Cœur atop its hill.",
+        content_type="text/plain",
+        source_url="about:blank",
         llm=None,
     )
     assert data is not None
 
     agent_state = AgentState(
-        url=average_insurance_expenditures_html_as_data_url,
+        url="about:blank",
         topic_id="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
         source_content=None,
         extracted_data=[data],
