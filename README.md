@@ -59,8 +59,10 @@ poetry run start_api
 ```sh
 poetry shell
 python src/cli.py initdb
-python src/cli.py ingest --data https://www.iii.org/table-archive/20916/file
-python src/cli.py query 'What is the trend in auto insurance costs over the last 3 years?'
+python src/cli.py ingest 'data/Average Expenditures for Auto Insurance, 2005-2014.xls'
+python src/cli.py ingest 'data/Average Expenditures for Auto Insurance, 2012-2021.xls'
+python src/cli.py ingest 'Direct Premiums Written, P_C Insurance By State, 2023 (1).xls'
+python src/cli.py query 'What is the trend in auto insurance costs between 2012 and 2015?'
 ```
 
 ## Development
