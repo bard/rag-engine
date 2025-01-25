@@ -40,14 +40,13 @@ def create_topic(topic: TopicCreate, config: Config = Depends(get_config)):
 
     with Session(db) as session:
         # Check for existing topic (case-insensitive)
-        existing_topic = session.query(SqlTopic).filter(
-            SqlTopic.name.ilike(normalized_name)
-        ).first()
-        
+        existing_topic = (
+            session.query(SqlTopic).filter(SqlTopic.name.ilike(normalized_name)).first()
+        )
+
         if existing_topic:
             raise HTTPException(
-                status_code=409,
-                detail=f"Topic '{normalized_name}' already exists"
+                status_code=409, detail=f"Topic '{normalized_name}' already exists"
             )
 
         db_topic = SqlTopic(name=normalized_name, created_at=datetime.now(timezone.utc))
@@ -70,6 +69,18 @@ def list_topics(config: Config = Depends(get_config)):
     with Session(db) as session:
         topics = session.query(SqlTopic).all()
         return topics
+
+
+@router.get("/topics/{topic_id}", response_model=TopicResponse)
+def get_topic(topic_id: str, config: Config = Depends(get_config)):
+    """Get a topic by ID"""
+    db = services.get_db(config)
+
+    with Session(db) as session:
+        topic = session.query(SqlTopic).filter(SqlTopic.id == topic_id).first()
+        if topic is None:
+            raise HTTPException(status_code=404, detail="Topic not found")
+        return topic
 
 
 @router.delete("/topics/{topic_id}")
