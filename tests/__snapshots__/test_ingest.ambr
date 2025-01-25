@@ -275,62 +275,18 @@
 # ---
 # name: test_index_and_store.1
   list([
-    SqlKnowledgeBaseDocument(id=InsuranceAverageExpenditureData-4f4ff756, data={"title":"Average Expenditures for Auto Insurance, 2012-2021","source_url":"data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg==","data":[{"year":2012,"average_expenditure":812.4,"percent_change":2.2},{"year":2013,"average_expenditure":841.06,"percent_change":3.5},{"year":2014,"average_expenditure":869.47,"percent_change":3.4},{"year":2015,"average_expenditure":896.66,"percent_change":3.1},{"year":2016,"average_expenditure":945.22,"percent_change":5.4},{"year":2017,"average_expenditure":1008.35,"percent_change":6.7},{"year":2018,"average_expenditure":1058.1,"percent_change":4.9},{"year":2019,"average_expenditure":1071.74,"percent_change":1.3},{"year":2020,"average_expenditure":1046.37,"percent_change":-2.4},{"year":2021,"average_expenditure":1061.54,"percent_change":1.4}]}, content=# Average Expenditures for Auto Insurance, 2012-2021
-  
-  year: 2012, average_expenditure: 812.4, percent_change: 2.2
-  
-  year: 2013, average_expenditure: 841.06, percent_change: 3.5
-  
-  year: 2014, average_expenditure: 869.47, percent_change: 3.4
-  
-  year: 2015, average_expenditure: 896.66, percent_change: 3.1
-  
-  year: 2016, average_expenditure: 945.22, percent_change: 5.4
-  
-  year: 2017, average_expenditure: 1008.35, percent_change: 6.7
-  
-  year: 2018, average_expenditure: 1058.1, percent_change: 4.9
-  
-  year: 2019, average_expenditure: 1071.74, percent_change: 1.3
-  
-  year: 2020, average_expenditure: 1046.37, percent_change: -2.4
-  
-  year: 2021, average_expenditure: 1061.54, percent_change: 1.4
-  
-  ,
+    SqlKnowledgeBaseDocument(id=TextualData-d2922533, data={"title":null,"source_url":"about:blank","data":"Paris, the 'City of Light,' boasts iconic landmarks such as the Eiffel Tower, offering panoramic views from its observation decks. The Louvre Museum, home to masterpieces like the Mona Lisa, attracts art enthusiasts worldwide. Notre-Dame Cathedral, a Gothic architectural marvel, stands on the Île de la Cité. The Champs-Élysées, lined with shops and cafes, leads to the Arc de Triomphe, honoring those who fought for France. Montmartre, with its artistic heritage, features the Basilica of the Sacré-Cœur atop its hill."}, content=Paris, the 'City of Light,' boasts iconic landmarks such as the Eiffel Tower, offering panoramic views from its observation decks. The Louvre Museum, home to masterpieces like the Mona Lisa, attracts art enthusiasts worldwide. Notre-Dame Cathedral, a Gothic architectural marvel, stands on the Île de la Cité. The Champs-Élysées, lined with shops and cafes, leads to the Arc de Triomphe, honoring those who fought for France. Montmartre, with its artistic heritage, features the Basilica of the Sacré-Cœur atop its hill.,
   ])
 # ---
 # name: test_index_and_store.2
   dict({
     'data': None,
     'documents': list([
-      '''
-        # Average Expenditures for Auto Insurance, 2012-2021
-        
-        year: 2012, average_expenditure: 812.4, percent_change: 2.2
-        
-        year: 2013, average_expenditure: 841.06, percent_change: 3.5
-        
-        year: 2014, average_expenditure: 869.47, percent_change: 3.4
-        
-        year: 2015, average_expenditure: 896.66, percent_change: 3.1
-        
-        year: 2016, average_expenditure: 945.22, percent_change: 5.4
-        
-        year: 2017, average_expenditure: 1008.35, percent_change: 6.7
-        
-        year: 2018, average_expenditure: 1058.1, percent_change: 4.9
-        
-        year: 2019, average_expenditure: 1071.74, percent_change: 1.3
-        
-        year: 2020, average_expenditure: 1046.37, percent_change: -2.4
-        
-        year: 2021, average_expenditure: 1061.54, percent_change: 1.4
-      ''',
+      "Paris, the 'City of Light,' boasts iconic landmarks such as the Eiffel Tower, offering panoramic views from its observation decks. The Louvre Museum, home to masterpieces like the Mona Lisa, attracts art enthusiasts worldwide. Notre-Dame Cathedral, a Gothic architectural marvel, stands on the Île de la Cité. The Champs-Élysées, lined with shops and cafes, leads to the Arc de Triomphe, honoring those who fought for France. Montmartre, with its artistic heritage, features the Basilica of the Sacré-Cœur atop its hill.",
     ]),
     'embeddings': None,
     'ids': list([
-      'InsuranceAverageExpenditureData-4f4ff756-0',
+      'TextualData-d2922533-0',
     ]),
     'included': list([
       <IncludeEnum.documents: 'documents'>,
@@ -339,9 +295,8 @@
     'metadatas': list([
       dict({
         'chunk_id': 0,
-        'source_id': 'InsuranceAverageExpenditureData-4f4ff756',
-        'source_url': 'data:text/html;base64,CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPHRhYmxlPgo8dGhlYWQ+PHRyPjx0aD48L3RoPjwvdHI+PC90aGVhZD4gICAgPHRib2R5PiA8dHIgY2xhc3M9Im9kZCI+PHRkPjx0YWJsZT4KPHRyPjx0ZD5BdmVyYWdlIEV4cGVuZGl0dXJlcyBmb3IgQXV0byBJbnN1cmFuY2UsIDIwMTItMjAyMTwvdGQ+PC90cj4KPHRyPjx0ZD48cD4gPC9wPgo8L3RkPjwvdHI+Cjx0cj48dGQ+PHRhYmxlPgo8dGhlYWQ+Cjx0cj4KPHRoPlllYXI8L3RoPgo8dGg+QXZlcmFnZSBleHBlbmRpdHVyZTwvdGg+Cjx0aD5QZXJjZW50IGNoYW5nZTwvdGg+CjwvdHI+CjwvdGhlYWQ+Cjx0Ym9keT4KPHRyPgo8dGQ+MjAxMjwvdGQ+Cjx0ZD4kODEyLjQwPC90ZD4KPHRkPjIuMiU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDEzPC90ZD4KPHRkPjg0MS4wNjwvdGQ+Cjx0ZD4zLjU8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE0PC90ZD4KPHRkPjg2OS40NzwvdGQ+Cjx0ZD4zLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE1PC90ZD4KPHRkPjg5Ni42NjwvdGQ+Cjx0ZD4zLjE8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE2PC90ZD4KPHRkPjk0NS4yMjwvdGQ+Cjx0ZD41LjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDE3PC90ZD4KPHRkPjEsMDA4LjM1PC90ZD4KPHRkPjYuNzwvdGQ+CjwvdHI+Cjx0cj4KPHRkPjIwMTg8L3RkPgo8dGQ+MSwwNTguMTA8L3RkPgo8dGQ+NC45PC90ZD4KPC90cj4KPHRyPgo8dGQ+MjAxOTwvdGQ+Cjx0ZD4xLDA3MS43NDwvdGQ+Cjx0ZD4xLjM8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIwPC90ZD4KPHRkPjEsMDQ2LjM3PC90ZD4KPHRkPi0yLjQ8L3RkPgo8L3RyPgo8dHI+Cjx0ZD4yMDIxPC90ZD4KPHRkPjEsMDYxLjU0PC90ZD4KPHRkPjEuNDwvdGQ+CjwvdHI+CjwvdGJvZHk+PC90YWJsZT4KClNvdXJjZTogTmF0aW9uYWwgQXNzb2NpYXRpb24gb2YgSW5zdXJhbmNlIENvbW1pc3Npb25lcnMgKE5BSUMpLiBGdXJ0aGVyIHJlcHJpbnQgb3IgZGlzdHJpYnV0aW9uIHN0cmljdGx5IHByb2hpYml0ZWQgd2l0aG91dCB3cml0dGVuIHBlcm1pc3Npb24gb2YgTkFJQy48L3RkPjwvdHI+CjwvdGFibGU+PC90ZD4gPC90cj4KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9ib2R5Pgo8L2h0bWw+Cg==',
-        'title': 'Average Expenditures for Auto Insurance, 2012-2021',
+        'source_id': 'TextualData-d2922533',
+        'source_url': 'about:blank',
         'topic_id': 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee',
       }),
     ]),
