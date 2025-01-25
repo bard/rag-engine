@@ -1,0 +1,113 @@
+interactions:
+- request:
+    body: '{"messages":[{"content":"You are an assistant for question-answering tasks.
+      Use the following pieces of retrieved context to answer If you don''t know the
+      answer, say that you don''t know. Use three sentences maximum and keep the answer
+      concise.\n\nAverage Expenditures for Auto Insurance, 2015-2017\n\nYear: 2015,
+      Expenditure: $896.66, Change: 3.1%\nYear: 2016, Expenditure: $945.22, Change:
+      5.4%\nYear: 2017, Expenditure: $1008.35, Change: 6.7%\n\n\nAverage Expenditures
+      for Auto Insurance, 2012-2014\n\nYear: 2012, Expenditure: $812.40, Change: 2.2%\nYear:
+      2013, Expenditure: $841.06, Change: 3.5%\nYear: 2014, Expenditure: $869.47,
+      Change: 3.4%\n","role":"system"},{"content":"What is the trend in auto insurance
+      costs between 2012 and 2015?","role":"user"}],"model":"gpt-4o","n":1,"stream":false,"temperature":0.7}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '817'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.59.5
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.59.5
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.8
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAwAAAP//jFNNi9swEL37Vwxie3OMv2I7ubWUltLT0lJKSzFaeWxr15aENN6kLPvf
+        i5w4ztIt9CI07808zZeeAgAmG7YHJnpOYjTD5i31nx++35btl+O32w8fs/uORPKp+lG8HwfDQh+h
+        7+5R0BIVCT2aAUlqdaKFRU7oVZMyK6us3JXVTIy6wcGHdYY2ud6kcZpv4moTF+fAXkuBju3hZwAA
+        8DSfPkXV4JHtIQ4XZETneIdsf3ECYFYPHmHcOemIK2LhSgqtCNWc9TukA6KCNE5S4Krxl20I1COQ
+        RdWAVMAn0iCVmyxXAkFoRw4O3AFXIJUv0WEEX3sE/oiWdwh4NKgaSZNFsNohtFaPcFMlaZTHXnJ+
+        jjTcVLsiKooztA3hIKkHrtTEBzBoBSrygsszDnQLaZS+WURCyKLtYmXeyhcrD+eCsihZkG103QWL
+        7eS4H4KahuGMP1/aOujOWH3nzvwFb6WSrq99Olr5FjrShs3scwDwax7f9GIizFg9GqpJP6Dygmla
+        nfTYujArW+3OJGniw4pnSRm+olc3SFwO7moBmOCix2YNXbeFT43UV0RwVfXf2bymfapcqu5/5FdC
+        CDSETW0sNlK8rHh1s+j/07/cLl2eE2YO7aMUWJNE6yfRYMun4bTqzP12hGPdStWhNVae9r01dV7s
+        kngX86pkwXPwBwAA//8DAMFM5qr4AwAA
+    headers:
+      CF-RAY:
+      - 907b1c9f98833605-FRA
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 25 Jan 2025 20:46:19 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=C0I6aQhZRqYkp5xef.tyHSROfG7HF2tbn8anVCdR72A-1737837979-1.0.1.1-cG85dcsO8EeZLb3NhvC0MNkv67b7adutd0wJ9x1r3EfqG.ijQdXfiBAtLdZYbUBl08Fqk8nORigOzbC2DDjXDw;
+        path=/; expires=Sat, 25-Jan-25 21:16:19 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=R9LpuTtZ_T7N3PWGd7Imw9c0o3CWoxU1TTWA7cNCLoQ-1737837979758-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      access-control-expose-headers:
+      - X-Request-ID
+      alt-svc:
+      - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      openai-organization:
+      - user-iarz4shpxfmvb4ssgkfsv3ye
+      openai-processing-ms:
+      - '1484'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-ratelimit-limit-requests:
+      - '5000'
+      x-ratelimit-limit-tokens:
+      - '800000'
+      x-ratelimit-remaining-requests:
+      - '4999'
+      x-ratelimit-remaining-tokens:
+      - '799812'
+      x-ratelimit-reset-requests:
+      - 12ms
+      x-ratelimit-reset-tokens:
+      - 14ms
+      x-request-id:
+      - req_a2bc37043a10c347750bb8893ce3b5a8
+    status:
+      code: 200
+      message: OK
+version: 1
