@@ -42,6 +42,5 @@ def get_graph():
     builder.add_edge("retrieve_from_knowledge_base", "rerank")
     builder.add_edge("rerank", "generate")
     builder.add_edge("generate", END)
-
     graph = builder.compile()
     return graph
