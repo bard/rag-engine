@@ -30,7 +30,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(route_notes.router, tags=["notes"])
-app.include_router(route_topics.router, tags=["topics"])
-app.include_router(route_query.router, tags=["query"])
-app.include_router(route_healthcheck.router, tags=["system"])
+app.include_router(route_notes.router)
+app.include_router(route_topics.router)
+app.include_router(route_query.router)
+app.include_router(route_healthcheck.router)

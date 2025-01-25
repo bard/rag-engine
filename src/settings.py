@@ -8,7 +8,9 @@ load_dotenv(override=True)
 
 
 class Settings(BaseSettings):
-    cors_origins: str = "http://localhost:3000,http://localhost:8000,http://localhost:5173"
+    cors_origins: str = (
+        "http://localhost:3000,http://localhost:8000,http://localhost:5173"
+    )
     pinecone_api_key: SecretStr
     openai_api_key: SecretStr
     openweathermap_api_key: SecretStr

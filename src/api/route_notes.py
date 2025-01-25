@@ -27,7 +27,7 @@ class NoteCreate(BaseModel):
     topic_id: Optional[str] = None
 
 
-@router.post("/notes")
+@router.post("/notes", operation_id="create_note")
 def create_note(note: NoteCreate, config: Config = Depends(get_config)):
     """Add a new note to the knowledge base"""
 
@@ -67,7 +67,7 @@ def create_note(note: NoteCreate, config: Config = Depends(get_config)):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/notes")
+@router.get("/notes", operation_id="list_notes")
 def get_notes(
     topic_id: str = Query(
         description="Topic ID to filter notes by. Use 'default' to get notes without a topic."
@@ -92,7 +92,7 @@ def get_notes(
         return notes
 
 
-@router.delete("/notes/{note_id}")
+@router.delete("/notes/{note_id}", operation_id="delete_note")
 def delete_note(note_id: str, config: Config = Depends(get_config)):
     """Delete a note from both database and vector store"""
     db = services.get_db(config)
@@ -100,9 +100,11 @@ def delete_note(note_id: str, config: Config = Depends(get_config)):
 
     with Session(db) as session:
         # First check if note exists
-        note = session.query(SqlKnowledgeBaseDocument).filter(
-            SqlKnowledgeBaseDocument.id == note_id
-        ).first()
+        note = (
+            session.query(SqlKnowledgeBaseDocument)
+            .filter(SqlKnowledgeBaseDocument.id == note_id)
+            .first()
+        )
         if note is None:
             raise HTTPException(status_code=404, detail="Note not found")
 
@@ -113,7 +115,9 @@ def delete_note(note_id: str, config: Config = Depends(get_config)):
 
             # Delete all chunks from vector store
             # The vector store contains chunks with IDs in format "{note_id}-{chunk_id}"
-            vector_store.delete([f"{note_id}-{i}" for i in range(100)])  # Assuming max 100 chunks per note
+            vector_store.delete(
+                [f"{note_id}-{i}" for i in range(100)]
+            )  # Assuming max 100 chunks per note
 
             return {"message": f"Note {note_id} deleted successfully"}
         except Exception as e:

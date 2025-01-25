@@ -30,7 +30,7 @@ class TopicResponse(BaseModel):
         from_attributes = True
 
 
-@router.post("/topics", response_model=TopicResponse)
+@router.post("/topics", response_model=TopicResponse, operation_id="create_topic")
 def create_topic(topic: TopicCreate, config: Config = Depends(get_config)):
     """Add a new topic to the database"""
     db = services.get_db(config)
@@ -61,7 +61,7 @@ def create_topic(topic: TopicCreate, config: Config = Depends(get_config)):
             raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/topics", response_model=List[TopicResponse])
+@router.get("/topics", response_model=List[TopicResponse], operation_id="list_topics")
 def list_topics(config: Config = Depends(get_config)):
     """Get all topics from the database"""
     db = services.get_db(config)
@@ -71,7 +71,9 @@ def list_topics(config: Config = Depends(get_config)):
         return topics
 
 
-@router.get("/topics/{topic_id}", response_model=TopicResponse)
+@router.get(
+    "/topics/{topic_id}", response_model=TopicResponse, operation_id="get_topic"
+)
 def get_topic(topic_id: str, config: Config = Depends(get_config)):
     """Get a topic by ID"""
     db = services.get_db(config)
@@ -83,7 +85,7 @@ def get_topic(topic_id: str, config: Config = Depends(get_config)):
         return topic
 
 
-@router.delete("/topics/{topic_id}")
+@router.delete("/topics/{topic_id}", operation_id="delete_topic")
 def delete_topic(topic_id: str, config: Config = Depends(get_config)):
     """Delete a topic by ID"""
     db = services.get_db(config)

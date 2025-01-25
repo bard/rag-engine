@@ -92,8 +92,7 @@ typecheck = "mypy src tests"
 initdb = "python src/cli.py initdb"
 demo_ingest = "python src/cli.py ingest --data 'data/Average Expenditures for Auto Insurance, 2012-2021.xls'"
 demo_query = "python src/cli.py query 'What is the trend in auto insurance costs over the last 3 years?'"
-start_api = "uvicorn src.api.app:app --reload"
-
+start_api = "uvicorn src.api.app:app --reload --port 8000"
 
 [tool.pyright]
 include = ["src", "tests"]

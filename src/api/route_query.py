@@ -18,7 +18,7 @@ class QueryResponse(BaseModel):
     sources: list[str]
 
 
-@router.get("/query", response_model=QueryResponse)
+@router.get("/query", response_model=QueryResponse, operation_id="query")
 def query(
     q: str = Query(description="The question to ask the knowledge base"),
     topic_id: str | None = Query(description="Optional topic id"),
