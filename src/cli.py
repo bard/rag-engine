@@ -9,6 +9,8 @@ from src.config import Config
 
 CONFIG = Config.from_env()
 
+# how to add a top-level option --log ai?
+
 
 @click.group()
 def cli():
@@ -16,12 +18,12 @@ def cli():
 
 
 @click.command(name="ingest")
-@click.option("--data", help="Path or URL of resource to ingest.")
-def cmd_ingest(data):
-    if data.startswith(("http://", "https://", "file://", "data://")):
-        input_url = data
+@click.argument("path_or_url")
+def cmd_ingest(path_or_url: str):
+    if path_or_url.startswith(("http://", "https://", "file://", "data://")):
+        input_url = path_or_url
     else:
-        abs_path = path.abspath(data)
+        abs_path = path.abspath(path_or_url)
         input_url = f"file://{abs_path}"
     initial_agent_state = workflow_ingest.AgentState(
         url=input_url, source_content=None, extracted_data=[], topic_id=None
@@ -29,7 +31,9 @@ def cmd_ingest(data):
 
     workflow_ingest.get_graph().invoke(initial_agent_state, CONFIG.to_runnable_config())
 
+    click.echo()
     click.echo("Data ingested successfully")
+    click.echo()
 
 
 @click.command(name="initdb")
@@ -38,7 +42,9 @@ def cmd_initdb():
 
     db.SqlAlchemyBase.metadata.create_all(engine)
 
+    click.echo()
     click.echo("Database initialized successfully")
+    click.echo()
 
 
 @click.command(name="query")
@@ -57,10 +63,12 @@ def cmd_query(user_query: str):
     )
 
     ai_messages = [msg for msg in response["messages"] if isinstance(msg, AIMessage)]
+    click.echo()
     if ai_messages:
         click.echo(ai_messages[-1].content)
     else:
         click.echo("No AI response found")
+    click.echo()
 
 
 if __name__ == "__main__":
