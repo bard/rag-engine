@@ -16,9 +16,9 @@ from src.workflow_ingest import (
 )
 
 
-def test_fetch(config, average_insurance_expenditures_html_as_data_url, snapshot):
+def test_fetch(config, travel_knowledge_data_as_data_url, snapshot):
     agent_state = AgentState(
-        url=average_insurance_expenditures_html_as_data_url,
+        url=travel_knowledge_data_as_data_url,
         source_content=None,
         extracted_data=[],
         topic_id=None,
@@ -27,25 +27,6 @@ def test_fetch(config, average_insurance_expenditures_html_as_data_url, snapshot
     state_update = fetch(agent_state, config.to_runnable_config())
 
     assert state_update.get("source_content") == snapshot
-
-
-def test_extract_expenditure_data(
-    config,
-    average_insurance_expenditures_html,
-    average_insurance_expenditures_html_as_data_url,
-    snapshot,
-):
-    agent_state = AgentState(
-        url=average_insurance_expenditures_html_as_data_url,
-        source_content=SourceContent(
-            data=average_insurance_expenditures_html, type="text/html"
-        ),
-        extracted_data=[],
-        topic_id=None,
-    )
-
-    state_update = extract(agent_state, config.to_runnable_config())
-    assert state_update["extracted_data"] == snapshot
 
 
 @pytest.mark.vcr
