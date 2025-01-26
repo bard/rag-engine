@@ -1,6 +1,6 @@
 ## Description
 
-An agentic RAG engine with support for heterogeneous input formats, query routing between local and external knowledge sources, multiple topics, multiple database and vector stores.
+An agentic RAG engine with support for heterogeneous input formats, query routing between local and external knowledge sources, multiple topics, multiple databases and vector stores.
 
 Components:
 
@@ -41,13 +41,6 @@ cp .env.example .env
 
 Edit `.env`
 
-To launch Postgres:
-
-```sh
-docker run --name postgres -e POSTGRES_PASSWORD=secret \
-    -p 5432:5432 -d postgres
-```
-
 ## Running the API
 
 ```sh
@@ -57,10 +50,27 @@ poetry run start_api
 ## Running the CLI
 
 ```sh
-poetry shell
-python src/cli.py initdb
-python src/cli.py ingest --data https://www.iii.org/table-archive/20916/file
-python src/cli.py query 'What is the trend in auto insurance costs over the last 3 years?'
+$ poetry shell
+$ python src/cli.py initdb
+
+Database initialized successfully
+
+$ python src/cli.py create_topic --name Paris
+
+Created topic 'Paris' with ID: 059a97ed-3d7d-4fc9-a2b6-9b12df52b414
+
+$ python src/cli.py ingest https://en.wikivoyage.org/wiki/Paris
+
+Data ingested successfully
+
+$ python src/cli.py list_topics
+
+Available topics:
+  059a97ed-3d7d-4fc9-a2b6-9b12df52b414: Paris
+
+$ poetry run python src/cli.py query --topic_id 059a97ed-3d7d-4fc9-a2b6-9b12df52b414 'what are some nice things to see?'
+
+Some nice things to see in Paris include the Eiffel Tower, the Louvre Museum, and Notre-Dame Cathedral. Additionally, the charming neighborhood of Montmartre and the historic district of Le Marais are also worth exploring.
 ```
 
 ## Development
@@ -153,5 +163,6 @@ The following is missing:
 - monitoring
 - support for vector stores other than ChromaDB (Pinecone is stubbed)
 - multi-user
+- per-task LLM configuration
 
 Any SQL database supported by SQLAlchemy should work, but only SQLite and Postgres are tested.
