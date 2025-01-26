@@ -1,6 +1,6 @@
 ## Description
 
-An agentic RAG engine with support for heterogeneous input formats, query routing between local and external knowledge sources, multiple topics, multiple database and vector stores.
+An agentic RAG engine with support for heterogeneous input formats, query routing between local and external knowledge sources, multiple topics, multiple databases and vector stores.
 
 Components:
 
@@ -41,13 +41,6 @@ cp .env.example .env
 
 Edit `.env`
 
-To launch Postgres:
-
-```sh
-docker run --name postgres -e POSTGRES_PASSWORD=secret \
-    -p 5432:5432 -d postgres
-```
-
 ## Running the API
 
 ```sh
@@ -61,7 +54,7 @@ poetry shell
 python src/cli.py initdb
 python src/cli.py ingest 'data/Average Expenditures for Auto Insurance, 2005-2014.xls'
 python src/cli.py ingest 'data/Average Expenditures for Auto Insurance, 2012-2021.xls'
-python src/cli.py ingest 'Direct Premiums Written, P_C Insurance By State, 2023 (1).xls'
+python src/cli.py ingest 'data/Direct Premiums Written, P_C Insurance By State, 2023 (1).xls'
 python src/cli.py query 'What is the trend in auto insurance costs between 2012 and 2015?'
 ```
 
@@ -155,5 +148,6 @@ The following is missing:
 - monitoring
 - support for vector stores other than ChromaDB (Pinecone is stubbed)
 - multi-user
+- per-task LLM configuration
 
 Any SQL database supported by SQLAlchemy should work, but only SQLite and Postgres are tested.
