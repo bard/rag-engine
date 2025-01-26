@@ -10,7 +10,9 @@ Components:
 - Admin CLI
 - NextJS front end (in a [separate repository](https://github.com/bard/rag-frontend))
 
-https://github.com/user-attachments/assets/848ade9a-1a9c-470f-964a-2aa3c0f4d2e5
+## Demo
+
+https://github.com/user-attachments/assets/c88b5ef3-7ba8-4a83-84d1-d33a4f0e67cd
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 
