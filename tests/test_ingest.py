@@ -68,8 +68,6 @@ def test_extract_textual_data(config, snapshot):
 
 def test_index_and_store(
     config,
-    average_insurance_expenditures_html_as_data_url,
-    average_insurance_expenditures_html,
     snapshot,
 ):
     data = TextualData.from_content(
@@ -100,9 +98,9 @@ def test_index_and_store(
     assert vector_store_state == snapshot
 
 
-def test_graph(config, average_insurance_expenditures_html_as_data_url, snapshot):
+def test_graph(config, travel_knowledge_data_as_data_url, snapshot):
     agent_state = AgentState(
-        url=average_insurance_expenditures_html_as_data_url,
+        url=travel_knowledge_data_as_data_url,
         topic_id="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
         source_content=None,
         extracted_data=[],
