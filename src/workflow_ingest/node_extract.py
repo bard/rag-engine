@@ -6,7 +6,6 @@ from ..config import Config
 from .. import services
 from ..data import (
     IndexableData,
-    InsuranceAverageExpenditureData,
     GenericTabularData,
     TextualData,
 )
@@ -17,7 +16,6 @@ class ExtractStateUpdate(TypedDict):
 
 
 EXTRACTORS: list[type[IndexableData]] = [
-    InsuranceAverageExpenditureData,
     GenericTabularData,
     TextualData,
 ]

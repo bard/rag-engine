@@ -115,7 +115,7 @@ graph TD;
 
 There are three data extractors, meant to provide a framework and examples within the framework, not to exhaust the possibilities:
 
-- [specialized local parsing for well-known structured data](src/data/insurance_average_expenditure.py)
+- [specialized local parsing for well-known structured data](https://github.com/bard/rag-engine/blob/ateam/src/data/insurance_average_expenditure.py) (on the [ateam branch](https://github.com/bard/rag-engine/tree/ateam))
 - [generic textual data](src/data/textual.py)
 - [generic LLM-driven parsing of tabular data](src/data/generic_tabular.py)
 
