@@ -34,7 +34,7 @@ https://github.com/user-attachments/assets/848ade9a-1a9c-470f-964a-2aa3c0f4d2e5
 ## Setup
 
 ```sh
-git clone https://github.com/bard/rag-engine
+git clone -b ateam https://github.com/bard/rag-engine
 cd rag-engine
 poetry install
 cp .env.example .env
