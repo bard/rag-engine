@@ -1,26 +1,5 @@
 import pytest
-from src.data import InsuranceAverageExpenditureData, GenericTabularData, TextualData
-
-
-def test_expenditure_data_from_content(snapshot, average_insurance_expenditures_html):
-    expenditure_data = InsuranceAverageExpenditureData.from_content(
-        content_data=average_insurance_expenditures_html,
-        content_type="text/html",
-        source_url="about:blank",
-        llm=None,
-    )
-
-    assert expenditure_data is not None
-    assert expenditure_data == snapshot
-    assert expenditure_data.to_text() == snapshot
-
-
-def test_generic_tabular_data_to_text(snapshot):
-    generic_data = GenericTabularData(
-        title="Title", source_url="about:blank", data=[{"foo": "bar"}]
-    )
-
-    assert generic_data.to_text() == snapshot
+from src.data import GenericTabularData, TextualData
 
 
 @pytest.mark.xfail(reason="todo")

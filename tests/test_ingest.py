@@ -6,7 +6,6 @@ from sqlalchemy import create_engine
 
 from src.data.textual import TextualData
 from src.db import SqlKnowledgeBaseDocument
-from src.data import InsuranceAverageExpenditureData
 from src.workflow_ingest import (
     AgentState,
     SourceContent,
