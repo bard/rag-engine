@@ -8,8 +8,29 @@ from src.db import SqlKnowledgeBaseDocument
 from src.data import InsuranceAverageExpenditureData
 from src.workflow_ingest import (
     AgentState,
+    SourceContent,
+    extract,
     index_and_store,
 )
+
+
+def test_extract_expenditure_data(
+    config,
+    average_insurance_expenditures_html,
+    average_insurance_expenditures_html_as_data_url,
+    snapshot,
+):
+    agent_state = AgentState(
+        url=average_insurance_expenditures_html_as_data_url,
+        source_content=SourceContent(
+            data=average_insurance_expenditures_html, type="text/html"
+        ),
+        extracted_data=[],
+        topic_id=None,
+    )
+
+    state_update = extract(agent_state, config.to_runnable_config())
+    assert state_update["extracted_data"] == snapshot
 
 
 def test_index_and_store(

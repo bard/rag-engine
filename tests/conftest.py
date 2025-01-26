@@ -382,6 +382,16 @@ def insurance_data_documents():
 
 
 @pytest.fixture
+def travel_knowledge_data_as_data_url():
+    encoded_text = base64.b64encode(
+        "Paris, the 'City of Light,' boasts iconic landmarks such as the Eiffel Tower, offering panoramic views from its observation decks. The Louvre Museum, home to masterpieces like the Mona Lisa, attracts art enthusiasts worldwide. Notre-Dame Cathedral, a Gothic architectural marvel, stands on the Île de la Cité. The Champs-Élysées, lined with shops and cafes, leads to the Arc de Triomphe, honoring those who fought for France. Montmartre, with its artistic heritage, features the Basilica of the Sacré-Cœur atop its hill.".encode(
+            "utf-8"
+        )
+    ).decode("utf-8")
+    return f"data:text/plain;base64,{encoded_text}"
+
+
+@pytest.fixture
 def travel_knowledge_documents():
     return [
         Document(
