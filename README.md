@@ -19,12 +19,13 @@ https://github.com/user-attachments/assets/848ade9a-1a9c-470f-964a-2aa3c0f4d2e5
 - [Description](#description)
 - [Setup](#setup)
 - [Running the API](#running-the-api)
+- [Running the front end](#running-the-front-end)
 - [Running the CLI](#running-the-cli)
 - [Development](#development)
 - [Architecture and development notes](#architecture-and-development-notes)
-- [Configuration and dependency instantiation](#configuration-and-dependency-instantiation)
 - [The ingestion workflow](#the-ingestion-workflow)
 - [The query workflow](#the-query-workflow)
+- [Modelling, configuration, dependencies](#modelling-configuration-dependencies)
 - [LLMs and testing](#llms-and-testing)
 - [Limitations and possible improvements](#limitations-and-possible-improvements)
 
@@ -39,7 +40,7 @@ poetry install
 cp .env.example .env
 ```
 
-Edit `.env`
+Edit `.env` to specify API keys and database connection strings.
 
 ## Running the API
 
