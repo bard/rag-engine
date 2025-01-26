@@ -47,7 +47,7 @@ Edit `.env` to specify API keys and database connection strings.
 ## Running the API
 
 ```sh
-poetry run start_api
+poetry run task start_api
 ```
 
 ## Running the front end
