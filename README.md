@@ -1,13 +1,13 @@
 ## Description
 
-An agentic RAG engine with support for heterogeneous input formats, query routing between local and external knowledge sources, multiple topics, multiple databases and vector stores.
+An agentic RAG engine with support for heterogeneous source data formats, query routing between local and external knowledge sources, multiple topics.
 
 Components:
 
 - LangGraph ingestion workflow
 - LangGraph query workflow
 - FastAPI backend
-- CLI
+- Admin CLI
 - NextJS front end (in a [separate repository](https://github.com/bard/rag-frontend))
 
 https://github.com/user-attachments/assets/848ade9a-1a9c-470f-964a-2aa3c0f4d2e5
@@ -84,14 +84,6 @@ When adding a test for code that relies on LLM calls, run `poetry run task test_
 
 ## Architecture and development notes
 
-### Configuration and dependencies
-
-All runnables (graph nodes, API route handlers, CLI commands, ...) instantiate their own dependencies (database connections, third-party API clients, ...) locally instead of expecting them from module scope; all information necessary to do so is contained in a serializable configuration object. This allows relocating a runnable to another process (e.g. a lambda) with minimal effort.
-
-In the case of agent nodes, this also allows keeping runnables as functions, as the two reasons to create classes (keeping state and configuring behavior) are already covered by LangGraph-native concepts (agent state and `RunnableConfig`).
-
-The potential downside is that some dependencies may be expensive to instantiate. However, there are better solutions than keeping live references in module scope, and they're usually already in place where appropriate (e.g. database connection pools).
-
 ### The ingestion workflow
 
 ```mermaid
@@ -147,6 +139,12 @@ The conditional edge and the node `retrieve_from_weather_service` isn't necessar
 
 - the `classify_query` node populating an `external_knowledge_sources` array in the agent's state with a list of sources it decided it would be useful to query (the `classify_query` already does this for the limited case of weather queries), then passing control to the `retrieve` node for retrieval from all knowledge sources, both local and external;
 - defining external knowledge sources as LangChain tools and leaving it to the LLM to decide whether to call call those tools.
+
+### Modelling, configuration, dependencies
+
+Class abstractions for the agentic functionality are intentionally avoided since configuration and state are already covered by LangGraph-native concepts (agent state and `RunnableConfig`).
+
+All runnables (workflow nodes, but also API route handlers and CLI commands) instantiate their own dependencies (database connections, third-party API clients, ...) upon invocation, based on the configuration object, instead of expecting them from module scope. Together with the configuration object being strictly serializable, this allows extracting a runnable to a separate process (e.g. lambda) with minimal effort if the need arises.
 
 ### LLMs and testing
 
