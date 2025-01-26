@@ -25,11 +25,11 @@ https://github.com/user-attachments/assets/c88b5ef3-7ba8-4a83-84d1-d33a4f0e67cd
 - [Running the CLI](#running-the-cli)
 - [Development](#development)
 - [Architecture and development notes](#architecture-and-development-notes)
-- [The ingestion workflow](#the-ingestion-workflow)
-- [The query workflow](#the-query-workflow)
-- [Modelling, configuration, dependencies](#modelling-configuration-dependencies)
-- [LLMs and testing](#llms-and-testing)
-- [Limitations and possible improvements](#limitations-and-possible-improvements)
+  - [The ingestion workflow](#the-ingestion-workflow)
+  - [The query workflow](#the-query-workflow)
+  - [Modelling, configuration, dependencies](#modelling-configuration-dependencies)
+  - [LLMs and testing](#llms-and-testing)
+  - [Limitations and possible improvements](#limitations-and-possible-improvements)
 
 <!-- markdown-toc end -->
 
