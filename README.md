@@ -50,12 +50,26 @@ poetry run start_api
 ## Running the CLI
 
 ```sh
-poetry shell
-python src/cli.py initdb
-python src/cli.py ingest 'data/Average Expenditures for Auto Insurance, 2005-2014.xls'
-python src/cli.py ingest 'data/Average Expenditures for Auto Insurance, 2012-2021.xls'
-python src/cli.py ingest 'data/Direct Premiums Written, P_C Insurance By State, 2023 (1).xls'
-python src/cli.py query 'What is the trend in auto insurance costs between 2012 and 2015?'
+$ poetry shell
+$ python src/cli.py initdb
+
+Database initialized successfully
+
+$ python src/cli.py ingest 'data/Average Expenditures for Auto Insurance, 2005-2013.xls'
+
+Data ingested successfully
+
+$ python src/cli.py ingest 'data/Average Expenditures for Auto Insurance, 2012-2021.xls'
+
+Data ingested successfully
+
+$ python src/cli.py ingest 'data/Direct Premiums Written, P_C Insurance By State, 2023 (1).xls'
+
+Data ingested successfully
+
+$ python src/cli.py query 'What is the trend in auto insurance costs between 2012 and 2015?'
+
+Between 2012 and 2015, the average expenditure on auto insurance consistently increased. Specifically, it rose from $812.4 in 2012 to $896.66 in 2015, with annual percent changes of 2.2%, 3.5%, and 3.4%, respectively.
 ```
 
 ## Development
