@@ -56,7 +56,7 @@ $ python src/cli.py initdb
 
 Database initialized successfully
 
-$ python src/cli.py ingest 'data/Average Expenditures for Auto Insurance, 2005-2013.xls'
+$ python src/cli.py ingest 'data/Average Expenditures For Auto Insurance, 2004-2013.xls'
 
 Data ingested successfully
 
