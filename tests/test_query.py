@@ -10,7 +10,6 @@ from src.workflow_query import (
     AgentState,
     get_graph,
     retrieve_from_knowledge_base,
-    reformulate_query,
     classify_query,
 )
 from src import services
@@ -161,23 +160,3 @@ def test_graph_with_knowledge_query(config, travel_knowledge_documents, snapshot
     response = get_graph().invoke(agent_state, config.to_runnable_config())
 
     assert response.get("messages", [])[-1].content == snapshot
-
-
-@pytest.mark.xfail(reason="node not used")
-@pytest.mark.vcr
-def test_reformulate_query__STUB(config):
-    agent_state = AgentState(
-        messages=[
-            HumanMessage(
-                content="What's the trend in auto insurance costs from year 2012 to year 2014?",
-            )
-        ],
-        retrieved_knowledge=[],
-        query=None,
-        topic_id=None,
-        external_knowledge_sources=[],
-    )
-
-    state_update = reformulate_query(agent_state, config.to_runnable_config())
-
-    assert state_update == {"query": "Auto insurance cost trend 2012-2014"}
