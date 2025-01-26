@@ -47,6 +47,15 @@ Edit `.env`
 poetry run start_api
 ```
 
+## Running the front end
+
+```sh
+git clone https://github.com/bard/rag-frontend
+cd rag-frontend
+pnpm install
+pnpm dev
+```
+
 ## Running the CLI
 
 ```sh
